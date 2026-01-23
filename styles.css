@@ -23,27 +23,24 @@
     animation: spin 3s linear infinite;
 }
 
-/* Destaques do Texto - Cores mais suaves (Pastel) para leitura confortável */
-/* O !important garante que sobrescreva o dark mode se necessário */
+/* Destaques do Texto - Estilo "Lápis de Cor" (Suave) */
 .highlight-yellow {
-    background-color: rgba(253, 224, 71, 0.3) !important;
-    /* Yellow 300 com baixa opacidade */
+    background-color: rgba(253, 224, 71, 0.25) !important;
     border-bottom: 2px solid #eab308;
-    /* Sublinhado forte ao invés de borda lateral */
 }
 
 .highlight-green {
-    background-color: rgba(134, 239, 172, 0.3) !important;
+    background-color: rgba(134, 239, 172, 0.25) !important;
     border-bottom: 2px solid #22c55e;
 }
 
 .highlight-blue {
-    background-color: rgba(147, 197, 253, 0.3) !important;
+    background-color: rgba(147, 197, 253, 0.25) !important;
     border-bottom: 2px solid #3b82f6;
 }
 
 .highlight-red {
-    background-color: rgba(254, 202, 202, 0.3) !important;
+    background-color: rgba(252, 165, 165, 0.25) !important;
     border-bottom: 2px solid #ef4444;
 }
 
@@ -53,39 +50,49 @@ select {
     appearance: none;
 }
 
-/* Tipografia de Leitura */
+/* Tipografia de Leitura Otimizada */
 .verse-content {
-    line-height: 2.0;
-    /* Aumentei para 2.0 para dar mais respiro */
+    line-height: 2.1;
+    /* Leitura muito confortável */
     font-feature-settings: "kern", "liga";
-    letter-spacing: -0.01em;
-    /* Leitura mais compacta e profissional */
+    letter-spacing: -0.015em;
+    color: #292524;
+    /* Stone 800 - Não é preto puro */
 }
 
-/* Letras Vermelhas (Palavras de Jesus) - Ajustado para um vermelho mais 'sangue/vinho' e menos 'alerta' */
+/* Modo Dark: Ajuste da cor do texto */
+.dark .verse-content {
+    color: #e7e5e4;
+    /* Stone 200 */
+}
+
+/* Letras Vermelhas (Jesus) - Vinho elegante */
 .red-letter {
-    color: #b91c1c;
-    /* Red 700 */
+    color: #9f1239;
+    /* Rose 800 */
 }
 
 .dark .red-letter {
-    color: #f87171;
-    /* Red 400 */
+    color: #fb7185;
+    /* Rose 400 */
 }
 
-/* Estilo para Coro nos Hinários - Minimalista */
+/* Hinos */
 .hymn-chorus {
-    background-color: rgba(0, 0, 0, 0.02);
+    background-color: rgba(180, 83, 9, 0.05);
+    /* Bronze bem suave */
     color: inherit;
     padding: 1.5rem;
-    border-left: 2px solid #000;
-    /* Borda preta sólida */
+    border-left: 3px solid #b45309;
+    /* Bronze */
     font-style: italic;
     font-weight: 500;
     margin-bottom: 2rem;
+    border-radius: 0 0.5rem 0.5rem 0;
 }
 
 .dark .hymn-chorus {
     background-color: rgba(255, 255, 255, 0.05);
-    border-left: 2px solid #fff;
+    border-left: 3px solid #d6d3d1;
+    /* Stone 300 */
 }
