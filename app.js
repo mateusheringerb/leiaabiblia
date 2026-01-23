@@ -1,19 +1,9 @@
 /**
  * ============================================================================
  * BÍBLIA ÁGAPE - APLICAÇÃO PRINCIPAL (app.js)
- * Versão: V2.1.5
- * Data: 22/01/2026
- * Autor: Mateus Heringer
- * * Descrição:
- * Arquivo principal de lógica da aplicação PWA.
- * Contém toda a regra de negócio para:
- * - Leitura Bíblica (Offline)
- * - Hinários (Destaque de Coro)
- * - Quiz Progressivo
- * - Planos de Leitura (Gestão Completa)
- * - Editor de Imagens (Canvas com compartilhamento nativo)
- * - Contato via AJAX (FormSubmit)
- * - Backup de Dados (Importar/Exportar)
+ * Versão: V2.1.6 (Rebranding Paper & Ink + Estúdio Pro)
+ * Data: 23/01/2026
+ * Autor: Mateus Heringer & Daniel
  * ============================================================================
  */
 
@@ -21,95 +11,79 @@
 // 1. CONSTANTES E CONFIGURAÇÕES GLOBAIS
 // ============================================================================
 
-/**
- * Lista de traduções disponíveis.
- * IMPORTANTE: Os nomes devem coincidir exatamente com os arquivos JSON na raiz.
- */
 var TRANSLATIONS = [
-    "ACF", // Almeida Corrigida Fiel
-    "ARA", // Almeida Revista e Atualizada
-    "ARC", // Almeida Revista e Corrigida
-    "AS21", // Almeida Século 21
-    "JFAA", // João Ferreira de Almeida Atualizada
-    "KJA", // King James Atualizada
-    "KJF", // King James Fiel
-    "NAA", // Nova Almeida Atualizada
-    "NBV", // Nova Bíblia Viva
-    "NTLH", // Nova Tradução na Linguagem de Hoje
-    "NVI", // Nova Versão Internacional
-    "NVT", // Nova Versão Transformadora
-    "TB" // Tradução Brasileira
+    "ACF", "ARA", "ARC", "AS21", "JFAA", "KJA", "KJF", "NAA", "NBV", "NTLH", "NVI", "NVT", "TB"
 ];
 
-/**
- * Estado Global da Aplicação (State Management).
- * Armazena as preferências do usuário e o estado atual de navegação.
- * Inicializa com valores salvos no LocalStorage ou valores padrão.
- */
 var state = {
-    // Preferências Visuais
     fontSize: parseInt(localStorage.getItem('agape_font')) || 18,
     theme: localStorage.getItem('agape_theme') || 'light',
-
-    // Navegação Bíblica
     translation: localStorage.getItem('agape_version') || 'NVI',
-    book: parseInt(localStorage.getItem('agape_book')) || 0, // Índice do livro (0 = Gênesis)
+    book: parseInt(localStorage.getItem('agape_book')) || 0,
     chapter: parseInt(localStorage.getItem('agape_chapter')) || 1,
-
-    // Contexto
-    hymnbook: 'harpa', // 'harpa', 'cantor', 'novocantico'
-    mode: 'free'       // 'free' (leitura livre) ou 'plan' (seguindo plano)
+    hymnbook: 'harpa',
+    mode: 'free'
 };
 
 // ============================================================================
 // 2. CACHES E VARIÁVEIS DE DADOS
 // ============================================================================
 
-// Cache em memória para evitar requisições repetidas na mesma sessão
 var bibleCache = {};
-
-// Cache específico para hinários (carregados sob demanda)
 var hymnCache = {
     harpa: null,
     cantor: null,
     novocantico: null
 };
 
-// Variáveis Voláteis (Sessão Atual)
 var currentHymnList = [];
 var quizData = [];
 var selectedVerse = { id: "", text: "", ref: "" };
-var deferredPrompt = null; // Evento de instalação PWA
-var currentCanvasBg = 0;   // Fundo do editor de imagem
-var touchStartX = 0;       // Controle de Swipe
+var deferredPrompt = null;
+var touchStartX = 0;
 var touchEndX = 0;
 
-// Dados Persistentes (Carregados do LocalStorage com tratamento de erro)
+// --- VARIÁVEIS DO NOVO ESTÚDIO DE CRIAÇÃO (PRO) ---
+var currentVerseText = "";
+var currentVerseRef = "";
+var currentThemeId = 'midnight';
+
+// Definição dos Temas Visuais para Stories
+const THEMES = {
+    midnight: {
+        bgStart: "#18181b", bgEnd: "#09090b", // Zinc 950 Gradient (Dark Luxury)
+        text: "#ffffff", accent: "#d4d4d8", watermark: "rgba(255,255,255,0.03)",
+        fontMain: "Merriweather", fontSec: "Inter"
+    },
+    paper: {
+        bgStart: "#fafaf9", bgEnd: "#e7e5e4", // Stone 100 Gradient (Journal/Livro)
+        text: "#1c1917", accent: "#b45309", watermark: "rgba(0,0,0,0.03)",
+        fontMain: "Merriweather", fontSec: "Inter"
+    },
+    royal: {
+        bgStart: "#1e1b4b", bgEnd: "#020617", // Indigo 950 (Realeza)
+        text: "#ffffff", accent: "#a5b4fc", watermark: "rgba(255,255,255,0.05)",
+        fontMain: "Playfair Display", fontSec: "Inter"
+    },
+    nature: {
+        bgStart: "#064e3b", bgEnd: "#022c22", // Emerald 900 (Esperança)
+        text: "#ecfdf5", accent: "#6ee7b7", watermark: "rgba(255,255,255,0.05)",
+        fontMain: "Merriweather", fontSec: "Inter"
+    }
+};
+
+// Dados Persistentes
 var savedMarks = {};
-try {
-    savedMarks = JSON.parse(localStorage.getItem('agape_marks_v2')) || {};
-} catch (e) {
-    savedMarks = {};
-    console.error("Erro ao carregar marcas salvas:", e);
-}
+try { savedMarks = JSON.parse(localStorage.getItem('agape_marks_v2')) || {}; } catch (e) { savedMarks = {}; }
 
 var streakData = {};
-try {
-    streakData = JSON.parse(localStorage.getItem('agape_streak')) || { count: 0, lastDate: "" };
-} catch (e) {
-    streakData = { count: 0, lastDate: "" };
-}
+try { streakData = JSON.parse(localStorage.getItem('agape_streak')) || { count: 0, lastDate: "" }; } catch (e) { streakData = { count: 0, lastDate: "" }; }
 
 var quizTotalPoints = parseInt(localStorage.getItem('agape_quiz_points')) || 0;
 
 var planProgress = [];
-try {
-    planProgress = JSON.parse(localStorage.getItem('agape_plan_progress')) || [];
-} catch (e) {
-    planProgress = [];
-}
+try { planProgress = JSON.parse(localStorage.getItem('agape_plan_progress')) || []; } catch (e) { planProgress = []; }
 
-// Controle de Sessão do Quiz
 var quizSession = {
     active: false,
     currentLevel: 'facil',
@@ -119,44 +93,29 @@ var quizSession = {
 };
 
 // ============================================================================
-// 3. INICIALIZAÇÃO DO SISTEMA (BOOTSTRAP)
+// 3. INICIALIZAÇÃO DO SISTEMA
 // ============================================================================
 
 window.onload = async function () {
     try {
-        // Log de Autoria (Técnico)
-        console.log(
-            "%c BÍBLIA ÁGAPE %c v2.1.5 \n%c Desenvolvido por Mateus Heringer & Daniel ",
-            "background:#2563eb; color:white; font-weight:bold; padding: 4px 8px; border-radius: 4px 0 0 4px;",
-            "background:#1e40af; color:white; padding: 4px 8px; border-radius: 0 4px 4px 0;",
-            "color:#2563eb; font-size: 10px; margin-top: 5px; font-weight: bold;"
-        );
+        console.log("=== Iniciando Sistema Bíblia Ágape V2.1.6 ===");
 
-        console.log("=== Iniciando Sistema Bíblia Ágape V2.1.5 ===");
-
-        // 1. Aplica preferências visuais
         applyTheme(state.theme);
         updateStreakDisplay();
-        populateSelectElements(); // Preenche os selects de livros/traduções
+        populateSelectElements();
 
-        // 2. Carregamento de Dados Assíncronos
         loadDailyVerse();
-        await loadQuizData(); // Carrega o JSON do quiz
+        await loadQuizData();
 
-        // 3. Configuração de Listeners de Eventos
         setupSwipeGestures();
         setupInstallPrompt();
         setupSearchInput();
-
-        // 4. Verifica planos
         checkActivePlan();
 
-        // 5. ATUALIZAÇÃO FORÇADA (Network First Strategy)
         if (navigator.onLine) {
             forceUpdateAll();
         }
 
-        // 6. Configuração de Roteamento (SPA)
         window.history.replaceState({ screen: 'screen-home' }, 'Home', '');
 
         window.onpopstate = function (event) {
@@ -167,7 +126,6 @@ window.onload = async function () {
             }
         };
 
-        // 7. Renderização Inicial
         await loadChapter();
         changeHymnbook();
 
@@ -177,43 +135,21 @@ window.onload = async function () {
     }
 };
 
-/**
- * Força o download de todos os arquivos JSON críticos para garantir que
- * o Service Worker (Network First) capture a versão mais recente do servidor.
- */
 window.forceUpdateAll = async function () {
-    console.log("Iniciando atualização forçada de conteúdo em background...");
-
+    console.log("Atualizando cache em background...");
     var filesToUpdate = TRANSLATIONS.map(function (t) { return t + '.json'; });
-    filesToUpdate.push(
-        'harpa.json',
-        'cantor_cristao.json',
-        'novo_cantico_completo.json',
-        'quiz.json',
-        'bible-data.js'
-    );
+    filesToUpdate.push('harpa.json', 'cantor_cristao.json', 'novo_cantico_completo.json', 'quiz.json', 'bible-data.js');
 
     for (var i = 0; i < filesToUpdate.length; i++) {
-        try {
-            // O parâmetro cache: 'reload' força a ida à rede, ignorando cache HTTP
-            await fetch('./' + filesToUpdate[i], { cache: 'reload' });
-        } catch (e) {
-            console.warn("Falha ao atualizar arquivo: " + filesToUpdate[i]);
-        }
+        try { await fetch('./' + filesToUpdate[i], { cache: 'reload' }); } catch (e) { }
     }
-    console.log("Processo de atualização de cache finalizado.");
 };
 
 // ============================================================================
-// 4. SISTEMA DE NAVEGAÇÃO E ROTEAMENTO
+// 4. SISTEMA DE NAVEGAÇÃO
 // ============================================================================
 
-/**
- * Função interna para alternar visibilidade das telas (DIVs).
- * @param {string} screenId - O ID da div a ser exibida.
- */
 function _showScreenInternal(screenId) {
-    // 1. Oculta todas as telas filhas de main-content
     var screens = document.querySelectorAll('#main-content > div');
     screens.forEach(function (screen) {
         if (screen.id && screen.id.startsWith('screen-')) {
@@ -221,27 +157,18 @@ function _showScreenInternal(screenId) {
         }
     });
 
-    // 2. Exibe a tela alvo
     var targetScreen = document.getElementById(screenId);
     if (targetScreen) {
         targetScreen.classList.remove('hidden');
-        window.scrollTo(0, 0); // Reseta o scroll para o topo
-    } else {
-        console.error("Tela não encontrada: " + screenId);
+        window.scrollTo(0, 0);
     }
 }
 
-/**
- * Função pública para navegação. Adiciona histórico.
- * @param {string} screenId - ID da tela.
- */
 window.showScreen = function (screenId) {
     window.history.pushState({ screen: screenId }, screenId, '');
     _showScreenInternal(screenId);
 
-    // Inicializações específicas por tela
     if (screenId === 'screen-read') {
-        // Se vier de fora do plano (navegação manual), garante modo livre
         if (state.mode !== 'plan') {
             state.mode = 'free';
         }
@@ -266,13 +193,9 @@ window.goBack = function () {
 };
 
 // ============================================================================
-// 5. LÓGICA DE LEITURA BÍBLICA (CORRIGIDA)
+// 5. LÓGICA DE LEITURA BÍBLICA
 // ============================================================================
 
-/**
- * Esta função é chamada QUANDO O USUÁRIO MUDA UM SELECT.
- * Ela atualiza o state e depois recarrega o texto.
- */
 window.handleNavigationChange = function () {
     var selectTranslation = document.getElementById('read-translation');
     var selectBook = document.getElementById('read-book');
@@ -282,21 +205,14 @@ window.handleNavigationChange = function () {
     if (selectBook) { state.book = parseInt(selectBook.value); }
     if (selectChapter) { state.chapter = parseInt(selectChapter.value); }
 
-    // Atualiza a lista de capítulos se o livro mudou (para evitar capítulo inválido)
     updateChaptersSelect(false);
-
-    // Carrega o texto novo
     loadChapter();
 };
 
-/**
- * Carrega o texto do capítulo atual baseado no estado global.
- */
 async function loadChapter() {
     window.scrollTo(0, 0);
     var container = document.getElementById('text-container');
 
-    // 1. Atualiza os selects visualmente para combinar com o STATE atual (importante para o plano de leitura)
     var selectTranslation = document.getElementById('read-translation');
     var selectBook = document.getElementById('read-book');
     var selectChapter = document.getElementById('read-chapter');
@@ -304,31 +220,25 @@ async function loadChapter() {
     if (selectTranslation) selectTranslation.value = state.translation;
     if (selectBook) {
         selectBook.value = state.book;
-        // Precisamos garantir que os capítulos do livro atual estejam populados
         updateChaptersSelect(false);
     }
     if (selectChapter) selectChapter.value = state.chapter;
 
-    // 2. Persiste Estado no LocalStorage
     localStorage.setItem('agape_version', state.translation);
     localStorage.setItem('agape_book', state.book);
     localStorage.setItem('agape_chapter', state.chapter);
 
-    // 3. Indicador de Carregamento
     container.innerHTML = '<div class="text-center p-10 text-gray-500 animate-pulse flex flex-col items-center justify-center h-64">Carregando Escrituras Sagradas...</div>';
 
     try {
-        // 4. Verifica Cache de Tradução
         if (!bibleCache[state.translation]) {
             var response = await fetch('./' + state.translation + '.json');
-            if (!response.ok) { throw new Error("Falha no download da tradução: " + response.status); }
+            if (!response.ok) { throw new Error("Falha no download da tradução"); }
             bibleCache[state.translation] = await response.json();
         }
 
-        // 5. Recupera Dados do Livro
         var bookData = bibleCache[state.translation][state.book];
 
-        // 6. Validação de Segurança (Capítulo fora do índice)
         if (!bookData || !bookData.chapters || !bookData.chapters[state.chapter - 1]) {
             state.chapter = 1;
             if (selectChapter) selectChapter.value = 1;
@@ -336,101 +246,75 @@ async function loadChapter() {
 
         var versesArray = bookData.chapters[state.chapter - 1];
         var bookName = BIBLE_BOOKS[state.book].name;
-
-        // Verifica se é Evangelho para destacar falas de Jesus
         var isGospel = (state.book >= 39 && state.book <= 42);
 
         var htmlBuilder = '';
 
-        // 7. Loop de Renderização
         versesArray.forEach(function (text, index) {
             var verseNumber = index + 1;
             var verseId = state.book + '-' + state.chapter + '-' + verseNumber;
-
-            // Verifica marcação salva
             var markClass = savedMarks[verseId] || '';
-
             var reference = bookName + ' ' + state.chapter + ':' + verseNumber;
             var content = text;
 
-            // Processamento de Texto (Letras Vermelhas)
             if (isGospel) {
                 content = content
                     .replace(/“([^”]+)”/g, '<span class="red-letter">“$1”</span>')
                     .replace(/"([^"]+)"/g, '<span class="red-letter">"$1"</span>');
             }
 
+            // AQUI MUDOU: Classes atualizadas para o tema Paper & Ink (hover:bg-bible-100)
             htmlBuilder +=
-                '<div class="flex gap-3 relative group cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50 p-2 rounded-lg transition ' + markClass + '" ' +
+                '<div class="flex gap-3 relative group cursor-pointer hover:bg-bible-100 dark:hover:bg-bible-800/50 p-2 rounded-lg transition ' + markClass + '" ' +
                 '     id="v-' + verseNumber + '" onclick="handleVerseClick(\'' + verseId + '\', \'' + escapeHtml(text) + '\', \'' + reference + '\')">' +
-                '    <span class="text-xs font-bold text-bible-500 mt-1.5 select-none w-6 text-right shrink-0">' + verseNumber + '</span>' +
-                '    <p class="verse-content text-lg text-gray-800 dark:text-gray-200 flex-1 leading-relaxed" style="font-size:' + state.fontSize + 'px">' + content + '</p>' +
+                '    <span class="text-xs font-bold text-bible-400 mt-2 select-none w-6 text-right shrink-0 font-sans">' + verseNumber + '</span>' +
+                '    <p class="verse-content text-lg flex-1 leading-loose" style="font-size:' + state.fontSize + 'px">' + content + '</p>' +
                 '</div>';
         });
 
         container.innerHTML = htmlBuilder;
-
-        // Re-attach de Eventos de Swipe
         setupSwipeGestures();
 
     } catch (error) {
         console.error("Erro na Leitura:", error);
-        container.innerHTML = '<div class="text-center p-10 text-red-500 font-bold">Erro ao carregar o texto bíblico. Verifique sua conexão.</div>';
+        container.innerHTML = '<div class="text-center p-10 text-red-500 font-bold">Erro ao carregar o texto bíblico.</div>';
     }
 }
 
-/**
- * Função para mudar o capítulo atual (botões flutuantes).
- * ATUALIZADO: Suporte para navegação cronológica.
- * @param {number} delta - +1 para próximo, -1 para anterior.
- */
 window.changeChapter = function (delta) {
-    // 1. Tenta carregar configuração do plano
     var planConfig = null;
     try { planConfig = JSON.parse(localStorage.getItem('agape_plan')); } catch (e) { }
 
-    // 2. Verifica se estamos no modo plano e se ele é cronológico
     if (state.mode === 'plan' && planConfig && planConfig.type === 'chronological' && typeof FLAT_CHRONO_INDEX !== 'undefined') {
-        // Encontra o índice atual no array linear cronológico
         var currentIndex = FLAT_CHRONO_INDEX.findIndex(function (x) { return x.b === state.book && x.c === state.chapter; });
-
         if (currentIndex !== -1) {
             var nextIndex = currentIndex + delta;
-
-            // Verifica limites do array
             if (nextIndex >= 0 && nextIndex < FLAT_CHRONO_INDEX.length) {
                 var nextItem = FLAT_CHRONO_INDEX[nextIndex];
                 state.book = nextItem.b;
                 state.chapter = nextItem.c;
                 loadChapter();
-                return; // Encerra a função, evitando o comportamento padrão
+                return;
             } else {
-                return; // Fim ou Início do Plano
+                return;
             }
         }
     }
 
-    // --- COMPORTAMENTO PADRÃO (BÍBLIA SEQUENCIAL) ---
     var maxChapters = BIBLE_BOOKS[state.book].caps;
     var nextChapter = state.chapter + delta;
 
-    // Lógica para avançar para o próximo livro
     if (nextChapter > maxChapters) {
         if (state.book < 65) {
             state.book++;
             nextChapter = 1;
-        } else {
-            return; // Fim da Bíblia
-        }
+        } else { return; }
     }
-    // Lógica para voltar para o livro anterior
     else if (nextChapter < 1) {
         if (state.book > 0) {
             state.book--;
             nextChapter = BIBLE_BOOKS[state.book].caps;
-        } else {
-            return; // Início da Bíblia
-        }
+        } else { return; }
     }
 
     state.chapter = nextChapter;
@@ -439,17 +323,13 @@ window.changeChapter = function (delta) {
 
 window.updateChaptersSelect = function (shouldLoadText) {
     var selectChapter = document.getElementById('read-chapter');
-    var bookIndex = state.book; // Usa o estado atual, não o valor do select (pois pode não ter mudado ainda)
-
-    // Limpa
+    var bookIndex = state.book;
     selectChapter.innerHTML = '';
 
-    // Popula
     for (var i = 1; i <= BIBLE_BOOKS[bookIndex].caps; i++) {
         selectChapter.add(new Option(i, i));
     }
 
-    // Ajusta limites
     if (state.chapter > BIBLE_BOOKS[bookIndex].caps) {
         state.chapter = 1;
     }
@@ -492,10 +372,6 @@ window.populateSelectElements = function () {
 // 6. GESTÃO DE PLANOS DE LEITURA
 // ============================================================================
 
-/**
- * Calcula os capítulos de um dia e formata o texto de exibição.
- * ATUALIZADO: Agrupa intervalos para exibição mais clara (Ex: "Gênesis 7-11; Jó 1-2")
- */
 function getPlanDataForDay(dayIndex, totalDuration, type) {
     if (typeof FLAT_BIBLE_INDEX === 'undefined') return null;
 
@@ -506,12 +382,9 @@ function getPlanDataForDay(dayIndex, totalDuration, type) {
     var endIndex = Math.floor(dayIndex * chaptersPerDay) - 1;
 
     if (startIndex >= sourceIndex.length) return null;
-
     var safeEndIndex = Math.min(endIndex, sourceIndex.length - 1);
+    var startItem = sourceIndex[startIndex];
 
-    var startItem = sourceIndex[startIndex]; // Item inicial para o clique (abrir leitura)
-
-    // --- NOVA LÓGICA DE FORMATAÇÃO DE INTERVALOS ---
     var chunks = [];
     var currentChunk = null;
 
@@ -520,24 +393,18 @@ function getPlanDataForDay(dayIndex, totalDuration, type) {
         var bookName = BIBLE_BOOKS[item.b].name;
 
         if (!currentChunk) {
-            // Inicia o primeiro bloco
             currentChunk = { name: bookName, start: item.c, end: item.c };
         } else {
-            // Verifica continuidade: Mesmo livro E capítulo sequencial
-            // Nota: Se o plano cronológico pular caps dentro do mesmo livro, isso cria um novo bloco.
             if (currentChunk.name === bookName && item.c === currentChunk.end + 1) {
                 currentChunk.end = item.c;
             } else {
-                // Fecha bloco anterior e inicia novo
                 chunks.push(currentChunk);
                 currentChunk = { name: bookName, start: item.c, end: item.c };
             }
         }
     }
-    // Adiciona o último bloco pendente
     if (currentChunk) chunks.push(currentChunk);
 
-    // Gera o texto final (Ex: "Gênesis 1-3; Jó 1")
     var rangeText = chunks.map(function (c) {
         if (c.start === c.end) return c.name + ' ' + c.start;
         return c.name + ' ' + c.start + '-' + c.end;
@@ -551,7 +418,7 @@ window.renderPlanOverview = function () {
     var container = document.getElementById('plan-overview-list');
 
     if (!config || !config.active) {
-        container.innerHTML = '<div class="text-center p-10 flex flex-col items-center"><p class="text-gray-500 mb-4">Nenhum plano ativo.</p><button onclick="openPlanSetup()" class="bg-bible-600 text-white px-6 py-2 rounded-lg font-bold">Criar Plano Agora</button></div>';
+        container.innerHTML = '<div class="text-center p-10 flex flex-col items-center"><p class="text-gray-500 mb-4">Nenhum plano ativo.</p><button onclick="openPlanSetup()" class="bg-accent-600 text-white px-6 py-2 rounded-lg font-bold">Criar Plano Agora</button></div>';
         return;
     }
 
@@ -571,17 +438,17 @@ window.renderPlanOverview = function () {
         if (!planData) continue;
 
         var checkIcon = isDone ? 'ph-check' : 'ph-circle';
-        var cardClass = isDone ? 'border-green-500 bg-green-50 dark:bg-green-900/10' : 'border-gray-100 dark:border-gray-700';
-        var btnClass = isDone ? 'bg-green-500 text-white shadow-green-500/30 shadow-lg' : 'bg-gray-100 dark:bg-gray-700 text-gray-400 hover:bg-gray-200';
-        var textClass = isDone ? 'line-through opacity-70 text-green-700 dark:text-green-400' : 'text-gray-800 dark:text-gray-200';
+        // AQUI MUDOU: Cores ajustadas para Accent/Bible
+        var cardClass = isDone ? 'border-accent-500 bg-accent-50 dark:bg-accent-900/10' : 'border-bible-200 dark:border-bible-700';
+        var btnClass = isDone ? 'bg-accent-600 text-white shadow-lg' : 'bg-bible-100 dark:bg-bible-700 text-bible-400 hover:bg-bible-200';
+        var textClass = isDone ? 'line-through opacity-70 text-accent-700 dark:text-accent-400' : 'text-bible-800 dark:text-bible-200';
 
-        // IMPORTANTE: Passamos os argumentos do dia específico (b, c) para o onclick
         htmlBuilder +=
-            '<div class="bg-white dark:bg-gray-800 p-4 rounded-xl border ' + cardClass + ' flex items-center justify-between shadow-sm transition">' +
+            '<div class="bg-white dark:bg-bible-800 p-4 rounded-xl border ' + cardClass + ' flex items-center justify-between shadow-sm transition">' +
             '   <div class="flex-1 cursor-pointer" onclick="openPlanDayReading(' + planData.start.b + ',' + planData.start.c + ')">' +
             '       <div class="flex items-center gap-2 mb-1">' +
-            '           <p class="text-xs font-bold text-gray-400 uppercase">Dia ' + i + '</p>' +
-            '           <i class="ph-bold ph-book-open-text text-bible-500 text-xs"></i>' +
+            '           <p class="text-xs font-bold text-bible-400 uppercase">Dia ' + i + '</p>' +
+            '           <i class="ph-bold ph-book-open-text text-accent-600 text-xs"></i>' +
             '       </div>' +
             '       <h4 class="font-bold text-lg ' + textClass + '">' + planData.rangeText + '</h4>' +
             '   </div>' +
@@ -639,7 +506,7 @@ window.startNewPlan = function () {
 };
 
 // ============================================================================
-// 7. LÓGICA DE HINÁRIOS (COM DESTAQUE PARA CORO)
+// 7. LÓGICA DE HINÁRIOS
 // ============================================================================
 
 window.changeHymnbook = async function () {
@@ -710,9 +577,10 @@ function renderHymnList(list) {
     var container = document.getElementById('harpa-list');
     var displayList = list.slice(0, 100);
 
+    // AQUI MUDOU: Cores ajustadas
     container.innerHTML = displayList.map(function (h) {
         var cleanTitle = h.title.replace(/^\d+\s*-\s*/, '');
-        return '<div onclick="openHymn(\'' + h.id + '\')" class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700 cursor-pointer flex items-center gap-3 hover:border-bible-500 transition shadow-sm">' +
+        return '<div onclick="openHymn(\'' + h.id + '\')" class="bg-white dark:bg-bible-800 p-4 rounded-xl border border-bible-200 dark:border-bible-700 cursor-pointer flex items-center gap-3 hover:border-accent-600 transition shadow-sm">' +
             '    <span class="w-10 h-10 rounded-full bg-bible-50 text-bible-600 font-bold flex items-center justify-center text-sm shrink-0">' + h.id + '</span>' +
             '    <span class="truncate font-medium flex-1">' + cleanTitle + '</span>' +
             '</div>';
@@ -726,16 +594,13 @@ window.openHymn = function (id) {
     document.getElementById('hymn-title').innerText = hymn.title;
     var htmlContent = '';
 
-    // Tratamento de Letra e Coro
     if (hymn.fullText) {
         var parts = hymn.fullText.split(/\n\n/);
         htmlContent = parts.map(function (part) {
             var lower = part.toLowerCase();
-            // Identifica se é coro
             var isChorus = lower.includes('[coro]') || lower.includes('coro:') || lower.includes('refrão');
             var cleanText = part.replace(/\[coro\]/gi, '').replace(/coro:/gi, '').trim();
 
-            // Aplica estilo destacado se for coro (div.hymn-chorus definida no CSS)
             if (isChorus) {
                 return '<div class="hymn-chorus">' + cleanText.replace(/\n/g, '<br>') + '</div>';
             } else {
@@ -743,7 +608,6 @@ window.openHymn = function (id) {
             }
         }).join('');
     } else if (hymn.chorus) {
-        // Fallback antigo
         htmlContent = '<div class="hymn-chorus">' + hymn.chorus + '</div>';
     }
 
@@ -760,7 +624,7 @@ window.filterHarpa = function () {
 };
 
 // ============================================================================
-// 8. QUIZ BÍBLICO (LÓGICA PROGRESSIVA)
+// 8. QUIZ BÍBLICO
 // ============================================================================
 
 window.loadQuizData = async function () {
@@ -788,20 +652,21 @@ window.renderQuizQuestion = function () {
     }
 
     if (pool.length === 0) {
-        container.innerHTML = '<div class="text-center p-8"><h3 class="font-bold text-2xl mb-2">Parabéns!</h3><button onclick="startQuizSession()" class="bg-bible-600 text-white px-6 py-3 rounded-xl font-bold mt-4">Reiniciar</button></div>';
+        container.innerHTML = '<div class="text-center p-8"><h3 class="font-bold text-2xl mb-2">Parabéns!</h3><button onclick="startQuizSession()" class="bg-accent-600 text-white px-6 py-3 rounded-xl font-bold mt-4">Reiniciar</button></div>';
         return;
     }
 
     var question = pool[Math.floor(Math.random() * pool.length)];
 
+    // AQUI MUDOU: Cores ajustadas
     container.innerHTML =
-        '<div class="bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-lg border border-gray-100 dark:border-gray-700 animate-fade-in">' +
+        '<div class="bg-white dark:bg-bible-800 p-6 rounded-3xl shadow-lg border border-bible-200 dark:border-bible-700 animate-fade-in">' +
         '   <div class="flex justify-between items-center mb-4"><span class="bg-bible-100 dark:bg-bible-900/30 text-bible-700 dark:text-bible-300 text-xs font-bold px-3 py-1 rounded-full uppercase">' + quizSession.currentLevel + '</span></div>' +
         '   <h3 class="text-xl font-bold my-4">' + question.pergunta + '</h3>' +
         '   <div class="space-y-3">' +
         question.opcoes.map(function (op, i) {
-            return '<button onclick="handleQuizAnswer(' + question.id + ',' + i + ',this)" class="w-full text-left p-4 rounded-xl bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition font-medium flex gap-3 group items-center">' +
-                '    <div class="w-8 h-8 rounded-full bg-white dark:bg-gray-600 flex items-center justify-center font-bold text-sm text-gray-500 group-hover:text-bible-600 shadow-sm">' + ['A', 'B', 'C', 'D'][i] + '</div>' +
+            return '<button onclick="handleQuizAnswer(' + question.id + ',' + i + ',this)" class="w-full text-left p-4 rounded-xl bg-bible-50 dark:bg-bible-700 hover:bg-bible-100 dark:hover:bg-bible-600 transition font-medium flex gap-3 group items-center">' +
+                '    <div class="w-8 h-8 rounded-full bg-white dark:bg-bible-600 flex items-center justify-center font-bold text-sm text-bible-500 group-hover:text-accent-600 shadow-sm">' + ['A', 'B', 'C', 'D'][i] + '</div>' +
                 '    <span class="flex-1">' + op + '</span>' +
                 '</button>';
         }).join('') +
@@ -813,7 +678,7 @@ window.handleQuizAnswer = function (questionId, optionIndex, btnElement) {
     document.querySelectorAll('#quiz-container button').forEach(function (b) { b.disabled = true; });
     var question = quizData.find(function (x) { return x.id === questionId; });
 
-    btnElement.classList.remove('bg-gray-50', 'dark:bg-gray-700');
+    btnElement.classList.remove('bg-bible-50', 'dark:bg-bible-700');
 
     if (optionIndex === question.correta) {
         btnElement.classList.add('bg-green-100', 'border-green-500', 'text-green-800');
@@ -843,128 +708,152 @@ window.handleQuizAnswer = function (questionId, optionIndex, btnElement) {
 };
 
 // ============================================================================
-// 9. CRIADOR DE STORIES (CANVAS) - EXPANDIDO E DETALHADO
+// 9. CRIADOR DE STORIES (ESTÚDIO PRO - CANVAS 2.0)
 // ============================================================================
 
 window.openImageCreator = function () {
-    document.getElementById('modal-image-creator').classList.remove('hidden');
-    document.getElementById('modal-image-creator').classList.add('flex');
-    drawCanvas();
+    // Captura o texto do dia
+    const dailyText = document.getElementById('daily-text').innerText;
+    const dailyRef = document.getElementById('daily-reference').innerText;
+    openImageCreatorWithText(dailyText, dailyRef);
 };
 
 window.openImageCreatorFromVerse = function () {
+    // Fecha o modal de versículo e abre o estúdio
     closeModal('modal-verse');
-    openImageCreator();
+    openImageCreatorWithText(selectedVerse.text, selectedVerse.ref);
 };
 
-window.changeCanvasBg = function (i) {
-    currentCanvasBg = i;
+window.openImageCreatorWithText = function (text, ref) {
+    currentVerseText = text.replace(/"/g, ''); // Remove aspas extras
+    currentVerseRef = ref;
+
+    const modal = document.getElementById('modal-image-creator');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+
+    // Delay para garantir renderização correta
+    setTimeout(() => {
+        drawCanvas();
+    }, 100);
+};
+
+window.changeTheme = function (themeId) {
+    currentThemeId = themeId;
     drawCanvas();
 };
 
-/**
- * Função responsável por desenhar o conteúdo no Canvas (Editor de Imagem).
- * ATUALIZAÇÃO: Adicionado crédito do desenvolvedor na imagem gerada.
- * Lógica expandida para maior clareza.
- */
 function drawCanvas() {
-    var canvas = document.getElementById('image-editor-canvas');
-    var ctx = canvas.getContext('2d');
+    const canvas = document.getElementById('image-editor-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const theme = THEMES[currentThemeId];
 
-    // 1. Definição do Fundo (Lógica de cores)
-    // Mantém a lógica original mas formatada para leitura clara
-    if (currentCanvasBg === 0) {
-        ctx.fillStyle = '#111827'; // Dark Gray
-    } else if (currentCanvasBg === 1) {
-        ctx.fillStyle = '#2563eb'; // Blue
-    } else if (currentCanvasBg === 2) {
-        ctx.fillStyle = '#7c3aed'; // Purple
-    } else {
-        ctx.fillStyle = '#059669'; // Emerald
-    }
+    // Configuração Full HD
+    canvas.width = 1080;
+    canvas.height = 1920;
 
-    // Preenche o fundo
-    ctx.fillRect(0, 0, 1080, 1920);
+    // 1. Fundo Gradiente
+    const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+    gradient.addColorStop(0, theme.bgStart);
+    gradient.addColorStop(1, theme.bgEnd);
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // 2. Configuração de Texto Principal (Versículo)
-    ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 70px "Merriweather"'; // Fonte serifada para o texto sagrado
-    ctx.textAlign = 'center';
+    // 2. Marca D'água (Aspas)
+    ctx.fillStyle = theme.watermark;
+    ctx.font = "bold 600px " + theme.fontMain;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("”", canvas.width / 2, canvas.height / 2 - 100);
 
-    // Obtém o texto do versículo selecionado ou do versículo do dia
-    var text = selectedVerse.text || document.getElementById('daily-text').innerText;
-    var ref = selectedVerse.ref || document.getElementById('daily-reference').innerText;
+    // 3. Texto Principal (Lógica de Quebra e Tamanho)
+    ctx.fillStyle = theme.text;
+    ctx.textAlign = "center";
 
-    // Remove aspas duplas extras para evitar duplicação visual
-    text = text.replace(/^"|"$/g, '');
+    let fontSize = 80;
+    if (currentVerseText.length > 150) fontSize = 60;
+    if (currentVerseText.length > 300) fontSize = 50;
 
-    // Função auxiliar para quebrar o texto em múltiplas linhas (Word Wrap)
-    // x=540 (centro), y=800 (início vertical), maxW=900 (margem), lineHeight=100
-    wrapText(ctx, '"' + text + '"', 540, 800, 900, 100);
+    ctx.font = `italic ${fontSize}px ${theme.fontMain}`;
 
-    // 3. Renderiza a Referência Bíblica
-    ctx.font = 'italic 50px "Inter"';
-    ctx.fillStyle = 'rgba(255,255,255,0.9)'; // Levemente transparente
-    ctx.fillText(ref, 540, 1500);
+    const margin = 100;
+    const maxWidth = canvas.width - (margin * 2);
+    const lineHeight = fontSize * 1.5;
 
-    // ==================================================================
-    // 4. CRÉDITOS E BRANDING NA IMAGEM (NOVO BLOCO)
-    // ==================================================================
+    // Word Wrap
+    const words = currentVerseText.split(' ');
+    let line = '';
+    let lines = [];
 
-    // Nome do App (Destaque maior)
-    ctx.font = 'bold 40px "Inter"';
-    ctx.fillStyle = 'rgba(255,255,255,0.8)';
-    ctx.fillText("Bíblia Ágape App", 540, 1680);
-
-    // Crédito do Desenvolvedor (Mateus Heringer & Daniel)
-    ctx.font = 'normal 24px "Inter"';
-    ctx.fillStyle = 'rgba(255,255,255,0.5)';
-    ctx.fillText("Dev. Mateus Heringer & Daniel", 540, 1730);
-}
-
-/**
- * Função auxiliar para quebra de linha em Canvas.
- * Calcula se uma palavra excede a largura máxima e joga para a próxima linha.
- */
-function wrapText(ctx, t, x, y, mw, lh) {
-    var words = t.split(' ');
-    var line = '';
-
-    for (var n = 0; n < words.length; n++) {
-        var testLine = line + words[n] + ' ';
-        var metrics = ctx.measureText(testLine);
-        var testWidth = metrics.width;
-
-        if (testWidth > mw && n > 0) {
-            ctx.fillText(line, x, y);
+    for (let n = 0; n < words.length; n++) {
+        const testLine = line + words[n] + ' ';
+        const metrics = ctx.measureText(testLine);
+        if (metrics.width > maxWidth && n > 0) {
+            lines.push(line);
             line = words[n] + ' ';
-            y += lh;
         } else {
             line = testLine;
         }
     }
-    ctx.fillText(line, x, y);
+    lines.push(line);
+
+    // Centralização Vertical
+    const totalTextHeight = lines.length * lineHeight;
+    let startY = (canvas.height - totalTextHeight) / 2;
+
+    for (let i = 0; i < lines.length; i++) {
+        ctx.fillText(lines[i], canvas.width / 2, startY + (i * lineHeight));
+    }
+
+    // 4. Referência
+    const refY = startY + (lines.length * lineHeight) + 60;
+    ctx.fillStyle = theme.accent;
+    ctx.font = `bold 40px ${theme.fontSec}`;
+    ctx.fillText(currentVerseRef.toUpperCase(), canvas.width / 2, refY);
+
+    // 5. Linha Decorativa
+    ctx.beginPath();
+    ctx.moveTo(canvas.width / 2 - 50, refY + 50);
+    ctx.lineTo(canvas.width / 2 + 50, refY + 50);
+    ctx.strokeStyle = theme.accent;
+    ctx.lineWidth = 4;
+    ctx.stroke();
+
+    // 6. Rodapé (Branding)
+    ctx.fillStyle = theme.text;
+    ctx.globalAlpha = 0.6;
+    ctx.font = `30px ${theme.fontSec}`;
+    const footerY = canvas.height - 120;
+
+    ctx.fillText("BÍBLIA ÁGAPE • LEIAABIBLIA.APP", canvas.width / 2, footerY);
+    ctx.globalAlpha = 1.0;
 }
 
-window.downloadCreatedImage = function () {
-    var l = document.createElement('a');
-    l.download = 'story_biblia_agape.png';
-    l.href = document.getElementById('image-editor-canvas').toDataURL('image/png');
-    l.click();
+window.shareCreatedImage = function () {
+    const canvas = document.getElementById('image-editor-canvas');
+    canvas.toBlob(async (blob) => {
+        const file = new File([blob], 'versiculo-agape.png', { type: 'image/png' });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+            try {
+                await navigator.share({
+                    files: [file],
+                    title: 'Bíblia Ágape',
+                    text: 'Versículo do dia criado com Bíblia Ágape.'
+                });
+            } catch (error) { console.log('Erro ao compartilhar', error); }
+        } else {
+            downloadCreatedImage();
+        }
+    });
 };
 
-window.shareCreatedImage = function () {
-    var canvas = document.getElementById('image-editor-canvas');
-    canvas.toBlob(function (blob) {
-        if (blob) {
-            var f = new File([blob], 'story.png', { type: 'image/png' });
-            if (navigator.canShare && navigator.canShare({ files: [f] })) {
-                navigator.share({ files: [f] });
-            } else {
-                alert('Seu dispositivo não suporta compartilhamento direto. Use a opção Baixar.');
-            }
-        }
-    }, 'image/png');
+window.downloadCreatedImage = function () {
+    const canvas = document.getElementById('image-editor-canvas');
+    const link = document.createElement('a');
+    link.download = `versiculo-agape-${Date.now()}.png`;
+    link.href = canvas.toDataURL();
+    link.click();
 };
 
 // ============================================================================
@@ -1012,7 +901,6 @@ window.performSearch = async function () {
         var results = [];
         var count = 0;
 
-        // Algoritmo de busca profunda (otimizado com break)
         outerLoop:
         for (var b = 0; b < bib.length; b++) {
             for (var ch = 0; ch < bib[b].chapters.length; ch++) {
@@ -1032,11 +920,11 @@ window.performSearch = async function () {
         }
 
         container.innerHTML = results.length ? results.map(function (r) {
-            return '<div onclick="goToVerse(' + r.b + ',' + r.c + ',' + r.v + ')" class="bg-white dark:bg-gray-800 p-4 rounded-xl border dark:border-gray-700 cursor-pointer hover:border-bible-500 transition shadow-sm">' +
-                '    <p class="font-bold text-bible-600 text-sm mb-1">' + r.ref + '</p>' +
-                '    <p class="text-sm line-clamp-2 text-gray-700 dark:text-gray-300">' + r.text + '</p>' +
+            return '<div onclick="goToVerse(' + r.b + ',' + r.c + ',' + r.v + ')" class="bg-white dark:bg-bible-800 p-4 rounded-xl border border-bible-200 dark:border-bible-700 cursor-pointer hover:border-accent-600 transition shadow-sm">' +
+                '    <p class="font-bold text-accent-600 text-sm mb-1">' + r.ref + '</p>' +
+                '    <p class="text-sm line-clamp-2 text-bible-700 dark:text-bible-300">' + r.text + '</p>' +
                 '</div>';
-        }).join('') : '<div class="p-10 text-center text-gray-500">Nenhum resultado encontrado.</div>';
+        }).join('') : '<div class="p-10 text-center text-bible-500">Nenhum resultado encontrado.</div>';
     }, 100);
 };
 
@@ -1076,15 +964,16 @@ window.loadHighlightsList = function () {
     var keys = Object.keys(savedMarks);
 
     if (!keys.length) {
-        container.innerHTML = '<div class="p-10 text-center text-gray-500">Você ainda não destacou nenhum versículo.</div>';
+        container.innerHTML = '<div class="p-10 text-center text-bible-500">Você ainda não destacou nenhum versículo.</div>';
         return;
     }
 
     container.innerHTML = keys.map(function (ky) {
         var p = ky.split('-');
         var bName = BIBLE_BOOKS[p[0]].name;
-        return '<div onclick="goToVerse(' + p[0] + ',' + p[1] + ',' + p[2] + ')" class="bg-white dark:bg-gray-800 p-4 rounded-xl border-l-4 border-bible-500 cursor-pointer shadow-sm hover:bg-gray-50 transition">' +
-            '    <p class="font-bold text-gray-800 dark:text-gray-200">' + bName + ' ' + p[1] + ':' + p[2] + '</p>' +
+        // AQUI MUDOU: Cores
+        return '<div onclick="goToVerse(' + p[0] + ',' + p[1] + ',' + p[2] + ')" class="bg-white dark:bg-bible-800 p-4 rounded-xl border-l-4 border-accent-500 cursor-pointer shadow-sm hover:bg-bible-50 transition">' +
+            '    <p class="font-bold text-bible-800 dark:text-bible-200">' + bName + ' ' + p[1] + ':' + p[2] + '</p>' +
             '</div>';
     }).join('');
 };
@@ -1128,7 +1017,8 @@ window.markVerse = function (colorClass) {
 
     var element = document.getElementById('v-' + selectedVerse.id.split('-')[2]);
     if (element) {
-        element.className = 'flex gap-3 relative group cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50 p-2 rounded-lg transition ' + colorClass;
+        // AQUI MUDOU: Classes
+        element.className = 'flex gap-3 relative group cursor-pointer hover:bg-bible-100 dark:hover:bg-bible-800/50 p-2 rounded-lg transition ' + colorClass;
     }
     closeModal('modal-verse');
 };
@@ -1149,7 +1039,7 @@ window.openFeedbackModal = function () {
 };
 
 // ============================================================================
-// 11. FEEDBACK VIA AJAX (FormSubmit.co)
+// 11. FEEDBACK VIA AJAX
 // ============================================================================
 
 window.sendFeedbackToEmail = function () {
@@ -1157,14 +1047,12 @@ window.sendFeedbackToEmail = function () {
     var m = document.getElementById('feedback-text');
     var btn = document.querySelector('#modal-feedback button');
 
-    if (!e.value.trim()) { alert("Por favor, informe seu email."); e.focus(); return; }
-    if (!m.value.trim()) { alert("Por favor, escreva uma mensagem."); m.focus(); return; }
+    if (!e.value.trim() || !m.value.trim()) { alert("Preencha todos os campos."); return; }
 
     var originalText = btn.innerText;
     btn.innerText = "Enviando...";
     btn.disabled = true;
 
-    // Configuração para envio via FormSubmit
     fetch('https://formsubmit.co/agapeconnect75@gmail.com', {
         method: 'POST',
         headers: {
@@ -1174,31 +1062,22 @@ window.sendFeedbackToEmail = function () {
         body: JSON.stringify({
             email: e.value,
             message: m.value,
-            _subject: "Novo Contato via App Bíblia Ágape",
-            _captcha: "false",
-            _template: "table"
+            _subject: "Novo Contato App Bíblia",
+            _captcha: "false"
         })
     })
         .then(function (response) {
             if (response.ok) {
-                alert("Mensagem enviada com sucesso! Obrigado pelo feedback.");
+                alert("Mensagem enviada com sucesso!");
                 closeModal('modal-feedback');
                 e.value = '';
                 m.value = '';
             } else {
-                // Fallback para mailto se a API falhar
-                alert("Não foi possível enviar automaticamente. Abrindo seu app de email...");
-                var subject = "Contato App Bíblia Ágape";
-                var body = "De: " + e.value + "\n\n" + m.value;
-                window.location.href = "mailto:agapeconnect75@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+                throw new Error("Erro no envio");
             }
         })
         .catch(function (error) {
-            console.error("Erro AJAX:", error);
-            // Fallback para mailto
-            var subject = "Contato App Bíblia Ágape";
-            var body = "De: " + e.value + "\n\n" + m.value;
-            window.location.href = "mailto:agapeconnect75@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+            window.location.href = "mailto:agapeconnect75@gmail.com?subject=Contato App Bíblia&body=" + encodeURIComponent(m.value);
         })
         .finally(function () {
             btn.innerText = originalText;
@@ -1208,17 +1087,17 @@ window.sendFeedbackToEmail = function () {
 
 window.exportData = function () {
     var obj = {
-        meta: { app: "Bíblia Ágape", version: "V2.1.2", date: new Date().toISOString() },
+        meta: { app: "Bíblia Ágape", version: "V2.1.6", date: new Date().toISOString() },
         data: { ...localStorage }
     };
-    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
     var a = document.createElement('a');
-    a.href = dataStr;
+    a.href = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
     a.download = "backup_agape_" + new Date().toISOString().slice(0, 10) + ".json";
     a.click();
 };
 
 window.triggerImport = function () { document.getElementById('import-file').click(); };
+
 window.handleImportFile = function (e) {
     var f = e.target.files[0];
     if (!f) return;
@@ -1231,18 +1110,9 @@ window.handleImportFile = function (e) {
 
             if (confirm("Deseja restaurar este backup? Seus dados atuais serão substituídos.")) {
                 var d = json.data;
-                // Restauração manual segura
-                if (d.agape_font) localStorage.setItem('agape_font', d.agape_font);
-                if (d.agape_theme) localStorage.setItem('agape_theme', d.agape_theme);
-                if (d.agape_version) localStorage.setItem('agape_version', d.agape_version);
-                if (d.agape_book) localStorage.setItem('agape_book', d.agape_book);
-                if (d.agape_chapter) localStorage.setItem('agape_chapter', d.agape_chapter);
-                if (d.agape_marks_v2) localStorage.setItem('agape_marks_v2', d.agape_marks_v2);
-                if (d.agape_plan) localStorage.setItem('agape_plan', d.agape_plan);
-                if (d.agape_plan_progress) localStorage.setItem('agape_plan_progress', d.agape_plan_progress);
-                if (d.agape_quiz_points) localStorage.setItem('agape_quiz_points', d.agape_quiz_points);
-                if (d.agape_streak) localStorage.setItem('agape_streak', d.agape_streak);
-
+                ['agape_font', 'agape_theme', 'agape_version', 'agape_book', 'agape_chapter', 'agape_marks_v2', 'agape_plan', 'agape_plan_progress', 'agape_quiz_points', 'agape_streak'].forEach(k => {
+                    if (d[k]) localStorage.setItem(k, d[k]);
+                });
                 location.reload();
             }
         } catch (err) { alert("Arquivo de backup inválido."); }
