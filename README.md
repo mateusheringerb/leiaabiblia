@@ -85,8 +85,25 @@ leiaabiblia/
 ├── harpa.json           # Dados dos hinários
 ├── quiz.json            # Banco de perguntas do Quiz
 └── assets/              # Imagens, ícones e favicon
-📸 Screenshots(Você pode adicionar prints das telas aqui para valorizar o repositório)Home / LeituraModo NoturnoEditor de Stories<img src="https://www.google.com/search?q=https://via.placeholder.com/200x400%3Ftext%3DHome" alt="Home" width="200"/><img src="https://www.google.com/search?q=https://via.placeholder.com/200x400/1f2937/ffffff%3Ftext%3DDark%2BMode" alt="Dark Mode" width="200"/><img src="https://www.google.com/search?q=https://via.placeholder.com/200x400%3Ftext%3DEditor" alt="Editor" width="200"/>👨‍💻 Autor<div align="center">Mateus Heringer BarcellosEstudante de Análise e Desenvolvimento de Software focado em criar soluções web eficientes.</div>📄 LicençaEste projeto está sob a licença MIT - veja o arquivo LICENSE para detalhes.
-### 💡 Dicas Adicionais para o seu Repositório:
+```
 
-1.  **Adicione Screenshots reais:** No espaço onde coloquei os links "placeholder", tire prints do seu app rodando (pode ser no celular ou usando a inspeção do navegador em modo mobile) e suba numa pasta `screenshots` no GitHub. Isso aumenta muito a visibilidade.
-2.  **Deploy:** Como o app é estático, recomendo fortemente ativar o **GitHub Pages** nas configurações do repositório. Assim, você terá um link `mateusheringerb.github.io/leiaabiblia` para colocar no seu LinkedIn e currículo.
+### 📸 Screenshots
+Aqui está uma visão geral das principais funcionalidades do aplicativo:
+
+| **Home / Leitura** | **Modo Noturno (Dark)** | **Quiz Bíblico** |
+|:---:|:---:|:---:|
+| <img src="https://i.ibb.co/TQQ3VXp/IMG-6286.png" alt="Home Screen" width="250"/> | <img src="https://i.ibb.co/vCztN4Ks/IMG-6291.png" alt="Dark Mode" width="250"/> | <img src="https://i.ibb.co/vxVHzrw9/IMG-6289.png" alt="Quiz" width="250"/> |
+
+| **Plano de Leitura** | **Backup & Restauração** |
+|:---:|:---:|
+| <img src="https://i.ibb.co/TxXcdr4c/IMG-6288.png" alt="Plano de Leitura" width="250"/> | <img src="https://i.ibb.co/TQQ3VXp/IMG-6286.png" alt="Backup" width="250"/> |
+
+---
+
+
+### 👨‍💻 Autor
+**Mateus Vitor Heringer Barcellos**
+<div>Estudante de Análise e Desenvolvimento de Sistemas focado em criar soluções eficientes.</div>
+
+### 📄 Licença
+Este projeto está sob a licença MIT - veja o arquivo [LICENSE](./LICENSE) detalhes.
