@@ -27,23 +27,25 @@
                         serif: ['Merriweather', 'serif']
                     },
                     colors: {
-                        // PALETA "PAPER & INK" (Mais quente e sofisticada)
+                        // PALETA "PAPER & INK" (Stone)
                         bible: {
-                            50: '#fafaf9',  // Stone 50 (Papel)
-                            100: '#f5f5f4', // Stone 100
-                            200: '#e7e5e4', // Stone 200
-                            500: '#78716c', // Stone 500 (Texto secundário)
-                            600: '#57534e', // Stone 600
-                            800: '#292524', // Stone 800 (Texto principal)
-                            900: '#1c1917', // Stone 900 (Quase preto, mas quente)
+                            50: '#fafaf9',  // Fundo Papel
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            500: '#78716c',
+                            600: '#57534e',
+                            700: '#44403c',
+                            800: '#292524', // Texto Principal
+                            900: '#1c1917', // Quase Preto
                         },
-                        // ACENTO: Bronze/Dourado Antigo para dar vida
+                        // ACENTO (Bronze/Amber)
                         accent: {
                             50: '#fffbeb',
                             100: '#fef3c7',
-                            500: '#d97706', // Amber 600
-                            600: '#b45309', // Amber 700 (Bronze)
-                            700: '#92400e', // Amber 800
+                            200: '#fde68a',
+                            500: '#d97706',
+                            600: '#b45309', // Bronze Principal
+                            700: '#92400e',
                         }
                     },
                     boxShadow: {
@@ -105,7 +107,7 @@
                             class="ph-bold ph-download-simple"></i></div>
                     <div>
                         <h3 class="font-bold text-sm font-sans">Instalar App</h3>
-                        <p class="text-xs text-bible-500 mt-0.5">Leitura offline otimizada.</p>
+                        <p class="text-xs text-bible-500 mt-0.5">Leitura offline e sem distrações.</p>
                     </div>
                 </div>
                 <button id="btn-install"
@@ -132,7 +134,7 @@
                     <p id="daily-reference" class="font-display font-bold text-lg text-accent-100"></p>
                     <button onclick="openImageCreator()"
                         class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-5 py-2.5 rounded-full text-xs font-bold transition flex items-center gap-2 border border-white/10">
-                        <i class="ph-bold ph-share-network"></i> Compartilhar
+                        <i class="ph-bold ph-share-network"></i> Criar Story
                     </button>
                 </div>
             </div>
@@ -230,6 +232,14 @@
                         Mateus Heringer
                     </a>
                 </div>
+                <div class="flex justify-center gap-4 mt-4">
+                    <button onclick="openFeedbackModal()"
+                        class="text-[10px] font-bold uppercase text-bible-400 hover:text-bible-800">Contato</button>
+                    <button onclick="shareApp()"
+                        class="text-[10px] font-bold uppercase text-bible-400 hover:text-bible-800">Partilhar</button>
+                    <button onclick="showScreen('screen-backup')"
+                        class="text-[10px] font-bold uppercase text-bible-400 hover:text-bible-800">Backup</button>
+                </div>
             </footer>
         </div>
 
@@ -253,8 +263,7 @@
                     </div>
                 </div>
 
-                <div id="text-container" class="space-y-8 px-2 max-w-2xl mx-auto">
-                </div>
+                <div id="text-container" class="space-y-8 px-2 max-w-2xl mx-auto"></div>
             </div>
 
             <div id="reading-nav-bar"
@@ -312,7 +321,7 @@
                 <div class="relative">
                     <i class="ph-bold ph-magnifying-glass absolute left-4 top-3.5 text-bible-400"></i>
                     <input type="text" id="harpa-search" placeholder="Buscar hino..." oninput="filterHarpa()"
-                        class="w-full pl-11 pr-4 py-3 bg-white dark:bg-bible-800 rounded-xl border border-bible-200 dark:border-bible-700 focus:border-accent-600 dark:focus:border-accent-500 focus:ring-0 transition shadow-sm placeholder:text-bible-400">
+                        class="w-full pl-11 pr-4 py-3 bg-white dark:bg-bible-800 rounded-xl border border-bible-200 dark:border-bible-700 focus:border-accent-600 focus:ring-0 transition shadow-sm placeholder:text-bible-400">
                 </div>
             </div>
             <div id="harpa-list" class="space-y-2"></div>
@@ -449,6 +458,59 @@
         </div>
     </div>
 
+    <div id="modal-image-creator" class="fixed inset-0 z-50 hidden bg-black items-center justify-center flex-col">
+        <div
+            class="w-full p-6 flex justify-between text-white z-10 absolute top-0 bg-gradient-to-b from-black/90 to-transparent">
+            <span class="font-display font-bold text-lg tracking-wide">Estúdio Ágape</span>
+            <button onclick="closeModal('modal-image-creator')" class="hover:bg-white/10 p-2 rounded-full transition"><i
+                    class="ph-bold ph-x text-2xl"></i></button>
+        </div>
+
+        <div class="flex-1 w-full h-full flex items-center justify-center p-4 md:p-8 bg-[#0f0f0f]">
+            <canvas id="image-editor-canvas" class="h-full w-auto object-contain shadow-2xl rounded-sm"></canvas>
+        </div>
+
+        <div class="w-full p-6 bg-zinc-900 border-t border-zinc-800 z-10 pb-8">
+            <div class="flex gap-4 mb-6 justify-center overflow-x-auto py-2 no-scrollbar">
+                <button onclick="changeTheme('midnight')" class="flex flex-col items-center gap-2 group">
+                    <div
+                        class="w-12 h-12 rounded-full bg-gradient-to-br from-gray-900 to-black border-2 border-white/20 group-hover:scale-110 transition shadow-lg ring-2 ring-transparent ring-offset-2 ring-offset-zinc-900 group-focus:ring-white">
+                    </div>
+                    <span class="text-[10px] uppercase font-bold text-zinc-500 group-hover:text-white">Midnight</span>
+                </button>
+                <button onclick="changeTheme('paper')" class="flex flex-col items-center gap-2 group">
+                    <div
+                        class="w-12 h-12 rounded-full bg-[#f5f5f4] border-2 border-transparent group-hover:scale-110 transition shadow-lg ring-2 ring-transparent ring-offset-2 ring-offset-zinc-900 group-focus:ring-[#f5f5f4]">
+                    </div>
+                    <span class="text-[10px] uppercase font-bold text-zinc-500 group-hover:text-white">Journal</span>
+                </button>
+                <button onclick="changeTheme('royal')" class="flex flex-col items-center gap-2 group">
+                    <div
+                        class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-900 to-slate-900 border-2 border-white/20 group-hover:scale-110 transition shadow-lg ring-2 ring-transparent ring-offset-2 ring-offset-zinc-900 group-focus:ring-blue-500">
+                    </div>
+                    <span class="text-[10px] uppercase font-bold text-zinc-500 group-hover:text-white">Royal</span>
+                </button>
+                <button onclick="changeTheme('nature')" class="flex flex-col items-center gap-2 group">
+                    <div
+                        class="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-900 to-teal-950 border-2 border-white/20 group-hover:scale-110 transition shadow-lg ring-2 ring-transparent ring-offset-2 ring-offset-zinc-900 group-focus:ring-emerald-500">
+                    </div>
+                    <span class="text-[10px] uppercase font-bold text-zinc-500 group-hover:text-white">Nature</span>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 max-w-md mx-auto">
+                <button onclick="shareCreatedImage()"
+                    class="w-full bg-white text-black py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-zinc-200 transition">
+                    <i class="ph-bold ph-instagram-logo"></i> Stories
+                </button>
+                <button onclick="downloadCreatedImage()"
+                    class="w-full bg-zinc-800 text-white py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-zinc-700 transition">
+                    <i class="ph-bold ph-download-simple"></i> Salvar
+                </button>
+            </div>
+        </div>
+    </div>
+
     <div id="modal-verse"
         class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-bible-900/60 backdrop-blur-sm p-4"
         onclick="closeModal('modal-verse')">
@@ -477,35 +539,6 @@
                 <button onclick="openImageCreatorFromVerse()"
                     class="p-3 bg-bible-900 text-white dark:bg-white dark:text-bible-900 rounded-lg font-bold text-sm hover:opacity-90 transition flex items-center justify-center gap-2"><i
                         class="ph-bold ph-image"></i> Criar</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal-image-creator" class="fixed inset-0 z-50 hidden bg-black items-center justify-center flex-col">
-        <div
-            class="w-full p-4 flex justify-between text-white z-10 absolute top-0 bg-gradient-to-b from-black/80 to-transparent">
-            <span class="font-bold font-display">Editor de Stories</span><button
-                onclick="closeModal('modal-image-creator')"><i class="ph-bold ph-x text-2xl"></i></button>
-        </div>
-        <canvas id="image-editor-canvas" width="1080" height="1920" class="h-full w-full object-contain"></canvas>
-        <div class="w-full p-6 bg-bible-900 rounded-t-3xl absolute bottom-0 z-10 border-t border-bible-800">
-            <div class="flex gap-4 mb-6 justify-center">
-                <button onclick="changeCanvasBg(0)"
-                    class="w-8 h-8 rounded-full border border-white/20 bg-bible-900"></button>
-                <button onclick="changeCanvasBg(1)"
-                    class="w-8 h-8 rounded-full border border-white/20 bg-[#292524]"></button>
-                <button onclick="changeCanvasBg(2)"
-                    class="w-8 h-8 rounded-full border border-white/20 bg-[#57534e]"></button>
-                <button onclick="changeCanvasBg(3)"
-                    class="w-8 h-8 rounded-full border border-white/20 bg-white"></button>
-            </div>
-            <div class="grid grid-cols-2 gap-3">
-                <button onclick="shareCreatedImage()"
-                    class="w-full bg-white text-black py-3 rounded-lg font-bold flex items-center justify-center gap-2"><i
-                        class="ph-bold ph-share-network"></i> Postar</button>
-                <button onclick="downloadCreatedImage()"
-                    class="w-full bg-bible-800 text-white py-3 rounded-lg font-bold flex items-center justify-center gap-2"><i
-                        class="ph-bold ph-download-simple"></i> Baixar</button>
             </div>
         </div>
     </div>
