@@ -12,7 +12,7 @@
  * 4. Se falhar (sem internet), entrega a versão salva no Cache.
  */
 
-var CACHE_NAME = 'agape-v2.1.11';
+var CACHE_NAME = 'agape-v2.1.6';
 
 // Lista de arquivos vitais para o funcionamento offline
 var FILES_TO_CACHE = [
