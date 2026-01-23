@@ -1,0 +1,51 @@
+/* Custom Scrollbar Hide */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Animações */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin-slow {
+    animation: spin 3s linear infinite;
+}
+
+/* Destaques do Texto */
+.highlight-yellow {
+    background-color: #fef08a !important;
+    border-left: 3px solid #eab308;
+}
+
+.highlight-green {
+    background-color: #bbf7d0 !important;
+    border-left: 3px solid #22c55e;
+}
+
+.highlight-blue {
+    background-color: #bfdbfe !important;
+    border-left: 3px solid #3b82f6;
+}
+
+.highlight-red {
+    background-color: #fecaca !important;
+    border-left: 3px solid #ef4444;
+}
+
+/* Remove estilo padrão de Select no iOS */
+select {
+    -webkit-appearance: none;
+    appearance: none;
+}
