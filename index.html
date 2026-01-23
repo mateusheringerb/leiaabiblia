@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Bíblia Ágape</title>
-    <meta name="theme-color" content="#2563eb">
+    <title>Bíblia Ágape | Leitura</title>
+    <meta name="theme-color" content="#09090b">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/x-icon" href="assets/favicon-new.ico">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:wght@300;400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Merriweather:wght@300;400;700&display=swap"
         rel="stylesheet">
 
     <script>
@@ -20,334 +21,283 @@
             darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Merriweather', 'serif'] },
-                    colors: { bible: { 50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a' } }
+                    fontFamily: {
+                        // Inter para UI (menus, botões)
+                        sans: ['Inter', 'sans-serif'],
+                        // Playfair Display para Títulos (Elegância)
+                        display: ['Playfair Display', 'serif'],
+                        // Merriweather para o Texto Bíblico (Leitura confortável)
+                        serif: ['Merriweather', 'serif']
+                    },
+                    colors: {
+                        // REBRANDING: Substituindo o Azul (#2563eb) pela escala ZINC (Preto/Cinza)
+                        bible: {
+                            50: '#fafafa',
+                            100: '#f4f4f5',
+                            200: '#e4e4e7',
+                            500: '#71717a',
+                            600: '#18181b', // Primária: Quase Preto
+                            700: '#09090b', // Ações Hover
+                            800: '#000000', // Preto Puro
+                            900: '#000000'
+                        }
+                    }
                 }
             }
         }
     </script>
 
-    <style>
-        body {
-            -webkit-tap-highlight-color: transparent;
-            overscroll-behavior-y: none;
-        }
-
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .verse-content {
-            line-height: 1.9;
-            font-feature-settings: "kern", "liga";
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-fade-in {
-            animation: fadeIn 0.3s ease-out forwards;
-        }
-
-        /* Cores de Destaque */
-        .highlight-yellow {
-            background-color: rgba(253, 224, 71, 0.4) !important;
-            border-left: 3px solid #eab308;
-        }
-
-        .highlight-green {
-            background-color: rgba(134, 239, 172, 0.4) !important;
-            border-left: 3px solid #22c55e;
-        }
-
-        .highlight-blue {
-            background-color: rgba(147, 197, 253, 0.4) !important;
-            border-left: 3px solid #3b82f6;
-        }
-
-        /* Letras Vermelhas */
-        .red-letter {
-            color: #dc2626;
-        }
-
-        .dark .red-letter {
-            color: #fca5a5;
-        }
-
-        /* Estilo para Coro nos Hinários */
-        .hymn-chorus {
-            background-color: #fff7ed;
-            /* Orange 50 */
-            color: #9a3412;
-            /* Orange 800 */
-            padding: 1.5rem;
-            border-left: 4px solid #f97316;
-            /* Orange 500 */
-            border-radius: 0.75rem;
-            font-style: italic;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-        }
-
-        .dark .hymn-chorus {
-            background-color: rgba(124, 45, 18, 0.2);
-            color: #fed7aa;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body
-    class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 h-screen flex flex-col overflow-hidden transition-colors duration-300 selection:bg-bible-200 dark:selection:bg-bible-900">
+    class="bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 h-screen flex flex-col overflow-hidden transition-colors duration-300 selection:bg-zinc-900 selection:text-white dark:selection:bg-white dark:selection:text-black">
 
     <header id="main-header"
-        class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 h-16 flex-none flex items-center justify-between px-4 z-40 shadow-sm relative">
+        class="bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md border-b border-zinc-100 dark:border-zinc-800 h-16 flex-none flex items-center justify-between px-6 z-40 relative">
+
         <div class="flex items-center gap-3 cursor-pointer group" onclick="showScreen('screen-home')">
             <img src="assets/logo-2.png" alt="Logo Ágape"
-                class="w-8 h-8 object-contain group-hover:scale-105 transition-transform">
-            <h1 class="font-bold text-lg tracking-tight group-hover:text-bible-600 transition-colors">Bíblia Ágape</h1>
+                class="w-8 h-8 object-contain grayscale opacity-80 group-hover:opacity-100 transition-opacity">
+            <h1 class="font-display font-bold text-xl tracking-tight text-zinc-900 dark:text-white">Bíblia Ágape</h1>
         </div>
 
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1">
             <div
-                class="hidden md:flex items-center gap-2 bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400 px-3 py-1.5 rounded-full text-xs font-bold border border-orange-100 dark:border-orange-800">
+                class="hidden md:flex items-center gap-2 bg-zinc-50 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 px-3 py-1.5 rounded-full text-xs font-semibold border border-zinc-200 dark:border-zinc-800 mr-2">
                 <i class="ph-fill ph-fire"></i> <span id="streak-count-header">0</span> dias
             </div>
 
-            <div
-                class="flex items-center bg-gray-100 dark:bg-gray-700 rounded-lg mx-1 border border-gray-200 dark:border-gray-600">
+            <div class="flex items-center rounded-lg mx-1">
                 <button onclick="changeFontSize(-1)"
-                    class="p-2 px-3 hover:text-bible-600 transition border-r border-gray-300 dark:border-gray-600"
-                    title="Diminuir"><i class="ph-bold ph-text-aa text-xs"></i><span
-                        class="text-[10px] font-bold ml-1 align-top">-</span></button>
-                <button onclick="changeFontSize(1)" class="p-2 px-3 hover:text-bible-600 transition" title="Aumentar"><i
-                        class="ph-bold ph-text-aa text-base"></i><span
-                        class="text-[10px] font-bold ml-1 align-top">+</span></button>
+                    class="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg transition text-zinc-500"
+                    title="Diminuir"><i class="ph-bold ph-text-aa text-xs"></i></button>
+                <button onclick="changeFontSize(1)"
+                    class="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg transition text-zinc-500"
+                    title="Aumentar"><i class="ph-bold ph-text-aa text-lg"></i></button>
             </div>
 
-            <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition"
-                title="Alternar Tema"><i class="ph-fill ph-moon-stars text-lg"></i></button>
+            <button onclick="toggleTheme()"
+                class="p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition text-zinc-900 dark:text-white"
+                title="Alternar Tema">
+                <i class="ph-fill ph-moon-stars text-lg"></i>
+            </button>
         </div>
     </header>
 
     <main id="main-content"
-        class="flex-1 overflow-y-auto overflow-x-hidden relative scroll-smooth hide-scrollbar p-4 md:p-6 w-full max-w-7xl mx-auto">
+        class="flex-1 overflow-y-auto overflow-x-hidden relative scroll-smooth hide-scrollbar p-4 md:p-8 w-full max-w-5xl mx-auto">
 
-        <div id="screen-home" class="animate-fade-in space-y-6 max-w-4xl mx-auto">
+        <div id="screen-home" class="animate-fade-in space-y-8 max-w-4xl mx-auto pt-4">
 
             <div id="install-container"
-                class="hidden bg-bible-50 dark:bg-bible-900/20 border border-bible-100 dark:border-bible-800 p-4 rounded-2xl flex justify-between items-center">
-                <div class="flex gap-3 items-center">
-                    <div class="bg-bible-600 text-white p-2 rounded-lg"><i class="ph-bold ph-download-simple"></i></div>
+                class="hidden bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-5 rounded-xl flex justify-between items-center shadow-sm">
+                <div class="flex gap-4 items-center">
+                    <div class="bg-black dark:bg-white text-white dark:text-black p-2.5 rounded-lg"><i
+                            class="ph-bold ph-download-simple"></i></div>
                     <div>
-                        <h3 class="font-bold text-sm">Instalar Aplicativo</h3>
-                        <p class="text-xs text-gray-500 dark:text-gray-400">Acesso offline e tela cheia</p>
+                        <h3 class="font-bold text-sm font-sans">Instalar App</h3>
+                        <p class="text-xs text-zinc-500 mt-0.5">Leitura offline e sem distrações.</p>
                     </div>
                 </div>
                 <button id="btn-install"
-                    class="bg-bible-600 hover:bg-bible-700 text-white px-4 py-2 rounded-lg text-sm font-bold shadow-md transition">Instalar</button>
+                    class="bg-black dark:bg-white text-white dark:text-black hover:opacity-80 px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition">Baixar</button>
             </div>
 
             <div
-                class="bg-gradient-to-br from-bible-600 to-bible-800 p-6 md:p-8 rounded-3xl text-white shadow-xl relative overflow-hidden group">
-                <div class="absolute top-0 right-0 p-4 opacity-10"><i class="ph-fill ph-quotes text-9xl"></i></div>
-                <p class="text-bible-100 text-xs uppercase font-bold tracking-wider mb-3 flex items-center gap-2"><i
-                        class="ph-fill ph-sun"></i> Versículo do Dia</p>
-                <h3 id="daily-text"
-                    class="text-xl md:text-2xl font-serif font-medium leading-relaxed italic opacity-90 mb-4">
-                    "Carregando..."</h3>
-                <div class="flex justify-between items-end">
-                    <p id="daily-reference" class="font-bold text-bible-100"></p>
+                class="bg-zinc-900 dark:bg-black p-8 md:p-10 rounded-2xl text-white shadow-xl relative overflow-hidden group border border-zinc-800">
+                <div class="absolute -top-4 -right-4 opacity-[0.05]"><i class="ph-fill ph-quotes text-[10rem]"></i>
+                </div>
+
+                <p class="text-zinc-400 text-[10px] uppercase font-bold tracking-[0.2em] mb-4 flex items-center gap-2">
+                    <span class="w-8 h-[1px] bg-zinc-600"></span> Versículo do Dia
+                </p>
+
+                <h3 id="daily-text" class="text-2xl md:text-3xl font-serif leading-relaxed text-zinc-100 mb-6">
+                    "Carregando..."
+                </h3>
+
+                <div
+                    class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-t border-zinc-800 pt-6 mt-2">
+                    <p id="daily-reference" class="font-display font-bold text-lg text-white"></p>
                     <button onclick="openImageCreator()"
-                        class="bg-white/20 hover:bg-white/30 backdrop-blur-md px-4 py-2 rounded-full text-xs font-bold transition flex items-center gap-2"><i
-                            class="ph-bold ph-image"></i> Criar Story</button>
+                        class="bg-white text-black px-5 py-2.5 rounded-full text-xs font-bold transition hover:bg-zinc-200 flex items-center gap-2">
+                        <i class="ph-bold ph-share-network"></i> Compartilhar
+                    </button>
                 </div>
             </div>
 
             <div id="active-plan-card"
-                class="hidden bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-800 p-5 rounded-2xl cursor-pointer hover:shadow-md transition"
+                class="hidden bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-6 rounded-xl cursor-pointer hover:border-black dark:hover:border-white transition group"
                 onclick="showScreen('screen-plan-overview')">
                 <div class="flex justify-between items-center">
-                    <div class="flex items-center gap-3">
-                        <div class="bg-green-100 dark:bg-green-800 text-green-700 dark:text-green-300 p-2 rounded-full">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="bg-zinc-100 dark:bg-zinc-800 text-black dark:text-white p-3 rounded-full group-hover:bg-black group-hover:text-white transition-colors duration-300">
                             <i class="ph-fill ph-calendar-check text-xl"></i>
                         </div>
                         <div>
-                            <h3 class="font-bold text-green-800 dark:text-green-300">Meu Plano de Leitura</h3>
-                            <p class="text-xs text-green-600 dark:text-green-400">Toque para ver o progresso.</p>
+                            <h3 class="font-bold text-zinc-900 dark:text-zinc-100">Leitura de Hoje</h3>
+                            <p class="text-xs text-zinc-500 mt-0.5">Continue de onde parou.</p>
                         </div>
                     </div>
-                    <i class="ph-bold ph-caret-right text-green-600"></i>
+                    <i
+                        class="ph-bold ph-arrow-right text-zinc-300 group-hover:text-black dark:group-hover:text-white transition-colors"></i>
                 </div>
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <button onclick="showScreen('screen-read')"
-                    class="bg-white dark:bg-gray-800 p-5 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:border-bible-500 hover:shadow-md transition flex flex-col items-center gap-3 group">
+                    class="group p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-zinc-900 dark:hover:border-zinc-100 transition-all duration-300 flex flex-col items-center gap-4 text-center">
                     <div
-                        class="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center text-2xl group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        class="text-3xl text-zinc-400 group-hover:text-black dark:group-hover:text-white group-hover:scale-110 transition-transform duration-300">
                         <i class="ph-duotone ph-book-bookmark"></i>
-                    </div><span class="font-bold text-sm">Bíblia</span>
-                </button>
-                <button onclick="searchBible()"
-                    class="bg-white dark:bg-gray-800 p-5 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:border-bible-500 hover:shadow-md transition flex flex-col items-center gap-3 group">
-                    <div
-                        class="w-12 h-12 rounded-full bg-purple-50 dark:bg-purple-900/30 text-purple-600 flex items-center justify-center text-2xl group-hover:bg-purple-600 group-hover:text-white transition-colors">
-                        <i class="ph-duotone ph-magnifying-glass"></i>
-                    </div><span class="font-bold text-sm">Buscar</span>
-                </button>
-                <button onclick="showScreen('screen-harpa')"
-                    class="bg-white dark:bg-gray-800 p-5 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:border-bible-500 hover:shadow-md transition flex flex-col items-center gap-3 group">
-                    <div
-                        class="w-12 h-12 rounded-full bg-rose-50 dark:bg-rose-900/30 text-rose-600 flex items-center justify-center text-2xl group-hover:bg-rose-600 group-hover:text-white transition-colors">
-                        <i class="ph-duotone ph-music-notes"></i>
-                    </div><span class="font-bold text-sm">Hinários</span>
-                </button>
-                <button onclick="showScreen('screen-quiz')"
-                    class="bg-white dark:bg-gray-800 p-5 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:border-bible-500 hover:shadow-md transition flex flex-col items-center gap-3 group">
-                    <div
-                        class="w-12 h-12 rounded-full bg-amber-50 dark:bg-amber-900/30 text-amber-600 flex items-center justify-center text-2xl group-hover:bg-amber-600 group-hover:text-white transition-colors">
-                        <i class="ph-duotone ph-brain"></i>
-                    </div><span class="font-bold text-sm">Quiz</span>
-                </button>
-                <button onclick="showScreen('screen-highlights')"
-                    class="bg-white dark:bg-gray-800 p-5 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:border-bible-500 hover:shadow-md transition flex flex-col items-center gap-3 group">
-                    <div
-                        class="w-12 h-12 rounded-full bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 flex items-center justify-center text-2xl group-hover:bg-emerald-600 group-hover:text-white transition-colors">
-                        <i class="ph-duotone ph-highlighter"></i>
-                    </div><span class="font-bold text-sm">Destaques</span>
-                </button>
-                <button onclick="openPlanSetup()"
-                    class="bg-white dark:bg-gray-800 p-5 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:border-bible-500 hover:shadow-md transition flex flex-col items-center gap-3 group">
-                    <div
-                        class="w-12 h-12 rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                        <i class="ph-duotone ph-calendar-plus"></i>
-                    </div><span class="font-bold text-sm">Novo
-                        Plano</span>
-                </button>
-            </div>
-
-            <div class="grid grid-cols-3 gap-3 pt-4 border-t dark:border-gray-700">
-                <button onclick="openFeedbackModal()"
-                    class="py-2 text-xs font-semibold text-gray-500 hover:text-bible-600 transition flex flex-col items-center gap-1"><i
-                        class="ph-bold ph-chat-circle text-lg"></i> Contato</button>
-                <button onclick="shareApp()"
-                    class="py-2 text-xs font-semibold text-gray-500 hover:text-bible-600 transition flex flex-col items-center gap-1"><i
-                        class="ph-bold ph-share-network text-lg"></i> Partilhar App</button>
-                <button onclick="showScreen('screen-backup')"
-                    class="py-2 text-xs font-semibold text-gray-500 hover:text-bible-600 transition flex flex-col items-center gap-1"><i
-                        class="ph-bold ph-floppy-disk text-lg"></i> Backup</button>
-            </div>
-
-            <footer class="mt-8 py-6 text-center border-t border-gray-100 dark:border-gray-700/50">
-                <div class="flex flex-col items-center gap-2">
-                    <div
-                        class="w-8 h-8 rounded-full bg-bible-50 dark:bg-bible-900/30 text-bible-600 flex items-center justify-center">
-                        <i class="ph-bold ph-code"></i>
                     </div>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">
-                        Desenvolvido com <span class="text-red-500">❤</span> por
+                    <span class="font-bold text-sm tracking-wide">Bíblia</span>
+                </button>
+
+                <button onclick="searchBible()"
+                    class="group p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-zinc-900 dark:hover:border-zinc-100 transition-all duration-300 flex flex-col items-center gap-4 text-center">
+                    <div
+                        class="text-3xl text-zinc-400 group-hover:text-black dark:group-hover:text-white group-hover:scale-110 transition-transform duration-300">
+                        <i class="ph-duotone ph-magnifying-glass"></i>
+                    </div>
+                    <span class="font-bold text-sm tracking-wide">Buscar</span>
+                </button>
+
+                <button onclick="showScreen('screen-harpa')"
+                    class="group p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-zinc-900 dark:hover:border-zinc-100 transition-all duration-300 flex flex-col items-center gap-4 text-center">
+                    <div
+                        class="text-3xl text-zinc-400 group-hover:text-black dark:group-hover:text-white group-hover:scale-110 transition-transform duration-300">
+                        <i class="ph-duotone ph-music-notes"></i>
+                    </div>
+                    <span class="font-bold text-sm tracking-wide">Hinários</span>
+                </button>
+
+                <button onclick="showScreen('screen-quiz')"
+                    class="group p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-zinc-900 dark:hover:border-zinc-100 transition-all duration-300 flex flex-col items-center gap-4 text-center">
+                    <div
+                        class="text-3xl text-zinc-400 group-hover:text-black dark:group-hover:text-white group-hover:scale-110 transition-transform duration-300">
+                        <i class="ph-duotone ph-brain"></i>
+                    </div>
+                    <span class="font-bold text-sm tracking-wide">Quiz</span>
+                </button>
+
+                <button onclick="showScreen('screen-highlights')"
+                    class="group p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-zinc-900 dark:hover:border-zinc-100 transition-all duration-300 flex flex-col items-center gap-4 text-center">
+                    <div
+                        class="text-3xl text-zinc-400 group-hover:text-black dark:group-hover:text-white group-hover:scale-110 transition-transform duration-300">
+                        <i class="ph-duotone ph-highlighter"></i>
+                    </div>
+                    <span class="font-bold text-sm tracking-wide">Destaques</span>
+                </button>
+
+                <button onclick="openPlanSetup()"
+                    class="group p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-all duration-300 flex flex-col items-center gap-4 text-center">
+                    <div
+                        class="text-3xl text-zinc-900 dark:text-white group-hover:scale-110 transition-transform duration-300">
+                        <i class="ph-duotone ph-plus-circle"></i>
+                    </div>
+                    <span class="font-bold text-sm tracking-wide">Novo Plano</span>
+                </button>
+            </div>
+
+            <footer class="mt-12 py-8 text-center border-t border-zinc-100 dark:border-zinc-800/50">
+                <div class="flex flex-col items-center gap-3">
+                    <div class="w-8 h-8 flex items-center justify-center opacity-30">
+                        <i class="ph-bold ph-code text-xl"></i>
+                    </div>
+                    <p class="text-xs font-serif text-zinc-400 italic">
+                        "Sola Scriptura. Solus Christus."
                     </p>
                     <a href="https://github.com/mateusheringerb" target="_blank" rel="noopener noreferrer"
-                        class="text-sm font-bold text-bible-600 dark:text-bible-400 hover:underline hover:text-bible-700 transition-colors">
+                        class="text-xs font-bold uppercase tracking-widest text-zinc-900 dark:text-zinc-500 hover:text-black dark:hover:text-white transition-colors mt-2">
                         Mateus Heringer
                     </a>
-                    <p class="text-[10px] text-gray-400 mt-1 font-mono opacity-60">
-                        Bíblia Ágape v2.1.5 &copy; 2026
-                    </p>
                 </div>
             </footer>
         </div>
 
         <div id="screen-read" class="hidden h-full relative">
-
             <div id="reading-content-wrapper" class="animate-fade-in pb-32">
                 <div
-                    class="sticky top-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b dark:border-gray-700 p-3 z-30 -mx-4 px-4 mb-6 shadow-sm flex flex-col gap-3">
+                    class="sticky top-0 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md border-b border-zinc-100 dark:border-zinc-800 p-4 z-30 -mx-4 px-4 mb-8 flex flex-col gap-4">
                     <div class="flex items-center justify-between">
                         <button onclick="goBack()"
-                            class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full text-gray-500"><i
+                            class="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full text-zinc-500 transition"><i
                                 class="ph-bold ph-arrow-left text-xl"></i></button>
-                        <div class="flex gap-2 flex-1 justify-center max-w-md">
+
+                        <div class="flex gap-2 flex-1 justify-center max-w-lg">
                             <select id="read-book" onchange="handleNavigationChange()"
-                                class="bg-gray-100 dark:bg-gray-800 text-sm font-bold py-2 px-3 rounded-lg border-none focus:ring-2 focus:ring-bible-500 outline-none truncate"></select>
+                                class="bg-zinc-50 dark:bg-zinc-900 text-sm font-bold font-sans py-2 px-3 rounded-lg border border-transparent hover:border-zinc-200 dark:hover:border-zinc-700 focus:ring-0 outline-none truncate transition"></select>
                             <select id="read-chapter" onchange="handleNavigationChange()"
-                                class="bg-gray-100 dark:bg-gray-800 text-sm font-bold py-2 px-3 rounded-lg border-none focus:ring-2 focus:ring-bible-500 outline-none"></select>
+                                class="bg-zinc-50 dark:bg-zinc-900 text-sm font-bold font-sans py-2 px-3 rounded-lg border border-transparent hover:border-zinc-200 dark:hover:border-zinc-700 focus:ring-0 outline-none transition"></select>
                             <select id="read-translation" onchange="handleNavigationChange()"
-                                class="bg-bible-100 dark:bg-bible-900 text-bible-700 dark:text-bible-300 text-sm font-bold py-2 px-3 rounded-lg border-none focus:ring-2 focus:ring-bible-500 outline-none"></select>
+                                class="bg-black dark:bg-white text-white dark:text-black text-xs font-bold uppercase tracking-wide py-2 px-3 rounded-lg border-none focus:ring-0 outline-none"></select>
                         </div>
                     </div>
                 </div>
 
-                <div id="text-container" class="space-y-6 px-1"></div>
+                <div id="text-container" class="space-y-8 px-2 max-w-2xl mx-auto">
+                </div>
             </div>
 
             <div id="reading-nav-bar"
-                class="fixed bottom-6 left-0 w-full px-6 flex justify-between items-center z-50 pointer-events-none">
+                class="fixed bottom-8 left-0 w-full px-8 flex justify-between items-center z-50 pointer-events-none">
                 <button onclick="changeChapter(-1)"
-                    class="pointer-events-auto bg-bible-600/90 hover:bg-bible-700 text-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center transition transform hover:scale-110 backdrop-blur-sm shadow-bible-900/20"
+                    class="pointer-events-auto bg-black dark:bg-white text-white dark:text-black w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition transform hover:scale-110 active:scale-95"
                     title="Anterior">
-                    <i class="ph-bold ph-caret-left text-2xl"></i>
+                    <i class="ph-bold ph-caret-left text-xl"></i>
                 </button>
                 <button onclick="changeChapter(1)"
-                    class="pointer-events-auto bg-bible-600/90 hover:bg-bible-700 text-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center transition transform hover:scale-110 backdrop-blur-sm shadow-bible-900/20"
+                    class="pointer-events-auto bg-black dark:bg-white text-white dark:text-black w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition transform hover:scale-110 active:scale-95"
                     title="Próximo">
-                    <i class="ph-bold ph-caret-right text-2xl"></i>
+                    <i class="ph-bold ph-caret-right text-xl"></i>
                 </button>
             </div>
         </div>
 
         <div id="screen-plan-overview" class="hidden animate-fade-in pb-20 max-w-3xl mx-auto">
             <div
-                class="sticky top-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur z-30 pb-4 border-b dark:border-gray-700 mb-4 pt-2">
-                <div class="flex items-center justify-between mb-3">
+                class="sticky top-0 bg-white/95 dark:bg-zinc-950/95 backdrop-blur z-30 pb-4 border-b border-zinc-100 dark:border-zinc-800 mb-6 pt-2">
+                <div class="flex items-center justify-between mb-4">
                     <div class="flex items-center gap-3">
-                        <button onclick="goBack()" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full"><i
+                        <button onclick="goBack()" class="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full"><i
                                 class="ph-bold ph-arrow-left"></i></button>
                         <div>
-                            <h2 class="font-bold text-xl">Meu Plano</h2>
-                            <p class="text-xs text-gray-500" id="plan-progress-text">0% Concluído</p>
+                            <h2 class="font-display font-bold text-xl">Meu Plano</h2>
+                            <p class="text-xs text-zinc-500" id="plan-progress-text">0% Concluído</p>
                         </div>
                     </div>
                     <button onclick="deleteCurrentPlan()"
-                        class="p-2 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition"
-                        title="Excluir Plano">
-                        <i class="ph-bold ph-trash text-xl"></i>
-                    </button>
+                        class="p-2 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition"><i
+                            class="ph-bold ph-trash text-xl"></i></button>
                 </div>
-                <div class="h-2 w-full bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
-                    <div id="plan-progress-bar" class="h-full bg-green-500 w-0 transition-all duration-500"></div>
+                <div class="h-1.5 w-full bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden">
+                    <div id="plan-progress-bar" class="h-full bg-black dark:bg-white w-0 transition-all duration-500">
+                    </div>
                 </div>
             </div>
-            <div id="plan-overview-list" class="space-y-3"></div>
+            <div id="plan-overview-list" class="space-y-4"></div>
         </div>
 
         <div id="screen-harpa" class="hidden animate-fade-in pb-20 max-w-4xl mx-auto">
             <div
-                class="sticky top-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur z-30 pb-4 border-b dark:border-gray-700 mb-4">
-                <div class="flex items-center gap-3 mb-3">
-                    <button onclick="goBack()" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full"><i
+                class="sticky top-0 bg-white/95 dark:bg-zinc-950/95 backdrop-blur z-30 pb-4 border-b border-zinc-100 dark:border-zinc-800 mb-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <button onclick="goBack()" class="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full"><i
                             class="ph-bold ph-arrow-left"></i></button>
                     <select id="hymnbook-select" onchange="changeHymnbook()"
-                        class="text-xl font-bold bg-transparent border-none focus:ring-0 cursor-pointer text-bible-600 dark:text-bible-400 p-0">
+                        class="text-xl font-display font-bold bg-transparent border-none focus:ring-0 cursor-pointer text-zinc-900 dark:text-white p-0">
                         <option value="harpa">Harpa Cristã</option>
                         <option value="cantor">Cantor Cristão</option>
                         <option value="novocantico">Novo Cântico</option>
                     </select>
                 </div>
                 <div class="relative">
-                    <i class="ph-bold ph-magnifying-glass absolute left-4 top-3.5 text-gray-400"></i>
+                    <i class="ph-bold ph-magnifying-glass absolute left-4 top-3.5 text-zinc-400"></i>
                     <input type="text" id="harpa-search" placeholder="Buscar hino..." oninput="filterHarpa()"
-                        class="w-full pl-11 pr-4 py-3 bg-gray-100 dark:bg-gray-800 rounded-xl border-none focus:ring-2 focus:ring-bible-500 transition">
+                        class="w-full pl-11 pr-4 py-3 bg-zinc-50 dark:bg-zinc-900 rounded-xl border border-transparent focus:border-black dark:focus:border-white focus:ring-0 transition placeholder:text-zinc-400">
                 </div>
             </div>
             <div id="harpa-list" class="space-y-2"></div>
@@ -355,34 +305,34 @@
 
         <div id="screen-hymn" class="hidden animate-fade-in max-w-3xl mx-auto">
             <div
-                class="sticky top-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur z-30 p-4 border-b dark:border-gray-700 mb-6 flex gap-4 items-center">
-                <button onclick="goBack()" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full"><i
+                class="sticky top-0 bg-white/95 dark:bg-zinc-950/95 backdrop-blur z-30 p-4 border-b dark:border-zinc-800 mb-6 flex gap-4 items-center">
+                <button onclick="goBack()" class="p-2 hover:bg-zinc-100 rounded-full"><i
                         class="ph-bold ph-arrow-left"></i></button>
-                <h2 id="hymn-title" class="font-bold text-lg leading-tight line-clamp-2"></h2>
+                <h2 id="hymn-title" class="font-display font-bold text-lg leading-tight line-clamp-2"></h2>
             </div>
-            <div id="hymn-content" class="px-4 pb-20 space-y-6 text-lg font-serif"></div>
+            <div id="hymn-content" class="px-4 pb-20 space-y-6 text-lg font-serif leading-loose"></div>
         </div>
 
         <div id="screen-quiz" class="hidden animate-fade-in max-w-2xl mx-auto h-full flex flex-col">
             <div class="flex items-center gap-3 mb-6">
-                <button onclick="goBack()" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full"><i
+                <button onclick="goBack()" class="p-2 hover:bg-zinc-100 rounded-full"><i
                         class="ph-bold ph-arrow-left"></i></button>
-                <h2 class="font-bold text-xl">Quiz Bíblico</h2>
-                <div class="ml-auto bg-bible-100 text-bible-700 px-3 py-1 rounded-full text-xs font-bold">Total: <span
-                        id="quiz-points">0</span> pts</div>
+                <h2 class="font-display font-bold text-xl">Quiz Bíblico</h2>
+                <div class="ml-auto bg-black text-white px-3 py-1 rounded-full text-xs font-bold">Total: <span
+                        id="quiz-points">0</span></div>
             </div>
             <div id="quiz-container" class="flex-1 flex items-center justify-center pb-20"></div>
         </div>
 
         <div id="screen-search" class="hidden animate-fade-in max-w-4xl mx-auto">
             <div class="flex items-center gap-3 mb-4">
-                <button onclick="goBack()" class="p-2 hover:bg-gray-100 rounded-full"><i
+                <button onclick="goBack()" class="p-2 hover:bg-zinc-100 rounded-full"><i
                         class="ph-bold ph-arrow-left"></i></button>
                 <div class="relative flex-1">
-                    <input type="text" id="search-input" placeholder="Digite para buscar..."
-                        class="w-full pl-4 pr-12 py-3 bg-gray-100 dark:bg-gray-800 rounded-xl border-none focus:ring-2 focus:ring-bible-500">
+                    <input type="text" id="search-input" placeholder="Buscar na Bíblia..."
+                        class="w-full pl-4 pr-12 py-3 bg-zinc-50 dark:bg-zinc-900 rounded-xl border-none focus:ring-2 focus:ring-black dark:focus:ring-white">
                     <button id="btn-search-action"
-                        class="absolute right-2 top-2 p-1.5 bg-bible-600 text-white rounded-lg"><i
+                        class="absolute right-2 top-2 p-1.5 bg-black text-white rounded-lg"><i
                             class="ph-bold ph-magnifying-glass"></i></button>
                 </div>
             </div>
@@ -391,94 +341,124 @@
 
         <div id="screen-highlights" class="hidden animate-fade-in">
             <div class="flex items-center gap-3 mb-6"><button onclick="goBack()"
-                    class="p-2 hover:bg-gray-100 rounded-full"><i class="ph-bold ph-arrow-left"></i></button>
-                <h2 class="font-bold text-xl">Seus Destaques</h2>
+                    class="p-2 hover:bg-zinc-100 rounded-full"><i class="ph-bold ph-arrow-left"></i></button>
+                <h2 class="font-display font-bold text-xl">Seus Destaques</h2>
             </div>
             <div id="highlights-container" class="space-y-3 pb-20"></div>
         </div>
 
         <div id="screen-backup" class="hidden animate-fade-in max-w-md mx-auto">
             <div class="flex items-center gap-3 mb-6">
-                <button onclick="goBack()" class="p-2 hover:bg-gray-100 rounded-full"><i
+                <button onclick="goBack()" class="p-2 hover:bg-zinc-100 rounded-full"><i
                         class="ph-bold ph-arrow-left"></i></button>
-                <h2 class="font-bold text-xl">Backup & Dados</h2>
+                <h2 class="font-display font-bold text-xl">Backup & Dados</h2>
             </div>
             <div class="space-y-4">
-                <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-2xl border border-blue-100 dark:border-blue-800">
-                    <h3 class="font-bold text-blue-800 dark:text-blue-300 mb-3 flex items-center gap-2"><i
+                <div class="bg-zinc-50 dark:bg-zinc-900 p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800">
+                    <h3 class="font-bold text-zinc-800 dark:text-zinc-200 mb-3 flex items-center gap-2"><i
                             class="ph-bold ph-arrows-left-right"></i> Transferir Dados</h3>
-                    <p class="text-sm text-blue-700/70 mb-4">Salve seu progresso (marcações, planos, quiz) em um arquivo
-                        ou restaure de um backup anterior.</p>
+                    <p class="text-sm text-zinc-500 mb-4">Exporte seus dados para não perder seu progresso.</p>
                     <div class="grid grid-cols-2 gap-3">
                         <button onclick="exportData()"
-                            class="bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 text-sm flex items-center justify-center gap-2"><i
+                            class="bg-black text-white py-3 rounded-xl font-bold hover:opacity-80 text-sm flex items-center justify-center gap-2"><i
                                 class="ph-bold ph-download-simple"></i> Exportar</button>
                         <button onclick="triggerImport()"
-                            class="bg-white dark:bg-gray-800 text-blue-600 border border-blue-200 dark:border-blue-700 py-3 rounded-xl font-bold hover:bg-blue-50 text-sm flex items-center justify-center gap-2"><i
+                            class="bg-white border border-zinc-200 text-black py-3 rounded-xl font-bold hover:bg-zinc-50 text-sm flex items-center justify-center gap-2"><i
                                 class="ph-bold ph-upload-simple"></i> Importar</button>
                         <input type="file" id="import-file" class="hidden" accept=".json"
                             onchange="handleImportFile(event)">
                     </div>
                 </div>
-                <div
-                    class="bg-red-50 dark:bg-red-900/20 p-6 rounded-2xl border border-red-100 dark:border-red-800 text-center mt-6">
-                    <i class="ph-duotone ph-warning text-4xl text-red-500 mb-2"></i>
-                    <h3 class="font-bold text-red-700 dark:text-red-300">Zona de Perigo</h3>
-                    <p class="text-sm text-red-600/70 mb-4">Esta ação apagará todo o seu progresso localmente.</p>
-                    <button onclick="hardReset()"
-                        class="w-full bg-red-600 text-white py-3 rounded-xl font-bold hover:bg-red-700">Resetar
-                        Tudo</button>
+                <div class="p-4 text-center">
+                    <button onclick="hardReset()" class="text-red-500 text-xs font-bold hover:underline">Resetar App
+                        (Perigo)</button>
                 </div>
             </div>
         </div>
+
     </main>
 
     <div id="modal-plan"
-        class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4 transition-opacity duration-300"
+        class="fixed inset-0 z-50 hidden items-center justify-center bg-zinc-900/80 backdrop-blur-sm p-4"
         onclick="closeModal('modal-plan')">
-        <div class="bg-white dark:bg-gray-800 w-full max-w-md rounded-3xl p-6 shadow-2xl transform transition-transform duration-300 scale-100"
+        <div class="bg-white dark:bg-zinc-900 w-full max-w-md rounded-2xl p-6 shadow-2xl"
             onclick="event.stopPropagation()">
             <div class="flex justify-between items-center mb-6">
-                <h3 class="font-bold text-xl dark:text-white">Criar Novo Plano</h3>
+                <h3 class="font-display font-bold text-xl dark:text-white">Criar Novo Plano</h3>
                 <button onclick="closeModal('modal-plan')"
-                    class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full"><i
+                    class="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full"><i
                         class="ph-bold ph-x"></i></button>
             </div>
             <div class="space-y-5">
                 <div>
-                    <label class="block text-sm font-bold text-gray-500 mb-2 uppercase">1. Ordem</label>
+                    <label class="block text-[10px] font-bold text-zinc-400 mb-2 uppercase tracking-widest">1.
+                        Ordem</label>
                     <div class="grid grid-cols-2 gap-3">
                         <label class="cursor-pointer"><input type="radio" name="plan_order" value="biblical"
                                 class="peer sr-only" checked>
                             <div
-                                class="p-3 border-2 border-gray-200 dark:border-gray-700 rounded-xl text-center font-bold peer-checked:border-bible-600 peer-checked:bg-bible-50 dark:peer-checked:bg-bible-900/30 peer-checked:text-bible-700 transition">
+                                class="p-3 border border-zinc-200 dark:border-zinc-700 rounded-lg text-center font-bold peer-checked:bg-black peer-checked:text-white dark:peer-checked:bg-white dark:peer-checked:text-black transition text-sm">
                                 Bíblica</div>
                         </label>
                         <label class="cursor-pointer"><input type="radio" name="plan_order" value="chronological"
                                 class="peer sr-only">
                             <div
-                                class="p-3 border-2 border-gray-200 dark:border-gray-700 rounded-xl text-center font-bold peer-checked:border-bible-600 peer-checked:bg-bible-50 dark:peer-checked:bg-bible-900/30 peer-checked:text-bible-700 transition">
+                                class="p-3 border border-zinc-200 dark:border-zinc-700 rounded-lg text-center font-bold peer-checked:bg-black peer-checked:text-white dark:peer-checked:bg-white dark:peer-checked:text-black transition text-sm">
                                 Cronológica</div>
                         </label>
                     </div>
                 </div>
                 <div>
-                    <label class="block text-sm font-bold text-gray-500 mb-2 uppercase">2. Duração</label>
+                    <label class="block text-[10px] font-bold text-zinc-400 mb-2 uppercase tracking-widest">2.
+                        Duração</label>
                     <select id="plan-duration"
-                        class="w-full p-3 bg-gray-100 dark:bg-gray-700 rounded-xl font-bold border-none focus:ring-2 focus:ring-bible-500">
+                        class="w-full p-3 bg-zinc-50 dark:bg-zinc-800 rounded-lg font-bold border-none focus:ring-2 focus:ring-black dark:focus:ring-white text-sm">
                         <option value="365">1 Ano (Leve)</option>
                         <option value="180">6 Meses (Médio)</option>
                         <option value="90">3 Meses (Intenso)</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-sm font-bold text-gray-500 mb-2 uppercase">3. Tradução</label>
+                    <label class="block text-[10px] font-bold text-zinc-400 mb-2 uppercase tracking-widest">3.
+                        Tradução</label>
                     <select id="plan-translation"
-                        class="w-full p-3 bg-gray-100 dark:bg-gray-700 rounded-xl font-bold border-none focus:ring-2 focus:ring-bible-500"></select>
+                        class="w-full p-3 bg-zinc-50 dark:bg-zinc-800 rounded-lg font-bold border-none focus:ring-2 focus:ring-black dark:focus:ring-white text-sm"></select>
                 </div>
                 <button onclick="startNewPlan()"
-                    class="w-full bg-bible-600 hover:bg-bible-700 text-white py-4 rounded-xl font-bold text-lg shadow-lg shadow-bible-500/30 transition">Iniciar
-                    Plano</button>
+                    class="w-full bg-black dark:bg-white text-white dark:text-black py-4 rounded-xl font-bold text-sm tracking-wide shadow-lg hover:scale-[1.02] transition-transform">INICIAR
+                    JORNADA</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-verse"
+        class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-zinc-900/60 backdrop-blur-sm p-4"
+        onclick="closeModal('modal-verse')">
+        <div class="bg-white dark:bg-zinc-900 w-full max-w-sm rounded-2xl p-6 shadow-2xl space-y-6"
+            onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center border-b border-zinc-100 dark:border-zinc-800 pb-2">
+                <h3 class="font-display font-bold text-lg">Ações</h3>
+                <button onclick="closeModal('modal-verse')" class="p-1 rounded-full hover:bg-zinc-100"><i
+                        class="ph-bold ph-x"></i></button>
+            </div>
+            <div class="flex justify-around py-2">
+                <button onclick="markVerse('highlight-yellow')"
+                    class="w-8 h-8 rounded-full bg-[#fde047] ring-1 ring-zinc-200 transition hover:scale-110"></button>
+                <button onclick="markVerse('highlight-green')"
+                    class="w-8 h-8 rounded-full bg-[#86efac] ring-1 ring-zinc-200 transition hover:scale-110"></button>
+                <button onclick="markVerse('highlight-blue')"
+                    class="w-8 h-8 rounded-full bg-[#93c5fd] ring-1 ring-zinc-200 transition hover:scale-110"></button>
+                <button onclick="markVerse('remove')"
+                    class="w-8 h-8 rounded-full bg-transparent border border-zinc-300 flex items-center justify-center text-zinc-400 hover:text-red-500 hover:border-red-500 transition"><i
+                        class="ph-bold ph-prohibit"></i></button>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+                <button onclick="actionVerse('copy')"
+                    class="p-3 bg-zinc-100 dark:bg-zinc-800 rounded-lg font-bold text-sm hover:bg-zinc-200 transition flex items-center justify-center gap-2"><i
+                        class="ph-bold ph-copy"></i> Copiar</button>
+                <button onclick="openImageCreatorFromVerse()"
+                    class="p-3 bg-black text-white dark:bg-white dark:text-black rounded-lg font-bold text-sm hover:opacity-80 transition flex items-center justify-center gap-2"><i
+                        class="ph-bold ph-image"></i> Criar</button>
             </div>
         </div>
     </div>
@@ -486,85 +466,51 @@
     <div id="modal-image-creator" class="fixed inset-0 z-50 hidden bg-black items-center justify-center flex-col">
         <div
             class="w-full p-4 flex justify-between text-white z-10 absolute top-0 bg-gradient-to-b from-black/80 to-transparent">
-            <span class="font-bold">Criar Story</span><button onclick="closeModal('modal-image-creator')"><i
-                    class="ph-bold ph-x text-2xl"></i></button>
+            <span class="font-bold font-display">Editor de Stories</span><button
+                onclick="closeModal('modal-image-creator')"><i class="ph-bold ph-x text-2xl"></i></button>
         </div>
         <canvas id="image-editor-canvas" width="1080" height="1920" class="h-full w-full object-contain"></canvas>
-        <div class="w-full p-6 bg-gray-900 rounded-t-3xl absolute bottom-0 z-10">
-            <div class="flex gap-4 mb-4 justify-center">
+        <div class="w-full p-6 bg-zinc-900 rounded-t-3xl absolute bottom-0 z-10 border-t border-zinc-800">
+            <div class="flex gap-4 mb-6 justify-center">
                 <button onclick="changeCanvasBg(0)"
-                    class="w-10 h-10 rounded-full border-2 border-white bg-slate-900"></button>
+                    class="w-8 h-8 rounded-full border border-white/20 bg-zinc-900"></button>
                 <button onclick="changeCanvasBg(1)"
-                    class="w-10 h-10 rounded-full border-2 border-white bg-blue-600"></button>
-                <button onclick="changeCanvasBg(2)"
-                    class="w-10 h-10 rounded-full border-2 border-white bg-purple-600"></button>
-                <button onclick="changeCanvasBg(3)"
-                    class="w-10 h-10 rounded-full border-2 border-white bg-emerald-600"></button>
-            </div>
-            <div class="grid grid-cols-2 gap-3"><button onclick="shareCreatedImage()"
-                    class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg"><i
-                        class="ph-bold ph-share-network"></i> Compartilhar</button><button
-                    onclick="downloadCreatedImage()"
-                    class="w-full bg-white hover:bg-gray-200 text-black py-3 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg"><i
-                        class="ph-bold ph-download-simple"></i> Baixar</button></div>
-        </div>
-    </div>
-
-    <div id="modal-verse"
-        class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-black/60 backdrop-blur-sm p-4 transition-opacity"
-        onclick="closeModal('modal-verse')">
-        <div class="bg-white dark:bg-gray-800 w-full max-w-sm rounded-3xl p-6 shadow-2xl space-y-4"
-            onclick="event.stopPropagation()">
-            <div class="flex justify-between items-center border-b pb-2 dark:border-gray-700">
-                <h3 class="font-bold text-lg">Opções do Versículo</h3><button onclick="closeModal('modal-verse')"
-                    class="p-1 rounded-full hover:bg-gray-100"><i class="ph-bold ph-x"></i></button>
-            </div>
-            <div class="flex justify-around py-2">
-                <button onclick="markVerse('highlight-yellow')"
-                    class="w-10 h-10 rounded-full bg-yellow-300 ring-2 ring-offset-2 ring-yellow-300 transition hover:scale-110"
-                    title="Amarelo"></button>
-                <button onclick="markVerse('highlight-green')"
-                    class="w-10 h-10 rounded-full bg-green-400 ring-2 ring-offset-2 ring-green-400 transition hover:scale-110"
-                    title="Verde"></button>
-                <button onclick="markVerse('highlight-blue')"
-                    class="w-10 h-10 rounded-full bg-blue-400 ring-2 ring-offset-2 ring-blue-400 transition hover:scale-110"
-                    title="Azul"></button>
-                <button onclick="markVerse('remove')"
-                    class="w-10 h-10 rounded-full bg-gray-200 border-2 border-gray-400 flex items-center justify-center text-gray-500 hover:bg-red-100 hover:text-red-500 transition"
-                    title="Remover Destaque"><i class="ph-bold ph-prohibit"></i></button>
+                    class="w-8 h-8 rounded-full border border-white/20 bg-[#1a1a1a]"></button> <button
+                    onclick="changeCanvasBg(2)"
+                    class="w-8 h-8 rounded-full border border-white/20 bg-[#2b2b2b]"></button> <button
+                    onclick="changeCanvasBg(3)" class="w-8 h-8 rounded-full border border-white/20 bg-white"></button>
             </div>
             <div class="grid grid-cols-2 gap-3">
-                <button onclick="actionVerse('copy')"
-                    class="p-3 bg-gray-100 dark:bg-gray-700 rounded-xl font-bold text-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition flex items-center justify-center gap-2"><i
-                        class="ph-bold ph-copy"></i> Copiar</button>
-                <button onclick="openImageCreatorFromVerse()"
-                    class="p-3 bg-bible-100 dark:bg-bible-900/30 text-bible-700 dark:text-bible-300 rounded-xl font-bold text-sm hover:bg-bible-200 transition flex items-center justify-center gap-2"><i
-                        class="ph-bold ph-image"></i> Criar Imagem</button>
+                <button onclick="shareCreatedImage()"
+                    class="w-full bg-white text-black py-3 rounded-lg font-bold flex items-center justify-center gap-2"><i
+                        class="ph-bold ph-share-network"></i> Postar</button>
+                <button onclick="downloadCreatedImage()"
+                    class="w-full bg-zinc-800 text-white py-3 rounded-lg font-bold flex items-center justify-center gap-2"><i
+                        class="ph-bold ph-download-simple"></i> Baixar</button>
             </div>
         </div>
     </div>
 
     <div id="modal-feedback"
-        class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+        class="fixed inset-0 z-50 hidden items-center justify-center bg-zinc-900/80 backdrop-blur-sm p-4"
         onclick="closeModal('modal-feedback')">
-        <div class="bg-white dark:bg-gray-800 w-full max-w-md rounded-3xl p-6 shadow-2xl"
+        <div class="bg-white dark:bg-zinc-900 w-full max-w-md rounded-2xl p-6 shadow-2xl"
             onclick="event.stopPropagation()">
             <div class="flex justify-between mb-4">
-                <h3 class="font-bold text-xl">Fale Conosco</h3><button onclick="closeModal('modal-feedback')"><i
+                <h3 class="font-display font-bold text-xl">Contato</h3><button onclick="closeModal('modal-feedback')"><i
                         class="ph-bold ph-x"></i></button>
             </div>
             <div class="space-y-4">
-                <div><label class="block text-xs font-bold uppercase text-gray-500 mb-1">Seu E-mail
-                        (Obrigatório)</label><input type="email" id="feedback-email"
-                        class="w-full p-3 bg-gray-100 dark:bg-gray-700 rounded-xl border-none focus:ring-2 focus:ring-bible-500 invalid:ring-red-500"
-                        placeholder="exemplo@email.com" required></div>
-                <div><label class="block text-xs font-bold uppercase text-gray-500 mb-1">Mensagem</label><textarea
+                <div><label class="block text-[10px] font-bold uppercase text-zinc-500 mb-1">E-mail</label><input
+                        type="email" id="feedback-email"
+                        class="w-full p-3 bg-zinc-50 dark:bg-zinc-800 rounded-lg border-none focus:ring-2 focus:ring-black required">
+                </div>
+                <div><label class="block text-[10px] font-bold uppercase text-zinc-500 mb-1">Mensagem</label><textarea
                         id="feedback-text" rows="4"
-                        class="w-full p-3 bg-gray-100 dark:bg-gray-700 rounded-xl border-none resize-none focus:ring-2 focus:ring-bible-500"
-                        placeholder="Digite sua mensagem, sugestão ou reporte um erro..."></textarea></div>
+                        class="w-full p-3 bg-zinc-50 dark:bg-zinc-800 rounded-lg border-none resize-none focus:ring-2 focus:ring-black"></textarea>
+                </div>
                 <button onclick="sendFeedbackToEmail()"
-                    class="w-full bg-bible-600 text-white py-3 rounded-xl font-bold hover:bg-bible-700 shadow-md">Enviar
-                    E-mail</button>
+                    class="w-full bg-black text-white py-3 rounded-lg font-bold">Enviar</button>
             </div>
         </div>
     </div>
