@@ -103,7 +103,7 @@ Aqui está uma visão geral das principais funcionalidades do aplicativo:
 
 ### 👨‍💻 Autor
 **Mateus Vitor Heringer Barcellos**
-<div>Estudante de Análise e Desenvolvimento de Sistemas focado em criar soluções web eficientes.</div>
+<div>Estudante de Análise e Desenvolvimento de Sistemas focado em criar soluções eficientes.</div>
 
 ### 📄 Licença
 Este projeto está sob a licença MIT - veja o arquivo [LICENSE](./LICENSE) detalhes.
