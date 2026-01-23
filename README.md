@@ -92,11 +92,11 @@ Aqui está uma visão geral das principais funcionalidades do aplicativo:
 
 | **Home / Leitura** | **Modo Noturno (Dark)** | **Quiz Bíblico** |
 |:---:|:---:|:---:|
-| <img src="https://i.imgur.com/p7ERmA5.png" alt="Home Screen" width="250"/> | <img src="https://i.imgur.com/5XcnjA3.png" alt="Dark Mode" width="250"/> | <img src="https://i.imgur.com/5C3ymk5.png" alt="Quiz" width="250"/> |
+| <img src="https://i.ibb.co/TQQ3VXp/IMG-6286.png" alt="Home Screen" width="250"/> | <img src="https://i.ibb.co/vCztN4Ks/IMG-6291.png" alt="Dark Mode" width="250"/> | <img src="https://i.ibb.co/vxVHzrw9/IMG-6289.png" alt="Quiz" width="250"/> |
 
 | **Plano de Leitura** | **Backup & Restauração** |
 |:---:|:---:|
-| <img src="https://i.imgur.com/1bi80XO.png" alt="Plano de Leitura" width="250"/> | <img src="https://i.imgur.com/4jw47kx.png" alt="Backup" width="250"/> |
+| <img src="https://i.ibb.co/TxXcdr4c/IMG-6288.png" alt="Plano de Leitura" width="250"/> | <img src="https://i.ibb.co/TQQ3VXp/IMG-6286.png" alt="Backup" width="250"/> |
 
 ---
 
