@@ -1,7 +1,7 @@
 /**
  * ============================================================================
  * SERVICE WORKER - BÍBLIA ÁGAPE
- * Versão: 2.1.5
+ * Versão: 2.1.6
  * Data: 22/01/2026
  * ============================================================================
  * Estratégia de Cache: NETWORK FIRST (Rede Primeiro)
@@ -12,7 +12,7 @@
  * 4. Se falhar (sem internet), entrega a versão salva no Cache.
  */
 
-var CACHE_NAME = 'agape-v2.1.5-production';
+var CACHE_NAME = 'agape-v2.1.6';
 
 // Lista de arquivos vitais para o funcionamento offline
 var FILES_TO_CACHE = [
