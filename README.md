@@ -1,6 +1,6 @@
 # 📖 Bíblia Ágape (Leia a Bíblia)
 
-![Version](https://img.shields.io/badge/version-2.1.5-blue.svg)
+![Version](https://img.shields.io/badge/version-2.1.6-blue.svg)
 ![Status](https://img.shields.io/badge/status-active-success.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
