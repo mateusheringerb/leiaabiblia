@@ -1,9 +1,19 @@
 /**
  * ============================================================================
  * BÍBLIA ÁGAPE - APLICAÇÃO PRINCIPAL (app.js)
- * Versão: V2.1.6 (Rebranding Paper & Ink + Estúdio Pro)
+ * Versão: V2.2.0 (Gamification & Pro Studio)
  * Data: 23/01/2026
  * Autor: Mateus Heringer & Daniel
+ * * Descrição:
+ * Arquivo principal de lógica da aplicação PWA.
+ * Contém toda a regra de negócio para:
+ * - Leitura Bíblica (Offline)
+ * - Hinários (Destaque de Coro)
+ * - Quiz Gamificado (Animações e Pontuação)
+ * - Planos de Leitura (Gestão Completa)
+ * - Estúdio de Criação Pro (Canvas com Temas)
+ * - Contato via AJAX
+ * - Backup de Dados
  * ============================================================================
  */
 
@@ -11,36 +21,65 @@
 // 1. CONSTANTES E CONFIGURAÇÕES GLOBAIS
 // ============================================================================
 
+/**
+ * Lista de traduções disponíveis.
+ * IMPORTANTE: Os nomes devem coincidir exatamente com os arquivos JSON na raiz.
+ */
 var TRANSLATIONS = [
-    "ACF", "ARA", "ARC", "AS21", "JFAA", "KJA", "KJF", "NAA", "NBV", "NTLH", "NVI", "NVT", "TB"
+    "ACF", // Almeida Corrigida Fiel
+    "ARA", // Almeida Revista e Atualizada
+    "ARC", // Almeida Revista e Corrigida
+    "AS21", // Almeida Século 21
+    "JFAA", // João Ferreira de Almeida Atualizada
+    "KJA", // King James Atualizada
+    "KJF", // King James Fiel
+    "NAA", // Nova Almeida Atualizada
+    "NBV", // Nova Bíblia Viva
+    "NTLH", // Nova Tradução na Linguagem de Hoje
+    "NVI", // Nova Versão Internacional
+    "NVT", // Nova Versão Transformadora
+    "TB"   // Tradução Brasileira
 ];
 
+/**
+ * Estado Global da Aplicação (State Management).
+ * Armazena as preferências do usuário e o estado atual de navegação.
+ */
 var state = {
+    // Preferências Visuais
     fontSize: parseInt(localStorage.getItem('agape_font')) || 18,
     theme: localStorage.getItem('agape_theme') || 'light',
+
+    // Navegação Bíblica
     translation: localStorage.getItem('agape_version') || 'NVI',
-    book: parseInt(localStorage.getItem('agape_book')) || 0,
+    book: parseInt(localStorage.getItem('agape_book')) || 0, // Índice do livro (0 = Gênesis)
     chapter: parseInt(localStorage.getItem('agape_chapter')) || 1,
-    hymnbook: 'harpa',
-    mode: 'free'
+
+    // Contexto
+    hymnbook: 'harpa', // 'harpa', 'cantor', 'novocantico'
+    mode: 'free'       // 'free' (leitura livre) ou 'plan' (seguindo plano)
 };
 
 // ============================================================================
 // 2. CACHES E VARIÁVEIS DE DADOS
 // ============================================================================
 
+// Cache em memória para evitar requisições repetidas na mesma sessão
 var bibleCache = {};
+
+// Cache específico para hinários (carregados sob demanda)
 var hymnCache = {
     harpa: null,
     cantor: null,
     novocantico: null
 };
 
+// Variáveis Voláteis (Sessão Atual)
 var currentHymnList = [];
 var quizData = [];
 var selectedVerse = { id: "", text: "", ref: "" };
-var deferredPrompt = null;
-var touchStartX = 0;
+var deferredPrompt = null; // Evento de instalação PWA
+var touchStartX = 0;       // Controle de Swipe
 var touchEndX = 0;
 
 // --- VARIÁVEIS DO NOVO ESTÚDIO DE CRIAÇÃO (PRO) ---
@@ -48,42 +87,71 @@ var currentVerseText = "";
 var currentVerseRef = "";
 var currentThemeId = 'midnight';
 
-// Definição dos Temas Visuais para Stories
+// Definição dos Temas Visuais para Stories (Design System)
 const THEMES = {
     midnight: {
-        bgStart: "#18181b", bgEnd: "#09090b", // Zinc 950 Gradient (Dark Luxury)
-        text: "#ffffff", accent: "#d4d4d8", watermark: "rgba(255,255,255,0.03)",
-        fontMain: "Merriweather", fontSec: "Inter"
+        bgStart: "#18181b",
+        bgEnd: "#09090b",
+        text: "#ffffff",
+        accent: "#d4d4d8",
+        watermark: "rgba(255,255,255,0.03)",
+        fontMain: "Merriweather",
+        fontSec: "Inter"
     },
     paper: {
-        bgStart: "#fafaf9", bgEnd: "#e7e5e4", // Stone 100 Gradient (Journal/Livro)
-        text: "#1c1917", accent: "#b45309", watermark: "rgba(0,0,0,0.03)",
-        fontMain: "Merriweather", fontSec: "Inter"
+        bgStart: "#fafaf9",
+        bgEnd: "#e7e5e4",
+        text: "#1c1917",
+        accent: "#b45309",
+        watermark: "rgba(0,0,0,0.03)",
+        fontMain: "Merriweather",
+        fontSec: "Inter"
     },
     royal: {
-        bgStart: "#1e1b4b", bgEnd: "#020617", // Indigo 950 (Realeza)
-        text: "#ffffff", accent: "#a5b4fc", watermark: "rgba(255,255,255,0.05)",
-        fontMain: "Playfair Display", fontSec: "Inter"
+        bgStart: "#1e1b4b",
+        bgEnd: "#020617",
+        text: "#ffffff",
+        accent: "#a5b4fc",
+        watermark: "rgba(255,255,255,0.05)",
+        fontMain: "Playfair Display",
+        fontSec: "Inter"
     },
     nature: {
-        bgStart: "#064e3b", bgEnd: "#022c22", // Emerald 900 (Esperança)
-        text: "#ecfdf5", accent: "#6ee7b7", watermark: "rgba(255,255,255,0.05)",
-        fontMain: "Merriweather", fontSec: "Inter"
+        bgStart: "#064e3b",
+        bgEnd: "#022c22",
+        text: "#ecfdf5",
+        accent: "#6ee7b7",
+        watermark: "rgba(255,255,255,0.05)",
+        fontMain: "Merriweather",
+        fontSec: "Inter"
     }
 };
 
-// Dados Persistentes
+// Dados Persistentes (Carregados do LocalStorage com tratamento de erro)
 var savedMarks = {};
-try { savedMarks = JSON.parse(localStorage.getItem('agape_marks_v2')) || {}; } catch (e) { savedMarks = {}; }
+try {
+    savedMarks = JSON.parse(localStorage.getItem('agape_marks_v2')) || {};
+} catch (e) {
+    savedMarks = {};
+}
 
 var streakData = {};
-try { streakData = JSON.parse(localStorage.getItem('agape_streak')) || { count: 0, lastDate: "" }; } catch (e) { streakData = { count: 0, lastDate: "" }; }
+try {
+    streakData = JSON.parse(localStorage.getItem('agape_streak')) || { count: 0, lastDate: "" };
+} catch (e) {
+    streakData = { count: 0, lastDate: "" };
+}
 
 var quizTotalPoints = parseInt(localStorage.getItem('agape_quiz_points')) || 0;
 
 var planProgress = [];
-try { planProgress = JSON.parse(localStorage.getItem('agape_plan_progress')) || []; } catch (e) { planProgress = []; }
+try {
+    planProgress = JSON.parse(localStorage.getItem('agape_plan_progress')) || [];
+} catch (e) {
+    planProgress = [];
+}
 
+// Controle de Sessão do Quiz
 var quizSession = {
     active: false,
     currentLevel: 'facil',
@@ -93,29 +161,36 @@ var quizSession = {
 };
 
 // ============================================================================
-// 3. INICIALIZAÇÃO DO SISTEMA
+// 3. INICIALIZAÇÃO DO SISTEMA (BOOTSTRAP)
 // ============================================================================
 
 window.onload = async function () {
     try {
-        console.log("=== Iniciando Sistema Bíblia Ágape V2.1.6 ===");
+        console.log("=== Iniciando Sistema Bíblia Ágape V2.2.0 ===");
 
+        // 1. Aplica preferências visuais
         applyTheme(state.theme);
         updateStreakDisplay();
         populateSelectElements();
 
+        // 2. Carregamento de Dados Assíncronos
         loadDailyVerse();
         await loadQuizData();
 
+        // 3. Configuração de Listeners de Eventos
         setupSwipeGestures();
         setupInstallPrompt();
         setupSearchInput();
+
+        // 4. Verifica planos
         checkActivePlan();
 
+        // 5. ATUALIZAÇÃO FORÇADA (Network First Strategy)
         if (navigator.onLine) {
             forceUpdateAll();
         }
 
+        // 6. Configuração de Roteamento (SPA)
         window.history.replaceState({ screen: 'screen-home' }, 'Home', '');
 
         window.onpopstate = function (event) {
@@ -126,6 +201,7 @@ window.onload = async function () {
             }
         };
 
+        // 7. Renderização Inicial
         await loadChapter();
         changeHymnbook();
 
@@ -135,21 +211,37 @@ window.onload = async function () {
     }
 };
 
+/**
+ * Força o download de todos os arquivos JSON críticos para garantir que
+ * o Service Worker capture a versão mais recente.
+ */
 window.forceUpdateAll = async function () {
-    console.log("Atualizando cache em background...");
+    console.log("Iniciando atualização forçada de cache em background...");
+
     var filesToUpdate = TRANSLATIONS.map(function (t) { return t + '.json'; });
-    filesToUpdate.push('harpa.json', 'cantor_cristao.json', 'novo_cantico_completo.json', 'quiz.json', 'bible-data.js');
+    filesToUpdate.push(
+        'harpa.json',
+        'cantor_cristao.json',
+        'novo_cantico_completo.json',
+        'quiz.json',
+        'bible-data.js'
+    );
 
     for (var i = 0; i < filesToUpdate.length; i++) {
-        try { await fetch('./' + filesToUpdate[i], { cache: 'reload' }); } catch (e) { }
+        try {
+            await fetch('./' + filesToUpdate[i], { cache: 'reload' });
+        } catch (e) {
+            console.warn("Falha ao atualizar arquivo: " + filesToUpdate[i]);
+        }
     }
 };
 
 // ============================================================================
-// 4. SISTEMA DE NAVEGAÇÃO
+// 4. SISTEMA DE NAVEGAÇÃO E ROTEAMENTO
 // ============================================================================
 
 function _showScreenInternal(screenId) {
+    // 1. Oculta todas as telas
     var screens = document.querySelectorAll('#main-content > div');
     screens.forEach(function (screen) {
         if (screen.id && screen.id.startsWith('screen-')) {
@@ -157,6 +249,7 @@ function _showScreenInternal(screenId) {
         }
     });
 
+    // 2. Exibe a tela alvo
     var targetScreen = document.getElementById(screenId);
     if (targetScreen) {
         targetScreen.classList.remove('hidden');
@@ -168,6 +261,7 @@ window.showScreen = function (screenId) {
     window.history.pushState({ screen: screenId }, screenId, '');
     _showScreenInternal(screenId);
 
+    // Inicializações específicas por tela
     if (screenId === 'screen-read') {
         if (state.mode !== 'plan') {
             state.mode = 'free';
@@ -205,7 +299,10 @@ window.handleNavigationChange = function () {
     if (selectBook) { state.book = parseInt(selectBook.value); }
     if (selectChapter) { state.chapter = parseInt(selectChapter.value); }
 
+    // Atualiza lista de capítulos se o livro mudou
     updateChaptersSelect(false);
+
+    // Carrega novo texto
     loadChapter();
 };
 
@@ -213,6 +310,7 @@ async function loadChapter() {
     window.scrollTo(0, 0);
     var container = document.getElementById('text-container');
 
+    // Sincroniza selects com o estado atual
     var selectTranslation = document.getElementById('read-translation');
     var selectBook = document.getElementById('read-book');
     var selectChapter = document.getElementById('read-chapter');
@@ -220,10 +318,12 @@ async function loadChapter() {
     if (selectTranslation) selectTranslation.value = state.translation;
     if (selectBook) {
         selectBook.value = state.book;
+        // Atualiza selects sem recarregar o texto para evitar loop
         updateChaptersSelect(false);
     }
     if (selectChapter) selectChapter.value = state.chapter;
 
+    // Persiste no LocalStorage
     localStorage.setItem('agape_version', state.translation);
     localStorage.setItem('agape_book', state.book);
     localStorage.setItem('agape_chapter', state.chapter);
@@ -257,15 +357,15 @@ async function loadChapter() {
             var reference = bookName + ' ' + state.chapter + ':' + verseNumber;
             var content = text;
 
+            // Processamento de Letras Vermelhas (Jesus)
             if (isGospel) {
                 content = content
                     .replace(/“([^”]+)”/g, '<span class="red-letter">“$1”</span>')
                     .replace(/"([^"]+)"/g, '<span class="red-letter">"$1"</span>');
             }
 
-            // AQUI MUDOU: Classes atualizadas para o tema Paper & Ink (hover:bg-bible-100)
-            htmlBuilder +=
-                '<div class="flex gap-3 relative group cursor-pointer hover:bg-bible-100 dark:hover:bg-bible-800/50 p-2 rounded-lg transition ' + markClass + '" ' +
+            // HTML Verboso para clareza
+            htmlBuilder += '<div class="flex gap-3 relative group cursor-pointer hover:bg-bible-100 dark:hover:bg-bible-800/50 p-2 rounded-lg transition ' + markClass + '" ' +
                 '     id="v-' + verseNumber + '" onclick="handleVerseClick(\'' + verseId + '\', \'' + escapeHtml(text) + '\', \'' + reference + '\')">' +
                 '    <span class="text-xs font-bold text-bible-400 mt-2 select-none w-6 text-right shrink-0 font-sans">' + verseNumber + '</span>' +
                 '    <p class="verse-content text-lg flex-1 leading-loose" style="font-size:' + state.fontSize + 'px">' + content + '</p>' +
@@ -282,9 +382,13 @@ async function loadChapter() {
 }
 
 window.changeChapter = function (delta) {
+    // 1. Tenta carregar configuração do plano para navegação cronológica
     var planConfig = null;
-    try { planConfig = JSON.parse(localStorage.getItem('agape_plan')); } catch (e) { }
+    try {
+        planConfig = JSON.parse(localStorage.getItem('agape_plan'));
+    } catch (e) { }
 
+    // 2. Lógica Especial: Plano Cronológico
     if (state.mode === 'plan' && planConfig && planConfig.type === 'chronological' && typeof FLAT_CHRONO_INDEX !== 'undefined') {
         var currentIndex = FLAT_CHRONO_INDEX.findIndex(function (x) { return x.b === state.book && x.c === state.chapter; });
         if (currentIndex !== -1) {
@@ -296,11 +400,12 @@ window.changeChapter = function (delta) {
                 loadChapter();
                 return;
             } else {
-                return;
+                return; // Fim ou Início do Plano
             }
         }
     }
 
+    // 3. Lógica Padrão: Navegação Sequencial
     var maxChapters = BIBLE_BOOKS[state.book].caps;
     var nextChapter = state.chapter + delta;
 
@@ -308,13 +413,16 @@ window.changeChapter = function (delta) {
         if (state.book < 65) {
             state.book++;
             nextChapter = 1;
-        } else { return; }
-    }
-    else if (nextChapter < 1) {
+        } else {
+            return; // Fim da Bíblia
+        }
+    } else if (nextChapter < 1) {
         if (state.book > 0) {
             state.book--;
             nextChapter = BIBLE_BOOKS[state.book].caps;
-        } else { return; }
+        } else {
+            return; // Início da Bíblia
+        }
     }
 
     state.chapter = nextChapter;
@@ -324,8 +432,8 @@ window.changeChapter = function (delta) {
 window.updateChaptersSelect = function (shouldLoadText) {
     var selectChapter = document.getElementById('read-chapter');
     var bookIndex = state.book;
-    selectChapter.innerHTML = '';
 
+    selectChapter.innerHTML = '';
     for (var i = 1; i <= BIBLE_BOOKS[bookIndex].caps; i++) {
         selectChapter.add(new Option(i, i));
     }
@@ -341,6 +449,7 @@ window.updateChaptersSelect = function (shouldLoadText) {
 };
 
 window.populateSelectElements = function () {
+    // Popula Seleção de Tradução Principal
     var selectTrans = document.getElementById('read-translation');
     if (selectTrans) {
         selectTrans.innerHTML = TRANSLATIONS.map(function (t) {
@@ -349,6 +458,7 @@ window.populateSelectElements = function () {
         selectTrans.value = state.translation;
     }
 
+    // Popula Seleção de Tradução do Plano
     var selectPlanTrans = document.getElementById('plan-translation');
     if (selectPlanTrans) {
         selectPlanTrans.innerHTML = TRANSLATIONS.map(function (t) {
@@ -357,6 +467,7 @@ window.populateSelectElements = function () {
         selectPlanTrans.value = 'NVI';
     }
 
+    // Popula Seleção de Livros
     var selectBook = document.getElementById('read-book');
     if (selectBook) {
         selectBook.innerHTML = '';
@@ -382,9 +493,11 @@ function getPlanDataForDay(dayIndex, totalDuration, type) {
     var endIndex = Math.floor(dayIndex * chaptersPerDay) - 1;
 
     if (startIndex >= sourceIndex.length) return null;
+
     var safeEndIndex = Math.min(endIndex, sourceIndex.length - 1);
     var startItem = sourceIndex[startIndex];
 
+    // Formatação dos intervalos de leitura (Ex: Gênesis 1-3)
     var chunks = [];
     var currentChunk = null;
 
@@ -438,7 +551,6 @@ window.renderPlanOverview = function () {
         if (!planData) continue;
 
         var checkIcon = isDone ? 'ph-check' : 'ph-circle';
-        // AQUI MUDOU: Cores ajustadas para Accent/Bible
         var cardClass = isDone ? 'border-accent-500 bg-accent-50 dark:bg-accent-900/10' : 'border-bible-200 dark:border-bible-700';
         var btnClass = isDone ? 'bg-accent-600 text-white shadow-lg' : 'bg-bible-100 dark:bg-bible-700 text-bible-400 hover:bg-bible-200';
         var textClass = isDone ? 'line-through opacity-70 text-accent-700 dark:text-accent-400' : 'text-bible-800 dark:text-bible-200';
@@ -464,6 +576,7 @@ window.togglePlanDay = function (day) {
     var index = planProgress.indexOf(day);
     if (index === -1) planProgress.push(day);
     else planProgress.splice(index, 1);
+
     localStorage.setItem('agape_plan_progress', JSON.stringify(planProgress));
     renderPlanOverview();
 };
@@ -577,7 +690,6 @@ function renderHymnList(list) {
     var container = document.getElementById('harpa-list');
     var displayList = list.slice(0, 100);
 
-    // AQUI MUDOU: Cores ajustadas
     container.innerHTML = displayList.map(function (h) {
         var cleanTitle = h.title.replace(/^\d+\s*-\s*/, '');
         return '<div onclick="openHymn(\'' + h.id + '\')" class="bg-white dark:bg-bible-800 p-4 rounded-xl border border-bible-200 dark:border-bible-700 cursor-pointer flex items-center gap-3 hover:border-accent-600 transition shadow-sm">' +
@@ -624,14 +736,18 @@ window.filterHarpa = function () {
 };
 
 // ============================================================================
-// 8. QUIZ BÍBLICO
+// 8. QUIZ BÍBLICO (GAMIFICADO) - ANIMAÇÕES E PARTICULAS
 // ============================================================================
 
 window.loadQuizData = async function () {
     try {
-        var r = await fetch('./quiz.json');
-        if (r.ok) quizData = await r.json();
-    } catch (e) { console.error(e); }
+        var response = await fetch('./quiz.json');
+        if (response.ok) {
+            quizData = await response.json();
+        }
+    } catch (e) {
+        console.error("Erro ao carregar quiz:", e);
+    }
     document.getElementById('quiz-points').innerText = quizTotalPoints;
 };
 
@@ -643,6 +759,7 @@ window.startQuizSession = function () {
 window.renderQuizQuestion = function () {
     var container = document.getElementById('quiz-container');
 
+    // Filtra perguntas do nível atual que não foram jogadas
     var pool = quizData.filter(function (q) {
         return q.nivel === quizSession.currentLevel && !quizSession.history.includes(q.id);
     });
@@ -652,69 +769,123 @@ window.renderQuizQuestion = function () {
     }
 
     if (pool.length === 0) {
-        container.innerHTML = '<div class="text-center p-8"><h3 class="font-bold text-2xl mb-2">Parabéns!</h3><button onclick="startQuizSession()" class="bg-accent-600 text-white px-6 py-3 rounded-xl font-bold mt-4">Reiniciar</button></div>';
+        container.innerHTML =
+            '<div class="text-center p-8 animate-pop">' +
+            '   <h3 class="font-bold text-2xl mb-2">Quiz Concluído!</h3>' +
+            '   <p class="mb-4">Você é um mestre da Bíblia!</p>' +
+            '   <button onclick="startQuizSession()" class="bg-accent-600 text-white px-6 py-3 rounded-xl font-bold mt-4 shadow-lg hover:scale-105 transition">Jogar Novamente</button>' +
+            '</div>';
         return;
     }
 
     var question = pool[Math.floor(Math.random() * pool.length)];
 
-    // AQUI MUDOU: Cores ajustadas
+    // Renderização com Animação de Entrada (animate-slide-up)
+    var htmlOptions = question.opcoes.map(function (op, i) {
+        var letter = ['A', 'B', 'C', 'D'][i];
+        return '<button onclick="handleQuizAnswer(' + question.id + ', ' + i + ', this)" class="w-full text-left p-4 rounded-xl bg-bible-50 dark:bg-bible-700 hover:bg-bible-100 dark:hover:bg-bible-600 transition font-medium flex gap-3 group items-center relative overflow-hidden">' +
+            '    <div class="w-8 h-8 rounded-full bg-white dark:bg-bible-600 flex items-center justify-center font-bold text-sm text-bible-500 group-hover:text-accent-600 shadow-sm z-10">' + letter + '</div>' +
+            '    <span class="flex-1 z-10">' + op + '</span>' +
+            '</button>';
+    }).join('');
+
     container.innerHTML =
-        '<div class="bg-white dark:bg-bible-800 p-6 rounded-3xl shadow-lg border border-bible-200 dark:border-bible-700 animate-fade-in">' +
-        '   <div class="flex justify-between items-center mb-4"><span class="bg-bible-100 dark:bg-bible-900/30 text-bible-700 dark:text-bible-300 text-xs font-bold px-3 py-1 rounded-full uppercase">' + quizSession.currentLevel + '</span></div>' +
-        '   <h3 class="text-xl font-bold my-4">' + question.pergunta + '</h3>' +
-        '   <div class="space-y-3">' +
-        question.opcoes.map(function (op, i) {
-            return '<button onclick="handleQuizAnswer(' + question.id + ',' + i + ',this)" class="w-full text-left p-4 rounded-xl bg-bible-50 dark:bg-bible-700 hover:bg-bible-100 dark:hover:bg-bible-600 transition font-medium flex gap-3 group items-center">' +
-                '    <div class="w-8 h-8 rounded-full bg-white dark:bg-bible-600 flex items-center justify-center font-bold text-sm text-bible-500 group-hover:text-accent-600 shadow-sm">' + ['A', 'B', 'C', 'D'][i] + '</div>' +
-                '    <span class="flex-1">' + op + '</span>' +
-                '</button>';
-        }).join('') +
+        '<div class="bg-white dark:bg-bible-800 p-6 rounded-3xl shadow-lg border border-bible-200 dark:border-bible-700 animate-slide-up">' +
+        '   <div class="flex justify-between items-center mb-4">' +
+        '       <span class="bg-bible-100 dark:bg-bible-900/30 text-bible-700 dark:text-bible-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">' + quizSession.currentLevel + '</span>' +
+        (quizSession.streak > 1 ? '<span class="text-xs font-bold text-orange-500 animate-pulse">🔥 Combo x' + quizSession.streak + '</span>' : '') +
         '   </div>' +
+        '   <h3 class="text-xl font-bold my-6 leading-relaxed">' + question.pergunta + '</h3>' +
+        '   <div class="space-y-3">' + htmlOptions + '</div>' +
         '</div>';
 };
 
 window.handleQuizAnswer = function (questionId, optionIndex, btnElement) {
-    document.querySelectorAll('#quiz-container button').forEach(function (b) { b.disabled = true; });
+    // Bloqueia múltiplos cliques
+    document.querySelectorAll('#quiz-container button').forEach(function (b) {
+        b.disabled = true;
+        b.style.opacity = '0.7';
+    });
+
     var question = quizData.find(function (x) { return x.id === questionId; });
 
+    // Destaca a seleção
+    btnElement.style.opacity = '1';
     btnElement.classList.remove('bg-bible-50', 'dark:bg-bible-700');
 
     if (optionIndex === question.correta) {
-        btnElement.classList.add('bg-green-100', 'border-green-500', 'text-green-800');
-        quizTotalPoints += 10;
+        // --- ACERTO: Animação POP + Confetes ---
+        btnElement.classList.add('animate-pop', 'bg-green-100', 'border-green-500', 'text-green-800');
+        triggerConfetti(); // Chuva de partículas
+
+        // Cálculo de Pontos com Bônus de Streak
+        var points = 10 + (quizSession.streak * 2);
+        quizTotalPoints += points;
         quizSession.streak++;
+
+        // Atualiza Score Visual
+        var scoreEl = document.getElementById('quiz-points');
+        scoreEl.innerText = quizTotalPoints;
+        scoreEl.parentElement.classList.add('animate-pop');
+        setTimeout(function () { scoreEl.parentElement.classList.remove('animate-pop'); }, 300);
+
         quizSession.history.push(questionId);
-
         localStorage.setItem('agape_quiz_points', quizTotalPoints);
-        document.getElementById('quiz-points').innerText = quizTotalPoints;
 
-        if (quizSession.streak >= 2) {
-            if (quizSession.currentLevel === 'facil') quizSession.currentLevel = 'medio';
-            else if (quizSession.currentLevel === 'medio') quizSession.currentLevel = 'dificil';
-            quizSession.streak = 0;
-        }
-        setTimeout(renderQuizQuestion, 1200);
+        // Progressão de Nível
+        if (quizSession.streak >= 3 && quizSession.currentLevel === 'facil') quizSession.currentLevel = 'medio';
+        else if (quizSession.streak >= 5 && quizSession.currentLevel === 'medio') quizSession.currentLevel = 'dificil';
+
+        setTimeout(renderQuizQuestion, 1500);
+
     } else {
-        btnElement.classList.add('bg-red-100', 'border-red-500', 'text-red-800');
-        if (navigator.vibrate) navigator.vibrate(200);
+        // --- ERRO: Animação SHAKE ---
+        btnElement.classList.add('animate-shake', 'bg-red-100', 'border-red-500', 'text-red-800');
+
+        if (navigator.vibrate) navigator.vibrate(300);
         quizSession.streak = 0;
+
+        // Feedback Educativo
         setTimeout(function () {
-            alert('Incorreto! A resposta correta era: ' + question.opcoes[question.correta]);
+            alert('Ah não! A resposta correta era: ' + question.opcoes[question.correta]);
             quizSession.history.push(questionId);
             renderQuizQuestion();
         }, 1000);
     }
 };
 
+// Função de Confetes (Leve e sem bibliotecas externas)
+function triggerConfetti() {
+    for (let i = 0; i < 30; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+
+        // Posição aleatória na tela
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.top = '-10px';
+
+        // Cores variadas (Dourado, Branco, Verde)
+        const colors = ['#f59e0b', '#ffffff', '#22c55e', '#fcd34d'];
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+        // Velocidade e rotação aleatória
+        confetti.style.animationDuration = (Math.random() * 2 + 1) + 's';
+
+        document.body.appendChild(confetti);
+
+        // Limpeza do DOM
+        setTimeout(function () { confetti.remove(); }, 3000);
+    }
+}
+
 // ============================================================================
-// 9. CRIADOR DE STORIES (ESTÚDIO PRO - CANVAS 2.0)
+// 9. ESTÚDIO PRO (CANVAS 2.0) - GERAÇÃO DE STORIES
 // ============================================================================
 
 window.openImageCreator = function () {
     // Captura o texto do dia
-    const dailyText = document.getElementById('daily-text').innerText;
-    const dailyRef = document.getElementById('daily-reference').innerText;
+    var dailyText = document.getElementById('daily-text').innerText;
+    var dailyRef = document.getElementById('daily-reference').innerText;
     openImageCreatorWithText(dailyText, dailyRef);
 };
 
@@ -728,12 +899,12 @@ window.openImageCreatorWithText = function (text, ref) {
     currentVerseText = text.replace(/"/g, ''); // Remove aspas extras
     currentVerseRef = ref;
 
-    const modal = document.getElementById('modal-image-creator');
+    var modal = document.getElementById('modal-image-creator');
     modal.classList.remove('hidden');
     modal.classList.add('flex');
 
-    // Delay para garantir renderização correta
-    setTimeout(() => {
+    // Pequeno delay para garantir que o canvas foi renderizado no DOM
+    setTimeout(function () {
         drawCanvas();
     }, 100);
 };
@@ -744,51 +915,52 @@ window.changeTheme = function (themeId) {
 };
 
 function drawCanvas() {
-    const canvas = document.getElementById('image-editor-canvas');
+    var canvas = document.getElementById('image-editor-canvas');
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const theme = THEMES[currentThemeId];
+
+    var ctx = canvas.getContext('2d');
+    var theme = THEMES[currentThemeId];
 
     // Configuração Full HD
     canvas.width = 1080;
     canvas.height = 1920;
 
     // 1. Fundo Gradiente
-    const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+    var gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
     gradient.addColorStop(0, theme.bgStart);
     gradient.addColorStop(1, theme.bgEnd);
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // 2. Marca D'água (Aspas)
+    // 2. Marca D'água (Aspas Gigantes)
     ctx.fillStyle = theme.watermark;
     ctx.font = "bold 600px " + theme.fontMain;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText("”", canvas.width / 2, canvas.height / 2 - 100);
 
-    // 3. Texto Principal (Lógica de Quebra e Tamanho)
+    // 3. Texto Principal (Lógica de Quebra e Tamanho Dinâmico)
     ctx.fillStyle = theme.text;
     ctx.textAlign = "center";
 
-    let fontSize = 80;
+    var fontSize = 80;
     if (currentVerseText.length > 150) fontSize = 60;
     if (currentVerseText.length > 300) fontSize = 50;
 
-    ctx.font = `italic ${fontSize}px ${theme.fontMain}`;
+    ctx.font = "italic " + fontSize + "px " + theme.fontMain;
 
-    const margin = 100;
-    const maxWidth = canvas.width - (margin * 2);
-    const lineHeight = fontSize * 1.5;
+    var margin = 100;
+    var maxWidth = canvas.width - (margin * 2);
+    var lineHeight = fontSize * 1.5;
 
-    // Word Wrap
-    const words = currentVerseText.split(' ');
-    let line = '';
-    let lines = [];
+    // Word Wrap (Quebra de Linha Manual para Canvas)
+    var words = currentVerseText.split(' ');
+    var line = '';
+    var lines = [];
 
-    for (let n = 0; n < words.length; n++) {
-        const testLine = line + words[n] + ' ';
-        const metrics = ctx.measureText(testLine);
+    for (var n = 0; n < words.length; n++) {
+        var testLine = line + words[n] + ' ';
+        var metrics = ctx.measureText(testLine);
         if (metrics.width > maxWidth && n > 0) {
             lines.push(line);
             line = words[n] + ' ';
@@ -799,17 +971,17 @@ function drawCanvas() {
     lines.push(line);
 
     // Centralização Vertical
-    const totalTextHeight = lines.length * lineHeight;
-    let startY = (canvas.height - totalTextHeight) / 2;
+    var totalTextHeight = lines.length * lineHeight;
+    var startY = (canvas.height - totalTextHeight) / 2;
 
-    for (let i = 0; i < lines.length; i++) {
+    for (var i = 0; i < lines.length; i++) {
         ctx.fillText(lines[i], canvas.width / 2, startY + (i * lineHeight));
     }
 
     // 4. Referência
-    const refY = startY + (lines.length * lineHeight) + 60;
+    var refY = startY + (lines.length * lineHeight) + 60;
     ctx.fillStyle = theme.accent;
-    ctx.font = `bold 40px ${theme.fontSec}`;
+    ctx.font = "bold 40px " + theme.fontSec;
     ctx.fillText(currentVerseRef.toUpperCase(), canvas.width / 2, refY);
 
     // 5. Linha Decorativa
@@ -823,17 +995,16 @@ function drawCanvas() {
     // 6. Rodapé (Branding)
     ctx.fillStyle = theme.text;
     ctx.globalAlpha = 0.6;
-    ctx.font = `30px ${theme.fontSec}`;
-    const footerY = canvas.height - 120;
+    ctx.font = "30px " + theme.fontSec;
 
-    ctx.fillText("BÍBLIA ÁGAPE • LEIAABIBLIA.APP", canvas.width / 2, footerY);
+    ctx.fillText("BÍBLIA ÁGAPE • LEIAABIBLIA.APP", canvas.width / 2, canvas.height - 120);
     ctx.globalAlpha = 1.0;
 }
 
 window.shareCreatedImage = function () {
-    const canvas = document.getElementById('image-editor-canvas');
-    canvas.toBlob(async (blob) => {
-        const file = new File([blob], 'versiculo-agape.png', { type: 'image/png' });
+    var canvas = document.getElementById('image-editor-canvas');
+    canvas.toBlob(async function (blob) {
+        var file = new File([blob], 'versiculo-agape.png', { type: 'image/png' });
         if (navigator.canShare && navigator.canShare({ files: [file] })) {
             try {
                 await navigator.share({
@@ -849,9 +1020,9 @@ window.shareCreatedImage = function () {
 };
 
 window.downloadCreatedImage = function () {
-    const canvas = document.getElementById('image-editor-canvas');
-    const link = document.createElement('a');
-    link.download = `versiculo-agape-${Date.now()}.png`;
+    var canvas = document.getElementById('image-editor-canvas');
+    var link = document.createElement('a');
+    link.download = "versiculo-agape-" + Date.now() + ".png";
     link.href = canvas.toDataURL();
     link.click();
 };
@@ -863,31 +1034,48 @@ window.downloadCreatedImage = function () {
 window.setupSwipeGestures = function () {
     var el = document.getElementById('main-content');
     if (!el) return;
-    el.addEventListener('touchstart', function (e) { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+
+    el.addEventListener('touchstart', function (e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
     el.addEventListener('touchend', function (e) {
         touchEndX = e.changedTouches[0].screenX;
         var diff = touchStartX - touchEndX;
+        // Swipe para voltar (se arrastar da esquerda pra direita)
         if (diff < -80) goBack();
     }, { passive: true });
 };
 
-window.checkActivePlan = function () { if (localStorage.getItem('agape_plan')) document.getElementById('active-plan-card').classList.remove('hidden'); };
-window.escapeHtml = function (t) { return t.replace(/"/g, "&quot;").replace(/'/g, "&#039;"); };
-window.updateStreakDisplay = function () { document.getElementById('streak-count-header').innerText = streakData.count; };
+window.checkActivePlan = function () {
+    if (localStorage.getItem('agape_plan')) {
+        document.getElementById('active-plan-card').classList.remove('hidden');
+    }
+};
+
+window.escapeHtml = function (t) {
+    return t.replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+};
+
+window.updateStreakDisplay = function () {
+    document.getElementById('streak-count-header').innerText = streakData.count;
+};
 
 window.searchBible = function () {
     showScreen('screen-search');
-    setTimeout(function () { document.getElementById('search-input').focus(); }, 300);
+    setTimeout(function () {
+        document.getElementById('search-input').focus();
+    }, 300);
 };
 
 window.setupSearchInput = function () {
-    document.getElementById('btn-search-action').onclick = window.performSearch;
+    document.getElementById('btn-search-action').onclick = performSearch;
     document.getElementById('search-input').addEventListener('keyup', function (e) {
-        if (e.key === 'Enter') window.performSearch();
+        if (e.key === 'Enter') performSearch();
     });
 };
 
-window.performSearch = async function () {
+async function performSearch() {
     var query = document.getElementById('search-input').value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     if (query.length < 3) return alert("Digite pelo menos 3 letras.");
 
@@ -895,38 +1083,53 @@ window.performSearch = async function () {
     container.innerHTML = '<div class="p-10 text-center animate-pulse">Buscando em toda a Bíblia...</div>';
 
     setTimeout(async function () {
-        if (!bibleCache[state.translation]) bibleCache[state.translation] = await (await fetch('./' + state.translation + '.json')).json();
+        // Carrega tradução se necessário
+        if (!bibleCache[state.translation]) {
+            var response = await fetch('./' + state.translation + '.json');
+            bibleCache[state.translation] = await response.json();
+        }
 
         var bib = bibleCache[state.translation];
         var results = [];
         var count = 0;
 
+        // Algoritmo de Busca Profunda com Limite
         outerLoop:
         for (var b = 0; b < bib.length; b++) {
-            for (var ch = 0; ch < bib[b].chapters.length; ch++) {
-                for (var v = 0; v < bib[b].chapters[ch].length; v++) {
-                    var verseText = bib[b].chapters[ch][v];
-                    if (verseText.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(query)) {
+            for (var c = 0; c < bib[b].chapters.length; c++) {
+                for (var v = 0; v < bib[b].chapters[c].length; v++) {
+                    var text = bib[b].chapters[c][v];
+                    var normalized = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+                    if (normalized.includes(query)) {
                         results.push({
-                            b: b, c: ch + 1, v: v + 1,
-                            text: verseText,
-                            ref: BIBLE_BOOKS[b].name + ' ' + (ch + 1) + ':' + (v + 1)
+                            b: b,
+                            c: c + 1,
+                            v: v + 1,
+                            text: text,
+                            ref: BIBLE_BOOKS[b].name + ' ' + (c + 1) + ':' + (v + 1)
                         });
                         count++;
                         if (count >= 50) break outerLoop;
                     }
                 }
+                if (count >= 50) break;
             }
+            if (count >= 50) break;
         }
 
-        container.innerHTML = results.length ? results.map(function (r) {
-            return '<div onclick="goToVerse(' + r.b + ',' + r.c + ',' + r.v + ')" class="bg-white dark:bg-bible-800 p-4 rounded-xl border border-bible-200 dark:border-bible-700 cursor-pointer hover:border-accent-600 transition shadow-sm">' +
-                '    <p class="font-bold text-accent-600 text-sm mb-1">' + r.ref + '</p>' +
-                '    <p class="text-sm line-clamp-2 text-bible-700 dark:text-bible-300">' + r.text + '</p>' +
-                '</div>';
-        }).join('') : '<div class="p-10 text-center text-bible-500">Nenhum resultado encontrado.</div>';
+        if (results.length > 0) {
+            container.innerHTML = results.map(function (r) {
+                return '<div onclick="goToVerse(' + r.b + ', ' + r.c + ', ' + r.v + ')" class="bg-white dark:bg-bible-800 p-4 rounded-xl border border-bible-200 dark:border-bible-700 cursor-pointer hover:border-accent-600 transition shadow-sm">' +
+                    '    <p class="font-bold text-accent-600 text-sm mb-1">' + r.ref + '</p>' +
+                    '    <p class="text-sm line-clamp-2 text-bible-700 dark:text-bible-300">' + r.text + '</p>' +
+                    '</div>';
+            }).join('');
+        } else {
+            container.innerHTML = '<div class="p-10 text-center text-bible-500">Nenhum resultado encontrado.</div>';
+        }
     }, 100);
-};
+}
 
 window.goToVerse = function (b, c, v) {
     state.book = b;
@@ -971,7 +1174,7 @@ window.loadHighlightsList = function () {
     container.innerHTML = keys.map(function (ky) {
         var p = ky.split('-');
         var bName = BIBLE_BOOKS[p[0]].name;
-        // AQUI MUDOU: Cores
+
         return '<div onclick="goToVerse(' + p[0] + ',' + p[1] + ',' + p[2] + ')" class="bg-white dark:bg-bible-800 p-4 rounded-xl border-l-4 border-accent-500 cursor-pointer shadow-sm hover:bg-bible-50 transition">' +
             '    <p class="font-bold text-bible-800 dark:text-bible-200">' + bName + ' ' + p[1] + ':' + p[2] + '</p>' +
             '</div>';
@@ -1005,8 +1208,9 @@ window.loadDailyVerse = function () {
 
 window.handleVerseClick = function (id, text, ref) {
     selectedVerse = { id: id, text: text, ref: ref };
-    document.getElementById('modal-verse').classList.remove('hidden');
-    document.getElementById('modal-verse').classList.add('flex');
+    var m = document.getElementById('modal-verse');
+    m.classList.remove('hidden');
+    m.classList.add('flex');
 };
 
 window.markVerse = function (colorClass) {
@@ -1017,29 +1221,31 @@ window.markVerse = function (colorClass) {
 
     var element = document.getElementById('v-' + selectedVerse.id.split('-')[2]);
     if (element) {
-        // AQUI MUDOU: Classes
         element.className = 'flex gap-3 relative group cursor-pointer hover:bg-bible-100 dark:hover:bg-bible-800/50 p-2 rounded-lg transition ' + colorClass;
     }
     closeModal('modal-verse');
 };
 
 window.closeModal = function (id) {
-    document.getElementById(id).classList.add('hidden');
-    document.getElementById(id).classList.remove('flex');
+    var el = document.getElementById(id);
+    el.classList.add('hidden');
+    el.classList.remove('flex');
 };
 
 window.openPlanSetup = function () {
-    document.getElementById('modal-plan').classList.remove('hidden');
-    document.getElementById('modal-plan').classList.add('flex');
+    var m = document.getElementById('modal-plan');
+    m.classList.remove('hidden');
+    m.classList.add('flex');
 };
 
 window.openFeedbackModal = function () {
-    document.getElementById('modal-feedback').classList.remove('hidden');
-    document.getElementById('modal-feedback').classList.add('flex');
+    var m = document.getElementById('modal-feedback');
+    m.classList.remove('hidden');
+    m.classList.add('flex');
 };
 
 // ============================================================================
-// 11. FEEDBACK VIA AJAX
+// 11. FEEDBACK & BACKUP
 // ============================================================================
 
 window.sendFeedbackToEmail = function () {
@@ -1087,7 +1293,7 @@ window.sendFeedbackToEmail = function () {
 
 window.exportData = function () {
     var obj = {
-        meta: { app: "Bíblia Ágape", version: "V2.1.6", date: new Date().toISOString() },
+        meta: { app: "Bíblia Ágape", version: "V2.2.0", date: new Date().toISOString() },
         data: { ...localStorage }
     };
     var a = document.createElement('a');
@@ -1096,7 +1302,9 @@ window.exportData = function () {
     a.click();
 };
 
-window.triggerImport = function () { document.getElementById('import-file').click(); };
+window.triggerImport = function () {
+    document.getElementById('import-file').click();
+};
 
 window.handleImportFile = function (e) {
     var f = e.target.files[0];
@@ -1110,7 +1318,9 @@ window.handleImportFile = function (e) {
 
             if (confirm("Deseja restaurar este backup? Seus dados atuais serão substituídos.")) {
                 var d = json.data;
-                ['agape_font', 'agape_theme', 'agape_version', 'agape_book', 'agape_chapter', 'agape_marks_v2', 'agape_plan', 'agape_plan_progress', 'agape_quiz_points', 'agape_streak'].forEach(k => {
+                // Restauração Segura
+                var keys = ['agape_font', 'agape_theme', 'agape_version', 'agape_book', 'agape_chapter', 'agape_marks_v2', 'agape_plan', 'agape_plan_progress', 'agape_quiz_points', 'agape_streak'];
+                keys.forEach(function (k) {
                     if (d[k]) localStorage.setItem(k, d[k]);
                 });
                 location.reload();
@@ -1135,7 +1345,10 @@ window.changeFontSize = function (delta) {
     state.fontSize += delta;
     if (state.fontSize < 14) state.fontSize = 14;
     if (state.fontSize > 40) state.fontSize = 40;
+
     localStorage.setItem('agape_font', state.fontSize);
 
-    document.querySelectorAll('.verse-content').forEach(function (p) { p.style.fontSize = state.fontSize + 'px'; });
+    document.querySelectorAll('.verse-content').forEach(function (p) {
+        p.style.fontSize = state.fontSize + 'px';
+    });
 };
