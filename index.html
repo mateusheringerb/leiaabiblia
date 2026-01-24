@@ -219,48 +219,46 @@
                 </button>
             </div>
 
-            <footer class="mt-12 py-8 text-center border-t border-bible-200 dark:border-bible-800/50">
+            <div class="flex flex-col items-center justify-center w-full mt-8 mb-4">
 
-                <div class="flex flex-col items-center justify-center w-full mt-8 mb-4">
+                <div class="flex flex-wrap justify-center gap-3 mb-6">
 
-                    <div class="flex flex-wrap justify-center gap-3 mb-6">
+                    <button onclick="openFeedbackModal()"
+                        class="flex items-center gap-2 px-4 py-2 bg-bible-100 hover:bg-bible-200 text-bible-600 text-[10px] font-bold uppercase tracking-wider rounded-full transition-all active:scale-90 border border-bible-200/50">
+                        <i class="ph-bold ph-chat-circle text-lg"></i>
+                        <span>Suporte</span>
+                    </button>
 
-                        <button onclick="openFeedbackModal()"
-                            class="flex items-center gap-2 px-4 py-2 bg-bible-100 hover:bg-bible-200 text-bible-600 text-[10px] font-bold uppercase tracking-wider rounded-full transition-all active:scale-90 border border-bible-200/50">
-                            <i class="ph-bold ph-chat-circle text-lg"></i>
-                            <span>Suporte</span>
-                        </button>
+                    <button onclick="shareApp()"
+                        class="flex items-center gap-2 px-4 py-2 bg-bible-100 hover:bg-bible-200 text-bible-600 text-[10px] font-bold uppercase tracking-wider rounded-full transition-all active:scale-90 border border-bible-200/50">
+                        <i class="ph-bold ph-share-network text-lg"></i>
+                        <span>Compartilhar</span>
+                    </button>
 
-                        <button onclick="shareApp()"
-                            class="flex items-center gap-2 px-4 py-2 bg-bible-100 hover:bg-bible-200 text-bible-600 text-[10px] font-bold uppercase tracking-wider rounded-full transition-all active:scale-90 border border-bible-200/50">
-                            <i class="ph-bold ph-share-network text-lg"></i>
-                            <span>Compartilhar</span>
-                        </button>
-
-                        <button onclick="showScreen('screen-backup')"
-                            class="flex items-center gap-2 px-4 py-2 bg-bible-100 hover:bg-bible-200 text-bible-600 text-[10px] font-bold uppercase tracking-wider rounded-full transition-all active:scale-90 border border-bible-200/50">
-                            <i class="ph-bold ph-cloud-arrow-up text-lg"></i>
-                            <span>Backup</span>
-                        </button>
-
-                    </div>
+                    <button onclick="showScreen('screen-backup')"
+                        class="flex items-center gap-2 px-4 py-2 bg-bible-100 hover:bg-bible-200 text-bible-600 text-[10px] font-bold uppercase tracking-wider rounded-full transition-all active:scale-90 border border-bible-200/50">
+                        <i class="ph-bold ph-cloud-arrow-up text-lg"></i>
+                        <span>Backup</span>
+                    </button>
 
                 </div>
 
-                <footer class="mt-12 py-8 text-center border-t border-bible-200 dark:border-bible-800/50"></footer>
+            </div>
 
-                <div class="flex flex-col items-center gap-3">
-                    <div class="w-8 h-8 flex items-center justify-center opacity-30 text-bible-900 dark:text-white">
-                        <i class="ph-bold ph-code text-xl"></i>
-                    </div>
-                    <p class="text-xs font-serif text-bible-400 italic">
-                        "Sola Scriptura. Solus Christus."
-                    </p>
-                    <a href="https://github.com/mateusheringerb" target="_blank" rel="noopener noreferrer"
-                        class="text-xs font-bold uppercase tracking-widest text-bible-900 dark:text-bible-500 hover:text-accent-600 dark:hover:text-white transition-colors mt-2">
-                        Mateus Heringer
-                    </a>
+            <footer class="mt-12 py-8 text-center border-t border-bible-200 dark:border-bible-800/50"></footer>
+
+            <div class="flex flex-col items-center gap-3">
+                <div class="w-8 h-8 flex items-center justify-center opacity-30 text-bible-900 dark:text-white">
+                    <i class="ph-bold ph-code text-xl"></i>
                 </div>
+                <p class="text-xs font-serif text-bible-400 italic">
+                    "Sola Scriptura. Solus Christus."
+                </p>
+                <a href="https://github.com/mateusheringerb" target="_blank" rel="noopener noreferrer"
+                    class="text-xs font-bold uppercase tracking-widest text-bible-900 dark:text-bible-500 hover:text-accent-600 dark:hover:text-white transition-colors mt-2">
+                    Mateus Heringer
+                </a>
+            </div>
             </footer>
         </div>
 
