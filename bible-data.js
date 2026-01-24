@@ -7,6 +7,12 @@
  * Dados de Livros, Ordem e Versículos (NVI)
  */
 
+
+/**
+ * DADOS ESTRUTURAIS DA BÍBLIA
+ * Contém informações sobre livros, capítulos e a Bússola da Alma.
+ */
+
 const BIBLE_BOOKS = [
     { name: "Gênesis", caps: 50 }, { name: "Êxodo", caps: 40 }, { name: "Levítico", caps: 27 },
     { name: "Números", caps: 36 }, { name: "Deuteronômio", caps: 34 }, { name: "Josué", caps: 24 },
@@ -30,6 +36,60 @@ const BIBLE_BOOKS = [
     { name: "Hebreus", caps: 13 }, { name: "Tiago", caps: 5 }, { name: "1 Pedro", caps: 5 },
     { name: "2 Pedro", caps: 3 }, { name: "1 João", caps: 5 }, { name: "2 João", caps: 1 },
     { name: "3 João", caps: 1 }, { name: "Judas", caps: 1 }, { name: "Apocalipse", caps: 22 }
+];
+
+// LISTA DE VERSÍCULOS DIÁRIOS (TEXTO NVI COMPLETO)
+const DAILY_VERSES_POOL = [
+    { text: "Tudo posso naquele que me fortalece.", ref: "Filipenses 4:13" },
+    { text: "O Senhor é o meu pastor; de nada terei falta.", ref: "Salmos 23:1" },
+    { text: "Porque Deus tanto amou o mundo que deu o seu Filho Unigênito, para que todo o que nele crer não pereça, mas tenha a vida eterna.", ref: "João 3:16" },
+    { text: "Busquem, pois, em primeiro lugar o Reino de Deus e a sua justiça, e todas essas coisas lhes serão acrescentadas.", ref: "Mateus 6:33" },
+    { text: "Mil poderão cair ao seu lado; dez mil, à sua direita, mas nada o atingirá.", ref: "Salmos 91:7" },
+    { text: "O Senhor é a minha luz e a minha salvação; de quem terei temor? O Senhor é o meu forte refúgio; de quem terei medo?", ref: "Salmos 27:1" },
+    { text: "Espere no Senhor. Seja forte! Coragem! Espere no Senhor.", ref: "Salmos 27:14" },
+    { text: "Por isso não tema, pois estou com você; não tenha medo, pois sou o seu Deus. Eu o fortalecerei e o ajudarei; eu o segurarei com a minha mão direita vitoriosa.", ref: "Isaías 41:10" },
+    { text: "Venham a mim, todos os que estão cansados e sobrecarregados, e eu lhes darei descanso.", ref: "Mateus 11:28" },
+    { text: "Deus é o nosso refúgio e a nossa fortaleza, auxílio sempre presente na adversidade.", ref: "Salmos 46:1" },
+    { text: "Confie no Senhor de todo o seu coração e não se apoie em seu próprio entendimento;", ref: "Provérbios 3:5" },
+    { text: "Mas aqueles que esperam no Senhor renovam as suas forças. Voam alto como águias; correm e não ficam exaustos, andam e não se cansam.", ref: "Isaías 40:31" },
+    { text: "Não fui eu que ordenei a você? Seja forte e corajoso! Não se apavore nem desanime, pois o Senhor, o seu Deus, estará com você por onde você andar.", ref: "Josué 1:9" },
+    { text: "Porque sou eu que conheço os planos que tenho para vocês', diz o Senhor, 'planos de fazê-los prosperar e não de causar dano, planos de dar a vocês esperança e um futuro.", ref: "Jeremias 29:11" },
+    { text: "Alegrem-se sempre no Senhor. Novamente direi: alegrem-se!", ref: "Filipenses 4:4" },
+    { text: "A tua palavra é lâmpada que ilumina os meus passos e luz que clareia o meu caminho.", ref: "Salmos 119:105" },
+    { text: "Sabemos que Deus age em todas as coisas para o bem daqueles que o amam, dos que foram chamados de acordo com o seu propósito.", ref: "Romanos 8:28" },
+    { text: "Que diremos, pois, diante dessas coisas? Se Deus é por nós, quem será contra nós?", ref: "Romanos 8:31" },
+    { text: "O amigo ama em todos os momentos; é um irmão na adversidade.", ref: "Provérbios 17:17" },
+    { text: "O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha.", ref: "1 Coríntios 13:4" },
+    { text: "Pois vocês são salvos pela graça, por meio da fé, e isto não vem de vocês, é dom de Deus.", ref: "Efésios 2:8" },
+    { text: "Lancem sobre ele toda a sua ansiedade, porque ele tem cuidado de vocês.", ref: "1 Pedro 5:7" },
+    { text: "A alegria do coração transparece no rosto, mas o coração angustiado oprime o espírito.", ref: "Provérbios 15:13" },
+    { text: "Deleite-se no Senhor, e ele atenderá aos desejos do seu coração.", ref: "Salmos 37:4" },
+    { text: "Clame a mim e eu responderei e lhe direi coisas grandiosas e insondáveis que você não conhece.", ref: "Jeremias 33:3" },
+    { text: "O Senhor o abençoe e o guarde;", ref: "Números 6:24" },
+    { text: "Mesmo quando eu andar por um vale de trevas e morte, não temerei perigo algum, pois tu estás comigo; a tua vara e o teu cajado me protegem.", ref: "Salmos 23:4" },
+    { text: "Pois nada é impossível para Deus.", ref: "Lucas 1:37" },
+    { text: "E a paz de Deus, que excede todo o entendimento, guardará os seus corações e as suas mentes em Cristo Jesus.", ref: "Filipenses 4:7" },
+    { text: "Combati o bom combate, terminei a corrida, guardei a fé.", ref: "2 Timóteo 4:7" },
+    { text: "Sejam fortes e corajosos. Não tenham medo nem fiquem apavorados por causa delas, pois o Senhor, o seu Deus, vai com vocês; nunca os deixará, nunca os abandonará.", ref: "Deuteronômio 31:6" },
+    { text: "O Senhor lutará por vocês; tão somente acalmem-se.", ref: "Êxodo 14:14" },
+    { text: "Levanto os meus olhos para os montes e pergunto: De onde me vem o socorro? O meu socorro vem do Senhor, que fez os céus e a terra.", ref: "Salmos 121:1-2" },
+    { text: "Acima de tudo, guarde o seu coração, pois dele depende toda a sua vida.", ref: "Provérbios 4:23" },
+    { text: "A resposta calma desvia a fúria, mas a palavra ríspida desperta a ira.", ref: "Provérbios 15:1" },
+    { text: "Vistam toda a armadura de Deus, para poderem ficar firmes contra as ciladas do diabo.", ref: "Efésios 6:11" },
+    { text: "Jesus Cristo é o mesmo, ontem, hoje e para sempre.", ref: "Hebreus 13:8" },
+    { text: "Aquele que habita no abrigo do Altíssimo e descansa à sombra do Todo-poderoso pode dizer ao Senhor: Tu és o meu refúgio e a minha fortaleza, o meu Deus, em quem confio.", ref: "Salmos 91:1-2" },
+    { text: "Deem graças ao Senhor, porque ele é bom. O seu amor dura para sempre!", ref: "Salmos 136:1" },
+    { text: "Respondeu Jesus: 'Eu sou o caminho, a verdade e a vida. Ninguém vem ao Pai, a não ser por mim'.", ref: "João 14:6" },
+    { text: "Peçam, e lhes será dado; busquem, e encontrarão; batam, e a porta lhes será aberta.", ref: "Mateus 7:7" },
+    { text: "Tudo o que fizerem, façam de todo o coração, como para o Senhor, e não para os homens,", ref: "Colossenses 3:23" },
+    { text: "Bem-aventurados os pacificadores, pois serão chamados filhos de Deus.", ref: "Mateus 5:9" },
+    { text: "O temor do Senhor é o princípio da sabedoria, e o conhecimento do Santo é entendimento.", ref: "Provérbios 9:10" },
+    { text: "Não se perturbe o coração de vocês. Creiam em Deus; creiam também em mim.", ref: "João 14:1" },
+    { text: "Pois o meu jugo é suave e o meu fardo é leve.", ref: "Mateus 11:30" },
+    { text: "Graças ao grande amor do Senhor é que não somos consumidos, pois as suas misericórdias são inesgotáveis.", ref: "Lamentações 3:22" },
+    { text: "Sim, coisas grandiosas fez o Senhor por nós, por isso estamos alegres.", ref: "Salmos 126:3" },
+    { text: "Alegrem-se na esperança, sejam pacientes na tribulação, perseverem na oração.", ref: "Romanos 12:12" },
+    { text: "Cresçam, porém, na graça e no conhecimento de nosso Senhor e Salvador Jesus Cristo.", ref: "2 Pedro 3:18" }
 ];
 
 /**
@@ -137,56 +197,16 @@ CHRONO_SEQUENCE.forEach(item => {
     }
 });
 
-// LISTA DE VERSÍCULOS DIÁRIOS (TEXTO NVI COMPLETO)
-const DAILY_VERSES_POOL = [
-    { text: "Tudo posso naquele que me fortalece.", ref: "Filipenses 4:13" },
-    { text: "O Senhor é o meu pastor; de nada terei falta.", ref: "Salmos 23:1" },
-    { text: "Porque Deus tanto amou o mundo que deu o seu Filho Unigênito, para que todo o que nele crer não pereça, mas tenha a vida eterna.", ref: "João 3:16" },
-    { text: "Busquem, pois, em primeiro lugar o Reino de Deus e a sua justiça, e todas essas coisas lhes serão acrescentadas.", ref: "Mateus 6:33" },
-    { text: "Mil poderão cair ao seu lado; dez mil, à sua direita, mas nada o atingirá.", ref: "Salmos 91:7" },
-    { text: "O Senhor é a minha luz e a minha salvação; de quem terei temor? O Senhor é o meu forte refúgio; de quem terei medo?", ref: "Salmos 27:1" },
-    { text: "Espere no Senhor. Seja forte! Coragem! Espere no Senhor.", ref: "Salmos 27:14" },
-    { text: "Por isso não tema, pois estou com você; não tenha medo, pois sou o seu Deus. Eu o fortalecerei e o ajudarei; eu o segurarei com a minha mão direita vitoriosa.", ref: "Isaías 41:10" },
-    { text: "Venham a mim, todos os que estão cansados e sobrecarregados, e eu lhes darei descanso.", ref: "Mateus 11:28" },
-    { text: "Deus é o nosso refúgio e a nossa fortaleza, auxílio sempre presente na adversidade.", ref: "Salmos 46:1" },
-    { text: "Confie no Senhor de todo o seu coração e não se apoie em seu próprio entendimento;", ref: "Provérbios 3:5" },
-    { text: "Mas aqueles que esperam no Senhor renovam as suas forças. Voam alto como águias; correm e não ficam exaustos, andam e não se cansam.", ref: "Isaías 40:31" },
-    { text: "Não fui eu que ordenei a você? Seja forte e corajoso! Não se apavore nem desanime, pois o Senhor, o seu Deus, estará com você por onde você andar.", ref: "Josué 1:9" },
-    { text: "Porque sou eu que conheço os planos que tenho para vocês', diz o Senhor, 'planos de fazê-los prosperar e não de causar dano, planos de dar a vocês esperança e um futuro.", ref: "Jeremias 29:11" },
-    { text: "Alegrem-se sempre no Senhor. Novamente direi: alegrem-se!", ref: "Filipenses 4:4" },
-    { text: "A tua palavra é lâmpada que ilumina os meus passos e luz que clareia o meu caminho.", ref: "Salmos 119:105" },
-    { text: "Sabemos que Deus age em todas as coisas para o bem daqueles que o amam, dos que foram chamados de acordo com o seu propósito.", ref: "Romanos 8:28" },
-    { text: "Que diremos, pois, diante dessas coisas? Se Deus é por nós, quem será contra nós?", ref: "Romanos 8:31" },
-    { text: "O amigo ama em todos os momentos; é um irmão na adversidade.", ref: "Provérbios 17:17" },
-    { text: "O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha.", ref: "1 Coríntios 13:4" },
-    { text: "Pois vocês são salvos pela graça, por meio da fé, e isto não vem de vocês, é dom de Deus.", ref: "Efésios 2:8" },
-    { text: "Lancem sobre ele toda a sua ansiedade, porque ele tem cuidado de vocês.", ref: "1 Pedro 5:7" },
-    { text: "A alegria do coração transparece no rosto, mas o coração angustiado oprime o espírito.", ref: "Provérbios 15:13" },
-    { text: "Deleite-se no Senhor, e ele atenderá aos desejos do seu coração.", ref: "Salmos 37:4" },
-    { text: "Clame a mim e eu responderei e lhe direi coisas grandiosas e insondáveis que você não conhece.", ref: "Jeremias 33:3" },
-    { text: "O Senhor o abençoe e o guarde;", ref: "Números 6:24" },
-    { text: "Mesmo quando eu andar por um vale de trevas e morte, não temerei perigo algum, pois tu estás comigo; a tua vara e o teu cajado me protegem.", ref: "Salmos 23:4" },
-    { text: "Pois nada é impossível para Deus.", ref: "Lucas 1:37" },
-    { text: "E a paz de Deus, que excede todo o entendimento, guardará os seus corações e as suas mentes em Cristo Jesus.", ref: "Filipenses 4:7" },
-    { text: "Combati o bom combate, terminei a corrida, guardei a fé.", ref: "2 Timóteo 4:7" },
-    { text: "Sejam fortes e corajosos. Não tenham medo nem fiquem apavorados por causa delas, pois o Senhor, o seu Deus, vai com vocês; nunca os deixará, nunca os abandonará.", ref: "Deuteronômio 31:6" },
-    { text: "O Senhor lutará por vocês; tão somente acalmem-se.", ref: "Êxodo 14:14" },
-    { text: "Levanto os meus olhos para os montes e pergunto: De onde me vem o socorro? O meu socorro vem do Senhor, que fez os céus e a terra.", ref: "Salmos 121:1-2" },
-    { text: "Acima de tudo, guarde o seu coração, pois dele depende toda a sua vida.", ref: "Provérbios 4:23" },
-    { text: "A resposta calma desvia a fúria, mas a palavra ríspida desperta a ira.", ref: "Provérbios 15:1" },
-    { text: "Vistam toda a armadura de Deus, para poderem ficar firmes contra as ciladas do diabo.", ref: "Efésios 6:11" },
-    { text: "Jesus Cristo é o mesmo, ontem, hoje e para sempre.", ref: "Hebreus 13:8" },
-    { text: "Aquele que habita no abrigo do Altíssimo e descansa à sombra do Todo-poderoso pode dizer ao Senhor: Tu és o meu refúgio e a minha fortaleza, o meu Deus, em quem confio.", ref: "Salmos 91:1-2" },
-    { text: "Deem graças ao Senhor, porque ele é bom. O seu amor dura para sempre!", ref: "Salmos 136:1" },
-    { text: "Respondeu Jesus: 'Eu sou o caminho, a verdade e a vida. Ninguém vem ao Pai, a não ser por mim'.", ref: "João 14:6" },
-    { text: "Peçam, e lhes será dado; busquem, e encontrarão; batam, e a porta lhes será aberta.", ref: "Mateus 7:7" },
-    { text: "Tudo o que fizerem, façam de todo o coração, como para o Senhor, e não para os homens,", ref: "Colossenses 3:23" },
-    { text: "Bem-aventurados os pacificadores, pois serão chamados filhos de Deus.", ref: "Mateus 5:9" },
-    { text: "O temor do Senhor é o princípio da sabedoria, e o conhecimento do Santo é entendimento.", ref: "Provérbios 9:10" },
-    { text: "Não se perturbe o coração de vocês. Creiam em Deus; creiam também em mim.", ref: "João 14:1" },
-    { text: "Pois o meu jugo é suave e o meu fardo é leve.", ref: "Mateus 11:30" },
-    { text: "Graças ao grande amor do Senhor é que não somos consumidos, pois as suas misericórdias são inesgotáveis.", ref: "Lamentações 3:22" },
-    { text: "Sim, coisas grandiosas fez o Senhor por nós, por isso estamos alegres.", ref: "Salmos 126:3" },
-    { text: "Alegrem-se na esperança, sejam pacientes na tribulação, perseverem na oração.", ref: "Romanos 12:12" },
-    { text: "Cresçam, porém, na graça e no conhecimento de nosso Senhor e Salvador Jesus Cristo.", ref: "2 Pedro 3:18" }
+
+// Bússola da Alma
+// Mapeamento: Livro (Index 0-65), Capítulo, Versículo
+const EMOTION_DATA = [
+    { label: "Ansioso", icon: "ph-wind", book: 49, chap: 4, verse: 6 }, // Filipenses 4:6
+    { label: "Cansado", icon: "ph-battery-warning", book: 39, chap: 11, verse: 28 }, // Mateus 11:28
+    { label: "Triste", icon: "ph-cloud-rain", book: 18, chap: 34, verse: 18 }, // Salmos 34:18
+    { label: "Medo", icon: "ph-shield-warning", book: 18, chap: 27, verse: 1 }, // Salmos 27:1
+    { label: "Grato", icon: "ph-heart", book: 18, chap: 136, verse: 1 }, // Salmos 136:1
+    { label: "Sozinho", icon: "ph-user", book: 22, chap: 41, verse: 10 }, // Isaías 41:10
+    { label: "Irritado", icon: "ph-fire", book: 58, chap: 1, verse: 19 }, // Tiago 1:19
+    { label: "Dúvida", icon: "ph-question", book: 58, chap: 1, verse: 5 }, // Tiago 1:5
 ];
