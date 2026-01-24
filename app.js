@@ -1352,3 +1352,42 @@ window.changeFontSize = function (delta) {
         p.style.fontSize = state.fontSize + 'px';
     });
 };
+
+// ============================================================================
+// 12. NAVEGAÇÃO VERSÍCULO DO DIA (Smart Link)
+// ============================================================================
+
+window.openDailyVerseReading = function () {
+    // 1. Pega a referência escrita no card (Ex: "Salmos 27:1")
+    var refText = document.getElementById('daily-reference').innerText.trim();
+    if (!refText || refText === "...") return;
+
+    // 2. Separa o nome do livro dos números (Ex: ["Salmos", "27:1"])
+    // A lógica pega o último espaço como separador
+    var lastSpaceIndex = refText.lastIndexOf(' ');
+    var bookName = refText.substring(0, lastSpaceIndex).trim();
+    var numbers = refText.substring(lastSpaceIndex + 1).trim(); // "27:1"
+
+    // 3. Separa capítulo e versículo
+    var parts = numbers.split(':');
+    var chapter = parseInt(parts[0]);
+    var verse = parseInt(parts[1]);
+
+    // 4. Encontra o ID do livro (0-65) baseado no nome
+    // Usa a lista global BIBLE_BOOKS que já existe no seu projeto
+    var bookId = BIBLE_BOOKS.findIndex(function (b) {
+        return b.name.toLowerCase() === bookName.toLowerCase();
+    });
+
+    if (bookId !== -1) {
+        // 5. Navega para o versículo exato
+        goToVerse(bookId, chapter, verse);
+
+        // Feedback visual (Vibração leve se disponível)
+        if (navigator.vibrate) navigator.vibrate(50);
+    } else {
+        console.error("Livro não encontrado: " + bookName);
+        // Fallback: Abre apenas a tela de leitura onde parou
+        showScreen('screen-read');
+    }
+};
