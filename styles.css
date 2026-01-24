@@ -8,7 +8,7 @@
     scrollbar-width: none;
 }
 
-/* Animações */
+/* Animações Globais */
 @keyframes spin {
     from {
         transform: rotate(0deg);
@@ -22,6 +22,106 @@
 .animate-spin-slow {
     animation: spin 3s linear infinite;
 }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* === NOVAS ANIMAÇÕES DE GAMEFICATION (QUIZ) === */
+
+/* Erro: Treme a tela */
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-8px);
+    }
+
+    75% {
+        transform: translateX(8px);
+    }
+}
+
+.animate-shake {
+    animation: shake 0.4s cubic-bezier(.36, .07, .19, .97) both;
+    border-color: #ef4444 !important;
+    /* Vermelho Erro */
+    background-color: #fef2f2 !important;
+}
+
+/* Acerto: Pula e Brilha */
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.animate-pop {
+    animation: pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-color: #22c55e !important;
+    /* Verde Sucesso */
+    background-color: #f0fdf4 !important;
+}
+
+/* Entrada da Pergunta: Desliza de baixo */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+}
+
+/* Partículas de Confete (Geradas via JS) */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background-color: #f59e0b;
+    /* Dourado */
+    animation: fall linear forwards;
+    z-index: 100;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* === TIPOGRAFIA E ESTILOS ORIGINAIS === */
 
 /* Destaques do Texto - Estilo "Lápis de Cor" (Suave) */
 .highlight-yellow {
@@ -53,38 +153,30 @@ select {
 /* Tipografia de Leitura Otimizada */
 .verse-content {
     line-height: 2.1;
-    /* Leitura muito confortável */
     font-feature-settings: "kern", "liga";
     letter-spacing: -0.015em;
     color: #292524;
-    /* Stone 800 - Não é preto puro */
 }
 
-/* Modo Dark: Ajuste da cor do texto */
 .dark .verse-content {
     color: #e7e5e4;
-    /* Stone 200 */
 }
 
-/* Letras Vermelhas (Jesus) - Vinho elegante */
+/* Letras Vermelhas (Jesus) */
 .red-letter {
     color: #9f1239;
-    /* Rose 800 */
 }
 
 .dark .red-letter {
     color: #fb7185;
-    /* Rose 400 */
 }
 
 /* Hinos */
 .hymn-chorus {
     background-color: rgba(180, 83, 9, 0.05);
-    /* Bronze bem suave */
     color: inherit;
     padding: 1.5rem;
     border-left: 3px solid #b45309;
-    /* Bronze */
     font-style: italic;
     font-weight: 500;
     margin-bottom: 2rem;
@@ -94,5 +186,4 @@ select {
 .dark .hymn-chorus {
     background-color: rgba(255, 255, 255, 0.05);
     border-left: 3px solid #d6d3d1;
-    /* Stone 300 */
 }
