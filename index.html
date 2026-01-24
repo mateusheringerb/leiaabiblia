@@ -13,7 +13,7 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Merriweather:wght@300;400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Merriweather:wght@300;400;700&display=swap"
         rel="stylesheet">
 
     <script>
@@ -115,26 +115,25 @@
             </div>
 
             <section class="w-full mt-2">
-                <div
-                    class="w-full bg-bible-100 dark:bg-bible-800 border-2 border-bible-200 dark:border-bible-700 rounded-3xl p-6 relative overflow-hidden group shadow-sm transition-all duration-300 hover:shadow-md hover:border-accent-500/30">
+                <div onclick="openDailyVerseReading()"
+                    class="w-full bg-bible-100 dark:bg-bible-800 border-2 border-bible-200 dark:border-bible-700 rounded-3xl p-6 relative overflow-hidden group shadow-sm transition-all duration-300 hover:shadow-md hover:border-accent-500/30 cursor-pointer">
 
                     <div class="flex justify-between items-start mb-3">
                         <span
-                            class="px-2.5 py-1 rounded-lg bg-white dark:bg-black/20 border border-bible-200 dark:border-bible-600 text-[10px] font-black uppercase tracking-widest text-accent-600">
+                            class="px-2.5 py-1 rounded-lg bg-white dark:bg-black/20 border border-bible-200 dark:border-bible-600 text-[10px] font-black uppercase tracking-widest text-accent-600 dark:text-accent-400">
                             Versículo do Dia
                         </span>
-                        <button onclick="openImageCreator()"
-                            class="text-bible-400 hover:text-accent-500 transition-colors active:scale-95">
+                        <button onclick="event.stopPropagation(); openImageCreator()"
+                            class="text-bible-400 hover:text-accent-500 transition-colors active:scale-95 p-1">
                             <i class="ph-bold ph-share-network text-lg"></i>
                         </button>
                     </div>
 
-                    <div class="relative z-10">
+                    <div class="relative z-10 pointer-events-none">
                         <h3 id="daily-text"
                             class="font-serif italic text-lg leading-relaxed text-bible-900 dark:text-bible-100 font-medium transition-opacity duration-500 min-h-[3rem]">
                             "Carregando..."
                         </h3>
-
                         <p id="daily-reference"
                             class="mt-3 text-xs font-black uppercase tracking-widest text-bible-500 dark:text-bible-400">
                             ...
@@ -144,22 +143,6 @@
                     <div class="absolute -right-4 -bottom-4 opacity-5 dark:opacity-10 pointer-events-none">
                         <i class="ph-fill ph-quotes text-8xl text-bible-900 dark:text-white"></i>
                     </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-3 mt-4">
-
-                    <button onclick="showScreen('screen-read')"
-                        class="h-11 flex items-center justify-center gap-2 bg-bible-900 dark:bg-bible-100 text-white dark:text-bible-900 rounded-xl font-bold text-xs uppercase tracking-wider shadow-lg active:scale-95 transition-all hover:opacity-90">
-                        <i class="ph-bold ph-book-open-text text-base"></i>
-                        Ler Bíblia
-                    </button>
-
-                    <button onclick="showScreen('screen-harpa')"
-                        class="h-11 flex items-center justify-center gap-2 bg-white dark:bg-bible-800 border border-bible-200 dark:border-bible-700 text-bible-900 dark:text-bible-100 rounded-xl font-bold text-xs uppercase tracking-wider shadow-sm active:scale-95 transition-all hover:bg-bible-50 dark:hover:bg-bible-700">
-                        <i class="ph-bold ph-music-notes text-base text-accent-600"></i>
-                        Louvor
-                    </button>
-
                 </div>
             </section>
 
@@ -182,64 +165,66 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+
                 <button onclick="showScreen('screen-read')"
-                    class="group p-6 rounded-xl bg-white dark:bg-bible-800 shadow-paper hover:shadow-card hover:-translate-y-1 transition-all duration-300 flex flex-col items-center gap-4 text-center border border-transparent hover:border-bible-200 dark:hover:border-bible-600">
+                    class="group p-5 rounded-2xl bg-white dark:bg-bible-800 shadow-paper hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col items-center gap-3 text-center border border-transparent hover:border-bible-300 dark:hover:border-bible-600">
                     <div
-                        class="text-3xl text-bible-400 group-hover:text-bible-900 dark:group-hover:text-white group-hover:scale-110 transition-transform duration-300">
-                        <i class="ph-duotone ph-book-bookmark"></i>
+                        class="text-2xl text-bible-600 group-hover:text-bible-900 dark:text-bible-400 dark:group-hover:text-white transition-colors duration-300">
+                        <i class="ph-fill ph-book-open-text"></i>
                     </div>
                     <span
-                        class="font-bold text-sm tracking-wide text-bible-700 dark:text-bible-200 group-hover:text-bible-900 dark:group-hover:text-white">Bíblia</span>
+                        class="font-black text-xs uppercase tracking-widest text-bible-700 dark:text-bible-200 group-hover:text-bible-900 dark:group-hover:text-white">Bíblia</span>
                 </button>
 
                 <button onclick="searchBible()"
-                    class="group p-6 rounded-xl bg-white dark:bg-bible-800 shadow-paper hover:shadow-card hover:-translate-y-1 transition-all duration-300 flex flex-col items-center gap-4 text-center border border-transparent hover:border-bible-200 dark:hover:border-bible-600">
+                    class="group p-5 rounded-2xl bg-white dark:bg-bible-800 shadow-paper hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col items-center gap-3 text-center border border-transparent hover:border-bible-300 dark:hover:border-bible-600">
                     <div
-                        class="text-3xl text-bible-400 group-hover:text-bible-900 dark:group-hover:text-white group-hover:scale-110 transition-transform duration-300">
-                        <i class="ph-duotone ph-magnifying-glass"></i>
+                        class="text-2xl text-bible-600 group-hover:text-bible-900 dark:text-bible-400 dark:group-hover:text-white transition-colors duration-300">
+                        <i class="ph-bold ph-magnifying-glass"></i>
                     </div>
                     <span
-                        class="font-bold text-sm tracking-wide text-bible-700 dark:text-bible-200 group-hover:text-bible-900 dark:group-hover:text-white">Buscar</span>
+                        class="font-black text-xs uppercase tracking-widest text-bible-700 dark:text-bible-200 group-hover:text-bible-900 dark:group-hover:text-white">Buscar</span>
                 </button>
 
                 <button onclick="showScreen('screen-harpa')"
-                    class="group p-6 rounded-xl bg-white dark:bg-bible-800 shadow-paper hover:shadow-card hover:-translate-y-1 transition-all duration-300 flex flex-col items-center gap-4 text-center border border-transparent hover:border-bible-200 dark:hover:border-bible-600">
+                    class="group p-5 rounded-2xl bg-white dark:bg-bible-800 shadow-paper hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col items-center gap-3 text-center border border-transparent hover:border-bible-300 dark:hover:border-bible-600">
                     <div
-                        class="text-3xl text-bible-400 group-hover:text-bible-900 dark:group-hover:text-white group-hover:scale-110 transition-transform duration-300">
-                        <i class="ph-duotone ph-music-notes"></i>
+                        class="text-2xl text-bible-600 group-hover:text-bible-900 dark:text-bible-400 dark:group-hover:text-white transition-colors duration-300">
+                        <i class="ph-fill ph-music-notes-simple"></i>
                     </div>
                     <span
-                        class="font-bold text-sm tracking-wide text-bible-700 dark:text-bible-200 group-hover:text-bible-900 dark:group-hover:text-white">Hinários</span>
+                        class="font-black text-xs uppercase tracking-widest text-bible-700 dark:text-bible-200 group-hover:text-bible-900 dark:group-hover:text-white">Hinários</span>
                 </button>
 
                 <button onclick="showScreen('screen-quiz')"
-                    class="group p-6 rounded-xl bg-white dark:bg-bible-800 shadow-paper hover:shadow-card hover:-translate-y-1 transition-all duration-300 flex flex-col items-center gap-4 text-center border border-transparent hover:border-bible-200 dark:hover:border-bible-600">
+                    class="group p-5 rounded-2xl bg-white dark:bg-bible-800 shadow-paper hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col items-center gap-3 text-center border border-transparent hover:border-bible-300 dark:hover:border-bible-600">
                     <div
-                        class="text-3xl text-bible-400 group-hover:text-bible-900 dark:group-hover:text-white group-hover:scale-110 transition-transform duration-300">
-                        <i class="ph-duotone ph-brain"></i>
+                        class="text-2xl text-bible-600 group-hover:text-bible-900 dark:text-bible-400 dark:group-hover:text-white transition-colors duration-300">
+                        <i class="ph-fill ph-brain"></i>
                     </div>
                     <span
-                        class="font-bold text-sm tracking-wide text-bible-700 dark:text-bible-200 group-hover:text-bible-900 dark:group-hover:text-white">Quiz</span>
+                        class="font-black text-xs uppercase tracking-widest text-bible-700 dark:text-bible-200 group-hover:text-bible-900 dark:group-hover:text-white">Quiz</span>
                 </button>
 
                 <button onclick="showScreen('screen-highlights')"
-                    class="group p-6 rounded-xl bg-white dark:bg-bible-800 shadow-paper hover:shadow-card hover:-translate-y-1 transition-all duration-300 flex flex-col items-center gap-4 text-center border border-transparent hover:border-bible-200 dark:hover:border-bible-600">
+                    class="group p-5 rounded-2xl bg-white dark:bg-bible-800 shadow-paper hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col items-center gap-3 text-center border border-transparent hover:border-bible-300 dark:hover:border-bible-600">
                     <div
-                        class="text-3xl text-bible-400 group-hover:text-bible-900 dark:group-hover:text-white group-hover:scale-110 transition-transform duration-300">
-                        <i class="ph-duotone ph-highlighter"></i>
+                        class="text-2xl text-bible-600 group-hover:text-bible-900 dark:text-bible-400 dark:group-hover:text-white transition-colors duration-300">
+                        <i class="ph-fill ph-bookmark-simple"></i>
                     </div>
                     <span
-                        class="font-bold text-sm tracking-wide text-bible-700 dark:text-bible-200 group-hover:text-bible-900 dark:group-hover:text-white">Destaques</span>
+                        class="font-black text-xs uppercase tracking-widest text-bible-700 dark:text-bible-200 group-hover:text-bible-900 dark:group-hover:text-white">Destaques</span>
                 </button>
 
                 <button onclick="openPlanSetup()"
-                    class="group p-6 rounded-xl bg-white dark:bg-bible-800 shadow-paper hover:shadow-card hover:-translate-y-1 transition-all duration-300 flex flex-col items-center gap-4 text-center border border-transparent hover:border-accent-200 dark:hover:border-accent-700">
+                    class="group p-5 rounded-2xl bg-white dark:bg-bible-800 shadow-paper hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col items-center gap-3 text-center border border-transparent hover:border-accent-200 dark:hover:border-accent-700">
                     <div
-                        class="text-3xl text-accent-600 dark:text-accent-500 group-hover:scale-110 transition-transform duration-300">
-                        <i class="ph-duotone ph-plus-circle"></i>
+                        class="text-2xl text-accent-600 dark:text-accent-500 group-hover:scale-110 transition-transform duration-300">
+                        <i class="ph-bold ph-plus-circle"></i>
                     </div>
-                    <span class="font-bold text-sm tracking-wide text-accent-700 dark:text-accent-400">Novo Plano</span>
+                    <span class="font-black text-xs uppercase tracking-widest text-accent-700 dark:text-accent-400">Novo
+                        Plano</span>
                 </button>
             </div>
 
