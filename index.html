@@ -61,6 +61,27 @@
         }
     </script>
 
+    <style>
+        /* Palavras de Jesus em vermelho */
+        .red-letter {
+            color: #b91c1c;
+        }
+
+        .dark .red-letter {
+            color: #f87171;
+        }
+
+        /* Esconder barra de rolagem na Bússola */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -295,8 +316,9 @@
 
         <div id="screen-read" class="hidden h-full relative">
             <div id="reading-content-wrapper" class="animate-fade-in pb-32">
+
                 <div id="read-header"
-                    class="sticky top-0 bg-bible-50/95 dark:bg-bible-900/95 backdrop-blur-md border-b border-bible-200 dark:border-bible-800 p-4 z-30 -mx-4 px-4 mb-8 flex flex-col gap-4 shadow-sm transition-transform duration-300">
+                    class="sticky -top-4 md:-top-8 -mx-4 md:-mx-8 px-4 md:px-8 bg-bible-50/95 dark:bg-bible-900/95 backdrop-blur-md border-b border-bible-200 dark:border-bible-800 p-4 z-30 mb-8 flex flex-col gap-4 shadow-sm transition-transform duration-300">
                     <div class="flex items-center justify-between">
                         <button onclick="goBack()"
                             class="p-2 hover:bg-bible-200 dark:hover:bg-bible-800 rounded-full text-bible-500 transition"><i
@@ -310,6 +332,7 @@
                             <select id="read-translation" onchange="handleNavigationChange()"
                                 class="bg-bible-900 dark:bg-white text-white dark:text-bible-900 text-xs font-bold uppercase tracking-wide py-2 px-3 rounded-lg border-none focus:ring-0 outline-none shadow-md"></select>
                         </div>
+
                         <button onclick="togglePulpitMode()"
                             class="p-2 hover:bg-bible-200 dark:hover:bg-bible-800 rounded-full text-bible-500 transition"
                             title="Modo Púlpito">
@@ -334,9 +357,11 @@
                     <i class="ph-bold ph-caret-right text-xl"></i>
                 </button>
             </div>
+
             <button id="btn-exit-pulpit" onclick="togglePulpitMode()"
-                class="fixed top-6 right-6 z-50 bg-black/50 text-white p-3 rounded-full backdrop-blur-md hidden hover:bg-black/80 transition shadow-lg"><i
-                    class="ph-bold ph-x text-xl"></i></button>
+                class="fixed top-6 right-6 z-50 bg-black/50 text-white p-3 rounded-full backdrop-blur-md hidden hover:bg-black/80 transition shadow-lg">
+                <i class="ph-bold ph-x text-xl"></i>
+            </button>
         </div>
 
         <div id="screen-plan-overview" class="hidden animate-fade-in pb-20 max-w-3xl mx-auto">
