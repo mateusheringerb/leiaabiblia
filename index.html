@@ -232,13 +232,30 @@
                         Mateus Heringer
                     </a>
                 </div>
-                <div class="flex justify-center gap-4 mt-4">
-                    <button onclick="openFeedbackModal()"
-                        class="text-[10px] font-bold uppercase text-bible-400 hover:text-bible-800">Contato</button>
-                    <button onclick="shareApp()"
-                        class="text-[10px] font-bold uppercase text-bible-400 hover:text-bible-800">Partilhar</button>
-                    <button onclick="showScreen('screen-backup')"
-                        class="text-[10px] font-bold uppercase text-bible-400 hover:text-bible-800">Backup</button>
+                <div class="flex flex-col items-center justify-center w-full mt-8 mb-4">
+
+                    <div class="flex flex-wrap justify-center gap-3 mb-6">
+
+                        <button onclick="openFeedbackModal()"
+                            class="flex items-center gap-2 px-4 py-2 bg-bible-100 hover:bg-bible-200 text-bible-600 text-[11px] font-bold uppercase tracking-wider rounded-full transition-all active:scale-95 border border-bible-200/50">
+                            <i class="ph-bold ph-chat-circle text-lg"></i>
+                            <span>Contato</span>
+                        </button>
+
+                        <button onclick="shareApp()"
+                            class="flex items-center gap-2 px-4 py-2 bg-bible-100 hover:bg-bible-200 text-bible-600 text-[11px] font-bold uppercase tracking-wider rounded-full transition-all active:scale-95 border border-bible-200/50">
+                            <i class="ph-bold ph-share-network text-lg"></i>
+                            <span>Compartilhar</span>
+                        </button>
+
+                        <button onclick="showScreen('screen-backup')"
+                            class="flex items-center gap-2 px-4 py-2 bg-bible-100 hover:bg-bible-200 text-bible-600 text-[11px] font-bold uppercase tracking-wider rounded-full transition-all active:scale-95 border border-bible-200/50">
+                            <i class="ph-bold ph-cloud-arrow-up text-lg"></i>
+                            <span>Backup</span>
+                        </button>
+
+                    </div>
+
                 </div>
             </footer>
         </div>
