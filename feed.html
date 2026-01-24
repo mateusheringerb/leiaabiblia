@@ -4,30 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Pack Marketing PWA Detalhado - Bíblia Ágape</title>
+    <title>Pack Ágape V13 - Final Lift</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Merriweather:ital,wght@0,300;0,700;0,900;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap"
         rel="stylesheet">
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Merriweather', 'serif'] },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Playfair Display', 'serif'],
+                        serif: ['Merriweather', 'serif']
+                    },
                     colors: {
-                        bible: { 500: '#3b82f6', 600: '#2563eb', 900: '#1e3a8a' },
-                        midnight: '#020617',
-                        surface: '#0f172a'
+                        bible: { 50: '#fafaf9', 100: '#f5f5f4', 800: '#292524', 900: '#1c1917' },
+                        accent: { 500: '#d97706', 600: '#b45309', 700: '#92400e' }
                     },
                     backgroundImage: {
-                        'premium-gradient': 'linear-gradient(180deg, #020617 0%, #1e3a8a 100%)',
-                        'gold-gradient': 'linear-gradient(135deg, #fbbf24 0%, #d97706 100%)',
-                        'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E\")",
+                        'stone-gradient': 'linear-gradient(180deg, #1c1917 0%, #292524 100%)',
+                        'paper-texture': "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z' fill='%239ca3af' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E\")",
                     }
                 }
             }
@@ -35,1038 +37,1064 @@
     </script>
 
     <style>
-        /* BASE */
-        html {
-            -webkit-text-size-adjust: 100%;
-        }
-
         body {
-            -webkit-font-smoothing: antialiased;
-            background-color: #f1f5f9;
+            background-color: #e5e5e5;
             margin: 0;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
             padding-bottom: 100px;
         }
 
-        /* GRID */
-        .preview-grid {
+        /* UI Preview */
+        .grid-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 40px;
+            gap: 30px;
             justify-content: center;
-            padding: 40px 20px;
+            padding: 20px;
         }
 
         .section-tag {
-            background: #0f172a;
+            background: #1c1917;
             color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 900;
-            letter-spacing: 1px;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: 800;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            margin-top: 40px;
             display: inline-block;
         }
 
-        .slide-card {
+        .card {
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
             padding: 15px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
             align-items: center;
-            transition: transform 0.2s;
         }
 
-        .slide-card:hover {
-            transform: translateY(-5px);
+        /* Mestres HD */
+        .master {
+            position: relative;
+            overflow: hidden;
+            background-color: #1c1917;
+            display: flex;
+            flex-direction: column;
+            width: 1080px;
         }
 
-        /* MOLDURAS */
-        .wrapper-feed {
+        .master.feed {
+            height: 1350px;
+        }
+
+        .master.story {
+            height: 1920px;
+        }
+
+        /* Containers Preview */
+        .cont-feed {
             width: 300px;
             height: 375px;
             position: relative;
             overflow: hidden;
-            border-radius: 12px;
-            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            background: #ddd;
         }
 
-        .wrapper-story {
+        .cont-story {
             width: 300px;
             height: 533px;
             position: relative;
             overflow: hidden;
-            border-radius: 12px;
-            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            background: #ddd;
         }
 
-        /* SLIDES MESTRES */
-        .master-slide {
+        .scaled {
+            transform: scale(0.2777);
+            transform-origin: top left;
             position: absolute;
             top: 0;
             left: 0;
-            background-color: #020617;
-            transform-origin: top left;
-            pointer-events: none;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
 
-        .master-slide.feed {
-            width: 1080px;
-            height: 1350px;
-            transform: scale(0.2777);
-        }
-
-        .master-slide.story {
-            width: 1080px;
-            height: 1920px;
-            transform: scale(0.2777);
-        }
-
-        /* ÁREAS DE CONTEÚDO */
-        .feed-padding {
+        /* Pads */
+        .pad-feed {
             padding: 80px;
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            position: relative;
+            z-index: 10;
         }
 
-        /* Safe zones ajustadas para stories (topo para perfil, base para input) */
-        .story-padding {
-            padding: 220px 80px 250px 80px;
+        .pad-story {
+            padding: 220px 80px 320px 80px;
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            position: relative;
+            z-index: 10;
         }
 
-        /* COMPONENTES */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+        /* === CORREÇÃO V13: LIFT UP (LEVANTAR TEXTO) === */
 
-        .browser-bar {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 100px;
-            padding: 15px 30px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            width: 100%;
-            margin-bottom: 20px;
-            font-family: monospace;
-        }
-
-        /* BOTÕES */
-        .btn-group {
-            width: 100%;
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .action-btn {
-            flex: 1;
-            padding: 12px 0;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 13px;
-            cursor: pointer;
-            border: none;
+        /* Flexbox padrão centralizado */
+        .flex-center {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 5px;
-            transition: all 0.2s;
+        }
+
+        /* O PULO DO GATO INVERSO: Padding Bottom para empurrar o texto PRA CIMA */
+        .lift-up {
+            padding-bottom: 3px;
+            line-height: 1;
+            display: block;
+        }
+
+        .lift-up-sm {
+            padding-bottom: 2px;
+            line-height: 1;
+            display: block;
+        }
+
+        /* Para ícones que precisam subir */
+        .lift-icon {
+            padding-bottom: 4px;
+        }
+
+        /* Glass & Text */
+        .glass {
+            background: rgba(30, 30, 30, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+        }
+
+        .giant {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            line-height: 0.85;
+            letter-spacing: -0.04em;
+        }
+
+        /* Botões */
+        .btn-row {
+            width: 100%;
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            font-size: 13px;
         }
 
         .btn-view {
-            background: #e2e8f0;
-            color: #1e293b;
+            background: #d4d4d4;
+            color: #1c1917;
         }
 
         .btn-dl {
-            background: #2563eb;
+            background: #b45309;
             color: white;
         }
 
-        /* OVERLAYS */
-        #loading-overlay,
-        #fullscreen-viewer {
+        /* Loading */
+        #loading {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 5000;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 9999;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
 
-        #loading-overlay {
-            background: rgba(255, 255, 255, 0.98);
-            flex-direction: column;
-        }
-
-        #fullscreen-viewer {
+        #fs-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: #000;
+            z-index: 9998;
         }
 
-        #fullscreen-close {
+        #fs-close {
             position: absolute;
             top: 40px;
             right: 20px;
-            z-index: 5001;
-            background: rgba(255, 255, 255, 0.2);
             color: white;
+            background: rgba(255, 255, 255, 0.2);
             padding: 10px 20px;
             border-radius: 30px;
-            font-weight: bold;
             cursor: pointer;
-            backdrop-filter: blur(10px);
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
 
-    <div id="loading-overlay">
-        <i class="ph-bold ph-spinner animate-spin text-6xl text-blue-600 mb-6"></i>
-        <p class="text-2xl font-bold text-gray-900">Gerando Imagem HD...</p>
+    <div id="loading"><i class="ph-bold ph-spinner animate-spin text-6xl text-accent-600 mb-4"></i>
+        <p class="text-2xl font-bold text-bible-900">Gerando Imagens...</p>
+    </div>
+    <div id="fs-overlay"><button id="fs-close"
+            onclick="document.getElementById('fs-overlay').style.display='none'">FECHAR</button>
+        <div id="fs-content" style="display:flex;justify-content:center;align-items:center;height:100%"></div>
     </div>
 
-    <div id="fullscreen-viewer">
-        <button id="fullscreen-close" onclick="closeFullscreen()">FECHAR X</button>
-        <div id="fullscreen-content"></div>
+    <div class="header">
+        <h1 class="text-4xl font-display font-black text-bible-900">Pack Final V13</h1>
+        <p class="text-bible-800 mt-2">Correção de Alinhamento (Lift Up)</p>
     </div>
 
-    <div class="text-center pt-16 px-4">
-        <h1 class="text-4xl font-black text-slate-900 tracking-tight">Pack PWA <span
-                class="text-blue-600">Completo</span></h1>
-        <p class="text-slate-500 mt-2">100% Detalhado com base no código do app.</p>
-    </div>
+    <div class="text-center"><span class="section-tag">FEED (4:5)</span></div>
+    <div class="grid-container">
 
-    <div class="text-center mt-12"><span class="section-tag">CARROSSEL (4:5)</span></div>
-
-    <div class="preview-grid">
-
-        <div class="slide-card">
-            <div class="wrapper-feed">
-                <div id="feed-1" class="master-slide feed bg-premium-gradient text-white">
-                    <div class="absolute inset-0 bg-grid-pattern opacity-20"></div>
-                    <div class="feed-padding">
+        <div class="card">
+            <div class="cont-feed">
+                <div id="f1" class="master feed scaled bg-stone-gradient text-bible-50">
+                    <div class="absolute inset-0 bg-paper-texture opacity-10"></div>
+                    <div class="pad-feed">
                         <div class="flex justify-between items-center">
-                            <img src="https://i.ibb.co/NgXsZfvZ/logo-bco.png" class="w-24 opacity-90">
-                            <span
-                                class="bg-white/10 px-4 py-2 rounded-full font-bold text-sm border border-white/20">WEB
-                                APP 3.0</span>
+                            <img src="https://i.ibb.co/wZ8F5s9K/logo-2-bco.png" class="w-24 opacity-90">
+                            <div class="bg-white/10 px-5 h-10 rounded-full border border-white/20 flex-center">
+                                <span class="text-xs font-bold tracking-wider text-accent-100 lift-up-sm">WEB APP
+                                    3.0</span>
+                            </div>
                         </div>
-
-                        <div class="z-10 relative">
-                            <h1 class="text-[6rem] font-black leading-[0.85] tracking-tighter mb-8 drop-shadow-2xl">
-                                NÃO<br>INSTALE<br><span
-                                    class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">NADA.</span>
-                            </h1>
+                        <div class="relative z-10">
+                            <h1 class="giant text-[6.5rem] mb-6 text-bible-100">NÃO<br>INSTALE<br><span
+                                    class="text-accent-500">NADA.</span></h1>
                             <p
-                                class="text-3xl font-light text-blue-100 leading-snug max-w-2xl border-l-4 border-blue-500 pl-6">
-                                Descubra como ter a Bíblia completa no celular sem ocupar sua memória.
-                            </p>
+                                class="text-3xl font-serif text-bible-200 leading-snug border-l-4 border-accent-600 pl-6 max-w-2xl">
+                                Tenha a Bíblia completa no celular sem ocupar sua memória.</p>
                         </div>
-
-                        <div
-                            class="bg-black/30 backdrop-blur rounded-2xl p-6 flex justify-between items-center border border-white/10">
-                            <span class="text-xl font-bold text-blue-300 uppercase tracking-widest">Arraste para o
-                                lado</span>
-                            <i class="ph-bold ph-arrow-right text-3xl"></i>
+                        <div class="flex justify-between items-end border-t border-white/10 pt-6">
+                            <span class="text-sm font-mono opacity-50 uppercase tracking-widest lift-up-sm">Dev. Mateus
+                                Heringer</span>
+                            <div
+                                class="flex items-center gap-3 text-accent-500 font-bold uppercase tracking-widest text-lg h-10 flex-center">
+                                <span class="lift-up">Entenda</span> <i class="ph-bold ph-arrow-right lift-icon"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="btn-group"><button onclick="viewFullscreen('feed-1', 'feed')"
-                    class="action-btn btn-view">Ver</button><button onclick="downloadImage('feed-1', 'feed')"
-                    class="action-btn btn-dl">Baixar</button></div>
+            <div class="btn-row"><button class="btn btn-view" onclick="view('f1','feed')">Ver</button><button
+                    class="btn btn-dl" onclick="dl('f1','feed')">Baixar</button></div>
         </div>
 
-        <div class="slide-card">
-            <div class="wrapper-feed">
-                <div id="feed-2" class="master-slide feed bg-slate-50 text-slate-900">
-                    <div class="feed-padding">
-                        <div class="flex items-center gap-4">
-                            <span
-                                class="bg-blue-100 text-blue-800 px-4 py-2 rounded-lg font-bold uppercase">Tecnologia</span>
-                        </div>
-
+        <div class="card">
+            <div class="cont-feed">
+                <div id="f2" class="master feed scaled bg-bible-50 text-bible-900">
+                    <div class="pad-feed">
+                        <div class="w-16 h-2 bg-bible-900 mb-4 rounded-full"></div>
                         <div>
-                            <h2 class="text-6xl font-black mb-8 leading-tight">O que é um<br><span
-                                    class="text-blue-600">PWA?</span></h2>
-                            <p class="text-2xl text-slate-500 mb-10 leading-relaxed">
-                                <strong>Progressive Web App:</strong> É um site tão poderoso que o seu celular reconhece
-                                como um aplicativo.
-                            </p>
-
-                            <div class="space-y-6">
-                                <div
-                                    class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex items-center gap-6">
-                                    <div
-                                        class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 text-3xl">
-                                        <i class="ph-fill ph-cloud-slash"></i>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-2xl font-bold">Zero Download</h3>
-                                        <p class="text-lg text-slate-500">Não precisa baixar 100MB.</p>
-                                    </div>
+                            <h2 class="giant text-7xl mb-8">Memória<br><span
+                                    class="text-red-600 italic font-serif">Cheia?</span></h2>
+                            <div
+                                class="bg-white p-8 rounded-3xl shadow-lg border border-bible-200 mb-8 transform -rotate-1">
+                                <div class="flex items-center gap-4 mb-4 text-red-500 border-b border-red-100 pb-4">
+                                    <i class="ph-fill ph-warning-circle text-4xl lift-icon"></i>
+                                    <span
+                                        class="font-bold text-xl uppercase tracking-wider lift-up">Armazenamento</span>
                                 </div>
-                                <div
-                                    class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex items-center gap-6">
-                                    <div
-                                        class="w-14 h-14 bg-green-50 rounded-full flex items-center justify-center text-green-600 text-3xl">
-                                        <i class="ph-fill ph-check-circle"></i>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-2xl font-bold">Sem Loja</h3>
-                                        <p class="text-lg text-slate-500">Instalação direta pelo navegador.</p>
-                                    </div>
-                                </div>
+                                <p class="text-2xl font-serif text-bible-600 leading-relaxed italic">"Não foi possível
+                                    baixar o aplicativo. Libere espaço."</p>
                             </div>
+                            <p class="text-3xl font-bold text-bible-800">Pare de apagar suas fotos.</p>
                         </div>
-
-                        <div class="text-center font-mono text-slate-400 font-bold uppercase tracking-widest text-sm">
-                            Disponível para iOS e Android</div>
-                    </div>
-                </div>
-            </div>
-            <div class="btn-group"><button onclick="viewFullscreen('feed-2', 'feed')"
-                    class="action-btn btn-view">Ver</button><button onclick="downloadImage('feed-2', 'feed')"
-                    class="action-btn btn-dl">Baixar</button></div>
-        </div>
-
-        <div class="slide-card">
-            <div class="wrapper-feed">
-                <div id="feed-3" class="master-slide feed bg-midnight text-white">
-                    <div class="feed-padding">
-                        <div class="text-center">
-                            <h2 class="text-6xl font-black mb-4">Sua Versão<br><span
-                                    class="text-blue-500">Favorita.</span></h2>
-                            <p class="text-2xl text-gray-400">Temos os textos originais e modernos.</p>
-                        </div>
-
-                        <div class="flex-1 my-8 flex flex-col justify-center gap-4">
-                            <div
-                                class="bg-white/10 p-6 rounded-2xl flex items-center justify-between border border-white/10">
-                                <span class="text-3xl font-bold">NVI</span>
-                                <span class="text-lg text-gray-400">Nova Versão Internacional</span>
-                            </div>
-                            <div
-                                class="bg-white/10 p-6 rounded-2xl flex items-center justify-between border border-white/10">
-                                <span class="text-3xl font-bold">ACF</span>
-                                <span class="text-lg text-gray-400">Almeida Corrigida Fiel</span>
-                            </div>
-                            <div
-                                class="bg-white/10 p-6 rounded-2xl flex items-center justify-between border border-white/10">
-                                <span class="text-3xl font-bold">ARA</span>
-                                <span class="text-lg text-gray-400">Almeida Revista e Atualizada</span>
-                            </div>
-                            <div
-                                class="bg-white/10 p-6 rounded-2xl flex items-center justify-between border border-white/10">
-                                <span class="text-3xl font-bold">KJA</span>
-                                <span class="text-lg text-gray-400">King James Atualizada</span>
-                            </div>
-                            <div class="text-center text-gray-500 font-bold text-xl">+ NTLH, NVT e outras 7 versões
-                            </div>
-                        </div>
-
                         <div
-                            class="w-full bg-blue-600/20 p-4 rounded-xl text-center text-blue-200 border border-blue-500/30">
-                            Troca instantânea de versão
+                            class="text-right flex items-center justify-end gap-2 text-bible-400 font-bold uppercase tracking-widest text-sm h-10 flex-center w-full">
+                            <div class="flex-center gap-2 ml-auto"><span class="lift-up">Próximo</span> <i
+                                    class="ph-bold ph-arrow-right text-2xl lift-icon"></i></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="btn-group"><button onclick="viewFullscreen('feed-3', 'feed')"
-                    class="action-btn btn-view">Ver</button><button onclick="downloadImage('feed-3', 'feed')"
-                    class="action-btn btn-dl">Baixar</button></div>
+            <div class="btn-row"><button class="btn btn-view" onclick="view('f2','feed')">Ver</button><button
+                    class="btn btn-dl" onclick="dl('f2','feed')">Baixar</button></div>
         </div>
 
-        <div class="slide-card">
-            <div class="wrapper-feed">
-                <div id="feed-4" class="master-slide feed bg-premium-gradient text-white">
-                    <div class="absolute -right-20 -top-20 w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-3xl">
-                    </div>
-                    <div class="feed-padding z-10">
+        <div class="card">
+            <div class="cont-feed">
+                <div id="f3" class="master feed scaled bg-bible-900 text-bible-50">
+                    <div class="pad-feed">
+                        <div
+                            class="border border-accent-500/30 px-6 h-12 rounded-full w-max bg-accent-500/10 flex-center">
+                            <span class="text-accent-500 font-bold uppercase tracking-widest text-sm lift-up">A
+                                Tecnologia</span>
+                        </div>
                         <div>
-                            <h2 class="text-7xl font-black mb-4">Louvor<br>Completo.</h2>
-                            <p class="text-2xl text-purple-200">Não precisa de outro app para cantar.</p>
-                        </div>
-
-                        <div class="space-y-6 my-auto">
-                            <div
-                                class="bg-white/10 backdrop-blur p-8 rounded-3xl flex items-center gap-6 border border-white/10">
-                                <div
-                                    class="bg-purple-500 w-16 h-16 rounded-full flex items-center justify-center text-3xl text-white">
-                                    <i class="ph-fill ph-music-notes"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-3xl font-bold">Harpa Cristã</h3>
-                                    <p class="text-lg text-gray-300">640 Hinos Oficiais</p>
-                                </div>
-                            </div>
-
-                            <div
-                                class="bg-white/10 backdrop-blur p-8 rounded-3xl flex items-center gap-6 border border-white/10">
-                                <div
-                                    class="bg-blue-500 w-16 h-16 rounded-full flex items-center justify-center text-3xl text-white">
-                                    <i class="ph-fill ph-music-notes-simple"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-3xl font-bold">Cantor Cristão</h3>
-                                    <p class="text-lg text-gray-300">Batistas e tradicionais</p>
-                                </div>
-                            </div>
-
-                            <div
-                                class="bg-white/10 backdrop-blur p-8 rounded-3xl flex items-center gap-6 border border-white/10">
-                                <div
-                                    class="bg-pink-500 w-16 h-16 rounded-full flex items-center justify-center text-3xl text-white">
-                                    <i class="ph-fill ph-heart"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-3xl font-bold">Novo Cântico</h3>
-                                    <p class="text-lg text-gray-300">Presbiteriano</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="text-center font-bold opacity-60 uppercase tracking-widest text-sm">Busca por número
-                            ou trecho da letra</div>
-                    </div>
-                </div>
-            </div>
-            <div class="btn-group"><button onclick="viewFullscreen('feed-4', 'feed')"
-                    class="action-btn btn-view">Ver</button><button onclick="downloadImage('feed-4', 'feed')"
-                    class="action-btn btn-dl">Baixar</button></div>
-        </div>
-
-        <div class="slide-card">
-            <div class="wrapper-feed">
-                <div id="feed-5" class="master-slide feed bg-gold-gradient text-white">
-                    <div class="feed-padding text-center">
-                        <div class="mt-4">
-                            <i class="ph-fill ph-crown text-9xl mb-4 text-yellow-100 drop-shadow-md"></i>
-                            <h2 class="text-7xl font-black mb-2">Quiz Bíblico.</h2>
-                            <p class="text-2xl font-bold uppercase tracking-widest opacity-80">Aprenda Jogando</p>
-                        </div>
-
-                        <div
-                            class="bg-white text-slate-900 p-8 rounded-[2.5rem] shadow-2xl transform -rotate-1 w-full my-auto text-left">
-                            <div class="flex justify-between mb-6">
-                                <span
-                                    class="bg-orange-100 text-orange-600 px-4 py-1 rounded-full font-bold uppercase text-xs">Pergunta
-                                    do Dia</span>
-                                <span class="text-gray-400 font-bold">150 pts</span>
-                            </div>
-                            <p class="text-3xl font-bold mb-8 leading-tight">Quem foi o sucessor de Moisés?</p>
+                            <h2 class="giant text-7xl mb-8 text-white">É um<br><span class="text-accent-500">PWA.</span>
+                            </h2>
+                            <p class="text-2xl font-serif text-bible-300 mb-10 leading-relaxed"><strong>Progressive Web
+                                    App:</strong> Um site tão avançado que seu celular instala como aplicativo.</p>
                             <div class="space-y-4">
-                                <div
-                                    class="p-4 bg-slate-100 rounded-xl text-xl font-bold text-gray-500 border border-slate-200">
-                                    A. Arão</div>
-                                <div
-                                    class="p-4 bg-green-500 text-white rounded-xl text-xl font-bold flex justify-between shadow-lg scale-105">
-                                    B. Josué <i class="ph-bold ph-check"></i></div>
-                                <div
-                                    class="p-4 bg-slate-100 rounded-xl text-xl font-bold text-gray-500 border border-slate-200">
-                                    C. Calebe</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="btn-group"><button onclick="viewFullscreen('feed-5', 'feed')"
-                    class="action-btn btn-view">Ver</button><button onclick="downloadImage('feed-5', 'feed')"
-                    class="action-btn btn-dl">Baixar</button></div>
-        </div>
-
-        <div class="slide-card">
-            <div class="wrapper-feed">
-                <div id="feed-6" class="master-slide feed bg-slate-50 text-slate-900">
-                    <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
-                    <div class="feed-padding z-10">
-                        <div class="text-center">
-                            <h2 class="text-6xl font-black mb-4">Crie &<br><span
-                                    class="text-purple-600">Compartilhe.</span></h2>
-                            <p class="text-2xl text-gray-500">Editor de versículos integrado.</p>
-                        </div>
-
-                        <div class="flex-1 w-full flex items-center justify-center my-8">
-                            <div
-                                class="relative w-[80%] aspect-[9/16] bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl shadow-2xl p-6 flex flex-col justify-center text-center transform rotate-3 border-4 border-white">
-                                <p class="text-white font-serif text-2xl italic mb-4 leading-relaxed">"O Senhor é o meu
-                                    pastor, nada me faltará."</p>
-                                <p class="text-white/80 font-bold text-xs tracking-widest uppercase">Salmos 23:1</p>
-
-                                <div class="absolute bottom-4 left-0 w-full flex justify-center gap-2">
-                                    <div class="w-6 h-6 rounded-full bg-white/20"></div>
-                                    <div class="w-6 h-6 rounded-full bg-white/20"></div>
-                                    <div class="w-6 h-6 rounded-full bg-white/80"></div>
+                                <div class="glass p-5 rounded-2xl flex items-center gap-5 border border-white/5"><i
+                                        class="ph-fill ph-cloud-slash text-5xl text-accent-500 lift-icon"></i>
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-white lift-up">Zero Download</h3>
+                                        <p class="text-bible-400 text-lg mt-1">Usa o cache do navegador.</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="text-center bg-white p-4 rounded-xl shadow-sm border border-gray-100">
-                            <p class="font-bold text-gray-600"><i
-                                    class="ph-bold ph-instagram-logo text-pink-500 inline mr-2"></i>Poste direto no
-                                Stories</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="btn-group"><button onclick="viewFullscreen('feed-6', 'feed')"
-                    class="action-btn btn-view">Ver</button><button onclick="downloadImage('feed-6', 'feed')"
-                    class="action-btn btn-dl">Baixar</button></div>
-        </div>
-
-        <div class="slide-card">
-            <div class="wrapper-feed">
-                <div id="feed-7" class="master-slide feed bg-black text-white">
-                    <div class="feed-padding items-center text-center justify-center">
-                        <div
-                            class="w-64 h-64 border-[16px] border-red-600 rounded-full flex items-center justify-center mb-10 relative">
-                            <span class="text-[8rem] font-black text-red-600">0%</span>
-                            <div
-                                class="absolute -right-6 -bottom-6 bg-red-600 text-white px-6 py-2 rounded-lg font-bold transform rotate-[-10deg] shadow-lg text-lg">
-                                SEM ADS</div>
-                        </div>
-
-                        <h2 class="text-8xl font-black mb-6 leading-none">ZERO<br>ANÚNCIOS.</h2>
-                        <p class="text-3xl text-gray-300 font-bold">Sua fé não é produto.</p>
-
-                        <div class="mt-10 flex gap-4 text-gray-500 text-lg font-mono">
-                            <span class="line-through">Banners</span> • <span class="line-through">Vídeos</span> • <span
-                                class="line-through">Popups</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="btn-group"><button onclick="viewFullscreen('feed-7', 'feed')"
-                    class="action-btn btn-view">Ver</button><button onclick="downloadImage('feed-7', 'feed')"
-                    class="action-btn btn-dl">Baixar</button></div>
-        </div>
-
-        <div class="slide-card">
-            <div class="wrapper-feed">
-                <div id="feed-8" class="master-slide feed bg-blue-600 text-white">
-                    <div class="feed-padding">
-                        <div class="bg-white/20 w-max px-4 py-2 rounded-full font-bold text-sm mb-4">PASSO 1 DE 3</div>
-                        <h2 class="text-6xl font-black mb-8">Abra o Link.</h2>
-
-                        <div class="flex-1 flex flex-col justify-center gap-8">
-                            <div class="bg-white p-8 rounded-[2rem] text-slate-900 shadow-2xl relative">
-                                <div
-                                    class="absolute -top-6 -left-6 w-16 h-16 bg-yellow-400 text-slate-900 rounded-full flex items-center justify-center text-4xl font-black shadow-lg">
-                                    1</div>
-                                <h3 class="text-3xl font-bold mb-2">Acesse a Bio</h3>
-                                <p class="text-xl text-slate-500 mb-6">Vá no perfil do Instagram e clique no link.</p>
-
-                                <div
-                                    class="bg-slate-100 p-4 rounded-xl flex items-center gap-3 border border-slate-200">
-                                    <i class="ph-bold ph-lock-key text-green-600 text-xl"></i>
-                                    <span class="font-mono text-sm text-slate-600">leiaabiblia.vercel.app</span>
-                                </div>
-                            </div>
-
-                            <p class="text-xl opacity-90 text-center">Use o navegador <strong>Safari</strong> (iPhone)
-                                ou <strong>Chrome</strong> (Android).</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="btn-group"><button onclick="viewFullscreen('feed-8', 'feed')"
-                    class="action-btn btn-view">Ver</button><button onclick="downloadImage('feed-8', 'feed')"
-                    class="action-btn btn-dl">Baixar</button></div>
-        </div>
-
-        <div class="slide-card">
-            <div class="wrapper-feed">
-                <div id="feed-9" class="master-slide feed bg-blue-600 text-white">
-                    <div class="feed-padding">
-                        <div class="bg-white/20 w-max px-4 py-2 rounded-full font-bold text-sm mb-4">PASSO 2 E 3</div>
-                        <h2 class="text-6xl font-black mb-8">Adicione à Tela.</h2>
-
-                        <div class="flex-1 flex flex-col justify-center gap-6">
-                            <div class="bg-white/10 p-6 rounded-2xl flex items-center gap-6 border border-white/20">
-                                <div
-                                    class="bg-white text-blue-600 w-12 h-12 rounded-full flex items-center justify-center font-black text-2xl shrink-0">
-                                    2</div>
-                                <div>
-                                    <p class="text-2xl font-bold">Toque em Compartilhar</p>
-                                    <div class="flex gap-3 mt-1 text-sm bg-black/20 px-3 py-1 rounded w-max">
-                                        <i class="ph-bold ph-export"></i> iOS &nbsp;|&nbsp; <i
-                                            class="ph-bold ph-dots-three-vertical"></i> Android
+                                <div class="glass p-5 rounded-2xl flex items-center gap-5 border border-white/5"><i
+                                        class="ph-fill ph-lightning text-5xl text-accent-500 lift-icon"></i>
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-white lift-up">Instantâneo</h3>
+                                        <p class="text-bible-400 text-lg mt-1">Abre em milissegundos.</p>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div
+                            class="text-center text-bible-500 text-sm font-bold uppercase tracking-widest border-t border-white/10 pt-4 lift-up">
+                            Funciona no iPhone e Android</div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-row"><button class="btn btn-view" onclick="view('f3','feed')">Ver</button><button
+                    class="btn btn-dl" onclick="dl('f3','feed')">Baixar</button></div>
+        </div>
 
+        <div class="card">
+            <div class="cont-feed">
+                <div id="f4" class="master feed scaled bg-bible-50 text-bible-900">
+                    <div class="pad-feed">
+                        <h2 class="giant text-6xl mb-6 text-center">13 Versões<br><span
+                                class="text-accent-600 font-serif italic text-5xl">Offline.</span></h2>
+                        <div class="flex-1 flex flex-col justify-center gap-3">
                             <div
-                                class="bg-white text-blue-900 p-6 rounded-2xl flex items-center gap-6 shadow-xl transform scale-105 border-4 border-white/20">
-                                <div
-                                    class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center font-black text-2xl shrink-0">
-                                    3</div>
+                                class="bg-white p-5 rounded-xl shadow-sm border border-bible-200 flex justify-between items-center">
+                                <div class="flex-center h-8"><span
+                                        class="text-3xl font-black font-sans text-bible-800 lift-up">NVI</span></div>
+                                <span class="text-lg font-serif italic text-bible-500">Nova Versão Internacional</span>
+                            </div>
+                            <div
+                                class="bg-white p-5 rounded-xl shadow-sm border border-bible-200 flex justify-between items-center">
+                                <div class="flex-center h-8"><span
+                                        class="text-3xl font-black font-sans text-bible-800 lift-up">ACF</span></div>
+                                <span class="text-lg font-serif italic text-bible-500">Almeida Corrigida Fiel</span>
+                            </div>
+                            <div
+                                class="bg-white p-5 rounded-xl shadow-sm border border-bible-200 flex justify-between items-center">
+                                <div class="flex-center h-8"><span
+                                        class="text-3xl font-black font-sans text-bible-800 lift-up">ARA</span></div>
+                                <span class="text-lg font-serif italic text-bible-500">Revista e Atualizada</span>
+                            </div>
+                            <div
+                                class="bg-white p-5 rounded-xl shadow-sm border border-bible-200 flex justify-between items-center">
+                                <div class="flex-center h-8"><span
+                                        class="text-3xl font-black font-sans text-bible-800 lift-up">KJA</span></div>
+                                <span class="text-lg font-serif italic text-bible-500">King James</span>
+                            </div>
+                            <div
+                                class="bg-white p-5 rounded-xl shadow-sm border border-bible-200 flex justify-between items-center">
+                                <div class="flex-center h-8"><span
+                                        class="text-3xl font-black font-sans text-bible-800 lift-up">NTLH</span></div>
+                                <span class="text-lg font-serif italic text-bible-500">Nova Tradução Hoje</span>
+                            </div>
+                            <div
+                                class="text-center text-sm font-bold uppercase text-bible-400 mt-4 tracking-widest lift-up">
+                                + NVT, ARC, NAA, NBV, TB...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-row"><button class="btn btn-view" onclick="view('f4','feed')">Ver</button><button
+                    class="btn btn-dl" onclick="dl('f4','feed')">Baixar</button></div>
+        </div>
+
+        <div class="card">
+            <div class="cont-feed">
+                <div id="f5" class="master feed scaled bg-stone-gradient text-white">
+                    <div class="absolute inset-0 bg-paper-texture opacity-10"></div>
+                    <div class="pad-feed">
+                        <div>
+                            <h2 class="giant text-6xl mb-4">Louvor<br><span
+                                    class="text-accent-500 italic font-serif">Completo.</span></h2>
+                            <p class="text-xl text-bible-300 font-serif italic">Não baixe outro app só para cantar.</p>
+                        </div>
+                        <div class="space-y-5 my-auto">
+                            <div class="glass p-6 rounded-2xl flex items-center gap-5 border border-white/10">
+                                <div class="flex-center w-16 h-16 bg-bible-50 rounded-full"><i
+                                        class="ph-fill ph-music-notes text-bible-900 text-3xl lift-icon"></i></div>
                                 <div>
-                                    <p class="text-2xl font-bold">Adicionar à Tela de Início</p>
-                                    <p class="text-sm opacity-60">Add to Home Screen</p>
+                                    <h3 class="text-2xl font-bold text-white lift-up">Harpa Cristã</h3>
+                                    <p class="text-bible-400 mt-1">640 Hinos Oficiais</p>
+                                </div>
+                            </div>
+                            <div class="glass p-6 rounded-2xl flex items-center gap-5 border border-white/10">
+                                <div class="flex-center w-16 h-16 bg-bible-50 rounded-full"><i
+                                        class="ph-fill ph-music-notes-simple text-bible-900 text-3xl lift-icon"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white lift-up">Cantor Cristão</h3>
+                                    <p class="text-bible-400 mt-1">Tradicional Batista</p>
+                                </div>
+                            </div>
+                            <div class="glass p-6 rounded-2xl flex items-center gap-5 border border-white/10">
+                                <div class="flex-center w-16 h-16 bg-bible-50 rounded-full"><i
+                                        class="ph-fill ph-heart text-bible-900 text-3xl lift-icon"></i></div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white lift-up">Novo Cântico</h3>
+                                    <p class="text-bible-400 mt-1">Hinário Presbiteriano</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="text-center font-mono text-xs opacity-50 uppercase tracking-widest border-t border-white/10 pt-4 lift-up-sm">
+                            Busca inteligente por número ou letra</div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-row"><button class="btn btn-view" onclick="view('f5','feed')">Ver</button><button
+                    class="btn btn-dl" onclick="dl('f5','feed')">Baixar</button></div>
+        </div>
+
+        <div class="card">
+            <div class="cont-feed">
+                <div id="f6" class="master feed scaled bg-bible-50 text-bible-900">
+                    <div class="pad-feed">
+                        <h2 class="giant text-6xl text-center mb-8">Ferramentas<br>de <span
+                                class="text-accent-600">Estudo.</span></h2>
+                        <div class="grid grid-rows-2 gap-6 flex-1">
+                            <div
+                                class="bg-white p-8 rounded-3xl shadow-lg border border-bible-200 flex flex-col justify-center text-center">
+                                <i class="ph-duotone ph-brain text-7xl text-accent-600 mb-4 mx-auto lift-icon"></i>
+                                <h3 class="text-3xl font-black mb-2 text-bible-800 lift-up">Quiz Bíblico</h3>
+                                <p class="text-xl text-bible-500 font-serif">Teste seu conhecimento e suba de nível.</p>
+                            </div>
+                            <div
+                                class="bg-white p-8 rounded-3xl shadow-lg border border-bible-200 flex flex-col justify-center text-center">
+                                <i
+                                    class="ph-duotone ph-calendar-check text-7xl text-green-600 mb-4 mx-auto lift-icon"></i>
+                                <h3 class="text-3xl font-black mb-2 text-bible-800 lift-up">Planos de Leitura</h3>
+                                <p class="text-xl text-bible-500 font-serif">Anual (Bíblico) e Cronológico com
+                                    progresso.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-row"><button class="btn btn-view" onclick="view('f6','feed')">Ver</button><button
+                    class="btn btn-dl" onclick="dl('f6','feed')">Baixar</button></div>
+        </div>
+
+        <div class="card">
+            <div class="cont-feed">
+                <div id="f7" class="master feed scaled bg-bible-900 text-bible-50">
+                    <div class="pad-feed">
+                        <h2 class="giant text-5xl mb-8">Controle<br><span
+                                class="text-accent-500 italic font-serif">Total.</span></h2>
+                        <div class="space-y-5 my-auto">
+                            <div class="glass p-6 rounded-xl flex items-center justify-between border border-white/5">
+                                <div class="flex items-center gap-4"><i
+                                        class="ph-bold ph-text-aa text-3xl lift-icon"></i><span
+                                        class="text-2xl font-bold lift-up">Ajuste de Fonte</span></div>
+                                <div class="flex gap-2">
+                                    <div class="flex-center w-12 h-12 bg-white/10 rounded-lg"><span
+                                            class="text-xl font-bold lift-up">-</span></div>
+                                    <div class="flex-center w-12 h-12 bg-white/10 rounded-lg"><span
+                                            class="text-xl font-bold lift-up">+</span></div>
+                                </div>
+                            </div>
+                            <div class="glass p-6 rounded-xl flex items-center justify-between border border-white/5">
+                                <div class="flex items-center gap-4"><i
+                                        class="ph-bold ph-moon-stars text-3xl lift-icon"></i><span
+                                        class="text-2xl font-bold lift-up">Modo Noturno</span></div>
+                                <div class="w-14 h-8 bg-accent-600 rounded-full relative">
+                                    <div class="absolute right-1 top-1 w-6 h-6 bg-white rounded-full"></div>
+                                </div>
+                            </div>
+                            <div class="glass p-6 rounded-xl flex items-center justify-between border border-white/5">
+                                <div class="flex items-center gap-4"><i
+                                        class="ph-bold ph-download-simple text-3xl lift-icon"></i><span
+                                        class="text-2xl font-bold lift-up">Backup de Dados</span></div>
+                                <div class="flex-center w-20 h-10 bg-white/10 rounded"><span
+                                        class="text-sm font-mono text-accent-200 font-bold tracking-wider lift-up">JSON</span>
+                                </div>
+                            </div>
+                            <div class="glass p-6 rounded-xl flex items-center gap-4 border border-white/5">
+                                <i class="ph-fill ph-fire text-4xl text-orange-500 lift-icon"></i>
+                                <div><span class="text-2xl font-bold lift-up block">Ofensiva</span>
+                                    <p class="text-sm text-bible-400 mt-1">Contador de dias seguidos.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="btn-group"><button onclick="viewFullscreen('feed-9', 'feed')"
-                    class="action-btn btn-view">Ver</button><button onclick="downloadImage('feed-9', 'feed')"
-                    class="action-btn btn-dl">Baixar</button></div>
+            <div class="btn-row"><button class="btn btn-view" onclick="view('f7','feed')">Ver</button><button
+                    class="btn btn-dl" onclick="dl('f7','feed')">Baixar</button></div>
         </div>
 
-        <div class="slide-card">
-            <div class="wrapper-feed">
-                <div id="feed-10" class="master-slide feed bg-premium-gradient text-white">
-                    <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
-                    <div class="feed-padding items-center text-center justify-center">
-                        <div
-                            class="w-40 h-40 bg-white/10 backdrop-blur rounded-[2.5rem] flex items-center justify-center mb-8 border border-white/20 shadow-2xl">
-                            <img src="https://i.ibb.co/NgXsZfvZ/logo-bco.png" class="w-28 h-28 object-contain">
-                        </div>
-
-                        <h2 class="text-6xl font-black mb-6">Instale Agora.</h2>
-                        <p class="text-3xl opacity-80 mb-12 max-w-xs mx-auto font-serif italic">"Lâmpada para os meus
-                            pés é a tua palavra."</p>
-
-                        <div
-                            class="bg-blue-600 text-white px-8 py-5 rounded-full shadow-2xl flex items-center gap-4 border-t border-white/20 w-full justify-center transform hover:scale-105 transition-transform">
-                            <span class="text-2xl font-bold">LINK NA BIO</span>
-                            <i class="ph-bold ph-link text-2xl"></i>
-                        </div>
-
-                        <div class="mt-8 flex gap-4 opacity-60">
-                            <i class="ph-fill ph-apple-logo text-2xl"></i>
-                            <i class="ph-fill ph-android-logo text-2xl"></i>
-                            <span class="font-mono uppercase tracking-widest text-lg pt-1">Web App</span>
+        <div class="card">
+            <div class="cont-feed">
+                <div id="f8" class="master feed scaled bg-accent-600 text-white">
+                    <div class="absolute inset-0 bg-paper-texture opacity-10"></div>
+                    <div class="pad-feed">
+                        <div class="flex-center w-32 h-8 bg-black/20 rounded-lg mb-4"><span
+                                class="font-bold text-xs uppercase tracking-widest lift-up">Passo 1 de 3</span></div>
+                        <h2 class="giant text-6xl mb-8">Abra o Link.</h2>
+                        <div class="flex-1 flex flex-col justify-center gap-8 text-center">
+                            <div class="bg-white text-bible-900 p-8 rounded-[2rem] shadow-2xl relative">
+                                <div
+                                    class="flex-center w-16 h-16 absolute -top-6 -left-6 bg-bible-900 text-white rounded-full shadow-lg">
+                                    <span class="text-4xl font-black font-serif lift-up">1</span>
+                                </div>
+                                <h3 class="text-3xl font-bold mb-2 font-display">Acesse a Bio</h3>
+                                <p class="text-xl text-bible-500 mb-6 font-serif">Vá no perfil @leiaabiblia</p>
+                                <div
+                                    class="flex-center w-full h-14 bg-bible-100 rounded-xl border border-bible-200 gap-3">
+                                    <i class="ph-bold ph-lock-key text-green-600 text-2xl lift-icon"></i>
+                                    <span
+                                        class="font-mono text-xl font-bold text-bible-600 lift-up">leiaabiblia.vercel.app</span>
+                                </div>
+                            </div>
+                            <p class="text-xl opacity-90 font-medium">Use <strong>Safari</strong> (iPhone) ou
+                                <strong>Chrome</strong> (Android).
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="btn-group"><button onclick="viewFullscreen('feed-10', 'feed')"
-                    class="action-btn btn-view">Ver</button><button onclick="downloadImage('feed-10', 'feed')"
-                    class="action-btn btn-dl">Baixar</button></div>
+            <div class="btn-row"><button class="btn btn-view" onclick="view('f8','feed')">Ver</button><button
+                    class="btn btn-dl" onclick="dl('f8','feed')">Baixar</button></div>
+        </div>
+
+        <div class="card">
+            <div class="cont-feed">
+                <div id="f9" class="master feed scaled bg-accent-600 text-white">
+                    <div class="absolute inset-0 bg-paper-texture opacity-10"></div>
+                    <div class="pad-feed">
+                        <div class="flex-center w-32 h-8 bg-black/20 rounded-lg mb-4"><span
+                                class="font-bold text-xs uppercase tracking-widest lift-up">Passo 2 de 3</span></div>
+                        <h2 class="giant text-6xl mb-8">Onde Clicar?</h2>
+                        <div class="flex-1 flex flex-col justify-center gap-6">
+                            <div class="bg-white p-6 rounded-2xl text-bible-900 flex items-center gap-6 shadow-lg">
+                                <div class="flex-center w-20 h-20 bg-bible-100 rounded-xl"><i
+                                        class="ph-bold ph-export text-5xl text-blue-600 lift-icon"></i></div>
+                                <div><span
+                                        class="text-xs font-bold text-bible-400 uppercase tracking-wider block">iPhone
+                                        (Safari)</span>
+                                    <h3 class="text-3xl font-bold font-display lift-up">Compartilhar</h3>
+                                    <p class="text-base text-bible-500 mt-1">Barra inferior, no centro.</p>
+                                </div>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl text-bible-900 flex items-center gap-6 shadow-lg">
+                                <div class="flex-center w-20 h-20 bg-bible-100 rounded-xl"><i
+                                        class="ph-bold ph-dots-three-vertical text-5xl text-bible-600 lift-icon"></i>
+                                </div>
+                                <div><span
+                                        class="text-xs font-bold text-bible-400 uppercase tracking-wider block">Android
+                                        (Chrome)</span>
+                                    <h3 class="text-3xl font-bold font-display lift-up">Menu Opções</h3>
+                                    <p class="text-base text-bible-500 mt-1">Canto superior direito.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-row"><button class="btn btn-view" onclick="view('f9','feed')">Ver</button><button
+                    class="btn btn-dl" onclick="dl('f9','feed')">Baixar</button></div>
+        </div>
+
+        <div class="card">
+            <div class="cont-feed">
+                <div id="f10" class="master feed scaled bg-accent-600 text-white">
+                    <div class="absolute inset-0 bg-paper-texture opacity-10"></div>
+                    <div class="pad-feed">
+                        <div class="flex-center w-32 h-8 bg-black/20 rounded-lg mb-4"><span
+                                class="font-bold text-xs uppercase tracking-widest lift-up">Passo 3 de 3</span></div>
+                        <h2 class="giant text-6xl mb-8">Finalizar.</h2>
+                        <div class="flex-1 flex flex-col justify-center items-center">
+                            <div
+                                class="bg-white text-bible-900 p-8 rounded-[2.5rem] shadow-2xl w-full text-center relative">
+                                <div
+                                    class="flex-center w-16 h-16 absolute -top-6 -left-6 bg-bible-900 text-white rounded-full shadow-lg">
+                                    <span class="text-4xl font-black font-serif lift-up">3</span>
+                                </div>
+                                <p class="text-xl text-bible-500 mb-6 font-serif">Role o menu e procure por:</p>
+                                <div
+                                    class="bg-bible-50 border-2 border-bible-200 p-6 rounded-2xl flex items-center gap-4 text-left shadow-inner mb-6 transform scale-105">
+                                    <div class="bg-white p-3 rounded-lg shadow border border-bible-100"><i
+                                            class="ph-bold ph-plus-square text-4xl text-black"></i></div>
+                                    <div>
+                                        <p class="font-bold text-2xl text-bible-900 lift-up">Adicionar à Tela de Início
+                                        </p>
+                                        <p class="text-sm text-bible-400 font-mono mt-1 lift-up-sm">Add to Home Screen
+                                        </p>
+                                    </div>
+                                </div>
+                                <i class="ph-fill ph-hand-pointing text-6xl text-accent-600 animate-bounce mt-4"></i>
+                            </div>
+                            <p class="text-xl opacity-90 font-medium mt-8 text-center max-w-xs">Confirme e o ícone
+                                aparecerá junto com seus outros apps.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-row"><button class="btn btn-view" onclick="view('f10','feed')">Ver</button><button
+                    class="btn btn-dl" onclick="dl('f10','feed')">Baixar</button></div>
+        </div>
+
+        <div class="card">
+            <div class="cont-feed">
+                <div id="f11" class="master feed scaled bg-bible-900 text-white">
+                    <div class="pad-feed items-center text-center justify-center">
+                        <div
+                            class="flex-center w-64 h-64 border-[1px] border-accent-500 rounded-full mb-10 bg-bible-800 relative">
+                            <div class="flex flex-col items-center leading-none">
+                                <span class="giant text-[7rem] text-accent-500 lift-up">100%</span>
+                                <span
+                                    class="text-3xl font-bold text-accent-500 tracking-widest uppercase lift-up">LIVRE</span>
+                            </div>
+                            <div
+                                class="flex-center w-32 h-12 absolute -right-4 -bottom-4 bg-accent-600 text-white rounded-lg shadow-lg border border-white/20 transform rotate-[-5deg]">
+                                <span class="font-bold text-xl tracking-widest lift-up">DE ADS</span>
+                            </div>
+                        </div>
+                        <h2 class="giant text-8xl mb-6">Zero<br><span
+                                class="italic font-serif text-bible-400 text-7xl">Anúncios.</span></h2>
+                        <p class="text-3xl text-bible-200 font-serif">Sua fé não é produto.</p>
+                        <div class="mt-12 flex gap-4 text-bible-500 text-lg font-mono border-t border-bible-800 pt-6">
+                            <span class="line-through decoration-red-600 decoration-2">Banners</span> • <span
+                                class="line-through decoration-red-600 decoration-2">Vídeos</span> • <span
+                                class="line-through decoration-red-600 decoration-2">Popups</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-row"><button class="btn btn-view" onclick="view('f11','feed')">Ver</button><button
+                    class="btn btn-dl" onclick="dl('f11','feed')">Baixar</button></div>
+        </div>
+
+        <div class="card">
+            <div class="cont-feed">
+                <div id="f12" class="master feed scaled bg-stone-gradient text-bible-50">
+                    <div class="absolute inset-0 bg-paper-texture opacity-10"></div>
+                    <div class="pad-feed items-center text-center justify-center">
+                        <div
+                            class="flex-center w-48 h-48 bg-white/5 backdrop-blur rounded-[2.5rem] mb-8 border border-white/10 shadow-2xl">
+                            <img src="https://i.ibb.co/wZ8F5s9K/logo-2-bco.png" class="w-32 object-contain">
+                        </div>
+                        <h2 class="giant text-6xl mb-6 text-white">Comece sua<br><span
+                                class="italic text-accent-500">Jornada.</span></h2>
+                        <p class="text-3xl text-bible-300 opacity-80 mb-12 max-w-xs mx-auto font-serif italic">"Lâmpada
+                            para os meus pés é a tua palavra."</p>
+                        <div
+                            class="flex-center w-full h-24 bg-accent-600 text-white rounded-full shadow-2xl border-t border-white/20 transform hover:scale-105 transition-transform cursor-pointer gap-3">
+                            <span class="text-2xl font-bold font-sans tracking-widest lift-up">LINK NA BIO</span>
+                            <i class="ph-bold ph-link text-3xl lift-icon"></i>
+                        </div>
+                        <div class="mt-12 opacity-40 text-xs font-mono uppercase tracking-widest lift-up">Dev. Mateus
+                            Heringer</div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-row"><button class="btn btn-view" onclick="view('f12','feed')">Ver</button><button
+                    class="btn btn-dl" onclick="dl('f12','feed')">Baixar</button></div>
         </div>
 
     </div>
 
-    <div class="text-center mt-12"><span class="section-tag bg-orange-600">STORIES (9:16)</span></div>
+    <div class="text-center mt-12"><span class="section-tag">STORIES (9:16)</span></div>
+    <div class="grid-container">
 
-    <div class="preview-grid">
-
-        <div class="slide-card">
-            <div class="wrapper-story">
-                <div id="story-1" class="master-slide story bg-midnight text-white">
+        <div class="card">
+            <div class="cont-story">
+                <div id="s1" class="master story scaled bg-bible-900 text-bible-50">
                     <div
-                        class="h-[55%] w-full bg-red-600/10 flex flex-col justify-end items-center pb-20 relative overflow-hidden border-b border-white/10">
-                        <div
-                            class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-30">
-                        </div>
-                        <i
-                            class="ph-fill ph-warning-octagon text-[12rem] text-red-500 mb-8 drop-shadow-[0_0_50px_rgba(220,38,38,0.5)]"></i>
-                        <h2 class="text-[6rem] font-black leading-none text-center uppercase tracking-tight">
+                        class="h-[55%] w-full bg-bible-800 flex flex-col justify-end items-center pb-20 border-b border-bible-700">
+                        <div class="absolute inset-0 bg-paper-texture opacity-5"></div>
+                        <i class="ph-fill ph-warning-octagon text-[12rem] text-accent-600 mb-8 opacity-90"></i>
+                        <h2 class="giant text-[6rem] leading-none text-center tracking-tight text-bible-100">
                             SEM<br>ESPAÇO?</h2>
-                        <div class="absolute top-20 right-10 bg-red-600 text-white px-4 py-1 rounded font-bold text-sm">
-                            ALERTA</div>
                     </div>
-
                     <div
-                        class="h-[45%] w-full bg-premium-gradient flex flex-col justify-start pt-20 items-center text-center px-12 relative">
-                        <p class="text-3xl font-bold text-blue-400 mb-4 tracking-widest uppercase">A Solução</p>
-                        <h2 class="text-8xl font-black mb-4">WEB APP.</h2>
-                        <p class="text-3xl text-gray-400 max-w-md">Roda na nuvem. Leve como uma foto.</p>
-
-                        <div class="absolute bottom-40 animate-bounce">
-                            <i class="ph-bold ph-caret-down text-6xl text-white/50"></i>
-                        </div>
+                        class="h-[45%] w-full bg-stone-gradient flex flex-col justify-start pt-20 items-center text-center px-12 relative">
+                        <p class="text-2xl font-bold text-accent-500 mb-4 tracking-widest uppercase font-sans lift-up">A
+                            Solução</p>
+                        <h2 class="giant text-8xl mb-4 text-white">WEB APP.</h2>
+                        <p class="text-2xl text-bible-400 max-w-md font-serif italic">Não ocupa a memória das suas
+                            fotos.</p>
+                        <div class="absolute bottom-40 animate-bounce"><i
+                                class="ph-bold ph-caret-down text-6xl text-bible-600"></i></div>
                     </div>
                 </div>
             </div>
-            <div class="btn-group"><button onclick="viewFullscreen('story-1', 'story')"
-                    class="action-btn btn-view">Ver</button><button onclick="downloadImage('story-1', 'story')"
-                    class="action-btn btn-dl">Baixar</button></div>
+            <div class="btn-row"><button class="btn btn-view" onclick="view('s1','story')">Ver</button><button
+                    class="btn btn-dl" onclick="dl('s1','story')">Baixar</button></div>
         </div>
 
-        <div class="slide-card">
-            <div class="wrapper-story">
-                <div id="story-2" class="master-slide story bg-blue-600 text-white">
-                    <div class="story-padding">
-                        <div class="text-left">
-                            <h2 class="text-7xl font-black">COMO<br>INSTALAR</h2>
-                            <p class="text-2xl opacity-80 mt-4">Tutorial de 10 segundos</p>
-                        </div>
-
-                        <div class="flex flex-col gap-12 pl-6 border-l-4 border-white/20 py-4 my-auto">
-                            <div class="relative">
-                                <div
-                                    class="absolute -left-[43px] top-0 w-10 h-10 bg-white text-blue-900 rounded-full flex items-center justify-center font-bold text-xl shadow-lg">
-                                    1</div>
-                                <h3 class="text-4xl font-bold mb-1">Toque no Link</h3>
-                                <p class="text-2xl opacity-70">Link na Bio do Perfil.</p>
-                            </div>
-
-                            <div class="relative">
-                                <div
-                                    class="absolute -left-[43px] top-0 w-10 h-10 bg-white text-blue-900 rounded-full flex items-center justify-center font-bold text-xl shadow-lg">
-                                    2</div>
-                                <h3 class="text-4xl font-bold mb-3">Compartilhar</h3>
-                                <div class="flex gap-4">
-                                    <div class="bg-black/20 px-4 py-2 rounded-lg text-center flex items-center gap-2"><i
-                                            class="ph-bold ph-export text-3xl"></i><span class="text-lg">iPhone</span>
-                                    </div>
-                                    <div class="bg-black/20 px-4 py-2 rounded-lg text-center flex items-center gap-2"><i
-                                            class="ph-bold ph-dots-three-vertical text-3xl"></i><span
-                                            class="text-lg">Android</span></div>
+        <div class="card">
+            <div class="cont-story">
+                <div id="s2" class="master story scaled bg-bible-50 text-bible-900">
+                    <div class="pad-story text-center">
+                        <h2 class="giant text-7xl mb-4">O que é<br><span class="text-accent-600">PWA?</span></h2>
+                        <p class="text-2xl text-bible-500 font-serif italic mb-8">Um site que vira aplicativo.</p>
+                        <div class="flex-1 flex flex-col justify-center gap-6">
+                            <div class="bg-white p-8 rounded-2xl shadow-lg flex items-center gap-6"><i
+                                    class="ph-fill ph-cloud-slash text-6xl text-accent-600 lift-icon"></i>
+                                <div class="text-left">
+                                    <h3 class="text-3xl font-bold lift-up">Leve</h3>
+                                    <p class="text-xl text-bible-500">Não usa armazenamento.</p>
                                 </div>
                             </div>
-
-                            <div class="relative">
-                                <div
-                                    class="absolute -left-[43px] top-0 w-10 h-10 bg-green-400 text-blue-900 rounded-full flex items-center justify-center font-bold text-xl shadow-lg">
-                                    <i class="ph-bold ph-check"></i>
+                            <div class="bg-white p-8 rounded-2xl shadow-lg flex items-center gap-6"><i
+                                    class="ph-fill ph-lightning text-6xl text-accent-600 lift-icon"></i>
+                                <div class="text-left">
+                                    <h3 class="text-3xl font-bold lift-up">Rápido</h3>
+                                    <p class="text-xl text-bible-500">Sem loading eterno.</p>
                                 </div>
-                                <h3 class="text-4xl font-bold mb-1 text-green-300">Tela de Início</h3>
-                                <p class="text-2xl opacity-70">"Adicionar à Tela de Início"</p>
+                            </div>
+                            <div class="bg-white p-8 rounded-2xl shadow-lg flex items-center gap-6"><i
+                                    class="ph-fill ph-wifi-slash text-6xl text-accent-600 lift-icon"></i>
+                                <div class="text-left">
+                                    <h3 class="text-3xl font-bold lift-up">Offline</h3>
+                                    <p class="text-xl text-bible-500">Funciona sem rede.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="btn-group"><button onclick="viewFullscreen('story-2', 'story')"
-                    class="action-btn btn-view">Ver</button><button onclick="downloadImage('story-2', 'story')"
-                    class="action-btn btn-dl">Baixar</button></div>
+            <div class="btn-row"><button class="btn btn-view" onclick="view('s2','story')">Ver</button><button
+                    class="btn btn-dl" onclick="dl('s2','story')">Baixar</button></div>
         </div>
 
-        <div class="slide-card">
-            <div class="wrapper-story">
-                <div id="story-3" class="master-slide story bg-slate-50 text-slate-900">
-                    <div class="story-padding">
-                        <div class="flex justify-between items-center mb-12">
-                            <img src="https://i.ibb.co/3Yyq2sdW/logo-2.png" class="w-24">
-                            <span class="bg-blue-100 text-blue-800 px-6 py-2 rounded-xl font-bold text-xl">GRÁTIS</span>
-                        </div>
-
+        <div class="card">
+            <div class="cont-story">
+                <div id="s3" class="master story scaled bg-bible-900 text-bible-50">
+                    <div class="pad-story">
                         <div class="text-left mb-8">
-                            <h2 class="text-7xl font-black leading-tight mb-4">Tudo em<br>um só <span
-                                    class="text-blue-600">Lugar.</span></h2>
-                            <p class="text-3xl text-gray-500">Substitua 4 apps por 1.</p>
+                            <h2 class="giant text-7xl leading-tight mb-4">13 Versões<br><span
+                                    class="text-accent-500 italic font-serif text-6xl">Disponíveis.</span></h2>
+                            <p class="text-2xl text-bible-400 font-serif">Alterne com um clique.</p>
                         </div>
+                        <div class="flex flex-col gap-4 flex-1 justify-center">
+                            <div class="glass p-6 rounded-2xl flex justify-between items-center"><span
+                                    class="text-4xl font-bold font-display lift-up">NVI</span><span
+                                    class="text-lg italic text-bible-400">Nova Versão Internacional</span></div>
+                            <div class="glass p-6 rounded-2xl flex justify-between items-center"><span
+                                    class="text-4xl font-bold font-display lift-up">ACF</span><span
+                                    class="text-lg italic text-bible-400">Almeida Corrigida Fiel</span></div>
+                            <div class="glass p-6 rounded-2xl flex justify-between items-center"><span
+                                    class="text-4xl font-bold font-display lift-up">ARA</span><span
+                                    class="text-lg italic text-bible-400">Revista e Atualizada</span></div>
+                            <div class="glass p-6 rounded-2xl flex justify-between items-center"><span
+                                    class="text-4xl font-bold font-display lift-up">KJA</span><span
+                                    class="text-lg italic text-bible-400">King James</span></div>
+                            <div class="glass p-6 rounded-2xl flex justify-between items-center"><span
+                                    class="text-4xl font-bold font-display lift-up">NTLH</span><span
+                                    class="text-lg italic text-bible-400">Linguagem de Hoje</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-row"><button class="btn btn-view" onclick="view('s3','story')">Ver</button><button
+                    class="btn btn-dl" onclick="dl('s3','story')">Baixar</button></div>
+        </div>
 
-                        <div class="flex flex-col gap-6 flex-1 justify-center">
+        <div class="card">
+            <div class="cont-story">
+                <div id="s4" class="master story scaled bg-stone-gradient text-bible-50">
+                    <div class="pad-story">
+                        <h2 class="giant text-7xl mb-8">Louvor.</h2>
+                        <div class="flex-1 flex flex-col justify-center gap-6">
+                            <div class="bg-white/10 backdrop-blur p-8 rounded-3xl border border-white/10 text-center">
+                                <i class="ph-fill ph-music-notes text-6xl text-accent-500 mb-4 lift-icon"></i>
+                                <h3 class="text-4xl font-bold font-display lift-up">Harpa Cristã</h3>
+                                <p class="text-lg text-bible-300 mt-2">640 Hinos com busca rápida</p>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur p-8 rounded-3xl border border-white/10 text-center">
+                                <i class="ph-fill ph-music-notes-simple text-6xl text-accent-500 mb-4 lift-icon"></i>
+                                <h3 class="text-4xl font-bold font-display lift-up">Cantor & Novo</h3>
+                                <p class="text-lg text-bible-300 mt-2">Tradicional e Presbiteriano</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-row"><button class="btn btn-view" onclick="view('s4','story')">Ver</button><button
+                    class="btn btn-dl" onclick="dl('s4','story')">Baixar</button></div>
+        </div>
+
+        <div class="card">
+            <div class="cont-story">
+                <div id="s5" class="master story scaled bg-bible-50 text-bible-900">
+                    <div class="pad-story">
+                        <h2 class="giant text-7xl mb-12">Mais Recursos.</h2>
+                        <div class="grid grid-cols-1 gap-5">
                             <div
-                                class="bg-white p-8 rounded-3xl shadow-lg border-l-8 border-blue-500 flex items-center gap-8">
-                                <i class="ph-fill ph-books text-6xl text-blue-600"></i>
+                                class="bg-white p-6 rounded-2xl shadow-sm flex items-center gap-5 border border-bible-200">
+                                <i class="ph-duotone ph-brain text-5xl text-accent-600 lift-icon"></i>
                                 <div>
-                                    <h3 class="text-4xl font-bold">13 Bíblias</h3>
-                                    <p class="text-2xl text-gray-500">NVI, ACF, KJA...</p>
+                                    <h3 class="text-2xl font-bold lift-up">Quiz Bíblico</h3>
+                                    <p>Gamificação diária.</p>
                                 </div>
                             </div>
                             <div
-                                class="bg-white p-8 rounded-3xl shadow-lg border-l-8 border-purple-500 flex items-center gap-8">
-                                <i class="ph-fill ph-music-notes text-6xl text-purple-600"></i>
+                                class="bg-white p-6 rounded-2xl shadow-sm flex items-center gap-5 border border-bible-200">
+                                <i class="ph-duotone ph-calendar-check text-5xl text-green-600 lift-icon"></i>
                                 <div>
-                                    <h3 class="text-4xl font-bold">Hinários</h3>
-                                    <p class="text-2xl text-gray-500">Harpa, Cantor...</p>
+                                    <h3 class="text-2xl font-bold lift-up">Planos</h3>
+                                    <p>Leitura Anual e Crono.</p>
                                 </div>
                             </div>
                             <div
-                                class="bg-white p-8 rounded-3xl shadow-lg border-l-8 border-green-500 flex items-center gap-8">
-                                <i class="ph-fill ph-wifi-slash text-6xl text-green-600"></i>
+                                class="bg-white p-6 rounded-2xl shadow-sm flex items-center gap-5 border border-bible-200">
+                                <i class="ph-duotone ph-image text-5xl text-purple-600 lift-icon"></i>
                                 <div>
-                                    <h3 class="text-4xl font-bold">Offline</h3>
-                                    <p class="text-2xl text-gray-500">Sem internet</p>
+                                    <h3 class="text-2xl font-bold lift-up">Editor</h3>
+                                    <p>Crie posts com versículos.</p>
+                                </div>
+                            </div>
+                            <div
+                                class="bg-white p-6 rounded-2xl shadow-sm flex items-center gap-5 border border-bible-200">
+                                <i class="ph-duotone ph-download-simple text-5xl text-blue-600 lift-icon"></i>
+                                <div>
+                                    <h3 class="text-2xl font-bold lift-up">Backup</h3>
+                                    <p>Salve seu progresso.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="btn-group"><button onclick="viewFullscreen('story-3', 'story')"
-                    class="action-btn btn-view">Ver</button><button onclick="downloadImage('story-3', 'story')"
-                    class="action-btn btn-dl">Baixar</button></div>
+            <div class="btn-row"><button class="btn btn-view" onclick="view('s5','story')">Ver</button><button
+                    class="btn btn-dl" onclick="dl('s5','story')">Baixar</button></div>
         </div>
 
-        <div class="slide-card">
-            <div class="wrapper-story">
-                <div id="story-4" class="master-slide story bg-white text-slate-900">
-                    <div class="story-padding">
-                        <div class="text-left pt-20">
-                            <h2 class="text-8xl font-black text-slate-900 mb-4">FOCO &<br><span
-                                    class="text-green-600">HÁBITO.</span></h2>
-                            <p class="text-3xl text-gray-500">Planos de Leitura Anual e Cronológico.</p>
-                        </div>
-
-                        <div class="flex-1 flex flex-col justify-center">
+        <div class="card">
+            <div class="cont-story">
+                <div id="s6" class="master story scaled bg-bible-900 text-bible-50">
+                    <div class="pad-story items-center text-center">
+                        <div class="mt-20 flex justify-center w-full">
                             <div
-                                class="w-full bg-slate-50 rounded-[3rem] p-10 shadow-inner border border-gray-100 mb-10">
-                                <div class="flex justify-between items-end h-64 mb-6 px-2 gap-4">
-                                    <div class="w-full bg-green-200 rounded-t-xl h-[40%]"></div>
-                                    <div class="w-full bg-green-200 rounded-t-xl h-[60%]"></div>
-                                    <div class="w-full bg-green-200 rounded-t-xl h-[30%]"></div>
-                                    <div class="w-full bg-green-200 rounded-t-xl h-[70%]"></div>
-                                    <div class="w-full bg-green-200 rounded-t-xl h-[50%]"></div>
+                                class="flex-center w-60 h-60 border-[1px] border-accent-500 rounded-full mb-10 relative bg-bible-800">
+                                <div class="flex flex-col items-center justify-center">
+                                    <span class="giant text-[7rem] text-accent-500 lift-up">100%</span>
                                     <div
-                                        class="w-full bg-green-500 rounded-t-xl h-[90%] relative shadow-lg shadow-green-500/30">
-                                        <div
-                                            class="absolute -top-14 left-1/2 -translate-x-1/2 bg-black text-white px-4 py-1 rounded text-xl font-bold">
-                                            Hoje</div>
+                                        class="absolute -right-4 -bottom-4 bg-accent-600 text-white px-4 h-12 rounded-lg font-bold transform rotate-[-5deg] text-sm tracking-widest flex-center">
+                                        <span class="lift-up">LIVRE</span>
                                     </div>
-                                    <div class="w-full bg-gray-200 rounded-t-xl h-[10%]"></div>
-                                </div>
-                                <div class="flex justify-between text-2xl font-bold text-gray-400">
-                                    <span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span><span>D</span>
-                                </div>
-                            </div>
-                            <div class="bg-green-600 text-white p-8 rounded-3xl text-center shadow-xl mx-4">
-                                <p class="text-6xl font-black mb-2">35%</p>
-                                <p class="text-2xl opacity-80 uppercase tracking-widest">Concluído</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="btn-group"><button onclick="viewFullscreen('story-4', 'story')"
-                    class="action-btn btn-view">Ver</button><button onclick="downloadImage('story-4', 'story')"
-                    class="action-btn btn-dl">Baixar</button></div>
-        </div>
-
-        <div class="slide-card">
-            <div class="wrapper-story">
-                <div id="story-5" class="master-slide story bg-gold-gradient text-white">
-                    <div class="story-padding items-center text-center">
-                        <div class="mt-20">
-                            <i class="ph-fill ph-crown text-[8rem] mb-6 text-yellow-100 drop-shadow-md"></i>
-                            <h2 class="text-7xl font-black">QUIZ<br>BÍBLICO</h2>
-                        </div>
-
-                        <div class="w-full bg-white text-slate-900 p-10 rounded-[3rem] shadow-2xl text-left my-auto">
-                            <p class="text-4xl font-bold mb-10 leading-tight">Quem foi o sucessor de Moisés?</p>
-
-                            <div class="space-y-4">
-                                <div
-                                    class="p-6 bg-slate-100 rounded-2xl text-3xl font-bold text-slate-500 flex items-center gap-6">
-                                    <div
-                                        class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-xl shadow-sm">
-                                        A</div> Arão
-                                </div>
-                                <div
-                                    class="p-6 bg-green-500 text-white rounded-2xl text-3xl font-bold flex items-center gap-6 shadow-lg transform scale-105">
-                                    <div
-                                        class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-xl">
-                                        <i class="ph-bold ph-check"></i>
-                                    </div> Josué
-                                </div>
-                                <div
-                                    class="p-6 bg-slate-100 rounded-2xl text-3xl font-bold text-slate-500 flex items-center gap-6">
-                                    <div
-                                        class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-xl shadow-sm">
-                                        C</div> Calebe
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="btn-group"><button onclick="viewFullscreen('story-5', 'story')"
-                    class="action-btn btn-view">Ver</button><button onclick="downloadImage('story-5', 'story')"
-                    class="action-btn btn-dl">Baixar</button></div>
-        </div>
-
-        <div class="slide-card">
-            <div class="wrapper-story">
-                <div id="story-6" class="master-slide story bg-black text-white">
-                    <div class="story-padding items-center text-center">
-                        <div class="mt-20">
-                            <span
-                                class="border border-white/30 text-white px-8 py-3 rounded-full uppercase tracking-widest text-2xl font-bold">Compromisso</span>
-                        </div>
-
                         <div class="my-auto">
-                            <h2
-                                class="text-[16rem] font-black leading-[0.8] text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-700 tracking-tighter">
-                                ZERO</h2>
-                            <h2 class="text-[16rem] font-black leading-[0.8] text-red-600 tracking-tighter -mt-6">ADS.
-                            </h2>
-
-                            <div
-                                class="bg-white/10 backdrop-blur-md p-10 rounded-3xl border border-white/10 mt-16 w-full">
-                                <p class="text-4xl font-bold text-white mb-4">Leitura Sagrada.</p>
-                                <p class="text-2xl text-gray-400">Sem banners de jogos.<br>Sem pop-ups irritantes.</p>
+                            <h2 class="giant text-[10rem] text-white tracking-tighter">ZERO</h2>
+                            <h2 class="giant text-[10rem] text-bible-700 tracking-tighter -mt-8">ADS.</h2>
+                            <div class="bg-bible-800 p-8 rounded-2xl border border-bible-700 mt-8">
+                                <p class="text-xl text-bible-300 font-serif leading-relaxed">Sem banners de
+                                    jogos.<br>Sem pop-ups.<br><strong>Sua fé não é produto.</strong></p>
                             </div>
                         </div>
-
-                        <div><i class="ph-bold ph-shield-check text-6xl text-green-500"></i></div>
                     </div>
                 </div>
             </div>
-            <div class="btn-group"><button onclick="viewFullscreen('story-6', 'story')"
-                    class="action-btn btn-view">Ver</button><button onclick="downloadImage('story-6', 'story')"
-                    class="action-btn btn-dl">Baixar</button></div>
+            <div class="btn-row"><button class="btn btn-view" onclick="view('s6','story')">Ver</button><button
+                    class="btn btn-dl" onclick="dl('s6','story')">Baixar</button></div>
         </div>
 
-        <div class="slide-card">
-            <div class="wrapper-story">
-                <div id="story-7" class="master-slide story bg-slate-900 text-white">
-                    <div class="story-padding items-center text-center">
-                        <div class="mt-12">
-                            <h2
-                                class="text-7xl font-black mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-                                CRIE POSTS.</h2>
-                            <p class="text-3xl text-gray-400">Compartilhe a palavra.</p>
+        <div class="card">
+            <div class="cont-story">
+                <div id="s7" class="master story scaled bg-accent-600 text-white">
+                    <div class="pad-story">
+                        <div class="text-left">
+                            <h2 class="giant text-7xl text-bible-900">Passo 1</h2>
+                            <p class="text-3xl text-bible-100 font-serif italic mt-2">Como instalar</p>
                         </div>
-
-                        <div
-                            class="relative w-full aspect-[4/5] bg-gradient-to-br from-indigo-600 to-purple-600 rounded-3xl shadow-2xl p-10 flex flex-col justify-center text-center my-auto border-4 border-white/10">
-                            <p class="text-white font-serif text-4xl italic mb-6 leading-relaxed">"Tudo posso naquele
-                                que me fortalece."</p>
-                            <p class="text-white/80 font-bold text-xl tracking-widest uppercase">Filipenses 4:13</p>
-                        </div>
-
-                        <div class="flex gap-4 opacity-60">
-                            <i class="ph-fill ph-instagram-logo text-4xl"></i>
-                            <i class="ph-fill ph-whatsapp-logo text-4xl"></i>
+                        <div class="flex-1 flex flex-col justify-center items-center text-center gap-8">
+                            <div class="bg-white text-bible-900 p-10 rounded-[3rem] shadow-2xl w-full relative">
+                                <div
+                                    class="absolute -top-8 -left-8 w-20 h-20 bg-bible-900 text-white rounded-full flex-center text-4xl font-black shadow-lg font-display">
+                                    <span class="lift-up">1</span>
+                                </div>
+                                <h3 class="text-4xl font-bold mb-4 font-display lift-up">Toque no Link</h3>
+                                <p class="text-2xl text-bible-500 font-serif">O link está na Bio do perfil.</p>
+                                <div
+                                    class="bg-bible-100 mt-8 p-5 rounded-2xl flex items-center gap-4 justify-center border border-bible-200">
+                                    <i class="ph-bold ph-lock-key text-green-600 text-2xl lift-icon"></i>
+                                    <span
+                                        class="font-mono text-lg font-bold text-bible-600 lift-up">leiaabiblia.vercel.app</span>
+                                </div>
+                            </div>
+                            <i class="ph-fill ph-arrow-down text-7xl animate-bounce text-bible-900/30"></i>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="btn-group"><button onclick="viewFullscreen('story-7', 'story')"
-                    class="action-btn btn-view">Ver</button><button onclick="downloadImage('story-7', 'story')"
-                    class="action-btn btn-dl">Baixar</button></div>
+            <div class="btn-row"><button class="btn btn-view" onclick="view('s7','story')">Ver</button><button
+                    class="btn btn-dl" onclick="dl('s7','story')">Baixar</button></div>
         </div>
 
-        <div class="slide-card">
-            <div class="wrapper-story">
-                <div id="story-8" class="master-slide story bg-premium-gradient text-white">
-                    <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+        <div class="card">
+            <div class="cont-story">
+                <div id="s8" class="master story scaled bg-accent-600 text-white">
+                    <div class="pad-story">
+                        <div class="text-left">
+                            <h2 class="giant text-7xl text-bible-900">Passo 2</h2>
+                        </div>
+                        <div class="flex-1 flex flex-col justify-center gap-6">
+                            <div class="bg-white text-bible-900 p-10 rounded-[3rem] shadow-2xl relative">
+                                <div
+                                    class="absolute -top-8 -left-8 w-20 h-20 bg-bible-900 text-white rounded-full flex-center text-4xl font-black shadow-lg font-display">
+                                    <span class="lift-up">2</span>
+                                </div>
+                                <h3 class="text-4xl font-bold mb-8 font-display text-center lift-up">Abra o Menu</h3>
+                                <div class="grid grid-cols-2 gap-6">
+                                    <div class="bg-bible-100 p-6 rounded-2xl text-center"><i
+                                            class="ph-bold ph-export text-4xl text-blue-600 mb-2 lift-icon"></i>
+                                        <p class="text-lg font-bold lift-up">iPhone</p>
+                                        <p class="text-xs text-bible-500 font-sans">Embaixo, centro</p>
+                                    </div>
+                                    <div class="bg-bible-100 p-6 rounded-2xl text-center"><i
+                                            class="ph-bold ph-dots-three-vertical text-4xl text-blue-600 mb-2 lift-icon"></i>
+                                        <p class="text-lg font-bold lift-up">Android</p>
+                                        <p class="text-xs text-bible-500 font-sans">Topo, direita</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-row"><button class="btn btn-view" onclick="view('s8','story')">Ver</button><button
+                    class="btn btn-dl" onclick="dl('s8','story')">Baixar</button></div>
+        </div>
 
-                    <div class="story-padding items-center text-center justify-center">
+        <div class="card">
+            <div class="cont-story">
+                <div id="s9" class="master story scaled bg-accent-600 text-white">
+                    <div class="pad-story">
+                        <div class="text-left">
+                            <h2 class="giant text-7xl text-bible-900">Passo 3</h2>
+                        </div>
+                        <div class="flex-1 flex flex-col justify-center items-center">
+                            <div class="bg-white text-bible-900 p-10 rounded-[3rem] shadow-2xl w-full relative">
+                                <div
+                                    class="absolute -top-8 -left-8 w-20 h-20 bg-bible-900 text-white rounded-full flex-center text-4xl font-black shadow-lg font-display">
+                                    <span class="lift-up">3</span>
+                                </div>
+                                <p class="text-2xl text-bible-500 mb-8 font-serif text-center">Procure por esta opção no
+                                    menu:</p>
+                                <div
+                                    class="bg-bible-50 border-2 border-bible-200 p-6 rounded-2xl flex items-center gap-4 text-left shadow-inner transform scale-105">
+                                    <div class="bg-white p-3 rounded-lg shadow border border-bible-100"><i
+                                            class="ph-bold ph-plus-square text-4xl text-black lift-icon"></i></div>
+                                    <div>
+                                        <p class="font-bold text-2xl text-bible-900 lift-up">Adicionar à Tela de Início
+                                        </p>
+                                        <p class="text-sm text-bible-400 font-mono mt-1 lift-up-sm">Add to Home Screen
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-16 text-center text-bible-900 opacity-80 font-bold text-2xl">Pronto! O ícone
+                                aparecerá no celular.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-row"><button class="btn btn-view" onclick="view('s9','story')">Ver</button><button
+                    class="btn btn-dl" onclick="dl('s9','story')">Baixar</button></div>
+        </div>
+
+        <div class="card">
+            <div class="cont-story">
+                <div id="s10" class="master story scaled bg-stone-gradient text-bible-50">
+                    <div class="pad-story items-center text-center justify-center">
                         <div class="mt-32">
                             <div
-                                class="w-40 h-40 bg-white/10 backdrop-blur rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 border border-white/20 shadow-2xl">
-                                <img src="https://i.ibb.co/NgXsZfvZ/logo-bco.png" class="w-24 object-contain">
+                                class="flex-center w-48 h-48 bg-white/5 backdrop-blur rounded-[3rem] mx-auto mb-10 border border-white/10 shadow-2xl">
+                                <img src="https://i.ibb.co/wZ8F5s9K/logo-2-bco.png" class="w-32 object-contain">
                             </div>
-                            <h2 class="text-6xl font-black mb-4">Bíblia Ágape</h2>
-                            <p class="text-4xl opacity-60 font-serif italic mb-20">Sua leitura diária.</p>
+                            <h2 class="giant text-7xl mb-4 text-white">Bíblia Ágape</h2>
+                            <p class="text-3xl text-bible-300 font-serif italic mb-20">Sua leitura diária.</p>
                         </div>
-
                         <div class="mb-20 w-full flex flex-col items-center gap-6">
                             <div
-                                class="bg-white text-blue-600 px-12 py-6 rounded-2xl font-black text-3xl uppercase transform -rotate-2 shadow-2xl animate-pulse">
-                                LINK NA BIO 🔗
+                                class="bg-white text-bible-900 px-12 h-24 rounded-2xl font-sans font-black text-3xl uppercase transform -rotate-2 shadow-2xl animate-pulse w-full text-center flex-center">
+                                <span class="lift-up">LINK NA BIO 🔗</span>
                             </div>
-
-                            <div class="mt-8">
-                                <i class="ph-bold ph-arrow-up text-6xl animate-bounce"></i>
-                                <p class="text-2xl font-bold mt-2">Toque no Link</p>
+                            <div class="mt-8"><i
+                                    class="ph-bold ph-arrow-up text-6xl animate-bounce text-accent-500"></i>
+                                <p class="text-2xl font-bold mt-2 font-sans tracking-widest text-accent-100 lift-up">
+                                    TOQUE NO LINK</p>
                             </div>
                         </div>
+                        <div class="absolute bottom-10 opacity-30 text-xs font-mono uppercase tracking-widest lift-up">
+                            Dev. Mateus Heringer</div>
                     </div>
                 </div>
             </div>
-            <div class="btn-group"><button onclick="viewFullscreen('story-8', 'story')"
-                    class="action-btn btn-view">Ver</button><button onclick="downloadImage('story-8', 'story')"
-                    class="action-btn btn-dl">Baixar</button></div>
+            <div class="btn-row"><button class="btn btn-view" onclick="view('s10','story')">Ver</button><button
+                    class="btn btn-dl" onclick="dl('s10','story')">Baixar</button></div>
         </div>
 
     </div>
 
     <script>
-        async function downloadImage(id, type) {
-            const loader = document.getElementById('loading-overlay');
-            const targetElement = document.getElementById(id);
-            const parentWrapper = targetElement.parentElement;
-            const originalTransform = targetElement.style.transform;
+        async function dl(id, type) {
+            const loader = document.getElementById('loading');
+            const original = document.getElementById(id);
+            window.scrollTo(0, 0); loader.style.display = 'flex';
 
-            window.scrollTo(0, 0);
-            loader.style.display = 'flex';
+            // Container Fantasma
+            const ghost = document.createElement('div');
+            ghost.style.cssText = 'position:fixed;top:0;left:-9999px;z-index:-1;overflow:hidden;';
+            const w = 1080; const h = type === 'feed' ? 1350 : 1920;
+            ghost.style.width = w + 'px'; ghost.style.height = h + 'px';
 
-            document.body.appendChild(targetElement);
-            targetElement.style.position = 'fixed';
-            targetElement.style.top = '0';
-            targetElement.style.left = '0';
-            targetElement.style.zIndex = '9999';
-            targetElement.style.transform = 'none';
+            const clone = original.cloneNode(true);
+            clone.classList.remove('scaled'); clone.style.transform = 'none'; clone.style.width = '100%'; clone.style.height = '100%';
 
-            const w = 1080;
-            const h = type === 'feed' ? 1350 : 1920;
-            targetElement.style.width = w + 'px';
-            targetElement.style.height = h + 'px';
+            ghost.appendChild(clone); document.body.appendChild(ghost);
 
-            await new Promise(r => setTimeout(r, 800));
+            await document.fonts.ready;
+            await new Promise(r => setTimeout(r, 2000));
 
             try {
-                const canvas = await html2canvas(targetElement, {
-                    scale: 1,
-                    width: w, height: h,
-                    useCORS: true,
-                    backgroundColor: null,
-                    windowWidth: w, windowHeight: h,
-                    scrollX: 0, scrollY: 0
-                });
-
-                const link = document.createElement('a');
-                link.download = `agape-didatico-${type}-${id.split('-')[1]}.png`;
-                link.href = canvas.toDataURL('image/png');
-                link.click();
-
-            } catch (error) {
-                alert("Erro ao processar imagem.");
-            } finally {
-                parentWrapper.appendChild(targetElement);
-                targetElement.style.position = 'absolute';
-                targetElement.style.transform = originalTransform;
-                targetElement.style.width = '1080px';
-                targetElement.style.height = type === 'feed' ? '1350px' : '1920px';
-                targetElement.style.zIndex = '';
-                loader.style.display = 'none';
-            }
+                const canvas = await html2canvas(ghost, { scale: 1, width: w, height: h, windowWidth: w, windowHeight: h, useCORS: true, scrollX: 0, scrollY: 0 });
+                const link = document.createElement('a'); link.download = `agape-${type}-${id}.png`; link.href = canvas.toDataURL('image/png'); link.click();
+            } catch (err) { alert('Erro ao gerar.'); } finally { document.body.removeChild(ghost); loader.style.display = 'none'; }
         }
 
-        function viewFullscreen(id, type) {
-            const viewer = document.getElementById('fullscreen-viewer');
-            const content = document.getElementById('fullscreen-content');
+        function view(id, type) {
+            const overlay = document.getElementById('fs-overlay');
+            const container = document.getElementById('fs-content');
             const original = document.getElementById(id);
+            container.innerHTML = '';
             const clone = original.cloneNode(true);
-
-            content.innerHTML = '';
-
-            clone.style.position = 'absolute';
-            clone.style.left = '50%';
-            clone.style.top = '50%';
-            clone.style.transformOrigin = 'center center';
-            clone.style.margin = '0';
-
-            const w = 1080;
-            const h = type === 'feed' ? 1350 : 1920;
-            const scale = Math.min(window.innerWidth / w, window.innerHeight / h) * 0.95;
-
-            clone.style.transform = `translate(-50%, -50%) scale(${scale})`;
-
-            content.appendChild(clone);
-            viewer.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeFullscreen() {
-            document.getElementById('fullscreen-viewer').style.display = 'none';
-            document.body.style.overflow = 'auto';
+            clone.classList.remove('scaled'); clone.style.transform = 'none'; clone.style.position = 'relative'; clone.style.width = '1080px'; clone.style.height = type === 'feed' ? '1350px' : '1920px';
+            const scale = Math.min(window.innerWidth / 1080, window.innerHeight / (type === 'feed' ? 1350 : 1920)) * 0.9;
+            clone.style.transform = `scale(${scale})`; clone.style.transformOrigin = 'center center';
+            container.style.cssText = 'display:flex;align-items:center;justify-content:center;width:100%;height:100%';
+            container.appendChild(clone); overlay.style.display = 'flex';
         }
     </script>
 </body>
