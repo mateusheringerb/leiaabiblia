@@ -5,9 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Bíblia Ágape | Leitura</title>
-    <meta name="theme-color" content="#1c1917">
+
+    <meta name="theme-color" content="#fafaf9">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/x-icon" href="assets/favicon-new.ico">
+    <link rel="apple-touch-icon" href="assets/logo-2.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -64,7 +68,7 @@
     class="bg-bible-50 text-bible-900 dark:bg-bible-900 dark:text-bible-100 h-screen flex flex-col overflow-hidden transition-colors duration-300 selection:bg-accent-100 selection:text-accent-700">
 
     <header id="main-header"
-        class="bg-white/80 dark:bg-bible-900/90 backdrop-blur-md border-b border-bible-200 dark:border-bible-800 h-16 flex-none flex items-center justify-between px-6 z-40 relative shadow-sm">
+        class="bg-white/80 dark:bg-bible-900/90 backdrop-blur-md border-b border-bible-200 dark:border-bible-800 h-16 flex-none flex items-center justify-between px-6 z-40 relative shadow-sm transition-transform duration-300">
 
         <div class="flex items-center gap-3 cursor-pointer group" onclick="showScreen('screen-home')">
             <img src="assets/logo-2.png" alt="Logo Ágape"
@@ -143,6 +147,15 @@
                     <div class="absolute -right-4 -bottom-4 opacity-5 dark:opacity-10 pointer-events-none">
                         <i class="ph-fill ph-quotes text-8xl text-bible-900 dark:text-white"></i>
                     </div>
+                </div>
+            </section>
+
+            <section class="w-full">
+                <div class="flex justify-between items-end mb-3 px-1">
+                    <h3 class="font-display font-bold text-lg text-bible-800 dark:text-bible-200">Como você está?</h3>
+                    <span class="text-[10px] uppercase font-bold text-bible-400 tracking-wider">Bússola</span>
+                </div>
+                <div id="compass-container" class="flex gap-3 overflow-x-auto pb-4 snap-x hide-scrollbar">
                 </div>
             </section>
 
@@ -256,7 +269,7 @@
                    dark:bg-bible-800 dark:hover:bg-bible-700 dark:text-bible-200 dark:border-bible-700
                    text-[10px] font-bold uppercase tracking-wide rounded-xl active:scale-95 transition-all whitespace-nowrap">
                         <i class="ph-bold ph-cloud-arrow-up text-base"></i>
-                        <span>Backup e Restauração</span>
+                        <span>Backup</span>
                     </button>
 
                 </div>
@@ -282,8 +295,8 @@
 
         <div id="screen-read" class="hidden h-full relative">
             <div id="reading-content-wrapper" class="animate-fade-in pb-32">
-                <div
-                    class="sticky top-0 bg-bible-50/95 dark:bg-bible-900/95 backdrop-blur-md border-b border-bible-200 dark:border-bible-800 p-4 z-30 -mx-4 px-4 mb-8 flex flex-col gap-4 shadow-sm">
+                <div id="read-header"
+                    class="sticky top-0 bg-bible-50/95 dark:bg-bible-900/95 backdrop-blur-md border-b border-bible-200 dark:border-bible-800 p-4 z-30 -mx-4 px-4 mb-8 flex flex-col gap-4 shadow-sm transition-transform duration-300">
                     <div class="flex items-center justify-between">
                         <button onclick="goBack()"
                             class="p-2 hover:bg-bible-200 dark:hover:bg-bible-800 rounded-full text-bible-500 transition"><i
@@ -297,6 +310,11 @@
                             <select id="read-translation" onchange="handleNavigationChange()"
                                 class="bg-bible-900 dark:bg-white text-white dark:text-bible-900 text-xs font-bold uppercase tracking-wide py-2 px-3 rounded-lg border-none focus:ring-0 outline-none shadow-md"></select>
                         </div>
+                        <button onclick="togglePulpitMode()"
+                            class="p-2 hover:bg-bible-200 dark:hover:bg-bible-800 rounded-full text-bible-500 transition"
+                            title="Modo Púlpito">
+                            <i class="ph-fill ph-presentation text-xl"></i>
+                        </button>
                     </div>
                 </div>
 
@@ -304,7 +322,7 @@
             </div>
 
             <div id="reading-nav-bar"
-                class="fixed bottom-8 left-0 w-full px-8 flex justify-between items-center z-50 pointer-events-none">
+                class="fixed bottom-8 left-0 w-full px-8 flex justify-between items-center z-50 pointer-events-none transition-transform duration-300">
                 <button onclick="changeChapter(-1)"
                     class="pointer-events-auto bg-bible-900 dark:bg-white text-white dark:text-bible-900 w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition transform hover:scale-110 active:scale-95 border border-bible-700"
                     title="Anterior">
@@ -316,6 +334,9 @@
                     <i class="ph-bold ph-caret-right text-xl"></i>
                 </button>
             </div>
+            <button id="btn-exit-pulpit" onclick="togglePulpitMode()"
+                class="fixed top-6 right-6 z-50 bg-black/50 text-white p-3 rounded-full backdrop-blur-md hidden hover:bg-black/80 transition shadow-lg"><i
+                    class="ph-bold ph-x text-xl"></i></button>
         </div>
 
         <div id="screen-plan-overview" class="hidden animate-fade-in pb-20 max-w-3xl mx-auto">
@@ -571,13 +592,39 @@
                     class="w-8 h-8 rounded-full bg-transparent border border-bible-300 flex items-center justify-center text-bible-400 hover:text-red-500 hover:border-red-500 transition"><i
                         class="ph-bold ph-prohibit"></i></button>
             </div>
-            <div class="grid grid-cols-2 gap-3">
+            <div class="grid grid-cols-3 gap-3">
                 <button onclick="actionVerse('copy')"
-                    class="p-3 bg-bible-100 dark:bg-bible-800 rounded-lg font-bold text-sm hover:bg-bible-200 transition flex items-center justify-center gap-2"><i
-                        class="ph-bold ph-copy"></i> Copiar</button>
+                    class="p-3 bg-bible-100 dark:bg-bible-800 rounded-lg font-bold text-sm hover:bg-bible-200 transition flex flex-col items-center justify-center gap-1"><i
+                        class="ph-bold ph-copy text-lg"></i> Copiar</button>
+                <button onclick="openNoteEditor()"
+                    class="p-3 bg-bible-100 dark:bg-bible-800 rounded-lg font-bold text-sm hover:bg-bible-200 transition flex flex-col items-center justify-center gap-1"><i
+                        class="ph-bold ph-note-pencil text-lg"></i> Nota</button>
                 <button onclick="openImageCreatorFromVerse()"
-                    class="p-3 bg-bible-900 text-white dark:bg-white dark:text-bible-900 rounded-lg font-bold text-sm hover:opacity-90 transition flex items-center justify-center gap-2"><i
-                        class="ph-bold ph-image"></i> Criar</button>
+                    class="p-3 bg-bible-900 text-white dark:bg-white dark:text-bible-900 rounded-lg font-bold text-sm hover:opacity-90 transition flex flex-col items-center justify-center gap-1"><i
+                        class="ph-bold ph-image text-lg"></i> Criar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-note"
+        class="fixed inset-0 z-50 hidden items-center justify-center bg-bible-900/80 backdrop-blur-sm p-4"
+        onclick="closeModal('modal-note')">
+        <div class="bg-white dark:bg-bible-900 w-full max-w-md rounded-2xl p-6 shadow-2xl"
+            onclick="event.stopPropagation()">
+            <div class="flex justify-between mb-4">
+                <h3 class="font-display font-bold text-xl">Sua Anotação</h3>
+                <button onclick="closeModal('modal-note')"><i class="ph-bold ph-x"></i></button>
+            </div>
+            <textarea id="note-input" rows="6"
+                class="w-full p-4 bg-bible-50 dark:bg-bible-800 rounded-xl border-none resize-none focus:ring-2 focus:ring-accent-500 font-serif leading-relaxed mb-4 placeholder:text-bible-300"
+                placeholder="Escreva o que Deus falou ao seu coração..."></textarea>
+            <div class="flex gap-3">
+                <button onclick="deleteNote()"
+                    class="px-4 py-3 text-red-500 font-bold hover:bg-red-50 dark:hover:bg-red-900/10 rounded-lg transition"><i
+                        class="ph-bold ph-trash"></i></button>
+                <button onclick="saveNote()"
+                    class="flex-1 bg-bible-900 dark:bg-white text-white dark:text-bible-900 py-3 rounded-lg font-bold uppercase tracking-wide">Salvar
+                    Nota</button>
             </div>
         </div>
     </div>
