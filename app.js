@@ -1,7 +1,7 @@
 /**
  * ============================================================================
  * BÍBLIA ÁGAPE - APLICAÇÃO PRINCIPAL (app.js)
- * Versão: V2.5.0 (Versão Estendida & Detalhada)
+ * Versão: V2.5.3 (Bússola Expandida & Journaling)
  * Data: 24/01/2026
  * Autor: Mateus Heringer & Daniel
  * * Descrição:
@@ -95,7 +95,7 @@ var state = {
     // Contexto de Uso
     hymnbook: 'harpa', // 'harpa', 'cantor', 'novocantico'
     mode: 'free',      // 'free' (livre) ou 'plan' (plano de leitura)
-    pulpitMode: false  // NOVO: Controle do Modo Púlpito (Tela Cheia)
+    pulpitMode: false  // Controle do Modo Púlpito (Tela Cheia)
 };
 
 // ============================================================================
@@ -137,7 +137,7 @@ try {
     savedMarks = {};
 }
 
-// NOVO: Carregamento de Notas Pessoais (Journaling)
+// Carregamento de Notas Pessoais (Journaling)
 var savedNotes = {};
 try {
     savedNotes = JSON.parse(localStorage.getItem('agape_notes')) || {};
@@ -179,7 +179,7 @@ var quizSession = {
 
 window.onload = async function () {
     try {
-        console.log("=== Iniciando Sistema Bíblia Ágape V2.5.0 ===");
+        console.log("=== Iniciando Sistema Bíblia Ágape V2.5.3 ===");
 
         // 1. Aplica preferências visuais salvas
         applyTheme(state.theme);
@@ -188,7 +188,7 @@ window.onload = async function () {
 
         // 2. Carregamento de Dados Assíncronos
         loadDailyVerse();
-        renderCompass(); // NOVO: Renderiza a Bússola da Alma na Home
+        renderCompass(); // Renderiza a Bússola da Alma
         await loadQuizData();
 
         // 3. Configuração de Listeners de Eventos
@@ -372,17 +372,15 @@ async function loadChapter() {
             var markClass = savedMarks[verseId] || '';
             var reference = bookName + ' ' + state.chapter + ':' + verseNumber;
 
-            // NOVO: Verifica se existe nota pessoal para este versículo
+            // Verifica se existe nota pessoal para este versículo
             var hasNoteIcon = '';
             if (savedNotes[verseId]) {
                 hasNoteIcon = '<i class="ph-fill ph-note-pencil text-accent-500 text-xs ml-1" title="Nota Pessoal"></i>';
             }
 
-            // CORREÇÃO CRÍTICA DO RED-LETTER
-            // Aqui usamos 'content' apenas para visualização, mas 'text' puro para o clique.
+            // Tratamento das Palavras de Jesus (Red Letter)
             var content = text;
             if (isGospel) {
-                // Regex seguro para não quebrar o HTML
                 content = content.replace(/“([^”]+)”/g, '<span class="red-letter">“$1”</span>');
                 content = content.replace(/"([^"]+)"/g, '<span class="red-letter">"$1"</span>');
             }
@@ -393,7 +391,7 @@ async function loadChapter() {
                 '     id="v-' + verseNumber + '" onclick="handleVerseClick(\'' + verseId + '\', \'' + escapeHtml(text) + '\', \'' + reference + '\')">' +
                 '    <div class="flex flex-col items-end w-6 shrink-0 mt-2">' +
                 '       <span class="text-xs font-bold text-bible-400 font-sans">' + verseNumber + '</span>' +
-                '       ' + hasNoteIcon + // Renderiza o ícone de nota se existir
+                '       ' + hasNoteIcon +
                 '    </div>' +
                 '    <p class="verse-content text-lg flex-1 leading-loose" style="font-size:' + state.fontSize + 'px">' + content + '</p>' +
                 '</div>';
@@ -1321,7 +1319,7 @@ window.sendFeedbackToEmail = function () {
 
 window.exportData = function () {
     var obj = {
-        meta: { app: "Bíblia Ágape", version: "V2.5.0", date: new Date().toISOString() },
+        meta: { app: "Bíblia Ágape", version: "V2.5.3", date: new Date().toISOString() },
         data: { ...localStorage }
     };
     var a = document.createElement('a');
@@ -1393,20 +1391,118 @@ window.changeFontSize = function (delta) {
 // 14. FUNCIONALIDADES ESPECIAIS (BÚSSOLA, PÚLPITO, NOTAS)
 // ============================================================================
 
-// --- Bússola da Alma (Carrossel de Emoções) ---
+// --- DADOS DA BÚSSOLA DA ALMA (EXPANDIDO - 48 VERSÍCULOS) ---
+const EMOTION_DATA = [
+    // --- ANSIOSO ---
+    { label: "Ansioso", icon: "ph-wind", book: 49, chap: 4, verse: 6 },  // Filipenses 4:6
+    { label: "Ansioso", icon: "ph-wind", book: 59, chap: 5, verse: 7 },  // 1 Pedro 5:7
+    { label: "Ansioso", icon: "ph-wind", book: 39, chap: 6, verse: 34 }, // Mateus 6:34
+    { label: "Ansioso", icon: "ph-wind", book: 18, chap: 94, verse: 19 },// Salmos 94:19
+    { label: "Ansioso", icon: "ph-wind", book: 22, chap: 35, verse: 4 }, // Isaías 35:4
+    { label: "Ansioso", icon: "ph-wind", book: 19, chap: 12, verse: 25 },// Provérbios 12:25
+
+    // --- CANSADO ---
+    { label: "Cansado", icon: "ph-battery-warning", book: 39, chap: 11, verse: 28 }, // Mateus 11:28
+    { label: "Cansado", icon: "ph-battery-warning", book: 22, chap: 40, verse: 31 }, // Isaías 40:31
+    { label: "Cansado", icon: "ph-battery-warning", book: 47, chap: 6, verse: 9 },  // Gálatas 6:9
+    { label: "Cansado", icon: "ph-battery-warning", book: 23, chap: 31, verse: 25 }, // Jeremias 31:25
+    { label: "Cansado", icon: "ph-battery-warning", book: 18, chap: 73, verse: 26 }, // Salmos 73:26
+    { label: "Cansado", icon: "ph-battery-warning", book: 46, chap: 4, verse: 16 }, // 2 Coríntios 4:16
+
+    // --- TRISTE ---
+    { label: "Triste", icon: "ph-cloud-rain", book: 18, chap: 34, verse: 18 }, // Salmos 34:18
+    { label: "Triste", icon: "ph-cloud-rain", book: 65, chap: 21, verse: 4 },  // Apocalipse 21:4
+    { label: "Triste", icon: "ph-cloud-rain", book: 18, chap: 30, verse: 5 },  // Salmos 30:5
+    { label: "Triste", icon: "ph-cloud-rain", book: 39, chap: 5, verse: 4 },   // Mateus 5:4
+    { label: "Triste", icon: "ph-cloud-rain", book: 18, chap: 147, verse: 3 }, // Salmos 147:3
+    { label: "Triste", icon: "ph-cloud-rain", book: 42, chap: 16, verse: 22 }, // João 16:22
+
+    // --- MEDO ---
+    { label: "Medo", icon: "ph-shield-warning", book: 18, chap: 27, verse: 1 },  // Salmos 27:1
+    { label: "Medo", icon: "ph-shield-warning", book: 22, chap: 41, verse: 10 }, // Isaías 41:10
+    { label: "Medo", icon: "ph-shield-warning", book: 54, chap: 1, verse: 7 },   // 2 Timóteo 1:7
+    { label: "Medo", icon: "ph-shield-warning", book: 18, chap: 56, verse: 3 },  // Salmos 56:3
+    { label: "Medo", icon: "ph-shield-warning", book: 5, chap: 1, verse: 9 },    // Josué 1:9
+    { label: "Medo", icon: "ph-shield-warning", book: 18, chap: 23, verse: 4 },  // Salmos 23:4
+
+    // --- GRATO ---
+    { label: "Grato", icon: "ph-heart", book: 18, chap: 136, verse: 1 },  // Salmos 136:1
+    { label: "Grato", icon: "ph-heart", book: 51, chap: 5, verse: 18 },   // 1 Tessalonicenses 5:18
+    { label: "Grato", icon: "ph-heart", book: 50, chap: 3, verse: 17 },   // Colossenses 3:17
+    { label: "Grato", icon: "ph-heart", book: 18, chap: 118, verse: 24 }, // Salmos 118:24
+    { label: "Grato", icon: "ph-heart", book: 57, chap: 12, verse: 28 },  // Hebreus 12:28
+    { label: "Grato", icon: "ph-heart", book: 18, chap: 107, verse: 1 },  // Salmos 107:1
+
+    // --- SOZINHO ---
+    { label: "Sozinho", icon: "ph-user", book: 22, chap: 41, verse: 10 }, // Isaías 41:10
+    { label: "Sozinho", icon: "ph-user", book: 39, chap: 28, verse: 20 }, // Mateus 28:20
+    { label: "Sozinho", icon: "ph-user", book: 4, chap: 31, verse: 6 },   // Deuteronômio 31:6
+    { label: "Sozinho", icon: "ph-user", book: 18, chap: 25, verse: 16 }, // Salmos 25:16
+    { label: "Sozinho", icon: "ph-user", book: 42, chap: 14, verse: 18 }, // João 14:18
+    { label: "Sozinho", icon: "ph-user", book: 44, chap: 8, verse: 38 },  // Romanos 8:38-39
+
+    // --- IRRITADO ---
+    { label: "Irritado", icon: "ph-fire", book: 58, chap: 1, verse: 19 }, // Tiago 1:19
+    { label: "Irritado", icon: "ph-fire", book: 19, chap: 15, verse: 1 }, // Provérbios 15:1
+    { label: "Irritado", icon: "ph-fire", book: 48, chap: 4, verse: 26 }, // Efésios 4:26
+    { label: "Irritado", icon: "ph-fire", book: 19, chap: 14, verse: 29 },// Provérbios 14:29
+    { label: "Irritado", icon: "ph-fire", book: 18, chap: 37, verse: 8 }, // Salmos 37:8
+    { label: "Irritado", icon: "ph-fire", book: 50, chap: 3, verse: 8 },  // Colossenses 3:8
+
+    // --- DÚVIDA ---
+    { label: "Dúvida", icon: "ph-question", book: 58, chap: 1, verse: 5 },  // Tiago 1:5
+    { label: "Dúvida", icon: "ph-question", book: 19, chap: 3, verse: 5 },  // Provérbios 3:5
+    { label: "Dúvida", icon: "ph-question", book: 23, chap: 29, verse: 11 },// Jeremias 29:11
+    { label: "Dúvida", icon: "ph-question", book: 57, chap: 11, verse: 1 }, // Hebreus 11:1
+    { label: "Dúvida", icon: "ph-question", book: 40, chap: 9, verse: 24 }, // Marcos 9:24
+    { label: "Dúvida", icon: "ph-question", book: 39, chap: 21, verse: 21 },// Mateus 21:21
+];
+
+// --- Lógica de Renderização da Bússola ---
 window.renderCompass = function () {
     var container = document.getElementById('compass-container');
     if (!container || typeof EMOTION_DATA === 'undefined') return;
 
-    var htmlContent = EMOTION_DATA.map(function (item) {
-        return '<button onclick="goToVerse(' + item.book + ',' + item.chap + ',' + item.verse + ')" class="flex flex-col items-center gap-2 min-w-[80px] snap-center group">' +
+    // Filtra as emoções únicas para criar os botões (sem repetição)
+    var uniqueCategories = [];
+    var seenLabels = new Set();
+
+    EMOTION_DATA.forEach(function (item) {
+        if (!seenLabels.has(item.label)) {
+            seenLabels.add(item.label);
+            uniqueCategories.push({ label: item.label, icon: item.icon });
+        }
+    });
+
+    // Gera o HTML dos botões
+    var htmlContent = uniqueCategories.map(function (cat) {
+        return '<button onclick="handleEmotionClick(\'' + cat.label + '\')" class="flex flex-col items-center gap-2 min-w-[80px] snap-center group">' +
             '<div class="w-14 h-14 rounded-2xl bg-white dark:bg-bible-800 border border-bible-200 dark:border-bible-700 flex items-center justify-center text-2xl text-accent-600 shadow-sm group-hover:scale-110 transition duration-300">' +
-            '<i class="ph-fill ' + item.icon + '"></i></div>' +
-            '<span class="text-[10px] font-bold uppercase tracking-wider text-bible-500 dark:text-bible-400 group-hover:text-bible-900 dark:group-hover:text-white">' + item.label + '</span>' +
+            '<i class="ph-fill ' + cat.icon + '"></i></div>' +
+            '<span class="text-[10px] font-bold uppercase tracking-wider text-bible-500 dark:text-bible-400 group-hover:text-bible-900 dark:group-hover:text-white">' + cat.label + '</span>' +
             '</button>';
     }).join('');
 
     container.innerHTML = htmlContent;
+};
+
+// --- Lógica de Sorteio Aleatório ---
+window.handleEmotionClick = function (label) {
+    // 1. Filtra todos os versículos daquela emoção
+    var possibilities = EMOTION_DATA.filter(function (e) {
+        return e.label === label;
+    });
+
+    if (possibilities.length === 0) return;
+
+    // 2. Escolhe um aleatório
+    var randomChoice = possibilities[Math.floor(Math.random() * possibilities.length)];
+
+    // 3. Feedback visual (vibração)
+    if (navigator.vibrate) navigator.vibrate(50);
+
+    // 4. Navega para o versículo
+    goToVerse(randomChoice.book, randomChoice.chap, randomChoice.verse);
 };
 
 // --- Link Inteligente Versículo do Dia ---
@@ -1427,13 +1523,9 @@ window.openDailyVerseReading = function () {
     });
 
     if (bookId !== -1) {
-        // Navega para o versículo exato
         goToVerse(bookId, chapter, verse);
-
-        // Feedback visual (Vibração leve se disponível)
         if (navigator.vibrate) navigator.vibrate(50);
     } else {
-        // Fallback
         showScreen('screen-read');
     }
 };
@@ -1461,7 +1553,7 @@ window.togglePulpitMode = function () {
     }
 };
 
-// --- Journaling (Sistema de Notas) ---
+// --- RESTAURADO: Journaling (Sistema de Notas) ---
 
 // Abre o editor de notas
 window.openNoteEditor = function () {
