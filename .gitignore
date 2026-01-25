@@ -60,3 +60,5 @@ feed.html
 ._.venv
 ._crawler.py
 crawler.py
+._crawler_novocantico.py
+crawler_novocantico.py
