@@ -1,12 +1,13 @@
 /**
  * ============================================================================
  * BÍBLIA ÁGAPE - APLICAÇÃO PRINCIPAL (app.js)
- * Versão: V2.6.1 (Correção Red Letter & Estabilidade)
- * Data: 24/01/2026
+ * Versão: V2.9.0 (Versão Estendida & Detalhada)
+ * Data: 25/01/2026
  * Autor: Mateus Heringer & Daniel
  * * Descrição:
  * Arquivo principal de lógica da aplicação PWA.
- * Contém toda a regra de negócio para leitura, gamificação e ferramentas de estudo.
+ * Este arquivo contém toda a regra de negócio escrita de forma explícita,
+ * sem minificação ou atalhos de sintaxe, para facilitar a manutenção.
  * ============================================================================
  */
 
@@ -94,7 +95,7 @@ var state = {
     // Contexto de Uso
     hymnbook: 'harpa', // 'harpa', 'cantor', 'novocantico'
     mode: 'free',      // 'free' (livre) ou 'plan' (plano de leitura)
-    pulpitMode: false  // Controle do Modo Púlpito (Tela Cheia)
+    pulpitMode: false  // NOVO: Controle do Modo Púlpito (Tela Cheia)
 };
 
 // ============================================================================
@@ -136,7 +137,7 @@ try {
     savedMarks = {};
 }
 
-// Carregamento de Notas Pessoais (Journaling)
+// NOVO: Carregamento de Notas Pessoais (Journaling)
 var savedNotes = {};
 try {
     savedNotes = JSON.parse(localStorage.getItem('agape_notes')) || {};
@@ -178,7 +179,7 @@ var quizSession = {
 
 window.onload = async function () {
     try {
-        console.log("=== Iniciando Sistema Bíblia Ágape V2.6.1 ===");
+        console.log("=== Iniciando Sistema Bíblia Ágape V2.9.0 ===");
 
         // 1. Aplica preferências visuais salvas
         applyTheme(state.theme);
@@ -187,7 +188,7 @@ window.onload = async function () {
 
         // 2. Carregamento de Dados Assíncronos
         loadDailyVerse();
-        renderCompass(); // Renderiza a Bússola da Alma Agrupada
+        renderCompass(); // NOVO: Renderiza a Bússola da Alma Agrupada
         await loadQuizData();
 
         // 3. Configuração de Listeners de Eventos
@@ -229,7 +230,7 @@ window.onload = async function () {
  */
 window.forceUpdateAll = async function () {
     console.log("Iniciando atualização de cache em background...");
-
+    
     var filesToUpdate = TRANSLATIONS.map(function (t) { return t + '.json'; });
     filesToUpdate.push(
         'harpa.json',
@@ -304,7 +305,7 @@ window.goBack = function () {
 };
 
 // ============================================================================
-// 7. LÓGICA DE LEITURA BÍBLICA (COM CORREÇÃO RED LETTER)
+// 7. LÓGICA DE LEITURA BÍBLICA (TEXTO LIMPO)
 // ============================================================================
 
 window.handleNavigationChange = function () {
@@ -361,8 +362,7 @@ async function loadChapter() {
 
         var versesArray = bookData.chapters[state.chapter - 1];
         var bookName = BIBLE_BOOKS[state.book].name;
-        var isGospel = (state.book >= 39 && state.book <= 42); // Mateus, Marcos, Lucas, João
-
+        
         var htmlBuilder = '';
 
         versesArray.forEach(function (text, index) {
@@ -370,32 +370,24 @@ async function loadChapter() {
             var verseId = state.book + '-' + state.chapter + '-' + verseNumber;
             var markClass = savedMarks[verseId] || '';
             var reference = bookName + ' ' + state.chapter + ':' + verseNumber;
-
+            
             // Verifica se existe nota pessoal para este versículo
             var hasNoteIcon = '';
             if (savedNotes[verseId]) {
                 hasNoteIcon = '<i class="ph-fill ph-note-pencil text-accent-500 text-xs ml-1" title="Nota Pessoal"></i>';
             }
 
+            // TEXTO LIMPO: Sem lógica de Red Letter
             var content = text;
-
-            // --- CORREÇÃO: PROCESSAMENTO DE LETRAS VERMELHAS ---
-            if (isGospel) {
-                // Usamos aspas simples (') para definir a classe HTML,
-                // evitando conflito com as aspas duplas (") do texto bíblico.
-                content = content
-                    .replace(/“([^”]+)”/g, "<span class='red-letter'>“$1”</span>")
-                    .replace(/"([^"]+)"/g, "<span class='red-letter'>\"$1\"</span>");
-            }
 
             // Construção do HTML do versículo
             htmlBuilder += '<div class="flex gap-3 relative group cursor-pointer hover:bg-bible-100 dark:hover:bg-bible-800/50 p-2 rounded-lg transition ' + markClass + '" ' +
                 '     id="v-' + verseNumber + '" onclick="handleVerseClick(\'' + verseId + '\', \'' + escapeHtml(text) + '\', \'' + reference + '\')">' +
                 '    <div class="flex flex-col items-end w-6 shrink-0 mt-2">' +
                 '       <span class="text-xs font-bold text-bible-400 font-sans">' + verseNumber + '</span>' +
-                '       ' + hasNoteIcon +
+                '       ' + hasNoteIcon + 
                 '    </div>' +
-                '    <p class="verse-content text-lg flex-1 leading-loose" style="font-size:' + state.fontSize + 'px">' + content + '</p>' +
+                '    <p class="verse-content text-lg flex-1 leading-relaxed" style="font-size:' + state.fontSize + 'px">' + content + '</p>' +
                 '</div>';
         });
 
@@ -677,6 +669,7 @@ window.changeHymnbook = async function () {
 function normalizeHymnData(data, type) {
     var list = [];
 
+    // Harpa e Cantor costumam ser objetos
     if (type === 'harpa') {
         Object.keys(data).forEach(function (key) {
             if (data[key].hino) {
@@ -688,23 +681,24 @@ function normalizeHymnData(data, type) {
                 });
             }
         });
-    } else if (type === 'cantor') {
-        var source = Array.isArray(data) ? data : Object.values(data);
-        source.forEach(function (h) {
-            list.push({
-                id: h.id,
-                title: h.id + ' - ' + (h.title || ''),
-                fullText: h.lyrics || h.hino
-            });
-        });
-    } else if (type === 'novocantico') {
-        var source = Array.isArray(data) ? data : (data.hinos || []);
-        source.forEach(function (h) {
-            list.push({
-                id: h.numero,
-                title: h.numero + ' - ' + h.titulo,
-                fullText: h.letra
-            });
+    } 
+    // Lógica Genérica mais robusta para Novo Cântico e outros formatos
+    else {
+        var source = Array.isArray(data) ? data : (data.hinos || data.songs || Object.values(data));
+        
+        source.forEach(function(h) {
+            // Tenta identificar os campos mesmo se os nomes variarem
+            var id = h.id || h.numero || h.num;
+            var title = h.title || h.titulo || h.nome || h.hino;
+            var text = h.lyrics || h.letra || h.text || h.hino; 
+            
+            if(id && title) {
+                list.push({
+                    id: id,
+                    title: id + ' - ' + title,
+                    fullText: text
+                });
+            }
         });
     }
     return list;
@@ -712,10 +706,10 @@ function normalizeHymnData(data, type) {
 
 function renderHymnList(list) {
     var container = document.getElementById('harpa-list');
-    var displayList = list.slice(0, 100);
+    var displayList = list.slice(0, 100); // Paginação virtual simples
 
     container.innerHTML = displayList.map(function (h) {
-        var cleanTitle = h.title.replace(/^\d+\s*-\s*/, '');
+        var cleanTitle = h.title ? h.title.replace(/^\d+\s*-\s*/, '') : 'Hino';
         return '<div onclick="openHymn(\'' + h.id + '\')" class="bg-white dark:bg-bible-800 p-4 rounded-xl border border-bible-200 dark:border-bible-700 cursor-pointer flex items-center gap-3 hover:border-accent-600 transition shadow-sm">' +
             '    <span class="w-10 h-10 rounded-full bg-bible-50 text-bible-600 font-bold flex items-center justify-center text-sm shrink-0">' + h.id + '</span>' +
             '    <span class="truncate font-medium flex-1">' + cleanTitle + '</span>' +
@@ -724,27 +718,37 @@ function renderHymnList(list) {
 }
 
 window.openHymn = function (id) {
-    var hymn = currentHymnList.find(function (x) { return x.id.toString() === id.toString(); });
-    if (!hymn) return;
+    var h = currentHymnList.find(function (x) { return x.id.toString() === id.toString(); });
+    if (!h) return;
 
-    document.getElementById('hymn-title').innerText = hymn.title;
+    document.getElementById('hymn-title').innerText = h.title;
     var htmlContent = '';
 
-    if (hymn.fullText) {
-        var parts = hymn.fullText.split(/\n\n/);
+    if (h.fullText) {
+        // Tenta dividir por parágrafo duplo
+        var parts = h.fullText.split(/\n\n/);
+        if(parts.length === 1) parts = h.fullText.split(/\r\n\r\n/); // Fallback para Windows line breaks
+
         htmlContent = parts.map(function (part) {
-            var lower = part.toLowerCase();
-            var isChorus = lower.includes('[coro]') || lower.includes('coro:') || lower.includes('refrão');
-            var cleanText = part.replace(/\[coro\]/gi, '').replace(/coro:/gi, '').trim();
+            var cleanText = part.trim();
+            if(!cleanText) return '';
+
+            // Lógica de detecção de Refrão/Coro
+            var isChorus = /^(coro|refrão|estribilho)/i.test(cleanText) || cleanText.includes('[Coro]');
+            
+            // Remove a palavra chave para não duplicar visualmente
+            cleanText = cleanText.replace(/\[Coro\]/gi, '').replace(/^(Coro|Refrão|Estribilho):?/i, '').trim();
+            
+            var content = cleanText.replace(/\n/g, '<br>');
 
             if (isChorus) {
-                return '<div class="hymn-chorus">' + cleanText.replace(/\n/g, '<br>') + '</div>';
+                return '<div class="hymn-chorus"><span class="text-[10px] font-bold text-accent-600 uppercase tracking-widest block mb-1">Refrão</span>' + content + '</div>';
             } else {
-                return '<div class="mb-8 leading-loose">' + cleanText.replace(/\n/g, '<br>') + '</div>';
+                return '<div class="mb-8 leading-loose">' + content + '</div>';
             }
         }).join('');
-    } else if (hymn.chorus) {
-        htmlContent = '<div class="hymn-chorus">' + hymn.chorus + '</div>';
+    } else if (h.chorus) {
+        htmlContent = '<div class="hymn-chorus">' + h.chorus + '</div>';
     }
 
     document.getElementById('hymn-content').innerHTML = htmlContent;
@@ -783,7 +787,7 @@ window.startQuizSession = function () {
 window.renderQuizQuestion = function () {
     var container = document.getElementById('quiz-container');
 
-    // Filtra perguntas
+    // Filtra perguntas disponíveis
     var pool = quizData.filter(function (q) {
         return q.nivel === quizSession.currentLevel && !quizSession.history.includes(q.id);
     });
@@ -902,7 +906,7 @@ window.openImageCreatorFromVerse = function () {
 };
 
 window.openImageCreatorWithText = function (text, ref) {
-    currentVerseText = text.replace(/"/g, '');
+    currentVerseText = text.replace(/"/g, ''); 
     currentVerseRef = ref;
 
     var modal = document.getElementById('modal-image-creator');
@@ -957,7 +961,6 @@ function drawCanvas() {
     var maxWidth = canvas.width - (margin * 2);
     var lineHeight = fontSize * 1.5;
 
-    // Word Wrap
     var words = currentVerseText.split(' ');
     var line = '';
     var lines = [];
@@ -1288,7 +1291,7 @@ window.sendFeedbackToEmail = function () {
 
 window.exportData = function () {
     var obj = {
-        meta: { app: "Bíblia Ágape", version: "V2.6.0", date: new Date().toISOString() },
+        meta: { app: "Bíblia Ágape", version: "V2.9.0", date: new Date().toISOString() },
         data: { ...localStorage }
     };
     var a = document.createElement('a');
@@ -1331,13 +1334,13 @@ window.toggleTheme = function () {
 
 function applyTheme(t) {
     var metaTheme = document.querySelector('meta[name="theme-color"]');
-
+    
     if (t === 'dark') {
         document.documentElement.classList.add('dark');
-        if (metaTheme) metaTheme.setAttribute('content', '#1c1917');
+        if (metaTheme) metaTheme.setAttribute('content', '#1c1917'); 
     } else {
         document.documentElement.classList.remove('dark');
-        if (metaTheme) metaTheme.setAttribute('content', '#fafaf9');
+        if (metaTheme) metaTheme.setAttribute('content', '#fafaf9'); 
     }
 }
 
@@ -1358,7 +1361,7 @@ window.changeFontSize = function (delta) {
 // ============================================================================
 
 // --- Bússola da Alma (Categorias Agrupadas e Aleatórias) ---
-window.renderCompass = function () {
+window.renderCompass = function() {
     var container = document.getElementById('compass-container');
     if (!container || typeof EMOTION_DATA === 'undefined') return;
 
@@ -1366,14 +1369,14 @@ window.renderCompass = function () {
     var uniqueLabels = [];
     var seenLabels = new Set();
 
-    EMOTION_DATA.forEach(function (item) {
+    EMOTION_DATA.forEach(function(item) {
         if (!seenLabels.has(item.label)) {
             seenLabels.add(item.label);
             uniqueLabels.push(item);
         }
     });
 
-    var htmlContent = uniqueLabels.map(function (item) {
+    var htmlContent = uniqueLabels.map(function(item) {
         // Ao clicar, chama handleCompassClick passando o nome da categoria
         return '<button onclick="handleCompassClick(\'' + item.label + '\')" class="flex flex-col items-center gap-2 min-w-[80px] snap-center group">' +
             '<div class="w-14 h-14 rounded-2xl bg-white dark:bg-bible-800 border border-bible-200 dark:border-bible-700 flex items-center justify-center text-2xl text-accent-600 shadow-sm group-hover:scale-110 transition duration-300">' +
@@ -1386,38 +1389,38 @@ window.renderCompass = function () {
 };
 
 // Função que sorteia um versículo da categoria e abre o modal
-window.handleCompassClick = function (label) {
+window.handleCompassClick = function(label) {
     // Filtra todos os versículos que têm esse label
-    var pool = EMOTION_DATA.filter(function (item) {
+    var pool = EMOTION_DATA.filter(function(item) {
         return item.label === label;
     });
-
+    
     if (pool.length > 0) {
         // Sorteia um índice aleatório
         var randomIndex = Math.floor(Math.random() * pool.length);
         var randomItem = pool[randomIndex];
-
+        
         // Abre o modal com o item sorteado
         openCompassModal(randomItem);
     }
 };
 
 // Função para preencher e abrir o Modal da Bússola (Card)
-window.openCompassModal = function (item) {
+window.openCompassModal = function(item) {
     var modal = document.getElementById('modal-compass');
-
+    
     // Preenche os dados
     document.getElementById('compass-label').innerText = item.label;
     document.getElementById('compass-text').innerText = '"' + item.text + '"';
-
+    
     var bookName = BIBLE_BOOKS[item.book].name;
     document.getElementById('compass-ref').innerText = bookName + ' ' + item.chap + ':' + item.verse;
-
+    
     document.getElementById('compass-help').innerText = item.help;
-
+    
     // Configura o botão de ação para ler o capítulo inteiro
     var btn = document.getElementById('compass-action-btn');
-    btn.onclick = function () {
+    btn.onclick = function() {
         goToVerse(item.book, item.chap, item.verse);
         closeModal('modal-compass');
     };
@@ -1434,7 +1437,7 @@ window.openDailyVerseReading = function () {
 
     var lastSpaceIndex = refText.lastIndexOf(' ');
     var bookName = refText.substring(0, lastSpaceIndex).trim();
-    var numbers = refText.substring(lastSpaceIndex + 1).trim();
+    var numbers = refText.substring(lastSpaceIndex + 1).trim(); 
     var parts = numbers.split(':');
     var chapter = parseInt(parts[0]);
     var verse = parseInt(parts[1]);
@@ -1452,14 +1455,14 @@ window.openDailyVerseReading = function () {
 };
 
 // --- Modo Púlpito (Foco Total) ---
-window.togglePulpitMode = function () {
+window.togglePulpitMode = function() {
     state.pulpitMode = !state.pulpitMode;
-
+    
     var header = document.getElementById('read-header');
     var nav = document.getElementById('reading-nav-bar');
     var exitBtn = document.getElementById('btn-exit-pulpit');
-
-    if (state.pulpitMode) {
+    
+    if(state.pulpitMode) {
         header.classList.add('-translate-y-full'); // Esconde Header
         nav.classList.add('translate-y-full');     // Esconde Nav Inferior
         exitBtn.classList.remove('hidden');        // Mostra botão sair
@@ -1474,39 +1477,39 @@ window.togglePulpitMode = function () {
 
 // --- Journaling (Sistema de Notas) ---
 
-window.openNoteEditor = function () {
+window.openNoteEditor = function() {
     closeModal('modal-verse');
     var m = document.getElementById('modal-note');
     m.classList.remove('hidden');
     m.classList.add('flex');
-
+    
     var existingNote = savedNotes[selectedVerse.id] || "";
     document.getElementById('note-input').value = existingNote;
     document.getElementById('note-input').focus();
 };
 
-window.saveNote = function () {
+window.saveNote = function() {
     var text = document.getElementById('note-input').value.trim();
-
-    if (text) {
+    
+    if(text) {
         savedNotes[selectedVerse.id] = text;
     } else {
-        delete savedNotes[selectedVerse.id];
+        delete savedNotes[selectedVerse.id]; 
     }
-
+    
     localStorage.setItem('agape_notes', JSON.stringify(savedNotes));
-
-    loadChapter();
-
+    
+    loadChapter(); // Recarrega para mostrar o ícone de nota
+    
     closeModal('modal-note');
     alert("Nota salva com sucesso!");
 };
 
-window.deleteNote = function () {
-    if (confirm("Tem certeza que deseja apagar esta anotação?")) {
+window.deleteNote = function() {
+    if(confirm("Tem certeza que deseja apagar esta anotação?")) {
         delete savedNotes[selectedVerse.id];
         localStorage.setItem('agape_notes', JSON.stringify(savedNotes));
-
+        
         loadChapter();
         closeModal('modal-note');
     }
