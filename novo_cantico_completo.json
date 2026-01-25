@@ -1333,8 +1333,8 @@
     "hino": "143 - Salmo 23",
     "coro": "",
     "verses": {
-      "1": "Deus é meu Pastor mui terno; nada, pois, me faltará. <br> Com seu santo amor eterno sempre me sustentará. <br> Às pastagens verdejantes ele vem me conduzir",
-      "2": "Vem, com suas mãos divinas, mansamente me guiar <br> Rumo às águas cristalinas que me vão dessedentar. <br> Por veredas da justiça, prazeroso me conduz",
+      "1": "Deus é meu Pastor mui terno; nada, pois, me faltará. <br> Com seu santo amor eterno sempre me sustentará. <br> Às pastagens verdejantes ele vem me conduzir <br> ",
+      "2": "Vem, com suas mãos divinas, mansamente me guiar <br> Rumo às águas cristalinas que me vão dessedentar. <br> Por veredas da justiça, prazeroso me conduz <br> ",
       "3": "Se da morte o vale escuro traz-me aperto ao coração, <br> Caminhando vou, seguro, apoiado em seu bordão! <br> Na presença de inimigos eu terei, da Salvação, <br> Um banquete com amigos, com Jesus, meu vero Irmão.",
       "4": "Óleo santo, derramado, a cabeça vem me ungir. <br> Vai meu cálice transbordando por grandioso bem fruir. <br> Certamente que a bondade sempre a me seguir terei <br> E no lar da eternidade mui feliz habitarei."
     }
@@ -2148,7 +2148,7 @@
       "1": "Conta-me a história de Cristo, grava-a no meu coração! <br> Conta-me a história inaudita de graça, paz e perdão. <br> Conta como ele, encarnado, veio no mundo morar; <br> Aos pecadores indignos, de Deus o amor revelar.",
       "2": "Conta como ele, bondoso, nunca a ninguém rejeitou! <br> Como, de mãos estendidas, todos a si convidou! <br> Como não pode o bom Mestre seja a quem for, rejeitar, <br> Se, convencido e contrito, o seu convite aceitar!",
       "3": "Conta-me quando, no monte, sobre a cidade chorou, <br> Pois, orgulhosa e rebelde, o seu amor rejeitou. <br> Conta como ele ainda chora sobre os que seguem o mal <br> E, endurecidos, resistem ao seu amor divinal.",
-      "4": "Conta-me as duras afrontas que mansamente sofreu! <br> Como na cruz, levantado, ele por ímpios morreu! <br> Dá-me o viver na certeza de que foi mesmo por mim,"
+      "4": "Conta-me as duras afrontas que mansamente sofreu! <br> Como na cruz, levantado, ele por ímpios morreu! <br> Dá-me o viver na certeza de que foi mesmo por mim, <br> "
     }
   },
   "227": {
@@ -2414,7 +2414,7 @@
     "coro": "",
     "verses": {
       "1": "Noventa e nove ovelhas vão seguras ao curral. <br> Mas uma se extraviou do aprisco pastoral, <br> Vagando em montes de terror, <br> Distante do fiel Pastor. (bis)",
-      "2": "“Noventa e nove a ti, Pastor, não podem contentar?” <br> “A errante é minha”, respondeu, “Zeloso a irei buscar! <br> Nos montes há perigos mil,",
+      "2": "“Noventa e nove a ti, Pastor, não podem contentar?” <br> “A errante é minha”, respondeu, “Zeloso a irei buscar! <br> Nos montes há perigos mil, <br> ",
       "3": "Ninguém jamais imaginou o quanto padeceu; <br> Buscando a ovelha tão rebel, terrível dor sofreu. <br> Foi, pois, assim que o Bom Pastor <br> Salvou a ovelha por amor. (bis)",
       "4": "Vem da montanha exultação: é a voz do Bom Pastor! <br> Ressoa em notas triunfais o Salmo Vencedor <br> E os anjos cantam lá nos céus: <br> “Voltou a ovelha para Deus”. (bis)"
     }
@@ -2570,7 +2570,7 @@
     "verses": {
       "1": "Aleluia! Aleluia! Aleluia! Aleluia!",
       "2": "Ó filhos, vinde aqui cantar <br> Ao Rei do céu, da terra e mar <br> Que, ressurreto, vem reinar. <br> Aleluia! Aleluia!",
-      "3": "À tumba foram de manhã <br> Mas Cristo vive — a busca é vã! <br> Aleluia! Aleluia!",
+      "3": "À tumba foram de manhã <br>  <br> Mas Cristo vive — a busca é vã! <br> Aleluia! Aleluia!",
       "4": "Um anjo, então, lhes proclamou <br> Que Cristo já ressuscitou! <br> As suas mágoas confortou. <br> Aleluia! Aleluia!",
       "5": "Aceita agora, ó Salvador, <br> O nosso canto de louvor, <br> Que a ti erguemos com amor! <br> Aleluia! Aleluia! <br> Aleluia! Aleluia! Aleluia! Aleluia!",
       "6": "Amém."
