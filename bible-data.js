@@ -203,101 +203,169 @@ CHRONO_SEQUENCE.forEach(item => {
 const EMOTION_DATA = [
     // --- ANSIOSO ---
     {
-        label: "Ansioso", icon: "ph-wind", book: 49, chap: 4, verse: 6,
+        label: "Ansioso",
+        icon: "ph-wind",
+        book: 49,
+        chap: 4,
+        verse: 6,
         text: "Não andem ansiosos por coisa alguma, mas em tudo, pela oração e súplicas, e com ação de graças, apresentem seus pedidos a Deus.",
         help: "A ansiedade tenta prever um futuro que pertence a Deus. Troque a preocupação pela oração. Fale com Ele agora."
     },
     {
-        label: "Ansioso", icon: "ph-wind", book: 59, chap: 5, verse: 7,
+        label: "Ansioso",
+        icon: "ph-wind",
+        book: 59,
+        chap: 5,
+        verse: 7,
         text: "Lancem sobre ele toda a sua ansiedade, porque ele tem cuidado de vocês.",
         help: "Você não foi feito para carregar esse peso sozinho. Deus está pedindo para você entregar essa carga a Ele."
     },
     {
-        label: "Ansioso", icon: "ph-wind", book: 39, chap: 6, verse: 34,
+        label: "Ansioso",
+        icon: "ph-wind",
+        book: 39,
+        chap: 6,
+        verse: 34,
         text: "Portanto, não se preocupem com o amanhã, pois o amanhã trará as suas próprias preocupações. Basta a cada dia o seu próprio mal.",
         help: "Viva o hoje. Deus já está no seu amanhã preparando o caminho. Foque no que você pode fazer agora."
     },
 
     // --- CANSADO ---
     {
-        label: "Cansado", icon: "ph-battery-warning", book: 39, chap: 11, verse: 28,
+        label: "Cansado",
+        icon: "ph-battery-warning",
+        book: 39,
+        chap: 11,
+        verse: 28,
         text: "Venham a mim, todos os que estão cansados e sobrecarregados, e eu lhes darei descanso.",
         help: "O descanso que sua alma precisa não é apenas sono, é a presença de Jesus. Pare um pouco e respire nEle."
     },
     {
-        label: "Cansado", icon: "ph-battery-warning", book: 22, chap: 40, verse: 31,
+        label: "Cansado",
+        icon: "ph-battery-warning",
+        book: 22,
+        chap: 40,
+        verse: 31,
         text: "Mas aqueles que esperam no Senhor renovam as suas forças. Voam alto como águias; correm e não ficam exaustos, andam e não se cansam.",
         help: "Sua força natural tem limite, mas a força de Deus é inesgotável. Espere nEle e sinta essa renovação."
     },
 
     // --- TRISTE ---
     {
-        label: "Triste", icon: "ph-cloud-rain", book: 18, chap: 34, verse: 18,
+        label: "Triste",
+        icon: "ph-cloud-rain",
+        book: 18,
+        chap: 34,
+        verse: 18,
         text: "O Senhor está perto dos que têm o coração quebrantado e salva os de espírito abatido.",
         help: "A tristeza pode doer, mas ela atrai a presença de Deus. Ele não está longe; Ele está mais perto do que nunca."
     },
     {
-        label: "Triste", icon: "ph-cloud-rain", book: 65, chap: 21, verse: 4,
+        label: "Triste",
+        icon: "ph-cloud-rain",
+        book: 65,
+        chap: 21,
+        verse: 4,
         text: "Ele enxugará dos seus olhos toda lágrima. Não haverá mais morte, nem tristeza, nem choro, nem dor...",
         help: "Essa dor é passageira. Deus tem um futuro onde a alegria será a única realidade. Confie nessa promessa."
     },
 
     // --- MEDO ---
     {
-        label: "Medo", icon: "ph-shield-warning", book: 18, chap: 27, verse: 1,
+        label: "Com Medo",
+        icon: "ph-shield-warning",
+        book: 18,
+        chap: 27,
+        verse: 1,
         text: "O Senhor é a minha luz e a minha salvação; de quem terei temor? O Senhor é o meu forte refúgio; de quem terei medo?",
         help: "O medo diminui quando percebemos o tamanho do nosso Deus. Com Ele ao seu lado, nada pode te destruir."
     },
     {
-        label: "Medo", icon: "ph-shield-warning", book: 22, chap: 41, verse: 10,
+        label: "Com Medo",
+        icon: "ph-shield-warning",
+        book: 22,
+        chap: 41,
+        verse: 10,
         text: "Por isso não tema, pois estou com você; não tenha medo, pois sou o seu Deus.",
         help: "Você não está caminhando sozinho no escuro. A mão de Deus está segurando a sua agora mesmo."
     },
 
     // --- GRATO ---
     {
-        label: "Grato", icon: "ph-heart", book: 18, chap: 136, verse: 1,
+        label: "Grato",
+        icon: "ph-heart",
+        book: 18,
+        chap: 136,
+        verse: 1,
         text: "Deem graças ao Senhor, porque ele é bom. O seu amor dura para sempre!",
         help: "A gratidão é a chave que abre novas portas. Reconhecer a bondade de Deus multiplica a alegria."
     },
     {
-        label: "Grato", icon: "ph-heart", book: 51, chap: 5, verse: 18,
+        label: "Grato",
+        icon: "ph-heart",
+        book: 51,
+        chap: 5,
+        verse: 18,
         text: "Deem graças em todas as circunstâncias, pois esta é a vontade de Deus para vocês em Cristo Jesus.",
         help: "Até nos dias comuns existem milagres escondidos. Agradeça pelo fôlego, pela vida e pela salvação."
     },
 
     // --- SOZINHO ---
     {
-        label: "Sozinho", icon: "ph-user", book: 39, chap: 28, verse: 20,
+        label: "Sozinho",
+        icon: "ph-user",
+        book: 39,
+        chap: 28,
+        verse: 20,
         text: "E eu estarei sempre com vocês, até o fim dos tempos.",
         help: "A solidão é uma mentira. Jesus prometeu estar com você em cada segundo, até o último dia."
     },
     {
-        label: "Sozinho", icon: "ph-user", book: 22, chap: 49, verse: 15,
+        label: "Sozinho",
+        icon: "ph-user",
+        book: 22,
+        chap: 49,
+        verse: 15,
         text: "Será que uma mãe pode esquecer do seu bebê? [...] Embora ela possa esquecê-lo, eu não me esquecerei de você!",
         help: "Mesmo que pessoas falhem, o amor de Deus é perfeito e constante. Você é inesquecível para Ele."
     },
 
     // --- IRRITADO ---
     {
-        label: "Irritado", icon: "ph-fire", book: 58, chap: 1, verse: 19,
+        label: "Irritado",
+        icon: "ph-fire",
+        book: 58,
+        chap: 1,
+        verse: 19,
         text: "Todos devem ser prontos para ouvir, tardios para falar e tardios para irar-se.",
         help: "A raiva muitas vezes esconde uma dor ou frustração. Respire fundo. Não deixe a ira controlar suas palavras."
     },
     {
-        label: "Irritado", icon: "ph-fire", book: 19, chap: 15, verse: 1,
+        label: "Irritado",
+        icon: "ph-fire",
+        book: 19,
+        chap: 15,
+        verse: 1,
         text: "A resposta calma desvia a fúria, mas a palavra ríspida desperta a ira.",
         help: "Você tem o poder de mudar a atmosfera agora. Escolha a paz em vez de vencer a discussão."
     },
 
     // --- DÚVIDA ---
     {
-        label: "Dúvida", icon: "ph-question", book: 58, chap: 1, verse: 5,
+        label: "Com Dúvidas",
+        icon: "ph-question",
+        book: 58,
+        chap: 1,
+        verse: 5,
         text: "Se algum de vocês tem falta de sabedoria, peça-a a Deus, que a todos dá livremente...",
         help: "Não tenha medo das suas perguntas. Leve-as a Deus. Ele ama dar sabedoria a quem pede com sinceridade."
     },
     {
-        label: "Dúvida", icon: "ph-question", book: 57, chap: 11, verse: 1,
+        label: "Com Dúvidas",
+        icon: "ph-question",
+        book: 57,
+        chap: 11,
+        verse: 1,
         text: "Ora, a fé é a certeza daquilo que esperamos e a prova das coisas que não vemos.",
         help: "A fé não é um sentimento, é uma decisão de confiar em quem Deus é, mesmo quando não entendemos o que Ele faz."
     }
