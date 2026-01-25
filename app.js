@@ -1,13 +1,12 @@
 /**
  * ============================================================================
  * BÍBLIA ÁGAPE - APLICAÇÃO PRINCIPAL (app.js)
- * Versão: V2.5.0 (Versão Estendida & Detalhada)
+ * Versão: V2.6.0 (Bússola Aleatória & Cards)
  * Data: 24/01/2026
  * Autor: Mateus Heringer & Daniel
  * * Descrição:
  * Arquivo principal de lógica da aplicação PWA.
- * Este arquivo contém toda a regra de negócio escrita de forma explícita,
- * sem minificação ou atalhos de sintaxe, para facilitar a manutenção.
+ * Contém toda a regra de negócio para leitura, gamificação e ferramentas de estudo.
  * ============================================================================
  */
 
@@ -179,7 +178,7 @@ var quizSession = {
 
 window.onload = async function () {
     try {
-        console.log("=== Iniciando Sistema Bíblia Ágape V2.5.0 ===");
+        console.log("=== Iniciando Sistema Bíblia Ágape V2.6.0 ===");
 
         // 1. Aplica preferências visuais salvas
         applyTheme(state.theme);
@@ -188,7 +187,7 @@ window.onload = async function () {
 
         // 2. Carregamento de Dados Assíncronos
         loadDailyVerse();
-        renderCompass(); // NOVO: Renderiza a Bússola da Alma na Home
+        renderCompass(); // NOVO: Renderiza a Bússola da Alma Agrupada
         await loadQuizData();
 
         // 3. Configuração de Listeners de Eventos
@@ -372,28 +371,27 @@ async function loadChapter() {
             var markClass = savedMarks[verseId] || '';
             var reference = bookName + ' ' + state.chapter + ':' + verseNumber;
 
-            // NOVO: Verifica se existe nota pessoal para este versículo
+            // Verifica se existe nota pessoal para este versículo
             var hasNoteIcon = '';
             if (savedNotes[verseId]) {
                 hasNoteIcon = '<i class="ph-fill ph-note-pencil text-accent-500 text-xs ml-1" title="Nota Pessoal"></i>';
             }
 
-            // CORREÇÃO CRÍTICA DO RED-LETTER
-            // Aqui usamos 'content' apenas para visualização, mas 'text' puro para o clique.
             var content = text;
+
+            // Processamento de Letras Vermelhas (Palavras de Jesus)
             if (isGospel) {
-                // Regex seguro para não quebrar o HTML
-                content = content.replace(/“([^”]+)”/g, '<span class="red-letter">“$1”</span>');
-                content = content.replace(/"([^"]+)"/g, '<span class="red-letter">"$1"</span>');
+                content = content
+                    .replace(/“([^”]+)”/g, '<span class="red-letter">“$1”</span>')
+                    .replace(/"([^"]+)"/g, '<span class="red-letter">"$1"</span>');
             }
 
             // Construção do HTML do versículo
-            // IMPORTANTE: escapeHtml(text) garante que aspas no texto não quebrem o onclick
             htmlBuilder += '<div class="flex gap-3 relative group cursor-pointer hover:bg-bible-100 dark:hover:bg-bible-800/50 p-2 rounded-lg transition ' + markClass + '" ' +
                 '     id="v-' + verseNumber + '" onclick="handleVerseClick(\'' + verseId + '\', \'' + escapeHtml(text) + '\', \'' + reference + '\')">' +
                 '    <div class="flex flex-col items-end w-6 shrink-0 mt-2">' +
                 '       <span class="text-xs font-bold text-bible-400 font-sans">' + verseNumber + '</span>' +
-                '       ' + hasNoteIcon + // Renderiza o ícone de nota se existir
+                '       ' + hasNoteIcon +
                 '    </div>' +
                 '    <p class="verse-content text-lg flex-1 leading-loose" style="font-size:' + state.fontSize + 'px">' + content + '</p>' +
                 '</div>';
@@ -524,7 +522,7 @@ function getPlanDataForDay(dayIndex, totalDuration, type) {
     var safeEndIndex = Math.min(endIndex, sourceIndex.length - 1);
     var startItem = sourceIndex[startIndex];
 
-    // Formatação dos intervalos de leitura (Ex: Gênesis 1-3)
+    // Formatação dos intervalos de leitura
     var chunks = [];
     var currentChunk = null;
 
@@ -585,11 +583,8 @@ window.renderPlanOverview = function () {
         htmlBuilder +=
             '<div class="bg-white dark:bg-bible-800 p-4 rounded-xl border ' + cardClass + ' flex items-center justify-between shadow-sm transition">' +
             '   <div class="flex-1 cursor-pointer" onclick="openPlanDayReading(' + planData.start.b + ',' + planData.start.c + ')">' +
-            '       <div class="flex items-center gap-2 mb-1">' +
-            '           <p class="text-xs font-bold text-bible-400 uppercase">Dia ' + i + '</p>' +
-            '           <i class="ph-bold ph-book-open-text text-accent-600 text-xs"></i>' +
-            '       </div>' +
-            '       <h4 class="font-bold text-lg ' + textClass + '">' + planData.rangeText + '</h4>' +
+            '       <p class="text-xs font-bold text-bible-400 uppercase">Dia ' + i + '</p>' +
+            '       <h4 class="font-bold text-lg">' + planData.rangeText + '</h4>' +
             '   </div>' +
             '   <button onclick="togglePlanDay(' + i + ')" class="p-3 rounded-full transition ' + btnClass + '">' +
             '       <i class="ph-bold ' + checkIcon + ' text-xl"></i>' +
@@ -786,7 +781,7 @@ window.startQuizSession = function () {
 window.renderQuizQuestion = function () {
     var container = document.getElementById('quiz-container');
 
-    // Filtra perguntas do nível atual que não foram jogadas
+    // Filtra perguntas
     var pool = quizData.filter(function (q) {
         return q.nivel === quizSession.currentLevel && !quizSession.history.includes(q.id);
     });
@@ -807,7 +802,7 @@ window.renderQuizQuestion = function () {
 
     var question = pool[Math.floor(Math.random() * pool.length)];
 
-    // Renderização com Animação de Entrada
+    // Renderização com Animação
     var htmlOptions = question.opcoes.map(function (op, i) {
         var letter = ['A', 'B', 'C', 'D'][i];
         return '<button onclick="handleQuizAnswer(' + question.id + ', ' + i + ', this)" class="w-full text-left p-4 rounded-xl bg-bible-50 dark:bg-bible-700 hover:bg-bible-100 dark:hover:bg-bible-600 transition font-medium flex gap-3 group items-center relative overflow-hidden">' +
@@ -828,7 +823,6 @@ window.renderQuizQuestion = function () {
 };
 
 window.handleQuizAnswer = function (questionId, optionIndex, btnElement) {
-    // Bloqueia múltiplos cliques
     document.querySelectorAll('#quiz-container button').forEach(function (b) {
         b.disabled = true;
         b.style.opacity = '0.7';
@@ -836,21 +830,18 @@ window.handleQuizAnswer = function (questionId, optionIndex, btnElement) {
 
     var question = quizData.find(function (x) { return x.id === questionId; });
 
-    // Destaca a seleção
     btnElement.style.opacity = '1';
     btnElement.classList.remove('bg-bible-50', 'dark:bg-bible-700');
 
     if (optionIndex === question.correta) {
-        // --- ACERTO: Animação POP + Confetes ---
+        // ACERTO
         btnElement.classList.add('animate-pop', 'bg-green-100', 'border-green-500', 'text-green-800');
-        triggerConfetti(); // Chuva de partículas
+        triggerConfetti();
 
-        // Cálculo de Pontos com Bônus de Streak
         var points = 10 + (quizSession.streak * 2);
         quizTotalPoints += points;
         quizSession.streak++;
 
-        // Atualiza Score Visual
         var scoreEl = document.getElementById('quiz-points');
         scoreEl.innerText = quizTotalPoints;
         scoreEl.parentElement.classList.add('animate-pop');
@@ -859,20 +850,18 @@ window.handleQuizAnswer = function (questionId, optionIndex, btnElement) {
         quizSession.history.push(questionId);
         localStorage.setItem('agape_quiz_points', quizTotalPoints);
 
-        // Progressão de Nível
         if (quizSession.streak >= 3 && quizSession.currentLevel === 'facil') quizSession.currentLevel = 'medio';
         else if (quizSession.streak >= 5 && quizSession.currentLevel === 'medio') quizSession.currentLevel = 'dificil';
 
         setTimeout(renderQuizQuestion, 1500);
 
     } else {
-        // --- ERRO: Animação SHAKE ---
+        // ERRO
         btnElement.classList.add('animate-shake', 'bg-red-100', 'border-red-500', 'text-red-800');
 
         if (navigator.vibrate) navigator.vibrate(300);
         quizSession.streak = 0;
 
-        // Feedback Educativo
         setTimeout(function () {
             alert('Ah não! A resposta correta era: ' + question.opcoes[question.correta]);
             quizSession.history.push(questionId);
@@ -881,56 +870,43 @@ window.handleQuizAnswer = function (questionId, optionIndex, btnElement) {
     }
 };
 
-// Função de Confetes (Leve e sem bibliotecas externas)
 function triggerConfetti() {
     for (let i = 0; i < 30; i++) {
         const confetti = document.createElement('div');
         confetti.classList.add('confetti');
-
-        // Posição aleatória na tela
         confetti.style.left = Math.random() * 100 + 'vw';
         confetti.style.top = '-10px';
-
-        // Cores variadas (Dourado, Branco, Verde)
         const colors = ['#f59e0b', '#ffffff', '#22c55e', '#fcd34d'];
         confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-
-        // Velocidade e rotação aleatória
         confetti.style.animationDuration = (Math.random() * 2 + 1) + 's';
-
         document.body.appendChild(confetti);
-
-        // Limpeza do DOM
         setTimeout(function () { confetti.remove(); }, 3000);
     }
 }
 
 // ============================================================================
-// 11. ESTÚDIO PRO (CANVAS 2.0) - GERAÇÃO DE STORIES
+// 11. ESTÚDIO PRO (CANVAS 2.0)
 // ============================================================================
 
 window.openImageCreator = function () {
-    // Captura o texto do dia
     var dailyText = document.getElementById('daily-text').innerText;
     var dailyRef = document.getElementById('daily-reference').innerText;
     openImageCreatorWithText(dailyText, dailyRef);
 };
 
 window.openImageCreatorFromVerse = function () {
-    // Fecha o modal de versículo e abre o estúdio
     closeModal('modal-verse');
     openImageCreatorWithText(selectedVerse.text, selectedVerse.ref);
 };
 
 window.openImageCreatorWithText = function (text, ref) {
-    currentVerseText = text.replace(/"/g, ''); // Remove aspas extras
+    currentVerseText = text.replace(/"/g, '');
     currentVerseRef = ref;
 
     var modal = document.getElementById('modal-image-creator');
     modal.classList.remove('hidden');
     modal.classList.add('flex');
 
-    // Pequeno delay para garantir que o canvas foi renderizado no DOM
     setTimeout(function () {
         drawCanvas();
     }, 100);
@@ -948,25 +924,24 @@ function drawCanvas() {
     var ctx = canvas.getContext('2d');
     var theme = THEMES[currentThemeId];
 
-    // Configuração Full HD
     canvas.width = 1080;
     canvas.height = 1920;
 
-    // 1. Fundo Gradiente
+    // Fundo
     var gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
     gradient.addColorStop(0, theme.bgStart);
     gradient.addColorStop(1, theme.bgEnd);
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // 2. Marca D'água (Aspas Gigantes)
+    // Marca D'água
     ctx.fillStyle = theme.watermark;
     ctx.font = "bold 600px " + theme.fontMain;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText("”", canvas.width / 2, canvas.height / 2 - 100);
 
-    // 3. Texto Principal (Lógica de Quebra e Tamanho Dinâmico)
+    // Texto
     ctx.fillStyle = theme.text;
     ctx.textAlign = "center";
 
@@ -980,7 +955,7 @@ function drawCanvas() {
     var maxWidth = canvas.width - (margin * 2);
     var lineHeight = fontSize * 1.5;
 
-    // Word Wrap (Quebra de Linha Manual para Canvas)
+    // Word Wrap
     var words = currentVerseText.split(' ');
     var line = '';
     var lines = [];
@@ -997,7 +972,6 @@ function drawCanvas() {
     }
     lines.push(line);
 
-    // Centralização Vertical
     var totalTextHeight = lines.length * lineHeight;
     var startY = (canvas.height - totalTextHeight) / 2;
 
@@ -1005,13 +979,13 @@ function drawCanvas() {
         ctx.fillText(lines[i], canvas.width / 2, startY + (i * lineHeight));
     }
 
-    // 4. Referência
+    // Referência
     var refY = startY + (lines.length * lineHeight) + 60;
     ctx.fillStyle = theme.accent;
     ctx.font = "bold 40px " + theme.fontSec;
     ctx.fillText(currentVerseRef.toUpperCase(), canvas.width / 2, refY);
 
-    // 5. Linha Decorativa
+    // Linha
     ctx.beginPath();
     ctx.moveTo(canvas.width / 2 - 50, refY + 50);
     ctx.lineTo(canvas.width / 2 + 50, refY + 50);
@@ -1019,11 +993,10 @@ function drawCanvas() {
     ctx.lineWidth = 4;
     ctx.stroke();
 
-    // 6. Rodapé (Branding)
+    // Rodapé
     ctx.fillStyle = theme.text;
     ctx.globalAlpha = 0.6;
     ctx.font = "30px " + theme.fontSec;
-
     ctx.fillText("BÍBLIA ÁGAPE • LEIAABIBLIA.APP", canvas.width / 2, canvas.height - 120);
     ctx.globalAlpha = 1.0;
 }
@@ -1069,7 +1042,6 @@ window.setupSwipeGestures = function () {
     el.addEventListener('touchend', function (e) {
         touchEndX = e.changedTouches[0].screenX;
         var diff = touchStartX - touchEndX;
-        // Swipe para voltar (se arrastar da esquerda pra direita)
         if (diff < -80) goBack();
     }, { passive: true });
 };
@@ -1113,7 +1085,6 @@ async function performSearch() {
     container.innerHTML = '<div class="p-10 text-center animate-pulse">Buscando em toda a Bíblia...</div>';
 
     setTimeout(async function () {
-        // Carrega tradução se necessário
         if (!bibleCache[state.translation]) {
             var response = await fetch('./' + state.translation + '.json');
             bibleCache[state.translation] = await response.json();
@@ -1123,7 +1094,6 @@ async function performSearch() {
         var results = [];
         var count = 0;
 
-        // Algoritmo de Busca Profunda com Limite
         outerLoop:
         for (var b = 0; b < bib.length; b++) {
             for (var c = 0; c < bib[b].chapters.length; c++) {
@@ -1249,7 +1219,6 @@ window.markVerse = function (colorClass) {
 
     localStorage.setItem('agape_marks_v2', JSON.stringify(savedMarks));
 
-    // Atualiza a visualização sem recarregar tudo se possível, ou recarrega
     loadChapter();
     closeModal('modal-verse');
 };
@@ -1271,10 +1240,6 @@ window.openFeedbackModal = function () {
     m.classList.remove('hidden');
     m.classList.add('flex');
 };
-
-// ============================================================================
-// 13. FEEDBACK & BACKUP
-// ============================================================================
 
 window.sendFeedbackToEmail = function () {
     var e = document.getElementById('feedback-email');
@@ -1321,7 +1286,7 @@ window.sendFeedbackToEmail = function () {
 
 window.exportData = function () {
     var obj = {
-        meta: { app: "Bíblia Ágape", version: "V2.5.0", date: new Date().toISOString() },
+        meta: { app: "Bíblia Ágape", version: "V2.6.0", date: new Date().toISOString() },
         data: { ...localStorage }
     };
     var a = document.createElement('a');
@@ -1346,10 +1311,8 @@ window.handleImportFile = function (e) {
 
             if (confirm("Deseja restaurar este backup? Seus dados atuais serão substituídos.")) {
                 var d = json.data;
-                // Restauração Segura
-                var keys = ['agape_font', 'agape_theme', 'agape_version', 'agape_book', 'agape_chapter', 'agape_marks_v2', 'agape_plan', 'agape_plan_progress', 'agape_quiz_points', 'agape_streak', 'agape_notes'];
-                keys.forEach(function (k) {
-                    if (d[k]) localStorage.setItem(k, d[k]);
+                Object.keys(d).forEach(function (k) {
+                    localStorage.setItem(k, d[k]);
                 });
                 location.reload();
             }
@@ -1364,7 +1327,6 @@ window.toggleTheme = function () {
     localStorage.setItem('agape_theme', state.theme);
 };
 
-// --- FIX: ATUALIZA A COR DA BARRA DE STATUS JUNTO COM O TEMA ---
 function applyTheme(t) {
     var metaTheme = document.querySelector('meta[name="theme-color"]');
 
@@ -1390,16 +1352,28 @@ window.changeFontSize = function (delta) {
 };
 
 // ============================================================================
-// 14. FUNCIONALIDADES ESPECIAIS (BÚSSOLA, PÚLPITO, NOTAS)
+// 12. FUNCIONALIDADES NOVAS (BÚSSOLA ALEATÓRIA, PÚLPITO, NOTAS)
 // ============================================================================
 
-// --- Bússola da Alma (Carrossel de Emoções) ---
+// --- Bússola da Alma (Categorias Agrupadas e Aleatórias) ---
 window.renderCompass = function () {
     var container = document.getElementById('compass-container');
     if (!container || typeof EMOTION_DATA === 'undefined') return;
 
-    var htmlContent = EMOTION_DATA.map(function (item) {
-        return '<button onclick="goToVerse(' + item.book + ',' + item.chap + ',' + item.verse + ')" class="flex flex-col items-center gap-2 min-w-[80px] snap-center group">' +
+    // Agrupa categorias únicas para mostrar apenas 1 botão por sentimento
+    var uniqueLabels = [];
+    var seenLabels = new Set();
+
+    EMOTION_DATA.forEach(function (item) {
+        if (!seenLabels.has(item.label)) {
+            seenLabels.add(item.label);
+            uniqueLabels.push(item);
+        }
+    });
+
+    var htmlContent = uniqueLabels.map(function (item) {
+        // Ao clicar, chama handleCompassClick passando o nome da categoria
+        return '<button onclick="handleCompassClick(\'' + item.label + '\')" class="flex flex-col items-center gap-2 min-w-[80px] snap-center group">' +
             '<div class="w-14 h-14 rounded-2xl bg-white dark:bg-bible-800 border border-bible-200 dark:border-bible-700 flex items-center justify-center text-2xl text-accent-600 shadow-sm group-hover:scale-110 transition duration-300">' +
             '<i class="ph-fill ' + item.icon + '"></i></div>' +
             '<span class="text-[10px] font-bold uppercase tracking-wider text-bible-500 dark:text-bible-400 group-hover:text-bible-900 dark:group-hover:text-white">' + item.label + '</span>' +
@@ -1409,12 +1383,53 @@ window.renderCompass = function () {
     container.innerHTML = htmlContent;
 };
 
+// Função que sorteia um versículo da categoria e abre o modal
+window.handleCompassClick = function (label) {
+    // Filtra todos os versículos que têm esse label
+    var pool = EMOTION_DATA.filter(function (item) {
+        return item.label === label;
+    });
+
+    if (pool.length > 0) {
+        // Sorteia um índice aleatório
+        var randomIndex = Math.floor(Math.random() * pool.length);
+        var randomItem = pool[randomIndex];
+
+        // Abre o modal com o item sorteado
+        openCompassModal(randomItem);
+    }
+};
+
+// Função para preencher e abrir o Modal da Bússola (Card)
+window.openCompassModal = function (item) {
+    var modal = document.getElementById('modal-compass');
+
+    // Preenche os dados
+    document.getElementById('compass-label').innerText = item.label;
+    document.getElementById('compass-text').innerText = '"' + item.text + '"';
+
+    var bookName = BIBLE_BOOKS[item.book].name;
+    document.getElementById('compass-ref').innerText = bookName + ' ' + item.chap + ':' + item.verse;
+
+    document.getElementById('compass-help').innerText = item.help;
+
+    // Configura o botão de ação para ler o capítulo inteiro
+    var btn = document.getElementById('compass-action-btn');
+    btn.onclick = function () {
+        goToVerse(item.book, item.chap, item.verse);
+        closeModal('modal-compass');
+    };
+
+    // Exibe o modal
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+};
+
 // --- Link Inteligente Versículo do Dia ---
 window.openDailyVerseReading = function () {
     var refText = document.getElementById('daily-reference').innerText.trim();
     if (!refText || refText === "...") return;
 
-    // Lógica para extrair livro, capitulo e versiculo
     var lastSpaceIndex = refText.lastIndexOf(' ');
     var bookName = refText.substring(0, lastSpaceIndex).trim();
     var numbers = refText.substring(lastSpaceIndex + 1).trim();
@@ -1427,13 +1442,9 @@ window.openDailyVerseReading = function () {
     });
 
     if (bookId !== -1) {
-        // Navega para o versículo exato
         goToVerse(bookId, chapter, verse);
-
-        // Feedback visual (Vibração leve se disponível)
         if (navigator.vibrate) navigator.vibrate(50);
     } else {
-        // Fallback
         showScreen('screen-read');
     }
 };
@@ -1447,13 +1458,11 @@ window.togglePulpitMode = function () {
     var exitBtn = document.getElementById('btn-exit-pulpit');
 
     if (state.pulpitMode) {
-        // Ativar Púlpito: Esconde interfaces e aumenta fonte
-        header.classList.add('-translate-y-full'); // Sobe o header
-        nav.classList.add('translate-y-full');     // Desce o nav
-        exitBtn.classList.remove('hidden');        // Mostra botão de sair
+        header.classList.add('-translate-y-full'); // Esconde Header
+        nav.classList.add('translate-y-full');     // Esconde Nav Inferior
+        exitBtn.classList.remove('hidden');        // Mostra botão sair
         changeFontSize(4); // Aumenta fonte temporariamente
     } else {
-        // Desativar Púlpito: Restaura interfaces
         header.classList.remove('-translate-y-full');
         nav.classList.remove('translate-y-full');
         exitBtn.classList.add('hidden');
@@ -1463,7 +1472,6 @@ window.togglePulpitMode = function () {
 
 // --- Journaling (Sistema de Notas) ---
 
-// Abre o editor de notas
 window.openNoteEditor = function () {
     closeModal('modal-verse');
     var m = document.getElementById('modal-note');
@@ -1475,26 +1483,23 @@ window.openNoteEditor = function () {
     document.getElementById('note-input').focus();
 };
 
-// Salva a nota no LocalStorage
 window.saveNote = function () {
     var text = document.getElementById('note-input').value.trim();
 
     if (text) {
         savedNotes[selectedVerse.id] = text;
     } else {
-        delete savedNotes[selectedVerse.id]; // Remove se estiver vazio
+        delete savedNotes[selectedVerse.id];
     }
 
     localStorage.setItem('agape_notes', JSON.stringify(savedNotes));
 
-    // Recarrega o capítulo para mostrar/esconder o ícone de nota
     loadChapter();
 
     closeModal('modal-note');
     alert("Nota salva com sucesso!");
 };
 
-// Deleta a nota
 window.deleteNote = function () {
     if (confirm("Tem certeza que deseja apagar esta anotação?")) {
         delete savedNotes[selectedVerse.id];
