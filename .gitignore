@@ -62,3 +62,6 @@ feed.html
 crawler.py
 ._crawler_novocantico.py
 crawler_novocantico.py
+._.vscode
+.vscode/._settings.json
+.vscode/settings.json
