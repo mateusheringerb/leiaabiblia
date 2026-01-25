@@ -37,7 +37,9 @@
     animation: fadeIn 0.4s ease-out forwards;
 }
 
-/* === ANIMAÇÕES DE GAMEFICATION (QUIZ) === */
+/* === NOVAS ANIMAÇÕES DE GAMEFICATION (QUIZ) === */
+
+/* Erro: Treme a tela */
 @keyframes shake {
 
     0%,
@@ -61,6 +63,7 @@
     background-color: #fef2f2 !important;
 }
 
+/* Acerto: Pula e Brilha */
 @keyframes pop {
     0% {
         transform: scale(1);
@@ -82,6 +85,7 @@
     background-color: #f0fdf4 !important;
 }
 
+/* Entrada da Pergunta: Desliza de baixo */
 @keyframes slideUp {
     from {
         opacity: 0;
@@ -98,12 +102,13 @@
     animation: slideUp 0.5s ease-out forwards;
 }
 
-/* Partículas de Confete */
+/* Partículas de Confete (Geradas via JS) */
 .confetti {
     position: fixed;
     width: 10px;
     height: 10px;
     background-color: #f59e0b;
+    /* Dourado */
     animation: fall linear forwards;
     z-index: 100;
     pointer-events: none;
@@ -116,7 +121,9 @@
     }
 }
 
-/* Destaques do Texto */
+/* === TIPOGRAFIA E ESTILOS ORIGINAIS === */
+
+/* Destaques do Texto - Estilo "Lápis de Cor" (Suave) */
 .highlight-yellow {
     background-color: rgba(253, 224, 71, 0.25) !important;
     border-bottom: 2px solid #eab308;
@@ -137,11 +144,13 @@
     border-bottom: 2px solid #ef4444;
 }
 
+/* Remove estilo padrão de Select no iOS */
 select {
     -webkit-appearance: none;
     appearance: none;
 }
 
+/* Tipografia de Leitura Otimizada */
 .verse-content {
     line-height: 2.1;
     font-feature-settings: "kern", "liga";
@@ -153,6 +162,7 @@ select {
     color: #e7e5e4;
 }
 
+/* Letras Vermelhas (Jesus) */
 .red-letter {
     color: #9f1239;
 }
@@ -161,6 +171,7 @@ select {
     color: #fb7185;
 }
 
+/* Hinos */
 .hymn-chorus {
     background-color: rgba(180, 83, 9, 0.05);
     color: inherit;
