@@ -173,8 +173,8 @@
 
             <section class="w-full">
                 <div class="flex justify-between items-end mb-3 px-1">
-                    <h3 class="font-display font-bold text-lg text-bible-800 dark:text-bible-200">Como você está?</h3>
-                    <span class="text-[10px] uppercase font-bold text-bible-400 tracking-wider">Bússola</span>
+                    <h3 class="font-display font-bold text-lg text-bible-800 dark:text-bible-200">Como está se sentindo?
+                    </h3>
                 </div>
                 <div id="compass-container" class="flex gap-3 overflow-x-auto pb-4 snap-x hide-scrollbar">
                 </div>
@@ -204,7 +204,7 @@
                 <button onclick="showScreen('screen-read')"
                     class="group p-5 rounded-2xl bg-white dark:bg-bible-800 shadow-paper hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col items-center gap-3 text-center border border-transparent hover:border-bible-300 dark:hover:border-bible-600">
                     <div
-                        class="text-2xl text-bible-600 group-hover:text-bible-900 dark:text-bible-400 dark:group-hover:text-white transition-colors duration-300">
+                        class="text-2xl text-bible-600 group-hover:text-bible-900 dark:text-white transition-colors duration-300">
                         <i class="ph-fill ph-book-open-text"></i>
                     </div>
                     <span
@@ -214,7 +214,7 @@
                 <button onclick="searchBible()"
                     class="group p-5 rounded-2xl bg-white dark:bg-bible-800 shadow-paper hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col items-center gap-3 text-center border border-transparent hover:border-bible-300 dark:hover:border-bible-600">
                     <div
-                        class="text-2xl text-bible-600 group-hover:text-bible-900 dark:text-bible-400 dark:group-hover:text-white transition-colors duration-300">
+                        class="text-2xl text-bible-600 group-hover:text-bible-900 dark:text-white transition-colors duration-300">
                         <i class="ph-bold ph-magnifying-glass"></i>
                     </div>
                     <span
@@ -224,7 +224,7 @@
                 <button onclick="showScreen('screen-harpa')"
                     class="group p-5 rounded-2xl bg-white dark:bg-bible-800 shadow-paper hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col items-center gap-3 text-center border border-transparent hover:border-bible-300 dark:hover:border-bible-600">
                     <div
-                        class="text-2xl text-bible-600 group-hover:text-bible-900 dark:text-bible-400 dark:group-hover:text-white transition-colors duration-300">
+                        class="text-2xl text-bible-600 group-hover:text-bible-900 dark:text-white transition-colors duration-300">
                         <i class="ph-fill ph-music-notes-simple"></i>
                     </div>
                     <span
@@ -234,7 +234,7 @@
                 <button onclick="showScreen('screen-quiz')"
                     class="group p-5 rounded-2xl bg-white dark:bg-bible-800 shadow-paper hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col items-center gap-3 text-center border border-transparent hover:border-bible-300 dark:hover:border-bible-600">
                     <div
-                        class="text-2xl text-bible-600 group-hover:text-bible-900 dark:text-bible-400 dark:group-hover:text-white transition-colors duration-300">
+                        class="text-2xl text-bible-600 group-hover:text-bible-900 dark:text-white transition-colors duration-300">
                         <i class="ph-fill ph-brain"></i>
                     </div>
                     <span
@@ -244,7 +244,7 @@
                 <button onclick="showScreen('screen-highlights')"
                     class="group p-5 rounded-2xl bg-white dark:bg-bible-800 shadow-paper hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col items-center gap-3 text-center border border-transparent hover:border-bible-300 dark:hover:border-bible-600">
                     <div
-                        class="text-2xl text-bible-600 group-hover:text-bible-900 dark:text-bible-400 dark:group-hover:text-white transition-colors duration-300">
+                        class="text-2xl text-bible-600 group-hover:text-bible-900 dark:text-white transition-colors duration-300">
                         <i class="ph-fill ph-bookmark-simple"></i>
                     </div>
                     <span
@@ -332,7 +332,6 @@
                             <select id="read-translation" onchange="handleNavigationChange()"
                                 class="bg-bible-900 dark:bg-white text-white dark:text-bible-900 text-xs font-bold uppercase tracking-wide py-2 px-3 rounded-lg border-none focus:ring-0 outline-none shadow-md"></select>
                         </div>
-
                         <button onclick="togglePulpitMode()"
                             class="p-2 hover:bg-bible-200 dark:hover:bg-bible-800 rounded-full text-bible-500 transition"
                             title="Modo Púlpito">
@@ -357,11 +356,9 @@
                     <i class="ph-bold ph-caret-right text-xl"></i>
                 </button>
             </div>
-
             <button id="btn-exit-pulpit" onclick="togglePulpitMode()"
-                class="fixed top-6 right-6 z-50 bg-black/50 text-white p-3 rounded-full backdrop-blur-md hidden hover:bg-black/80 transition shadow-lg">
-                <i class="ph-bold ph-x text-xl"></i>
-            </button>
+                class="fixed top-6 right-6 z-50 bg-black/50 text-white p-3 rounded-full backdrop-blur-md hidden hover:bg-black/80 transition shadow-lg"><i
+                    class="ph-bold ph-x text-xl"></i></button>
         </div>
 
         <div id="screen-plan-overview" class="hidden animate-fade-in pb-20 max-w-3xl mx-auto">
@@ -650,6 +647,47 @@
                 <button onclick="saveNote()"
                     class="flex-1 bg-bible-900 dark:bg-white text-white dark:text-bible-900 py-3 rounded-lg font-bold uppercase tracking-wide">Salvar
                     Nota</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-compass"
+        class="fixed inset-0 z-50 hidden items-center justify-center bg-bible-900/80 backdrop-blur-sm p-4"
+        onclick="closeModal('modal-compass')">
+        <div class="bg-white dark:bg-bible-900 w-full max-w-md rounded-2xl p-8 shadow-2xl relative overflow-hidden"
+            onclick="event.stopPropagation()">
+
+            <i
+                class="ph-fill ph-quotes absolute -top-4 -left-4 text-9xl text-bible-100 dark:text-bible-800/50 -z-0"></i>
+
+            <div class="relative z-10">
+                <div class="flex justify-between items-center mb-6">
+                    <span id="compass-label"
+                        class="bg-accent-100 text-accent-700 dark:bg-accent-900/30 dark:text-accent-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Emoção</span>
+                    <button onclick="closeModal('modal-compass')"
+                        class="p-1 hover:bg-bible-100 dark:hover:bg-bible-800 rounded-full"><i
+                            class="ph-bold ph-x text-lg"></i></button>
+                </div>
+
+                <h3 id="compass-text"
+                    class="font-serif italic text-2xl leading-relaxed text-bible-900 dark:text-bible-100 mb-4">
+                    "Carregando..."
+                </h3>
+
+                <p id="compass-ref" class="text-right text-xs font-bold text-bible-400 uppercase tracking-widest mb-8">
+                    ...
+                </p>
+
+                <div class="bg-bible-50 dark:bg-bible-800/50 p-4 rounded-xl border-l-4 border-accent-500">
+                    <p class="text-xs font-bold text-accent-600 dark:text-accent-400 uppercase mb-1">Para o seu coração:
+                    </p>
+                    <p id="compass-help" class="text-sm text-bible-600 dark:text-bible-300 italic">...</p>
+                </div>
+
+                <button id="compass-action-btn" onclick=""
+                    class="w-full mt-6 bg-bible-900 dark:bg-white text-white dark:text-bible-900 py-3 rounded-xl font-bold text-sm tracking-wide shadow-lg hover:scale-[1.02] transition-transform">
+                    LER CAPÍTULO INTEIRO
+                </button>
             </div>
         </div>
     </div>
