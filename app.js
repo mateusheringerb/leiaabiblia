@@ -1,7 +1,7 @@
 /**
  * ============================================================================
  * BÍBLIA ÁGAPE - APLICAÇÃO PRINCIPAL (app.js)
- * Versão: V2.6.0 (Bússola Aleatória & Cards)
+ * Versão: V2.6.1 (Correção Red Letter & Estabilidade)
  * Data: 24/01/2026
  * Autor: Mateus Heringer & Daniel
  * * Descrição:
@@ -94,7 +94,7 @@ var state = {
     // Contexto de Uso
     hymnbook: 'harpa', // 'harpa', 'cantor', 'novocantico'
     mode: 'free',      // 'free' (livre) ou 'plan' (plano de leitura)
-    pulpitMode: false  // NOVO: Controle do Modo Púlpito (Tela Cheia)
+    pulpitMode: false  // Controle do Modo Púlpito (Tela Cheia)
 };
 
 // ============================================================================
@@ -136,7 +136,7 @@ try {
     savedMarks = {};
 }
 
-// NOVO: Carregamento de Notas Pessoais (Journaling)
+// Carregamento de Notas Pessoais (Journaling)
 var savedNotes = {};
 try {
     savedNotes = JSON.parse(localStorage.getItem('agape_notes')) || {};
@@ -178,7 +178,7 @@ var quizSession = {
 
 window.onload = async function () {
     try {
-        console.log("=== Iniciando Sistema Bíblia Ágape V2.6.0 ===");
+        console.log("=== Iniciando Sistema Bíblia Ágape V2.6.1 ===");
 
         // 1. Aplica preferências visuais salvas
         applyTheme(state.theme);
@@ -187,7 +187,7 @@ window.onload = async function () {
 
         // 2. Carregamento de Dados Assíncronos
         loadDailyVerse();
-        renderCompass(); // NOVO: Renderiza a Bússola da Alma Agrupada
+        renderCompass(); // Renderiza a Bússola da Alma Agrupada
         await loadQuizData();
 
         // 3. Configuração de Listeners de Eventos
@@ -304,7 +304,7 @@ window.goBack = function () {
 };
 
 // ============================================================================
-// 7. LÓGICA DE LEITURA BÍBLICA (COM SUPORTE A NOTAS)
+// 7. LÓGICA DE LEITURA BÍBLICA (COM CORREÇÃO RED LETTER)
 // ============================================================================
 
 window.handleNavigationChange = function () {
@@ -379,11 +379,13 @@ async function loadChapter() {
 
             var content = text;
 
-            // Processamento de Letras Vermelhas (Palavras de Jesus)
+            // --- CORREÇÃO: PROCESSAMENTO DE LETRAS VERMELHAS ---
             if (isGospel) {
+                // Usamos aspas simples (') para definir a classe HTML,
+                // evitando conflito com as aspas duplas (") do texto bíblico.
                 content = content
-                    .replace(/“([^”]+)”/g, '<span class="red-letter">“$1”</span>')
-                    .replace(/"([^"]+)"/g, '<span class="red-letter">"$1"</span>');
+                    .replace(/“([^”]+)”/g, "<span class='red-letter'>“$1”</span>")
+                    .replace(/"([^"]+)"/g, "<span class='red-letter'>\"$1\"</span>");
             }
 
             // Construção do HTML do versículo
