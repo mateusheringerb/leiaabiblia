@@ -1,14 +1,55 @@
-/* Custom Scrollbar Hide */
+/*
+ * ======================================================================================
+ * NOME DO PROJETO: BÍBLIA ÁGAPE
+ * ARQUIVO: styles.css
+ * DESCRIÇÃO: Folha de estilos globais, animações e utilitários visuais.
+ * VERSÃO: 4.0.0
+ * DESENVOLVIDO POR: Mateus Heringer
+ * REPOSITÓRIO: https://github.com/mateusheringerb
+ * LINKEDIN: https://www.linkedin.com/in/mateusheringerb
+ * DATA DE ATUALIZAÇÃO: 26 de Janeiro de 2026
+ * ======================================================================================
+ */
+
+/* * --------------------------------------------------------------------------------------
+ * UTILITÁRIOS DE INTERFACE
+ * Pequenos ajustes para melhorar a experiência visual do usuário (UX/UI).
+ * -------------------------------------------------------------------------------------- 
+ */
+
+/* * Oculta a barra de rolagem (scrollbar) mantendo a funcionalidade de scroll.
+ * Essencial para carrosséis ou listas horizontais onde a barra polui o visual.
+ */
 .hide-scrollbar::-webkit-scrollbar {
     display: none;
+    /* Para Chrome, Safari e Opera */
 }
 
 .hide-scrollbar {
     -ms-overflow-style: none;
+    /* Para Internet Explorer e Edge */
     scrollbar-width: none;
+    /* Para Firefox */
 }
 
-/* Animações Globais */
+/* * Remove a aparência nativa e inconsistente dos navegadores para elementos <select>.
+ * Isso permite aplicarmos nossos próprios estilos personalizados via CSS/Tailwind.
+ */
+select {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+
+/* * --------------------------------------------------------------------------------------
+ * SISTEMA DE ANIMAÇÕES (KEYFRAMES)
+ * Definições dos movimentos para feedback visual e transições de entrada.
+ * -------------------------------------------------------------------------------------- 
+ */
+
+/* * ANIMAÇÃO: SPIN (Girar)
+ * Utilizada para ícones de carregamento (loading) ou processamento.
+ */
 @keyframes spin {
     from {
         transform: rotate(0deg);
@@ -19,10 +60,15 @@
     }
 }
 
+/* Aplicação lenta e infinita do giro (ex: loading de fundo ou sincornização) */
 .animate-spin-slow {
     animation: spin 3s linear infinite;
 }
 
+
+/* * ANIMAÇÃO: FADE IN (Aparecer suavemente)
+ * Evita que o conteúdo "pisque" na tela, criando uma entrada elegante.
+ */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -33,37 +79,51 @@
     }
 }
 
+/* Duração curta (0.4s) para uma sensação de agilidade na interface */
 .animate-fade-in {
     animation: fadeIn 0.4s ease-out forwards;
 }
 
-/* === NOVAS ANIMAÇÕES DE GAMEFICATION (QUIZ) === */
 
-/* Erro: Treme a tela */
+/* * ANIMAÇÃO: SHAKE (Tremer - Feedback de Erro)
+ * O elemento balança para os lados e fica vermelho.
+ * Ótimo para senhas incorretas ou formulários inválidos.
+ */
 @keyframes shake {
 
     0%,
     100% {
         transform: translateX(0);
+        /* Posição inicial e final */
     }
 
     25% {
         transform: translateX(-8px);
+        /* Move para a esquerda */
     }
 
     75% {
         transform: translateX(8px);
+        /* Move para a direita */
     }
 }
 
+/* * Nota: O uso de !important aqui garante que a cor de erro sobreponha 
+ * qualquer outra cor de utilitário (como Tailwind) durante o erro.
+ */
 .animate-shake {
     animation: shake 0.4s cubic-bezier(.36, .07, .19, .97) both;
     border-color: #ef4444 !important;
-    /* Vermelho Erro */
+    /* Vermelho Red-500 */
     background-color: #fef2f2 !important;
+    /* Fundo Vermelho muito claro */
 }
 
-/* Acerto: Pula e Brilha */
+
+/* * ANIMAÇÃO: POP (Pular - Feedback de Sucesso)
+ * O elemento aumenta levemente e volta ao normal, ficando verde.
+ * Ideal para ações concluídas, como "Copiado para a área de transferência".
+ */
 @keyframes pop {
     0% {
         transform: scale(1);
@@ -71,6 +131,7 @@
 
     50% {
         transform: scale(1.05);
+        /* Leve aumento de 5% */
     }
 
     100% {
@@ -81,20 +142,27 @@
 .animate-pop {
     animation: pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border-color: #22c55e !important;
-    /* Verde Sucesso */
+    /* Verde Green-500 */
     background-color: #f0fdf4 !important;
+    /* Fundo Verde muito claro */
 }
 
-/* Entrada da Pergunta: Desliza de baixo */
+
+/* * ANIMAÇÃO: SLIDE UP (Deslizar para cima)
+ * O conteúdo surge de baixo para cima ganhando opacidade.
+ * Traz uma sensação de "elevação" e modernidade ao abrir modais ou menus.
+ */
 @keyframes slideUp {
     from {
         opacity: 0;
         transform: translateY(20px);
+        /* Começa 20px abaixo */
     }
 
     to {
         opacity: 1;
         transform: translateY(0);
+        /* Termina na posição original */
     }
 }
 
@@ -102,88 +170,134 @@
     animation: slideUp 0.5s ease-out forwards;
 }
 
-/* Partículas de Confete (Geradas via JS) */
+
+/* * ANIMAÇÃO: CONFETTI (Chuva de papel picado)
+ * Efeito festivo para momentos de celebração no app.
+ */
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+        /* Cai até o fim da tela girando */
+        opacity: 0;
+        /* Desaparece ao chegar no fim */
+    }
+}
+
 .confetti {
     position: fixed;
     width: 10px;
     height: 10px;
     background-color: #f59e0b;
-    /* Dourado */
+    /* Amarelo Amber padrão */
     animation: fall linear forwards;
     z-index: 100;
+    /* Garante que fique acima de tudo */
     pointer-events: none;
+    /* Permite clicar através do confete (não bloqueia a UI) */
 }
 
-@keyframes fall {
-    to {
-        transform: translateY(100vh) rotate(720deg);
-        opacity: 0;
-    }
-}
 
-/* === TIPOGRAFIA E ESTILOS ORIGINAIS === */
+/* * --------------------------------------------------------------------------------------
+ * DESTAQUES DE TEXTO (HIGHLIGHTS)
+ * Cores utilizadas para marcação de versículos ou anotações do usuário.
+ * Simula o efeito de uma caneta marca-texto com opacidade reduzida.
+ * -------------------------------------------------------------------------------------- 
+ */
 
-/* Destaques do Texto - Estilo "Lápis de Cor" (Suave) */
+/* Destaque Amarelo (Atenção / Ouro) */
 .highlight-yellow {
     background-color: rgba(253, 224, 71, 0.25) !important;
+    /* Fundo translúcido */
     border-bottom: 2px solid #eab308;
+    /* Linha sólida na base para contraste */
 }
 
+/* Destaque Verde (Esperança / Natureza) */
 .highlight-green {
     background-color: rgba(134, 239, 172, 0.25) !important;
     border-bottom: 2px solid #22c55e;
 }
 
+/* Destaque Azul (Divindade / Céu) */
 .highlight-blue {
     background-color: rgba(147, 197, 253, 0.25) !important;
     border-bottom: 2px solid #3b82f6;
 }
 
+/* Destaque Vermelho (Alerta / Sangue / Amor) */
 .highlight-red {
     background-color: rgba(252, 165, 165, 0.25) !important;
     border-bottom: 2px solid #ef4444;
 }
 
-/* Remove estilo padrão de Select no iOS */
-select {
-    -webkit-appearance: none;
-    appearance: none;
-}
 
-/* Tipografia de Leitura Otimizada */
+/* * --------------------------------------------------------------------------------------
+ * TIPOGRAFIA E LEITURA (VERSÍCULOS E HINOS)
+ * Configurações focadas na experiência de leitura prolongada (Long-form reading).
+ * Inclui suporte nativo para MODO ESCURO (.dark).
+ * -------------------------------------------------------------------------------------- 
+ */
+
+/* * Estilo Base do Conteúdo do Versículo
+ * Ajustado para máxima legibilidade em telas móveis e desktop.
+ */
 .verse-content {
     line-height: 2.1;
+    /* Espaçamento generoso entre linhas para não cansar a vista */
     font-feature-settings: "kern", "liga";
+    /* Melhora o kerning e ligaduras da fonte */
     letter-spacing: -0.015em;
+    /* Leve aperto nas letras para visual moderno */
     color: #292524;
+    /* Stone-800: Um cinza escuro suave, menos agressivo que preto puro */
 }
 
+/* Adaptação para Modo Escuro */
 .dark .verse-content {
     color: #e7e5e4;
+    /* Stone-200: Um cinza claro suave */
 }
 
-/* Letras Vermelhas (Jesus) */
+
+/* * Estilo "Red Letter" (Letras Vermelhas)
+ * Tradicionalmente usado em Bíblias para destacar as palavras de Jesus.
+ */
 .red-letter {
     color: #9f1239;
+    /* Rose-800: Um vermelho sóbrio e elegante */
 }
 
+/* Red Letter no Modo Escuro (precisa ser mais claro para contraste) */
 .dark .red-letter {
     color: #fb7185;
+    /* Rose-400: Um vermelho rosado luminoso */
 }
 
-/* Hinos */
+
+/* * Estilo para Refrão de Hinos
+ * Cria um bloco visualmente distinto para separar estrofes de refrões.
+ */
 .hymn-chorus {
     background-color: rgba(180, 83, 9, 0.05);
+    /* Fundo laranja/âmbar muito sutil */
     color: inherit;
     padding: 1.5rem;
+    /* Espaço interno confortável */
     border-left: 3px solid #b45309;
+    /* Barra lateral laranja para indicar citação/destaque */
     font-style: italic;
+    /* Itálico para diferenciar da estrofe */
     font-weight: 500;
+    /* Levemente mais grosso */
     margin-bottom: 2rem;
     border-radius: 0 0.5rem 0.5rem 0;
+    /* Arredonda apenas o lado direito */
 }
 
+/* Refrão no Modo Escuro */
 .dark .hymn-chorus {
     background-color: rgba(255, 255, 255, 0.05);
+    /* Fundo branco translúcido */
     border-left: 3px solid #d6d3d1;
+    /* Barra lateral cinza claro */
 }

@@ -111,9 +111,9 @@
   },
   "14": {
     "hino": "14 - Louvor e Exaltação",
-    "coro": "",
+    "coro": "Exaltado seja nosso Deus e Pai! <br> Exaltado! Para sempre o exaltai! <br> Cantem, louvem lá nos céus <br> Nosso Deus e Rei Jesus! <br> Exaltado seja Deus, santo! Santo!",
     "verses": {
-      "1": "Vamos nós louvar a Deus, vamos! Vamos! <br> Ao Senhor de toda a luz, santo! Santo! <br> Cantem, louvem lá nos céus nosso Deus e Rei Jesus! <br> Exaltado seja Deus, santo! Santo! <br> Exaltado seja nosso Deus e Pai! <br> Exaltado! Para sempre o exaltai! <br> Cantem, louvem lá nos céus <br> Nosso Deus e Rei Jesus! <br> Exaltado seja Deus, santo! Santo!",
+      "1": "Vamos nós louvar a Deus, vamos! Vamos! <br> Ao Senhor de toda a luz, santo! Santo! <br> Cantem, louvem lá nos céus nosso Deus e Rei Jesus! <br> Exaltado seja Deus, santo! Santo!",
       "2": "Nosso Deus, eterno Pai, santo! Santo! <br> Deu-nos bênçãos por Jesus, vede! Vede! <br> Ao Senhor glorificai, vós, os salvos pela cruz, <br> Sim, conosco glória dai, vinde! Vinde!",
       "3": "Exaltemos nosso Deus, santo! Santo! <br> Exaltemos com fervor, hoje! Hoje! <br> Tributemos, todos nós, hinos santos de louvor, <br> Sim, louvor em alta voz, hoje! Hoje!"
     }
@@ -135,9 +135,9 @@
   },
   "17": {
     "hino": "17 - Deus Seja Louvado",
-    "coro": "",
+    "coro": "Seja louvado o Deus supremo, <br> Deus adorado em Israel.",
     "verses": {
-      "1": "Seja louvado o Deus supremo, <br> Deus adorado em Israel! <br> Onipotente, prodígios obra, <br> Sempre clemente, sempre fiel. <br> Seja louvado o Deus supremo, <br> Deus adorado em Israel.",
+      "1": "Seja louvado o Deus supremo, <br> Deus adorado em Israel! <br> Onipotente, prodígios obra, <br> Sempre clemente, sempre fiel.",
       "2": "Louvor perene só Deus merece! <br> Cantai, não cesse o seu louvor! <br> De todos seja sempre exaltado, <br> E cante a igreja com terno amor."
     }
   },
@@ -153,9 +153,9 @@
   },
   "19": {
     "hino": "19 - Rei Sublime",
-    "coro": "",
+    "coro": "Vinde, ó remidos, filhos de Deus! <br> Cantai louvores que alcancem os céus!",
     "verses": {
-      "1": "Ó Rei sublime em majestade e glória, <br> Sobre as milícias do celeste além, <br> Ouve o louvor, os hinos de vitória, <br> Dos que de ti recebem todo o bem! <br> Vinde, ó remidos, filhos de Deus! <br> Cantai louvores que alcancem os céus!",
+      "1": "Ó Rei sublime em majestade e glória, <br> Sobre as milícias do celeste além, <br> Ouve o louvor, os hinos de vitória, <br> Dos que de ti recebem todo o bem!",
       "2": "Dos altos céus louvor a Deus ressoa, <br> De gratidão ao soberano amor! <br> Os redimidos com fervor entoam <br> O nome excelso de seu Benfeitor.",
       "3": "Eterno Deus, teus filhos vês prostrados <br> Perante o brilho da superna luz, <br> Pois do pecado foram resgatados, <br> E agora rendem glórias a Jesus!"
     }
@@ -199,9 +199,9 @@
   },
   "24": {
     "hino": "24 - Convite ao Louvor",
-    "coro": "",
+    "coro": "Exaltemos o Senhor! <br> Infinito é seu amor!",
     "verses": {
-      "1": "Vinde, irmãos, louvar a Deus, <br> Criador da terra e céus. <br> Exaltemos o Senhor! <br> Infinito é seu amor!",
+      "1": "Vinde, irmãos, louvar a Deus, <br> Criador da terra e céus.",
       "2": "Glória e honra ao grande Rei; <br> Alta e santa é sua lei.",
       "3": "Age com poder real, <br> Com grandeza divinal.",
       "4": "Dia e noite a sua mão <br> Desenvolve o tenro grão.",
@@ -222,17 +222,19 @@
     "hino": "26 - Louvor ao Deus Grandioso",
     "coro": "",
     "verses": {
-      "1": "Senhor meu Deus, quando eu, maravilhado, <br> Os grandes feitos vejo da tua mão, <br> Estrelas, mundos e trovões rolando, <br> A proclamar teu nome na amplidão, <br> Canta minh’alma, então, a ti Senhor: <br> Grandioso és tu, grandioso és tu! (bis)",
-      "2": "Quando atravesso bosques e florestas <br> Ouvindo, à brisa, pássaros cantar, <br> Ou vejo, além, montanhas altaneiras <br> O teu poder e glória proclamar;",
-      "3": "Quando percebo que, na cruz maldita, <br> Por teu amor, Jesus morreu por mim <br> E me livrou do jugo do pecado, <br> Ali vertendo sangue carmesim;",
-      "4": "Quando, afinal, em resplendor e glória, <br> Jesus abrir as portas da mansão, <br> Eu hei de estar de joelhos entre os santos, <br> Na mais humilde e vera adoração, <br> E então cantar eternamente ali: <br> Grandioso és tu, grandioso és tu! (bis)"
+      "1": "Senhor meu Deus, quando eu, maravilhado, <br> Os grandes feitos vejo da tua mão, <br> Estrelas, mundos e trovões rolando, <br> A proclamar teu nome na amplidão,",
+      "2": "[Coro] Canta minh’alma, então, a ti Senhor: <br> Grandioso és tu, grandioso és tu! (bis)",
+      "3": "Quando atravesso bosques e florestas <br> Ouvindo, à brisa, pássaros cantar, <br> Ou vejo, além, montanhas altaneiras <br> O teu poder e glória proclamar;",
+      "4": "Quando percebo que, na cruz maldita, <br> Por teu amor, Jesus morreu por mim <br> E me livrou do jugo do pecado, <br> Ali vertendo sangue carmesim;",
+      "5": "Quando, afinal, em resplendor e glória, <br> Jesus abrir as portas da mansão, <br> Eu hei de estar de joelhos entre os santos, <br> Na mais humilde e vera adoração,",
+      "6": "[Coro] E então cantar eternamente ali: <br> Grandioso és tu, grandioso és tu! (bis)"
     }
   },
   "27": {
     "hino": "27 - Um Hino ao Senhor",
-    "coro": "",
+    "coro": "Nos céus e no mar e na terra, <br> Nos bosques, nos prados em flor; <br> No fragoso alcantil,12 na amplitude celeste, <br> Um hino ressoa ao Senhor!",
     "verses": {
-      "1": "As grutas, as rochas imensas, <br> Dos mundos o grande esplendor, <br> Proclamam bem alto, constantes <br> Um hino ao teu Nome, Senhor! <br> Nos céus e no mar e na terra, <br> Nos bosques, nos prados em flor; <br> No fragoso alcantil,12 na amplitude celeste, <br> Um hino ressoa ao Senhor!",
+      "1": "As grutas, as rochas imensas, <br> Dos mundos o grande esplendor, <br> Proclamam bem alto, constantes <br> Um hino ao teu Nome, Senhor!",
       "2": "Nos céus, as estrelas brilhantes, <br> Dos mares o grande fragor, <br> E as brisas entoam, ridentes, <br> Um hino ao teu Nome, Senhor!",
       "3": "As aves alegres, na mata, <br> Por entre as ramagens em flor, <br> Exultam em coro, cantando <br> Um hino ao teu Nome, Senhor!",
       "4": "E tu, pecador que vagueias, <br> Que fazes ao teu Criador? <br> Não achas momento em que cantes <br> Um hino de glória ao Senhor?"
@@ -259,36 +261,36 @@
   },
   "30": {
     "hino": "30 - Providência de Deus (na Criação)",
-    "coro": "",
+    "coro": "Eterno Deus, ó Deus sem par, <br> A Criação, com gratidão <br> Te vem louvar! <br> Nos céus teu Nome aclamam <br> Os astros, que são teus; <br> A terra e o mar proclamam: <br> “És o nosso Deus!”",
     "verses": {
-      "1": "Ó Deus! Ó Providência! Com teu real poder <br> Trouxeste à existência o mundo, todo ser! <br> E a tudo que criaste com benfazeja mão, <br> As bênçãos não negaste da tua proteção. <br> Eterno Deus, ó Deus sem par, <br> A Criação, com gratidão <br> Te vem louvar! <br> Nos céus teu Nome aclamam <br> Os astros, que são teus; <br> A terra e o mar proclamam: <br> “És o nosso Deus!”",
+      "1": "Ó Deus! Ó Providência! Com teu real poder <br> Trouxeste à existência o mundo, todo ser! <br> E a tudo que criaste com benfazeja mão, <br> As bênçãos não negaste da tua proteção.",
       "2": "Ao sol resplandecente e à vastidão do mar <br> Traçaste, ó Deus potente, as leis que irão guardar. <br> E a tenra e pequenina florzinha em botão, <br> A tua mão divina conserva em proteção.",
       "3": "Dos campos, a verdura, dos frutos, o sabor, <br> Celebram a ternura do teu constante amor! <br> E a natureza inteira, por toda a Criação, <br> Proclama, alvissareira, a tua proteção. <br> Amém."
     }
   },
   "31": {
     "hino": "31 - Providência de Deus (na Redenção)",
-    "coro": "",
+    "coro": "És nosso Pai, ó Deus de amor! <br> Teus filhos vêm aqui, também, <br> Cantar louvor! <br> Ao mundo renunciamos, <br> Agora somos teus; <br> E alegres proclamamos: <br> “És o nosso Deus!”",
     "verses": {
-      "1": "Ó Deus! Ó Providência! Sem ti não há viver! <br> Vem dar-nos a assistência do teu real poder! <br> Tão-só em ti confiamos e em tua proteção, <br> Pois só em ti achamos conforto e redenção. <br> És nosso Pai, ó Deus de amor! <br> Teus filhos vêm aqui, também, <br> Cantar louvor! <br> Ao mundo renunciamos, <br> Agora somos teus; <br> E alegres proclamamos: <br> “És o nosso Deus!”",
+      "1": "Ó Deus! Ó Providência! Sem ti não há viver! <br> Vem dar-nos a assistência do teu real poder! <br> Tão-só em ti confiamos e em tua proteção, <br> Pois só em ti achamos conforto e redenção.",
       "2": "Ao homem tu criaste, de ti vivo exemplar; <br> Na terra o colocaste a fim de te louvar. <br> Caído embora esteja, estendes tua mão, <br> Na graça benfazeja de tua Redenção.",
       "3": "Em Cristo, o Filho amado, a tua graça vem <br> Cobrir-nos o pecado e dar-nos todo o bem. <br> Reais munificências fruímos nós, então, <br> Nas ternas providências da tua Redenção. <br> Amém."
     }
   },
   "32": {
     "hino": "32 - O Deus Fiel às Suas Promessas",
-    "coro": "",
+    "coro": "Tu és fiel, Senhor! Tu és fiel, Senhor! <br> Dia após dia, com bênçãos sem fim, <br> Tua mercê nos sustenta e nos guarda; <br> Tu és fiel, Senhor; fiel assim.17",
     "verses": {
-      "1": "Tu és fiel, Senhor, ó Pai celeste, <br> Teus filhos sabem que não falharás! <br> Nunca mudaste, tu nunca faltaste, <br> Tal como eras tu sempre serás. <br> Tu és fiel, Senhor! Tu és fiel, Senhor! <br> Dia após dia, com bênçãos sem fim, <br> Tua mercê nos sustenta e nos guarda; <br> Tu és fiel, Senhor; fiel assim.17",
+      "1": "Tu és fiel, Senhor, ó Pai celeste, <br> Teus filhos sabem que não falharás! <br> Nunca mudaste, tu nunca faltaste, <br> Tal como eras tu sempre serás.",
       "2": "Flores e frutos, montanhas e mares, <br> Sol, lua, estrelas brilhando no céu, <br> Tudo criaste na terra e nos ares, <br> Para louvar-te, Senhor, que és fiel.",
       "3": "Pleno perdão tu dás! Que segurança! <br> Cada momento me guias, Senhor, <br> E no porvir, oh! Que doce esperança, <br> Desfrutarei do teu rico favor. <br> Amém."
     }
   },
   "33": {
     "hino": "33 - Maravilhas Divinas",
-    "coro": "",
+    "coro": "No céu, na terra, que maravilhas <br> Vai operando o poder do Senhor! <br> Mas seu amor, aos homens perdidos, <br> Das maravilhas é sempre a maior.",
     "verses": {
-      "1": "Ao Deus de amor e de imensa bondade, <br> Com voz de júbilo, vinde e aclamai! <br> Com coração transbordante de graças, <br> Seu grande amor, todos, vinde e louvai. <br> No céu, na terra, que maravilhas <br> Vai operando o poder do Senhor! <br> Mas seu amor, aos homens perdidos, <br> Das maravilhas é sempre a maior.",
+      "1": "Ao Deus de amor e de imensa bondade, <br> Com voz de júbilo, vinde e aclamai! <br> Com coração transbordante de graças, <br> Seu grande amor, todos, vinde e louvai.",
       "2": "Já nossos pais nos contaram a história <br> De Deus, falando com muito prazer <br> Que, nas tristezas, nos grandes perigos, <br> Ele os salvou por seu grande poder.",
       "3": "Hoje, também, nós, bem alto, cantamos <br> Que as orações ele nos atendeu; <br> Seu forte braço, que é tão compassivo, <br> Em nosso auxílio ele sempre estendeu.",
       "4": "Como até hoje e daqui para frente <br> Ele será nosso eterno poder, <br> Nosso castelo bem forte e seguro <br> E nossa fonte de excelso prazer."
@@ -296,9 +298,9 @@
   },
   "34": {
     "hino": "34 - Louvor ao Deus da Graça",
-    "coro": "",
+    "coro": "Sua graça Deus nos dá <br> E jamais nos deixará!",
     "verses": {
-      "1": "Demos com alegre som <br> Glória a Deus, porque ele é bom. <br> Sua graça Deus nos dá <br> E jamais nos deixará!",
+      "1": "Demos com alegre som <br> Glória a Deus, porque ele é bom.",
       "2": "Com poder ele ordenou <br> E no mundo a luz raiou.",
       "3": "Com olhar de compaixão <br> Viu a nossa perdição.",
       "4": "O seu povo abençoou, <br> No deserto ele o guiou.",
@@ -316,9 +318,9 @@
   },
   "36": {
     "hino": "36 - Exaltação Universal",
-    "coro": "",
+    "coro": "O dom supremo, divinal, <br> Justiça eterna e santo amor; <br> De litoral em litoral <br> Serão cantados ao Senhor!",
     "verses": {
-      "1": "De toda a terra e das nações, <br> Louvor a Cristo entoai! <br> Em alta voz, dos corações, <br> O Nome de Jesus cantai. <br> O dom supremo, divinal, <br> Justiça eterna e santo amor; <br> De litoral em litoral <br> Serão cantados ao Senhor!",
+      "1": "De toda a terra e das nações, <br> Louvor a Cristo entoai! <br> Em alta voz, dos corações, <br> O Nome de Jesus cantai.",
       "2": "Em toda língua bendizei <br> A Deus, autor da Criação! <br> Em toda a terra engrandecei <br> Jesus que trouxe a redenção!"
     }
   },
@@ -333,54 +335,54 @@
   },
   "38": {
     "hino": "38 - Louvores Sem Fim",
-    "coro": "",
+    "coro": "Mil vezes, sim, mil vezes, sim, <br> Louvores ao Senhor <br> Que nos amou e nos salvou, <br> Bendito Salvador!",
     "verses": {
-      "1": "Mil vezes mil louvores rendamos a Jesus <br> Que, da mais alta glória, desceu até à cruz! <br> Por sua imensa graça, por seu insigne amor, <br> Por todos seja sempre louvado o Salvador. <br> Mil vezes, sim, mil vezes, sim, <br> Louvores ao Senhor <br> Que nos amou e nos salvou, <br> Bendito Salvador!",
+      "1": "Mil vezes mil louvores rendamos a Jesus <br> Que, da mais alta glória, desceu até à cruz! <br> Por sua imensa graça, por seu insigne amor, <br> Por todos seja sempre louvado o Salvador.",
       "2": "Eis ao redor do trono do Redentor Jesus, <br> Milhares de milhares em refulgente luz! <br> Com reverência adoram o grande Salvador <br> E ao bom Cordeiro rendem a honra e o louvor.",
       "3": "Oh! Vinde agora, todos, também a celebrar <br> As glórias sempiternas do Redentor sem par! <br> Com vozes de vitória seu Nome proclamai! <br> Mil vezes mil louvores a Cristo tributai!"
     }
   },
   "39": {
     "hino": "39 - Exaltação e Louvor",
-    "coro": "",
+    "coro": "O sangue de Jesus me lavou, me lavou; <br> O sangue de Jesus me lavou, me lavou! <br> Alegre, cantarei louvores ao meu Rei, <br> Ao meu Senhor Jesus que me salvou!",
     "verses": {
-      "1": "Oh! Vinde crentes dar louvor ao grande rei Jesus <br> Que, para a nossa redenção, morreu na amarga cruz; <br> Seu sangue derramou, de tudo me lavou, <br> Mais alvo do que a neve me tornou. <br> O sangue de Jesus me lavou, me lavou; <br> O sangue de Jesus me lavou, me lavou! <br> Alegre, cantarei louvores ao meu Rei, <br> Ao meu Senhor Jesus que me salvou!",
+      "1": "Oh! Vinde crentes dar louvor ao grande rei Jesus <br> Que, para a nossa redenção, morreu na amarga cruz; <br> Seu sangue derramou, de tudo me lavou, <br> Mais alvo do que a neve me tornou.",
       "2": "Oh! Vinde unir-vos a Jesus na luta contra o mal <br> E, com o grande salvador em marcha triunfal, <br> A todos proclamar que seu amor sem par <br> O fez na cruz seu sangue derramar.",
       "3": "O chefe da milícia é Jesus, meu Salvador, <br> O Rei dos reis, o Redentor, o eterno e bom Senhor; <br> A tudo vencerá, vitória nos dará <br> E à glória eterna os seus conduzirá."
     }
   },
   "40": {
     "hino": "40 - Cântico ao Salvador",
-    "coro": "",
+    "coro": "Salvação! Salvação alcançou-nos o Filho de Deus; <br> Salvação! Salvação! Aleluia ao Filho de Deus!",
     "verses": {
-      "1": "Cantai a Cristo, o Salvador, que tanto nos amou <br> E, para nossa redenção, seu sangue derramou! <br> Salvação! Salvação alcançou-nos o Filho de Deus; <br> Salvação! Salvação! Aleluia ao Filho de Deus!",
+      "1": "Cantai a Cristo, o Salvador, que tanto nos amou <br> E, para nossa redenção, seu sangue derramou!",
       "2": "Cantai o amor celestial, amor do grande Deus, <br> Divina flama a consumir os vis pecados meus!",
       "3": "De Cristo, o excelso, infindo amor, oh! Vinde, publicai! <br> E dele a grande salvação a todos proclamai!"
     }
   },
   "41": {
     "hino": "41 - Louvor Pela Graça Divina",
-    "coro": "",
+    "coro": "Louvai, louvai e proclamai a grandeza <br> Do perdão, da graça que a todos dá.",
     "verses": {
-      "1": "Louvai, louvai Cristo, o bom Mestre divino! <br> Por nós na cruz ele sofreu, morreu; <br> Perdão, perdão hoje aos contritos outorga, <br> Pois precioso sangue na cruz verteu. <br> Sim, louvai-o! Ei-lo tão exaltado, <br> Mediador que nunca nos faltará. <br> Louvai, louvai e proclamai a grandeza <br> Do perdão, da graça que a todos dá.",
+      "1": "Louvai, louvai Cristo, o bom Mestre divino! <br> Por nós na cruz ele sofreu, morreu; <br> Perdão, perdão hoje aos contritos outorga, <br> Pois precioso sangue na cruz verteu. <br> Sim, louvai-o! Ei-lo tão exaltado, <br> Mediador que nunca nos faltará.",
       "2": "Louvai, louvai Cristo, o bom Mestre divino! <br> Conselhos bons dá ele ao pecador; <br> Anunciai as bênçãos maravilhosas <br> Concedidas por nosso Salvador. <br> Ide todos, servos de Jesus Cristo, <br> E ele nunca vos abandonará.",
       "3": "Louvai, louvai Cristo, o bom Mestre divino! <br> Cantai, cantai, seu grande amor cantai; <br> Fiéis, cantai de coração, bem unidos, <br> Seu poder e glória louvai, louvai! <br> Qual pastor que cuida do seu rebanho, <br> Cristo, assim, os crentes protegerá."
     }
   },
   "42": {
     "hino": "42 - O Grande Amor de Deus",
-    "coro": "",
+    "coro": "Exultai! Exultai! Vinde todos louvar <br> A Jesus, Salvador, a Jesus, Redentor! <br> A Deus demos glória, porquanto do céu <br> Seu Filho bendito por nós todos deu!",
     "verses": {
-      "1": "A Deus demos glória por seu grande amor: <br> O Filho bendito por nós todos deu <br> E graça concede ao mais vil pecador, <br> Abrindo-lhe a porta de entrada no céu. <br> Exultai! Exultai! Vinde todos louvar <br> A Jesus, Salvador, a Jesus, Redentor! <br> A Deus demos glória, porquanto do céu <br> Seu Filho bendito por nós todos deu!",
+      "1": "A Deus demos glória por seu grande amor: <br> O Filho bendito por nós todos deu <br> E graça concede ao mais vil pecador, <br> Abrindo-lhe a porta de entrada no céu.",
       "2": "Oh! Graça real! Foi assim que Jesus, <br> Morrendo, seu sangue por nós derramou. <br> Herança nos céus, com os santos em luz, <br> Legou-nos aquele que o preço pagou.",
       "3": "Tal prova de amor nos persuade a confiar <br> Nos merecimentos do Filho de Deus! <br> E quem, a Jesus, pela fé se entregar, <br> Vai vê-lo na glória eterna dos céus."
     }
   },
   "43": {
     "hino": "43 - O Deus de Amor",
-    "coro": "",
+    "coro": "Desperta já, meu coração, e louva ao grande Salvador; <br> Cantando em hinos triunfais que Deus é o Deus de amor.",
     "verses": {
-      "1": "Desperta já, meu coração e louva ao Salvador, <br> Cantando em hinos triunfais que Deus é o Deus de amor. <br> Imenso amor! Amor sem-par! Preenche os vastos céus, <br> Alcança a terra e a todos nós, insigne amor de Deus! <br> Desperta já, meu coração, e louva ao grande Salvador; <br> Cantando em hinos triunfais que Deus é o Deus de amor.",
+      "1": "Desperta já, meu coração e louva ao Salvador, <br> Cantando em hinos triunfais que Deus é o Deus de amor. <br> Imenso amor! Amor sem-par! Preenche os vastos céus, <br> Alcança a terra e a todos nós, insigne amor de Deus!",
       "2": "Amor que um dia se encarnou a fim de me salvar <br> E que, subindo à dura cruz, morreu em meu lugar! <br> Amor que exclama: “Vinde a mim!”, que busca o pecador. <br> Amor eterno, sem igual, de Cristo, Salvador.",
       "3": "Remido a preço tão real, o sangue do Senhor, <br> Com que pagar eu poderei tal graça, tal amor? <br> Quando ele a mim, um pecador, se digna de aceitar <br> E me levar com seus fiéis ao santo e eterno lar?"
     }
@@ -414,9 +416,9 @@
   },
   "47": {
     "hino": "47 - Louvor e Glória",
-    "coro": "",
+    "coro": "Aleluia! Toda a glória te rendemos, Senhor! <br> Aleluia! Tua graça imploramos. Amém.",
     "verses": {
-      "1": "Louvamos-te, ó Deus, pelo dom de Jesus <br> Que, por nós, pecadores, morreu sobre a cruz. <br> Aleluia! Toda a glória te rendemos, Senhor! <br> Aleluia! Tua graça imploramos. Amém.",
+      "1": "Louvamos-te, ó Deus, pelo dom de Jesus <br> Que, por nós, pecadores, morreu sobre a cruz.",
       "2": "Louvamos-te, ó Deus, pois nos mandas a luz <br> Que, brilhando nas trevas, a Cristo conduz.",
       "3": "Louvamos-te, ó Deus, por teu Filho, Jesus, <br> Que foi morto, mas vive no Reino da luz.",
       "4": "Louvamos-te, ó Deus, e rogamos, Senhor: <br> Dá-nos sempre sentir teu poder, teu amor."
@@ -432,18 +434,18 @@
   },
   "49": {
     "hino": "49 - Sempre Vencendo",
-    "coro": "",
+    "coro": "Não é dos fortes a vitória, <br> Nem dos que correm melhor; <br> Mas dos fiéis e sinceros <br> Que seguem junto ao Senhor!",
     "verses": {
-      "1": "Sempre vencendo, mui vitorioso, <br> Cristo Jesus, o Senhor! <br> É soberano, chefe bendito, <br> Em tudo ele é vencedor! <br> Ei-lo supremo, guiando, <br> Com seu imenso poder! <br> Todos avante, pois, crentes, <br> Todos lutar e vencer. <br> Não é dos fortes a vitória, <br> Nem dos que correm melhor; <br> Mas dos fiéis e sinceros <br> Que seguem junto ao Senhor!",
+      "1": "Sempre vencendo, mui vitorioso, <br> Cristo Jesus, o Senhor! <br> É soberano, chefe bendito, <br> Em tudo ele é vencedor! <br> Ei-lo supremo, guiando, <br> Com seu imenso poder! <br> Todos avante, pois, crentes, <br> Todos lutar e vencer.",
       "2": "Sempre vencendo, mui vitorioso, <br> Cristo Jesus, o Senhor! <br> Eis suas hostes inumeráveis, <br> Seu grande império e fulgor; <br> Em seu governo demonstra <br> Cuidado e amor sem igual; <br> Sempre nos ama e protege <br> Com seu poder eternal.",
       "3": "Sempre vencendo, mui vitorioso, <br> Cristo Jesus, o Senhor! <br> Reis e vassalos, servos e chefes <br> Querem também seu favor. <br> Senhor, desejo e te imploro <br> Que me permitas lutar <br> Sempre ao teu lado, invencível, <br> Até meus dias findar!"
     }
   },
   "50": {
     "hino": "50 - Sangue Precioso",
-    "coro": "",
+    "coro": "O sangue precioso de Cristo tem valor: <br> Das penas da justiça liberta o pecador.",
     "verses": {
-      "1": "Cantarei a Cristo e seu excelso amor; <br> Por nós baixou à terra o grande Salvador. <br> O sangue precioso de Cristo tem valor: <br> Das penas da justiça liberta o pecador.",
+      "1": "Cantarei a Cristo e seu excelso amor; <br> Por nós baixou à terra o grande Salvador.",
       "2": "Cantarei a Cristo! Por nós morreu na cruz. <br> Aos pobres pecadores quem salva é só Jesus!",
       "3": "Cantarei a Cristo! Por nós cumpriu a lei! <br> Seu manto de justiça, alegre, vestirei.",
       "4": "Cantarei a Cristo! Nas nuvens voltará <br> E na celeste glória os seus receberá."
@@ -481,9 +483,9 @@
   },
   "54": {
     "hino": "54 - A Chegada do Messias",
-    "coro": "",
+    "coro": "Dai louvores, celebrai-o! Foi morto na cruz! <br> Dai louvores, publicai-o: já vive Jesus!",
     "verses": {
-      "1": "Cantai! Exultai! O Messias chegou! <br> Dissiparam-se as trevas, a aurora raiou! <br> Dai louvores, celebrai-o! Foi morto na cruz! <br> Dai louvores, publicai-o: já vive Jesus!",
+      "1": "Cantai! Exultai! O Messias chegou! <br> Dissiparam-se as trevas, a aurora raiou!",
       "2": "Cantai! Exultai! Pelos ímpios sofreu! <br> Satisfez a justiça e o sangue verteu!",
       "3": "Cantai! Exultai! Temos pleno perdão, <br> Pois Jesus nos concede real salvação!",
       "4": "Cantai! Exultai! Jesus Cristo, nos céus, <br> Pelos seus intercede à destra de Deus.",
@@ -509,9 +511,9 @@
   },
   "57": {
     "hino": "57 - Fonte de Todo Bem",
-    "coro": "",
+    "coro": "De todo bem a fonte é o nosso bom Senhor! <br> Louvai a Deus, louvai a Deus <br> Por todo o seu amor!",
     "verses": {
-      "1": "A terra semeamos a fim de nos dar pão, <br> Mas Deus é quem a nutre com benfazeja mão. <br> É Deus quem manda o frio, o inverno e o verão, <br> A chuva, o doce orvalho e a fresca viração. <br> De todo bem a fonte é o nosso bom Senhor! <br> Louvai a Deus, louvai a Deus <br> Por todo o seu amor!",
+      "1": "A terra semeamos a fim de nos dar pão, <br> Mas Deus é quem a nutre com benfazeja mão. <br> É Deus quem manda o frio, o inverno e o verão, <br> A chuva, o doce orvalho e a fresca viração.",
       "2": "O Criador de tudo que em toda parte está <br> Colore a flor silvestre e à estrela brilho dá. <br> Os ventos lhe obedecem e o bravo mar também; <br> As frágeis avezinhas o seu cuidado têm!",
       "3": "A nós, porém, seus filhos, revela mais amor, <br> Mandando a este mundo o Filho Salvador! <br> A nós fazendo herdeiros de tudo quanto tem, <br> Na redenção perfeita que dele nos provém!"
     }
@@ -529,9 +531,9 @@
   },
   "59": {
     "hino": "59 - Gratidão",
-    "coro": "",
+    "coro": "Ao Deus eterno, Criador, ao Deus da redenção, <br> Por tantos anos de labor, a nossa gratidão!",
     "verses": {
-      "1": "Ao Deus eterno, criador, mil graças tributemos <br> Por tantos anos de labor no pátrio lar que temos. <br> Ao Deus eterno, Criador, ao Deus da redenção, <br> Por tantos anos de labor, a nossa gratidão!",
+      "1": "Ao Deus eterno, criador, mil graças tributemos <br> Por tantos anos de labor no pátrio lar que temos.",
       "2": "Provaste, ó Deus, o teu amor a nós, os brasileiros, <br> Na voz tão plena de fervor dos grandes pioneiros.",
       "3": "Por toda parte, ó Redentor, agora é anunciado <br> Teu Nome ao pobre pecador que jaz no vil pecado.",
       "4": "Que grandes coisas, ó Senhor, a todos nós legaste! <br> São provas desse grande amor com que tu nos amaste. <br> Amém."
@@ -558,9 +560,9 @@
   },
   "62": {
     "hino": "62 - Hino de Gratidão",
-    "coro": "",
+    "coro": "Graças, graças, mil graças <br> A ti, meu Salvador! <br> Graças, graças, mil graças <br> Por teu precioso amor!",
     "verses": {
-      "1": "Graças te dou por tudo que me deste, <br> Primeiro a salvação em meu Jesus. <br> Graças te dou por tudo que fizeste <br> Por este pecador salvo na cruz! <br> Graças, graças, mil graças <br> A ti, meu Salvador! <br> Graças, graças, mil graças <br> Por teu precioso amor!",
+      "1": "Graças te dou por tudo que me deste, <br> Primeiro a salvação em meu Jesus. <br> Graças te dou por tudo que fizeste <br> Por este pecador salvo na cruz!",
       "2": "Eu te agradeço a bênção do trabalho <br> E do meu lar, que alegra o meu viver; <br> A correção paterna, quando falho, <br> Provando o teu amor pelo meu ser.",
       "3": "Eu te agradeço o pão de cada dia, <br> A água que alivia a sede dura <br> E o sol que aquece a pobre gente fria: <br> São bênçãos que enchem a terra de fartura.",
       "4": "Eu te agradeço, ó Pai, os meus amigos, <br> E os inimigos também te agradeço. <br> Sou grato por vitórias em perigos <br> E outras bênçãos que eu não mereço. <br> Amém."
@@ -568,9 +570,9 @@
   },
   "63": {
     "hino": "63 - As Muitas Bênçãos",
-    "coro": "",
+    "coro": "Conta as bênçãos, dize quantas são, <br> Recebidas da divina mão! <br> Vem dizê-las, todas de uma vez, <br> E verás, surpreso, quanto Deus já fez!",
     "verses": {
-      "1": "Se da vida as vagas procelosas são, <br> Se, com desalento, julgas tudo vão, <br> Conta as muitas bênçãos, dize-as de uma vez <br> E verás, surpreso, quanto Deus já fez. <br> Conta as bênçãos, dize quantas são, <br> Recebidas da divina mão! <br> Vem dizê-las, todas de uma vez, <br> E verás, surpreso, quanto Deus já fez!",
+      "1": "Se da vida as vagas procelosas são, <br> Se, com desalento, julgas tudo vão, <br> Conta as muitas bênçãos, dize-as de uma vez <br> E verás, surpreso, quanto Deus já fez.",
       "2": "Tens acaso mágoas, triste é teu lidar? <br> É a cruz pesada que tens de levar? <br> Conta as muitas bênçãos! Logo exultarás <br> E, fortalecido, tudo vencerás!",
       "3": "Quando vires outros com seu ouro e bens, <br> Lembra que tesouros prometidos tens. <br> Nunca os bens da terra poderão comprar <br> A mansão celeste que vais habitar.",
       "4": "Seja o teu combate longo ou breve aqui <br> Não te desanimes: Deus será por ti! <br> Seu divino auxílio, minorando o mal, <br> Te dará consolo e galardão final."
@@ -677,9 +679,9 @@
   },
   "74": {
     "hino": "74 - Sinceridade",
-    "coro": "",
+    "coro": "Eu venho como estou! <br> Sim, venho como estou! <br> Porque Jesus por mim morreu, <br> Eu venho como estou!",
     "verses": {
-      "1": "Jesus, Senhor, me achego a ti, <br> Tua ira santa mereci; <br> O teu favor me estende aqui! <br> Aceita um pecador! <br> Eu venho como estou! <br> Sim, venho como estou! <br> Porque Jesus por mim morreu, <br> Eu venho como estou!",
+      "1": "Jesus, Senhor, me achego a ti, <br> Tua ira santa mereci; <br> O teu favor me estende aqui! <br> Aceita um pecador!",
       "2": "As minhas culpas grandes são, <br> Mas tu, que não morreste em vão, <br> Me podes conceder perdão! <br> Aceita um pecador!",
       "3": "Oh! Vem agora, Salvador, <br> Livrar-me por teu grande amor, <br> Pois tu, Jesus, és meu Senhor; <br> Aceita um pecador. <br> Amém."
     }
@@ -728,17 +730,17 @@
   },
   "79": {
     "hino": "79 - Glória ao Salvador",
-    "coro": "",
+    "coro": "Glória ao Salvador! <br> Glória ao Salvador! Glória ao Salvador! <br> Eu sei que Cristo já me salvou; <br> Glória ao Salvador!",
     "verses": {
-      "1": "Chegado à cruz do bom Salvador, <br> Prostrado aos pés do meu Redentor, <br> Ele atendeu logo ao meu clamor; <br> Glória ao Salvador! <br> Glória ao Salvador! Glória ao Salvador! <br> Eu sei que Cristo já me salvou; <br> Glória ao Salvador!",
+      "1": "Chegado à cruz do bom Salvador, <br> Prostrado aos pés do meu Redentor, <br> Ele atendeu logo ao meu clamor;",
       "2": "Que maravilha, Jesus me amou! <br> Tudo de graça me perdoou! <br> Dos meus grilhões ele me livrou! <br> Glória ao Salvador!"
     }
   },
   "80": {
     "hino": "80 - O Amor de Jesus",
-    "coro": "",
+    "coro": "Falarei do grande amor com louvor e gratidão! <br> Servirei a meu Jesus, que na cruz me deu perdão.",
     "verses": {
-      "1": "Cantarei o imenso amor do Senhor  amor sem-fim! <br> De Jesus que aqui desceu e morreu na cruz por mim. <br> Falarei do grande amor com louvor e gratidão! <br> Servirei a meu Jesus, que na cruz me deu perdão.",
+      "1": "Cantarei o imenso amor do Senhor  amor sem-fim! <br> De Jesus que aqui desceu e morreu na cruz por mim.",
       "2": "Antes mesmo de eu orar ou chorar minha aflição, <br> Meu Jesus por mim chorou e implorou, na cruz, perdão.",
       "3": "Ninguém pode calcular nem sondar tão grande amor, <br> Que me faz limpo e feliz, do Juiz sem ter pavor.",
       "4": "Não mereço tal favor, mas Jesus me soube amar; <br> Quero, pois, com devoção, meu amor lhe dedicar."
@@ -774,9 +776,9 @@
   },
   "84": {
     "hino": "84 - Santo Espírito",
-    "coro": "",
+    "coro": "Santo Espírito de Deus, dá-me graça em teu poder! <br> De ti procede todo o bem, faze-me mais santo ser!",
     "verses": {
-      "1": "Santo Espírito de amor, cobre-me com teu poder! <br> Purifica-me, Senhor, quero, ó Deus, mais santo ser! <br> Santo Espírito de Deus, dá-me graça em teu poder! <br> De ti procede todo o bem, faze-me mais santo ser!",
+      "1": "Santo Espírito de amor, cobre-me com teu poder! <br> Purifica-me, Senhor, quero, ó Deus, mais santo ser!",
       "2": "Tu atendes, ó Senhor, quem te implora em contrição. <br> Com tua graça e teu favor, guia-me na retidão!",
       "3": "Eu confio em ti, Senhor, meu viver vem transformar! <br> Quero, pois, com gratidão minha vida consagrar! Amém."
     }
@@ -801,9 +803,9 @@
   },
   "87": {
     "hino": "87 - Alegria Perene",
-    "coro": "",
+    "coro": "Oh! Que grande amor! Oh! Divino amor <br> De Cristo pelo pecador!",
     "verses": {
-      "1": "Desperta e canta ao grande Deus, <br> Sim, ó minha alma, com fervor, <br> Pois muitos e preciosos bens <br> A ti tem dado com amor. <br> Oh! Que grande amor! Oh! Divino amor <br> De Cristo pelo pecador!",
+      "1": "Desperta e canta ao grande Deus, <br> Sim, ó minha alma, com fervor, <br> Pois muitos e preciosos bens <br> A ti tem dado com amor.",
       "2": "Perdido, Cristo me encontrou <br> E dispensou-me compaixão; <br> Por seu tão grande amor de pai, <br> Tirou-me desta condição.",
       "3": "Eu sei que é vil meu coração; <br> Propende sempre para o mal. <br> Mas ele em paz me guardará <br> Com seu amor que é perenal."
     }
@@ -820,9 +822,9 @@
   },
   "89": {
     "hino": "89 - Amor Sacrificial",
-    "coro": "",
+    "coro": "Quem pode o seu amor contar? (bis) <br> O grande amor de meu Jesus, quem poderá contar?",
     "verses": {
-      "1": "O grande amor que meu Jesus <br> por mim mostrou na rude cruz, <br> Morrendo, a fim de me salvar, <br> quem poderá contar? <br> Quem pode o seu amor contar? (bis) <br> O grande amor de meu Jesus, quem poderá contar?",
+      "1": "O grande amor que meu Jesus <br> por mim mostrou na rude cruz, <br> Morrendo, a fim de me salvar, <br> quem poderá contar?",
       "2": "O cálice que Jesus bebeu, <br> a maldição que padeceu <br> Por mim e para me salvar, <br> quem poderá contar?",
       "3": "A zombaria tão cruel, <br> a cruz horrenda, o amargo fel, <br> Sofridos para me salvar, <br> quem poderá contar?",
       "4": "Incomparável Salvador <br> teu inefável, santo amor, <br> Que é impossível de sondar, <br> quem poderá contar?"
@@ -840,27 +842,27 @@
   },
   "91": {
     "hino": "91 - A Fé dos Antigos",
-    "coro": "",
+    "coro": "Sublime fé, clarão de luz, inspiração que vem da cruz.",
     "verses": {
-      "1": "Oh! Viva fé que nossos pais honraram sempre com valor. <br> Nós cantaremos mais e mais teus grandes feitos com ardor! <br> Sublime fé, clarão de luz, inspiração que vem da cruz.",
+      "1": "Oh! Viva fé que nossos pais honraram sempre com valor. <br> Nós cantaremos mais e mais teus grandes feitos com ardor!",
       "2": "Bravos, quiseram nossos pais por ti as chamas afrontar; <br> E tal como esses ancestrais, queremos nós também andar.",
       "3": "Alto pendão, sublime fé! Por ti queremos pelejar! <br> Tudo sofrendo, a morte até, e firmes sempre a ti honrar."
     }
   },
   "92": {
     "hino": "92 - A Fé Contemplada",
-    "coro": "",
+    "coro": "Tua fé Jesus contemplará, <br> Sim, o que Jesus promete, dá. <br> Ele vê o coração <br> E responde à petição; <br> Tua fé Jesus contemplará!",
     "verses": {
-      "1": "Deus promete grandes coisas conceder <br> A qualquer que peça, crendo que há de obter, <br> Esperando, sem na fé enfraquecer. <br> O Senhor a fé contemplará! <br> Tua fé Jesus contemplará, <br> Sim, o que Jesus promete, dá. <br> Ele vê o coração <br> E responde à petição; <br> Tua fé Jesus contemplará!",
+      "1": "Deus promete grandes coisas conceder <br> A qualquer que peça, crendo que há de obter, <br> Esperando, sem na fé enfraquecer. <br> O Senhor a fé contemplará!",
       "2": "Quantas maravilhas Deus realizou <br> Por alguém que firme nele confiou <br> E que da promessa em nada duvidou. <br> O Senhor a fé contemplará!",
       "3": "Sim, creiamos no que Deus nos prometeu, <br> Pois jamais desonrará o Nome seu; <br> Ele cumprirá promessas que nos deu. <br> O Senhor a fé contemplará!"
     }
   },
   "93": {
     "hino": "93 - Firmeza na Fé",
-    "coro": "",
+    "coro": "A minha fé e o meu amor <br> Estão firmados no Senhor, (bis)",
     "verses": {
-      "1": "Somente ponho a minha fé na graça excelsa de Jesus, <br> No sacrifício remidor, no sangue do bom Redentor. <br> A minha fé e o meu amor <br> Estão firmados no Senhor, (bis)",
+      "1": "Somente ponho a minha fé na graça excelsa de Jesus, <br> No sacrifício remidor, no sangue do bom Redentor.",
       "2": "Se não lhe posso a face ver é pela fé que vou viver; <br> Em cada transe a suportar eu hei de nele confiar.",
       "3": "A sua graça é mui real, abrigo traz no temporal; <br> Ao vir cercar-me a tentação, me fortalece a sua mão.",
       "4": "Quando a trombeta ressoar, irei com ele me encontrar; <br> E com os salvos cantarei louvor eterno ao grande Rei!"
@@ -868,18 +870,18 @@
   },
   "94": {
     "hino": "94 - A Porta da Salvação",
-    "coro": "",
+    "coro": "Oh! Graça imensa! Pois, assim, <br> Jesus convida: Vinde a mim! <br> A mim, a mim; convida: vinde a mim!",
     "verses": {
-      "1": "É franca a porta divinal, aberta a todo o mundo. <br> Por ela o pecador mortal avista amor profundo. <br> Oh! Graça imensa! Pois, assim, <br> Jesus convida: Vinde a mim! <br> A mim, a mim; convida: vinde a mim!",
+      "1": "É franca a porta divinal, aberta a todo o mundo. <br> Por ela o pecador mortal avista amor profundo.",
       "2": "Entrai! Jesus vos dá perdão, as culpas redimindo. <br> Entrai, buscando a salvação, pois seu amor é infindo.",
       "3": "Aberta, sim, de par em par! Entrai com grande urgência, <br> Pois Deus a todos quer mostrar real munificência."
     }
   },
   "95": {
     "hino": "95 - Somente Cristo",
-    "coro": "",
+    "coro": "Jesus, Jesus é o Salvador; e não há outro Mediador! <br> Foi ele quem na cruz morreu e vivo está nos altos céus.",
     "verses": {
-      "1": "Somente Cristo é Salvador, assim reconhecemos; <br> Morreu por nós, em santo amor, e vida nele temos. <br> Jesus, Jesus é o Salvador; e não há outro Mediador! <br> Foi ele quem na cruz morreu e vivo está nos altos céus.",
+      "1": "Somente Cristo é Salvador, assim reconhecemos; <br> Morreu por nós, em santo amor, e vida nele temos.",
       "2": "Os homens santos e fiéis, nós sempre respeitamos; <br> Mas a Jesus, o Rei dos reis, humilde adoramos.",
       "3": "A Deus fazemos oração, só ele quer e pode <br> Valer-nos na tribulação; aos seus Deus sempre acolhe.",
       "4": "No santo sangue de Jesus confia todo crente; <br> O que ele fez na dura cruz é sempre suficiente."
@@ -896,9 +898,9 @@
   },
   "97": {
     "hino": "97 - Súplica do Redimido",
-    "coro": "",
+    "coro": "Cristo, inflama viva chama em meu peito, ó Salvador! <br> Pois te adora quem te implora: vem guiar-me, bom Senhor!",
     "verses": {
-      "1": "Meu pecado resgatado foi na cruz, por teu amor! <br> E da morte — triste sorte! — me livraste, ó Redentor! <br> Cristo, inflama viva chama em meu peito, ó Salvador! <br> Pois te adora quem te implora: vem guiar-me, bom Senhor!",
+      "1": "Meu pecado resgatado foi na cruz, por teu amor! <br> E da morte — triste sorte! — me livraste, ó Redentor!",
       "2": "Se hesitante, vacilante, ouço a voz do tentador, <br> Tu me guias, me auxilias e me tornas vencedor.",
       "3": "Redimida, só tem vida a minha alma em teu amor! <br> Com apreço reconheço quanto devo a ti, Senhor. <br> Amém."
     }
@@ -915,9 +917,9 @@
   },
   "99": {
     "hino": "99 - Louvor ao Redentor",
-    "coro": "",
+    "coro": "Sim, sobre a cruz, em meu lugar, <br> Jesus morreu e me salvou! <br> Firme e seguro posso andar <br> Porque seu sangue me lavou.",
     "verses": {
-      "1": "Minha alma, louva ao Redentor, <br> Jesus, teu Rei, teu Salvador; <br> Morreu na cruz, em teu lugar, <br> E salvação te veio dar. <br> Sim, sobre a cruz, em meu lugar, <br> Jesus morreu e me salvou! <br> Firme e seguro posso andar <br> Porque seu sangue me lavou.",
+      "1": "Minha alma, louva ao Redentor, <br> Jesus, teu Rei, teu Salvador; <br> Morreu na cruz, em teu lugar, <br> E salvação te veio dar.",
       "2": "Oh! Quão perdido e longe andei, <br> Rebelde a Deus e à sua lei! <br> Com terno e tão paciente amor, <br> Seguiu-me sempre o Salvador.",
       "3": "Bendito o dia quando, enfim, <br> Vi Cristo sobre a cruz, por mim! <br> Vencido por tão grande amor, <br> Rendi-me logo ao Salvador.",
       "4": "Vem alma aflita descansar, <br> Jesus te pode perdoar! <br> A ele entrega o coração <br> E teu será o seu perdão."
@@ -934,43 +936,43 @@
   },
   "101": {
     "hino": "101 - A Voz da Salvação",
-    "coro": "",
+    "coro": "Fui ao meu Senhor que me convidou; <br> Bem nenhum havia em mim, <br> Mas ele me salvou.",
     "verses": {
-      "1": "Ouvi a doce voz de Cristo, o Redentor, <br> Chamar-me para a salvação que vem do seu amor. <br> Fui ao meu Senhor que me convidou; <br> Bem nenhum havia em mim, <br> Mas ele me salvou.",
+      "1": "Ouvi a doce voz de Cristo, o Redentor, <br> Chamar-me para a salvação que vem do seu amor.",
       "2": "Nas trevas eu vivi, indigno e sem valor; <br> Porém, agora, em teu poder, eu ando, ó Salvador! <br> 3 A Deus eu louvarei por essa redenção, <br> Pois tendo Cristo, o Redentor, eu tenho a salvação."
     }
   },
   "102": {
     "hino": "102 - O Céu com Cristo",
-    "coro": "",
+    "coro": "Oh! Aleluia! Sim, é céu, <br> É céu fruir perdão aqui! <br> Na terra ou mar, por onde for, <br> Com o Senhor é céu ali.",
     "verses": {
-      "1": "Depois que Cristo me salvou, <br> Em céu o mundo se tornou; <br> Até no meio do sofrer <br> Eu tenho paz no meu viver. <br> Oh! Aleluia! Sim, é céu, <br> É céu fruir perdão aqui! <br> Na terra ou mar, por onde for, <br> Com o Senhor é céu ali.",
+      "1": "Depois que Cristo me salvou, <br> Em céu o mundo se tornou; <br> Até no meio do sofrer <br> Eu tenho paz no meu viver.",
       "2": "Mui longe eu via outrora o céu; <br> Mas, quando Cristo me valeu, <br> Então senti meu coração <br> Entrar no céu da retidão.",
       "3": "Bem pouco importa eu habitar <br> Em alto monte, à beira-mar, <br> Em casa ou gruta, boa ou ruim, <br> É céu ali, com Cristo em mim."
     }
   },
   "103": {
     "hino": "103 - Salvação em Cristo",
-    "coro": "",
+    "coro": "Ó Cristo, és meu Salvador por ti eu tenho paz! <br> Jesus, a ti louvor darei por tudo o que me dás.",
     "verses": {
-      "1": "Jesus, agora eu bem sei quão grande é teu amor, <br> Pois salvação me deste aqui, aceita o meu louvor. <br> Ó Cristo, és meu Salvador por ti eu tenho paz! <br> Jesus, a ti louvor darei por tudo o que me dás.",
+      "1": "Jesus, agora eu bem sei quão grande é teu amor, <br> Pois salvação me deste aqui, aceita o meu louvor.",
       "2": "Jamais descanso conheci por ser um pecador; <br> Mas tu olhaste para mim com teu divino amor.",
       "3": "Louvor, louvor darei a ti, ó Cristo, meu Senhor! <br> Profeta, Sacerdote, Rei, do mundo o Salvador."
     }
   },
   "104": {
     "hino": "104 - Plena Paz e Alegria em Cristo",
-    "coro": "",
+    "coro": "Cantarei, em meu coração, esta linda melodia, <br> Pois eu tenho em meu coração <br> Plena paz e alegria. <br> Cantarei, em meu coração, <br> Cantarei, sim, noite e dia. <br> Aleluia! Aleluia! Feliz, sempre cantarei.",
     "verses": {
-      "1": "Mais do que milhares é Cristo, meu bom Mestre, <br> Ele é a Luz do Mundo, a Estrela da Manhã! <br> É o Rei da glória e, em meu coração, <br> Contente vou cantando a divinal canção! <br> Cantarei, em meu coração, esta linda melodia, <br> Pois eu tenho em meu coração <br> Plena paz e alegria. <br> Cantarei, em meu coração, <br> Cantarei, sim, noite e dia. <br> Aleluia! Aleluia! Feliz, sempre cantarei.",
+      "1": "Mais do que milhares é Cristo, meu bom Mestre, <br> Ele é a Luz do Mundo, a Estrela da Manhã! <br> É o Rei da glória e, em meu coração, <br> Contente vou cantando a divinal canção!",
       "2": "Cristo libertou-me dos males do pecado <br> E agora alegre canto, pois para o céu irei. <br> Cristo resgatou-me, ele é o meu Salvador; <br> Dou toda a glória a ele, meu Mestre e bom Senhor."
     }
   },
   "105": {
     "hino": "105 - A Certeza do Crente",
-    "coro": "",
+    "coro": "Mas eu sei em quem tenho crido <br> E estou bem certo que é poderoso! <br> Guardará, pois, o meu tesouro <br> Até ao dia final.",
     "verses": {
-      "1": "Não sei por que de Deus o amor <br> A mim se revelou, <br> Por que Jesus, meu Salvador, <br> Na cruz me resgatou. <br> Mas eu sei em quem tenho crido <br> E estou bem certo que é poderoso! <br> Guardará, pois, o meu tesouro <br> Até ao dia final.",
+      "1": "Não sei por que de Deus o amor <br> A mim se revelou, <br> Por que Jesus, meu Salvador, <br> Na cruz me resgatou.",
       "2": "Não sei o modo como agiu <br> O Espírito eternal <br> Que, um dia, a Cristo me atraiu <br> Em convicção real.",
       "3": "Não sei o que de mal ou bem <br> É destinado a mim; <br> Se maus ou áureos dias vêm, <br> Até da vida o fim.",
       "4": "Não sei se ainda longe está, <br> Ou muito perto vem <br> A hora em que Jesus virá <br> Na glória que ele tem."
@@ -978,18 +980,18 @@
   },
   "106": {
     "hino": "106 - Fonte Carmesim",
-    "coro": "",
+    "coro": "Eu creio, sim, eu creio, <br> Jesus por mim morreu! <br> Foi sobre a cruz, com grande amor, <br> Que Cristo padeceu.",
     "verses": {
-      "1": "Há uma fonte carmesim <br> Que meu Jesus abriu <br> No dia em que na cruz, por mim, <br> Morreu e me remiu. <br> Eu creio, sim, eu creio, <br> Jesus por mim morreu! <br> Foi sobre a cruz, com grande amor, <br> Que Cristo padeceu.",
+      "1": "Há uma fonte carmesim <br> Que meu Jesus abriu <br> No dia em que na cruz, por mim, <br> Morreu e me remiu.",
       "2": "E desde que, por seu amor, <br> O rumo me apontou, <br> Confio nele, com fervor, <br> Pois que me resgatou.",
       "3": "A sua morte sobre a cruz <br> Traz vida imortal <br> E vou morar com Cristo em luz <br> Na glória celestial."
     }
   },
   "107": {
     "hino": "107 - Perto da Cruz",
-    "coro": "",
+    "coro": "Sim, na cruz, sim, na cruz sempre me glorio <br> E, por fim, descansarei salvo, além do rio.",
     "verses": {
-      "1": "Quero estar ao pé da cruz, que tão rica fonte <br> Corre franca, salutar, de Sião no monte. <br> Sim, na cruz, sim, na cruz sempre me glorio <br> E, por fim, descansarei salvo, além do rio.",
+      "1": "Quero estar ao pé da cruz, que tão rica fonte <br> Corre franca, salutar, de Sião no monte.",
       "2": "A tremer, ao pé da cruz, graça, amor achou-me; <br> Matutina estrela, ali, raios seus mandou-me.",
       "3": "Desta cruz desejo aqui sempre recordar-me; <br> Dela à sombra, Salvador, queiras abrigar-me!",
       "4": "Junto à cruz, ardendo em fé, sem temor vigio; <br> Firme, até a Pátria ver, santa, além do rio."
@@ -997,9 +999,9 @@
   },
   "108": {
     "hino": "108 - Aflição e Paz",
-    "coro": "",
+    "coro": "Sou feliz com Jesus, <br> Sou feliz com Jesus, <br> meu Senhor!",
     "verses": {
-      "1": "Se paz a mais doce me deres gozar, <br> Se dor a mais forte sofrer; <br> Oh! Seja o que for, tu me fazes saber <br> Que feliz com Jesus sempre sou! <br> Sou feliz com Jesus, <br> Sou feliz com Jesus, <br> meu Senhor!",
+      "1": "Se paz a mais doce me deres gozar, <br> Se dor a mais forte sofrer; <br> Oh! Seja o que for, tu me fazes saber <br> Que feliz com Jesus sempre sou!",
       "2": "Embora me assalte o cruel Satanás <br> E ataque com vis tentações; <br> Oh! Certo eu estou, apesar de aflições, <br> Que feliz eu serei com Jesus!",
       "3": "Meu triste pecado, por meu Salvador <br> Foi pago de um modo cabal! <br> Valeu-me o Senhor! Oh! Mercê sem igual! <br> Sou feliz, graças dou a Jesus!",
       "4": "A vinda eu anseio do meu Salvador! <br> Em breve virá me levar <br> Ao céu, onde eu vou para sempre morar <br> Com remidos na luz do Senhor!"
@@ -1007,9 +1009,9 @@
   },
   "109": {
     "hino": "109 - O Bom Pastor",
-    "coro": "",
+    "coro": "Confiando no Senhor, protegido em seu amor, <br> Seguirei o meu caminho sem tristeza e sem temor.",
     "verses": {
-      "1": "Quero o Salvador comigo, ao seu lado sempre andar. <br> Quero tê-lo muito perto, no seu braço descansar. <br> Confiando no Senhor, protegido em seu amor, <br> Seguirei o meu caminho sem tristeza e sem temor. <br> Quero o Salvador comigo, porque fraca é minha fé; <br> Sua voz me dá conforto quando me vacila o pé. <br> Quero o Salvador comigo, dia a dia, em meu viver; <br> Através de luz ou sombras, no desgosto e no prazer. <br> Quero o Salvador comigo, sábio guia e bom pastor, <br> Nesta vida e além da morte, longe de perigo e dor.",
+      "1": "Quero o Salvador comigo, ao seu lado sempre andar. <br> Quero tê-lo muito perto, no seu braço descansar.",
       "2": "Quero o Salvador comigo, porque fraca é minha fé; <br> Sua voz me dá conforto quando me vacila o pé.",
       "3": "Quero o Salvador comigo, dia a dia, em meu viver; <br> Através de luz ou sombras, no desgosto e no prazer.",
       "4": "Quero o Salvador comigo, sábio guia e bom pastor, <br> Nesta vida e além da morte, longe de perigo e dor."
@@ -1017,11 +1019,21 @@
   },
   "110": {
     "hino": "110 - A Vida com Jesus",
-    "coro": "",
+    "coro": "A presença de Jesus enche o coração de luz! <br> Mui preciosa fica e também mais rica <br> Esta vida com Jesus.",
     "verses": {
-      "1": "Um dia Cristo achou-me mui longe do meu lar, <br> Perdido já no mundo, sem mais poder voltar! <br> Tomando-me em seus braços, firmou-me nos meus passos <br> E agora andamos juntos, voltando para o lar. <br> A presença de Jesus enche o coração de luz! <br> Mui preciosa fica e também mais rica <br> Esta vida com Jesus.",
+      "1": "Um dia Cristo achou-me mui longe do meu lar, <br> Perdido já no mundo, sem mais poder voltar! <br> Tomando-me em seus braços, firmou-me nos meus passos <br> E agora andamos juntos, voltando para o lar.",
       "2": "Passamos pelo vale a fim de me provar, <br> Em meio a densas trevas que impedem-me o andar! <br> Não há nenhum perigo, pois já está comigo <br> O excelso Companheiro, voltando para o lar.",
       "3": "Entramos na atmosfera que envolve aquele lar, <br> No qual meu Pai me aguarda e é onde vou morar! <br> Não há no mundo inteiro um outro Companheiro <br> Que mostre tanto zelo, voltando para o lar."
+    }
+  },
+  "110-A": {
+    "hino": "110-A - Crer e Observar",
+    "coro": "Crer e observar tudo quanto ordenar! <br> O fiel obedece ao que Cristo mandar!",
+    "verses": {
+      "1": "Em Jesus confiar, sua lei observar, <br> Oh! Que gozo, que bênção, que paz! <br> Satisfeito guardar tudo quanto ordenar, <br> Alegria perene nos traz.",
+      "2": "O inimigo falaz, a calúnia mordaz <br> Cristo sabe desprestigiar; <br >Nem tristeza, nem dor, nem intriga, a maior, <br> Pode o crente fiel abalar.",
+      "3": "Grande prova de amor, comunhão no Senhor <br> Tem o crente zeloso e leal! <br> O seu rosto mirar, seus segredos privar, <br> É consolo que não tem igual.",
+      "4": "Resolutos, Senhor, e com zelo e fervor, <br> Os teus passos queremos seguir! <br> Teus preceitos guardar, o teu nome exaltar, <br> Sempre a tua vontade cumprir."
     }
   },
   "111": {
@@ -1036,36 +1048,36 @@
   },
   "112": {
     "hino": "112 - Rica Promessa",
-    "coro": "",
+    "coro": "Comigo estar! Comigo estar! <br> Sim, Jesus me promete sempre comigo estar!",
     "verses": {
-      "1": "“Não temas! Contigo eu sempre estarei!” <br> Oh! Rica promessa do bondoso Rei! <br> Qual astro que brilha lá na escuridão, <br> A mais linda promessa brilha no meu coração! <br> Comigo estar! Comigo estar! <br> Sim, Jesus me promete sempre comigo estar!",
+      "1": "“Não temas! Contigo eu sempre estarei!” <br> Oh! Rica promessa do bondoso Rei! <br> Qual astro que brilha lá na escuridão, <br> A mais linda promessa brilha no meu coração!",
       "2": "As luzes do mundo se apagarão, <br> Os dias mais belos breve passarão; <br> Jesus, Luz do mundo, não se extinguirá, <br> E essa luz resplendente sempre em mim brilhará.",
       "3": "E se pelas águas tiver de passar, <br> Seus braços eternos hão de me guardar! <br> Sim, mesmo no fogo que me vem provar, <br> Meu Senhor me promete sempre comigo estar."
     }
   },
   "113": {
     "hino": "113 - Achei Um Bom Amigo",
-    "coro": "",
+    "coro": "Ele é a Luz do mundo, a Estrela da Manhã, <br> Dos milhares, o escolhido para mim.",
     "verses": {
-      "1": "Achei um bom amigo, Jesus, o Salvador, <br> Dos milhares o escolhido para mim. <br> Ele é a Luz do mundo, o forte Mediador <br> Que me purifica e guarda até ao fim! <br> Consolador amado, meu protetor do mal, <br> Ele pode dar alívio ao meu pesar. <br> Ele é a Luz do mundo, a Estrela da Manhã, <br> Dos milhares, o escolhido para mim.",
+      "1": "Achei um bom amigo, Jesus, o Salvador, <br> Dos milhares o escolhido para mim. <br> Ele é a Luz do mundo, o forte Mediador <br> Que me purifica e guarda até ao fim! <br> Consolador amado, meu protetor do mal, <br> Ele pode dar alívio ao meu pesar.",
       "2": "Levou-me as dores todas, as mágoas lhe entreguei; <br> Nele tenho firme abrigo em tentação! <br> Deixei por ele tudo, os ídolos queimei; <br> Ele fez-me puro e santo o coração! <br> Que o mundo me abandone, persiga o tentador, <br> Meu Jesus me guarda até da vida ao fim.",
       "3": "Jamais me desampara, nem me abandonará, <br> Se fiel e obediente aqui viver! <br> Está sempre a meu lado e me protegerá, <br> Até quando face a face o possa ver! <br> Então, aos céus subindo, na glória eu me verei <br> Com Jesus, meu Salvador, morando, enfim."
     }
   },
   "114": {
     "hino": "114 - Brilho Celeste",
-    "coro": "",
+    "coro": "Brilho celeste! Brilho celeste! <br> Enche a minha alma, glória do Céu! <br> Aleluia! Sigo cantando, <br> Dando louvores, pois Cristo é meu!",
     "verses": {
-      "1": "Peregrinando por sobre os montes <br> E pelos vales, sempre na luz, <br> Cristo promete nunca deixar-me, <br> “Eis-me convosco” — disse Jesus. <br> Brilho celeste! Brilho celeste! <br> Enche a minha alma, glória do Céu! <br> Aleluia! Sigo cantando, <br> Dando louvores, pois Cristo é meu!",
+      "1": "Peregrinando por sobre os montes <br> E pelos vales, sempre na luz, <br> Cristo promete nunca deixar-me, <br> “Eis-me convosco” — disse Jesus.",
       "2": "Se vejo sombras por toda parte, <br> O Salvador não hão de ocultar, <br> Pois Cristo é luz que nunca se apaga, <br> Bem ao seu lado sempre hei de andar.",
       "3": "A luz bendita me vai guiando <br> Em meu caminho para a Mansão; <br> Mais e mais perto seguindo o Mestre, <br> Possuo o gozo da salvação."
     }
   },
   "115": {
     "hino": "115 - Unido com Cristo",
-    "coro": "",
+    "coro": "Cada momento me guia o Senhor; <br> Cada momento dispensa favor; <br> Sua presença me outorga vigor; <br> Cada momento sou teu, ó Senhor!",
     "verses": {
-      "1": "Com Cristo unido na morte da cruz, <br> Eu gozo as bênçãos do reino da luz! <br> Cheio da graça que ali corre a flux, <br> Cada momento, com Cristo Jesus. <br> Cada momento me guia o Senhor; <br> Cada momento dispensa favor; <br> Sua presença me outorga vigor; <br> Cada momento sou teu, ó Senhor!",
+      "1": "Com Cristo unido na morte da cruz, <br> Eu gozo as bênçãos do reino da luz! <br> Cheio da graça que ali corre a flux, <br> Cada momento, com Cristo Jesus.",
       "2": "Com Cristo unido na luta moral <br> Resisto ao erro, ao pecado fatal, <br> Bem alto erguendo a bandeira real; <br> Cada momento mais firme e leal!",
       "3": "Com Cristo unido na ressurreição, <br> Eu já desfruto eternal redenção; <br> Nele jamais esperamos em vão; <br> Cada momento concede perdão!",
       "4": "Nas minhas lutas me pode amparar <br> E do maligno também me livrar! <br> Cada momento, por onde eu andar, <br> Cristo, meu Mestre, me pode guiar!"
@@ -1112,9 +1124,9 @@
   },
   "120": {
     "hino": "120 - Dependência",
-    "coro": "",
+    "coro": "De ti, Senhor, careço! Do teu amparo, sempre! <br> Oh! Dá-me tua bênção! Aspiro a ti.",
     "verses": {
-      "1": "Careço de Jesus, de ti, meu Salvador! <br> Somente a tua voz tem para mim valor. <br> De ti, Senhor, careço! Do teu amparo, sempre! <br> Oh! Dá-me tua bênção! Aspiro a ti.",
+      "1": "Careço de Jesus, de ti, meu Salvador! <br> Somente a tua voz tem para mim valor.",
       "2": "Careço de Jesus! Unido a ti, Senhor, <br> Pecado e tentação não mais terão vigor.",
       "3": "Careço de Jesus, nas trevas e na luz! <br> Sem ti a vida é vã; sou pobre sem Jesus.",
       "4": "Careço de Jesus! Viver desejo aqui, <br> Ligado mais e mais, ó Salvador, a ti! <br> Amém."
@@ -1196,9 +1208,9 @@
   },
   "129": {
     "hino": "129 - Vigilância e Oração",
-    "coro": "",
+    "coro": "Bem de manhã e sem cessar, <br> Vigiar e orar!",
     "verses": {
-      "1": "Bem de manhã, embora o céu sereno <br> Pareça um dia calmo anunciar, <br> Vigia e ora: o coração pequeno <br> Um temporal pode abrigar. <br> Bem de manhã e sem cessar, <br> Vigiar e orar!",
+      "1": "Bem de manhã, embora o céu sereno <br> Pareça um dia calmo anunciar, <br> Vigia e ora: o coração pequeno <br> Um temporal pode abrigar.",
       "2": "Ao meio-dia, quando os sons da terra <br> Abafam mais de Deus a voz de amor, <br> Recorre à oração, evita a guerra, <br> E goza paz com o Senhor.",
       "3": "Do dia ao fim, após os teus lidares, <br> Relembra as bênçãos do celeste amor <br> E conta a Deus prazeres e pesares, <br> Depondo em suas mãos a dor.",
       "4": "E sem cessar, vigia a todo instante, <br> Pois o inimigo ataca sem parar; <br> Só com Jesus, em comunhão constante, <br> Podemos sempre descansar."
@@ -1226,9 +1238,9 @@
   },
   "132": {
     "hino": "132 - Vivificação",
-    "coro": "",
+    "coro": "Vem! Oh! Vem, Jesus Senhor, <br> Nossas almas despertar! <br> Com teu santo e puro amor, <br> Vem, Senhor, nos inflamar! <br> Oh! Vem! Oh! Vem <br> Nossas almas inflamar!",
     "verses": {
-      "1": "Tu, que sobre a amarga cruz revelaste teu amor; <br> Tu, que vives, ó Jesus, vivifica-nos, Senhor! <br> Vem! Oh! Vem, Jesus Senhor, <br> Nossas almas despertar! <br> Com teu santo e puro amor, <br> Vem, Senhor, nos inflamar! <br> Oh! Vem! Oh! Vem <br> Nossas almas inflamar!",
+      "1": "Tu, que sobre a amarga cruz revelaste teu amor; <br> Tu, que vives, ó Jesus, vivifica-nos, Senhor!",
       "2": "Eis o mundo tentador a querer nos atrair; <br> Sem teu fogo abrasador, não podemos resistir.",
       "3": "Quantos que corriam bem, de ti longe agora vão! <br> Outros seguem, mas, também, sem fervor vivendo estão.",
       "4": "Vem agora consumir tudo quanto, ó Salvador, <br> Quer altivo resistir ao teu brando e santo amor. <br> Amém."
@@ -1255,9 +1267,9 @@
   },
   "135": {
     "hino": "135 - Mais de Cristo",
-    "coro": "",
+    "coro": "Mais, mais de Cristo! Mais, mais de Cristo! <br> Mais do seu puro e santo amor, <br> Mais do bondoso Salvador.",
     "verses": {
-      "1": "Mais de Cristo eu quero ter, seu ensino receber, <br> Ter da sua compaixão e da sua mansidão. <br> Mais, mais de Cristo! Mais, mais de Cristo! <br> Mais do seu puro e santo amor, <br> Mais do bondoso Salvador.",
+      "1": "Mais de Cristo eu quero ter, seu ensino receber, <br> Ter da sua compaixão e da sua mansidão.",
       "2": "Mais de Cristo eu quero ouvir, nos seus passos prosseguir, <br> Sempre perto dele andar, seu amor manifestar."
     }
   },
@@ -1272,9 +1284,9 @@
   },
   "137": {
     "hino": "137 - Abrigo no Temporal",
-    "coro": "",
+    "coro": "Oh! Cristo é nosso abrigo no temporal, <br> Na tentação, em todo mal! <br> Sim, Cristo é nosso abrigo no temporal, <br> Refúgio na tribulação!",
     "verses": {
-      "1": "Rochedo forte é o Senhor, refúgio na tribulação! <br> Constante e firme amparador, refúgio na tribulação! <br> Oh! Cristo é nosso abrigo no temporal, <br> Na tentação, em todo mal! <br> Sim, Cristo é nosso abrigo no temporal, <br> Refúgio na tribulação!",
+      "1": "Rochedo forte é o Senhor, refúgio na tribulação! <br> Constante e firme amparador, refúgio na tribulação!",
       "2": "É como sombra no calor, descanso na tribulação! <br> Refaz as forças, dá vigor: descanso na tribulação!",
       "3": "Piloto bom no bravo mar, firmeza na tribulação! <br> Ancoradouro singular, firmeza na tribulação!",
       "4": "Leal Amigo e Benfeitor, auxílio na tribulação! <br> Fiel e eterno Salvador, auxílio na tribulação!"
@@ -1341,36 +1353,36 @@
   },
   "144": {
     "hino": "144 - Segurança e Alegria",
-    "coro": "",
+    "coro": "Conto esta história, cantando assim: <br> Cristo, na cruz, foi morto por mim! <br> Conto esta história cantando assim: <br> Cristo, na cruz, foi morto por mim!",
     "verses": {
-      "1": "Que segurança tenho em Jesus, <br> Pois nele gozo paz, vida e luz! <br> Com Cristo herdeiro, Deus me aceitou <br> Mediante o Filho que me salvou! <br> Conto esta história, cantando assim: <br> Cristo, na cruz, foi morto por mim! <br> Conto esta história cantando assim: <br> Cristo, na cruz, foi morto por mim!",
+      "1": "Que segurança tenho em Jesus, <br> Pois nele gozo paz, vida e luz! <br> Com Cristo herdeiro, Deus me aceitou <br> Mediante o Filho que me salvou!",
       "2": "Inteiramente me submeti, <br> Plena alegria nele senti. <br> Anjos, descendo, trazem dos céus <br> Provas da graça que vem de Deus.",
       "3": "Firmado em Cristo, no seu amor, <br> Estou contente em meu Salvador! <br> Esperançoso hei de viver <br> Por Jesus Cristo, por seu poder."
     }
   },
   "145": {
     "hino": "145 - Refúgio Verdadeiro",
-    "coro": "",
+    "coro": "No poder de Cristo, o Mestre, <br> Minha vida salva está! <br> Do perigo que cercá-la <br> Ele poderá livrá-la! <br> Seu poder eterno sempre a susterá!",
     "verses": {
-      "1": "Seguro estou, não tenho temor do mal, <br> Sim, guardado pela fé em meu Jesus. <br> Não posso duvidar desse amor leal, <br> Ele em seu caminho sempre me conduz; <br> Não me deixará, mas me abrigará, <br> Do pecado vil me vem livrar; <br> A sua graça não me recusará, <br> Sim, Jesus é quem me pode sustentar. <br> No poder de Cristo, o Mestre, <br> Minha vida salva está! <br> Do perigo que cercá-la <br> Ele poderá livrá-la! <br> Seu poder eterno sempre a susterá!",
+      "1": "Seguro estou, não tenho temor do mal, <br> Sim, guardado pela fé em meu Jesus. <br> Não posso duvidar desse amor leal, <br> Ele em seu caminho sempre me conduz; <br> Não me deixará, mas me abrigará, <br> Do pecado vil me vem livrar; <br> A sua graça não me recusará, <br> Sim, Jesus é quem me pode sustentar.",
       "2": "Abrigo eterno tenho no Salvador, <br> Ele esconde a minha vida em seu poder; <br> Não posso ter receio do malfeitor <br> Que procura, pertinaz, me enfraquecer. <br> Confiado, então, nessa proteção, <br> Sigo a Cristo e quero ser fiel <br> Na minha vida, cheio de gratidão, <br> Sim, a meu Senhor e Rei Emanuel.",
       "3": "Perigo algum me pode causar temor, <br> Pois meu Salvador não me abandonará; <br> Com sua proteção e com seu amor <br> Dirigindo minha vida ele estará. <br> Nunca o deixarei, mas fiel serei, <br> Sempre firme, cheio de fervor! <br> Estando bem firmado em Jesus, meu Rei, <br> Sigo avante, confiando em seu amor."
     }
   },
   "146": {
     "hino": "146 - Segurança do Crente",
-    "coro": "",
+    "coro": "Oh! Não temas! Oh! Não temas! <br> Pois eu contigo sempre serei. <br> Oh! Não temas! Oh! Não temas! <br> Porque eu nunca te deixarei!",
     "verses": {
-      "1": "Oh! Quão preciosa e rica promessa <br> De Jesus Cristo, celeste Rei. <br> Ao que confia na sua graça <br> Diz ele: “Nunca te deixarei!” <br> Oh! Não temas! Oh! Não temas! <br> Pois eu contigo sempre serei. <br> Oh! Não temas! Oh! Não temas! <br> Porque eu nunca te deixarei!",
+      "1": "Oh! Quão preciosa e rica promessa <br> De Jesus Cristo, celeste Rei. <br> Ao que confia na sua graça <br> Diz ele: “Nunca te deixarei!”",
       "2": "Para remir-te dei o meu sangue. <br> Vem sem demora, pois te chamei. <br> Meu, para sempre, tu és agora; <br> Nunca, sim, nunca te deixarei.",
       "3": "‘Inda que indigno foste escolhido, <br> Jamais vaciles porque eu te amei. <br> Quem dos meus braços pode arrancar-te? <br> Seguro sempre te guardarei!"
     }
   },
   "147": {
     "hino": "147 - Vencendo Vem Jesus",
-    "coro": "",
+    "coro": "Glória, glória, aleluia! (3 vezes) <br> Vencendo vem Jesus!",
     "verses": {
-      "1": "Quando à alma sequiosa <br> Chega a voz do Salvador, <br> Eis que logo reconhece <br> ser Jesus, o seu Senhor! <br> Mas se o “eu” quer levantar-se <br> E mostrar algum valor, <br> Vencendo vem Jesus! <br> Glória, glória, aleluia! (3 vezes) <br> Vencendo vem Jesus!",
+      "1": "Quando à alma sequiosa <br> Chega a voz do Salvador, <br> Eis que logo reconhece <br> ser Jesus, o seu Senhor! <br> Mas se o “eu” quer levantar-se <br> E mostrar algum valor, <br> Vencendo vem Jesus!",
       "2": "Neste mundo havemos, crentes, <br> De ter sempre algum pesar! <br> Mesmo lutas, dissabores, <br> Nossa paz vêm perturbar. <br> Mas se o mal nos ameaça <br> De a alegria nos roubar, <br> Vencendo vem Jesus!",
       "3": "Da vaidade, fiéis servos <br> Lutam por fazer-nos seus! <br> Muitas vezes nos assaltam <br> Os modernos fariseus. <br> Mas se alguém procura ver-nos <br> Sem a graça do bom Deus, <br> Vencendo vem Jesus!"
     }
@@ -1387,9 +1399,9 @@
   },
   "149": {
     "hino": "149 - Verdadeira Redenção",
-    "coro": "",
+    "coro": "Cristo me salvou e me transformou! <br> Por sua morte sobre a cruz nos deu vida eterna e luz.",
     "verses": {
-      "1": "Eu confio em meu Jesus e seguro estou! <br> Pois, morrendo sobre a cruz, ele me salvou. <br> Cristo me salvou e me transformou! <br> Por sua morte sobre a cruz nos deu vida eterna e luz.",
+      "1": "Eu confio em meu Jesus e seguro estou! <br> Pois, morrendo sobre a cruz, ele me salvou.",
       "2": "Veio, assim, o bom Senhor salvação trazer <br> A tão pobre pecador pelo seu poder.",
       "3": "Verdadeira redenção tenho em meu Jesus! <br> Plena paz, consolação, vêm da sua cruz.",
       "4": "Lá nos céus eu viverei com o Salvador; <br> Plenamente fruirei do seu grande amor."
@@ -1397,9 +1409,9 @@
   },
   "150": {
     "hino": "150 - Salvação Perfeita",
-    "coro": "",
+    "coro": "Sim, de uma vez! Amigo, acredita, <br> No Salvador tens sorte bendita! <br> Cristo, na cruz, a Lei satisfez <br> E redimiu-nos de uma vez!",
     "verses": {
-      "1": "Livres do medo! Já resgatados! <br> Cristo morreu por nossos pecados! <br> Na sua cruz o pacto se fez, <br> Fomos remidos de uma vez. <br> Sim, de uma vez! Amigo, acredita, <br> No Salvador tens sorte bendita! <br> Cristo, na cruz, a Lei satisfez <br> E redimiu-nos de uma vez!",
+      "1": "Livres do medo! Já resgatados! <br> Cristo morreu por nossos pecados! <br> Na sua cruz o pacto se fez, <br> Fomos remidos de uma vez.",
       "2": "Ao malfeitor, que a pena merece, <br> Vida, perdão e paz oferece. <br> Vem a Jesus com santa avidez <br> Pois te recebe de uma vez!",
       "3": "Graça real! Não há mais castigo! <br> Não mais temor, nem sombra ou perigo! <br> Vestes reais, não triste nudez, <br> Cristo enriquece de uma vez!",
       "4": "“Filhos de Deus” — Oh! Gozo inaudito! <br> Deus nos amou em grau infinito. <br> Nesta clemência não há dobrez, <br> Há segurança de uma vez!"
@@ -1407,9 +1419,9 @@
   },
   "151": {
     "hino": "151 - O Bom Pastor",
-    "coro": "",
+    "coro": "Sempre amável e clemente, vai comigo o Bom Pastor.",
     "verses": {
-      "1": "Pelos bosques e campinas pastoreia o bom Jesus. <br> Junto às águas cristalinas seu rebanho em paz conduz. <br> Ele guarda assim minha alma e a protege em seu calor. <br> Nas angústias ou na calma vai comigo o Bom Pastor. <br> Sempre amável e clemente, vai comigo o Bom Pastor.",
+      "1": "Pelos bosques e campinas pastoreia o bom Jesus. <br> Junto às águas cristalinas seu rebanho em paz conduz. <br> Ele guarda assim minha alma e a protege em seu calor. <br> Nas angústias ou na calma vai comigo o Bom Pastor.",
       "2": "Não me afligem os perigos e não temo a tentação! <br> Ele sempre está comigo e sustém-me o seu bordão. <br> Não me aflige nem a morte, cuja sombra hei de enfrentar. <br> Ele é meu amparo forte em que posso confiar.",
       "3": "Sua mesa me prepara, pois minha alma quer nutrir. <br> Minhas mágoas ele sara, com seu óleo vem me ungir. <br> Certamente que a bondade toda a vida fruirei. <br> E no céu felicidade para sempre gozarei!"
     }
@@ -1465,9 +1477,9 @@
   },
   "157": {
     "hino": "157 - Segurança em Cristo",
-    "coro": "",
+    "coro": "Faze-me forte em confessar a ti, Jesus, Senhor! <br> Faze-me pronto a confiar no teu eterno amor.",
     "verses": {
-      "1": "Por meu delitos expirou Jesus, a vida e luz! <br> Do meu pecado me livrou na ensanguentada cruz. <br> Faze-me forte em confessar a ti, Jesus, Senhor! <br> Faze-me pronto a confiar no teu eterno amor.",
+      "1": "Por meu delitos expirou Jesus, a vida e luz! <br> Do meu pecado me livrou na ensanguentada cruz.",
       "2": "Jamais terei tão fraca voz que trema ao confessar <br> A quem, por morte tão atroz, minha alma quis salvar.",
       "3": "Sim, eu desejo aqui cantar tão grande Salvador <br> E quando lá no céu chegar louvá-lo-ei melhor. Amém."
     }
@@ -1505,17 +1517,19 @@
     "hino": "161 - O Melhor Amigo",
     "coro": "",
     "verses": {
-      "1": "Sei que o melhor amigo é Cristo! <br> Quando a tempestade assalta a fé, <br> Pronto estende sua mão, <br> Tranquiliza o coração! <br> Sim, o melhor amigo é Cristo! <br> Jesus é o melhor amigo! (bis) <br> Repreende com dulçor e me anima com vigor! <br> Sim, o melhor amigo é Cristo!",
-      "2": "Oh! Que fiel amigo é Cristo! <br> Nele encontro amor, consolo e paz. <br> Em seu braço esperarei, <br> Mal nenhum eu temerei! <br> Sim, o melhor amigo é Cristo!",
-      "3": "Quando eu passar o vale escuro <br> E chegar às águas do Jordão, <br> Sem receio, com Jesus, <br> Entrarei no céu de luz. <br> Sim, o melhor amigo é Cristo!",
-      "4": "No paraíso eterno, juntos, <br> Nós, os salvos, reunidos lá, <br> Este canto de louvor <br> Entoaremos ao Senhor: <br> “Sim, o melhor amigo é Cristo!” <br> Jesus é o melhor amigo! (bis) <br> Do pecado me salvou, para os céus me preparou. <br> Sim, o melhor amigo é Cristo!"
+      "1": "Sei que o melhor amigo é Cristo! <br> Quando a tempestade assalta a fé, <br> Pronto estende sua mão, <br> Tranquiliza o coração! <br> Sim, o melhor amigo é Cristo!",
+      "2": "[Coro] Jesus é o melhor amigo! (bis) <br> Repreende com dulçor e me anima com vigor! <br> Sim, o melhor amigo é Cristo!",
+      "3": "Oh! Que fiel amigo é Cristo! <br> Nele encontro amor, consolo e paz. <br> Em seu braço esperarei, <br> Mal nenhum eu temerei! <br> Sim, o melhor amigo é Cristo!",
+      "4": "Quando eu passar o vale escuro <br> E chegar às águas do Jordão, <br> Sem receio, com Jesus, <br> Entrarei no céu de luz. <br> Sim, o melhor amigo é Cristo!",
+      "5": "No paraíso eterno, juntos, <br> Nós, os salvos, reunidos lá, <br> Este canto de louvor <br> Entoaremos ao Senhor: <br> “Sim, o melhor amigo é Cristo!”",
+      "6": "[Coro] Jesus é o melhor amigo! (bis) <br> Do pecado me salvou, para os céus me preparou. <br> Sim, o melhor amigo é Cristo!"
     }
   },
   "162": {
     "hino": "162 - A Voz de Deus",
-    "coro": "",
+    "coro": "Eis que ouvimos tua voz a animar os que andam sós <br> E, em ti sempre confiados, vão, por ti, sempre a lutar <br> Nesta vida tormentosa,85 qual fragor86 do vasto mar.",
     "verses": {
-      "1": "Quando a tempestade ruge <br> Com o seu feroz bramir, <br> Quando as nuvens se acumulam, <br> Raios mil a despedir; <br> Do trovão o som tremendo <br> Faz-se ouvir e com pavor, <br> Mas, por sobre a tempestade, <br> Soa a tua voz, Senhor. <br> Eis que ouvimos tua voz a animar os que andam sós <br> E, em ti sempre confiados, vão, por ti, sempre a lutar <br> Nesta vida tormentosa,85 qual fragor86 do vasto mar.",
+      "1": "Quando a tempestade ruge <br> Com o seu feroz bramir, <br> Quando as nuvens se acumulam, <br> Raios mil a despedir; <br> Do trovão o som tremendo <br> Faz-se ouvir e com pavor, <br> Mas, por sobre a tempestade, <br> Soa a tua voz, Senhor.",
       "2": "Quando o mar vem, mansamente, <br> Sobre a areia se espraiar; <br> Quando a brisa sussurrante <br> Calmamente perpassar, <br> Soa mística harmonia, <br> Ouve-se um feliz rumor; <br> Desse coro, docemente, <br> Vem a tua voz, Senhor!",
       "3": "Quando o coração aflito <br> Quer à dor, ao mal fugir, <br> E se agita e luta e ruge <br> Sem descanso e paz sentir, <br> Qual um som que se repete <br> Nas quebradas a rolar, <br> Ao aflito e contristado <br> Tua voz vem consolar."
     }
@@ -1531,18 +1545,18 @@
   },
   "164": {
     "hino": "164 - Nome Precioso",
-    "coro": "",
+    "coro": "Nome bom, doce à fé, a esperança do porvir. <br> Nome bom, doce à fé, a esperança do porvir.",
     "verses": {
-      "1": "Santo nome, incomparável, <br> Tem Jesus, o amado teu! <br> Rei dos reis, Senhor eterno, <br> Deus na terra, Deus nos céus. <br> Nome bom, doce à fé, a esperança do porvir. <br> Nome bom, doce à fé, a esperança do porvir.",
+      "1": "Santo nome, incomparável, <br> Tem Jesus, o amado teu! <br> Rei dos reis, Senhor eterno, <br> Deus na terra, Deus nos céus.",
       "2": "Leva tu contigo o Nome <br> de Jesus, o Salvador! <br> Este Nome dá conforto hoje, <br> sempre e onde for.",
       "3": "Este Nome leva sempre <br> para bem te defender! <br> Ele é arma ao teu alcance, <br> Quando o mal te aparecer."
     }
   },
   "165": {
     "hino": "165 - Cuidado Divino",
-    "coro": "",
+    "coro": "Deus cuidará de ti! Na tua dor, com todo amor, <br> Jamais te deixará! Deus cuidará de ti!",
     "verses": {
-      "1": "Não desanimes! Deus proverá! Deus velará por ti! <br> Com suas asas te cobrirá, Deus velará por ti. <br> Deus cuidará de ti! Na tua dor, com todo amor, <br> Jamais te deixará! Deus cuidará de ti!",
+      "1": "Não desanimes! Deus proverá! Deus velará por ti! <br> Com suas asas te cobrirá, Deus velará por ti.",
       "2": "Se no teu peito vibrar a dor, Deus velará por ti. <br> Tu já provaste seu grande amor, Deus velará por ti.",
       "3": "Nos desalentos, nas provações, Deus velará por ti. <br> Nas desventuras, nas tentações, Deus velará por ti.",
       "4": "Como estiveres, não temas, vem! Deus velará por ti. <br> Teu Pai bondoso te espera além. Deus velará por ti."
@@ -1610,9 +1624,9 @@
   },
   "172": {
     "hino": "172 - Chuvas de Bênçãos",
-    "coro": "",
+    "coro": "Chuvas de bênçãos, chuvas de bênçãos dos céus! <br> Tantas nós já recebemos, outras rogamos a Deus!",
     "verses": {
-      "1": "Chuvas de bênçãos teremos pelas promessas de Deus; <br> Tempos benditos trazendo chuvas de bênçãos dos céus. <br> Chuvas de bênçãos, chuvas de bênçãos dos céus! <br> Tantas nós já recebemos, outras rogamos a Deus!",
+      "1": "Chuvas de bênçãos teremos pelas promessas de Deus; <br> Tempos benditos trazendo chuvas de bênçãos dos céus.",
       "2": "Chuvas de bênçãos teremos, que do Senhor nos virão. <br> Os pecadores indignos graças dos céus obterão.",
       "3": "Chuvas de bênçãos teremos, manda-nos,pois, ó Senhor. <br> Dá-nos a bênção dos frutos dos teus ensinos de amor!",
       "4": "Chuvas de bênçãos teremos, chuvas mandadas dos céus, <br> Bênçãos a todos os crentes, bênçãos do nosso bom Deus."
@@ -1653,9 +1667,9 @@
   },
   "176": {
     "hino": "176 - Fidelidade do Cristão",
-    "coro": "",
+    "coro": "Sempre fiéis, irmãos, aqui sejamos; <br> Sempre fiéis a Cristo Jesus <br> Que, até à morte por nós prosseguindo, <br> Vida nos deu, salvação pela cruz!",
     "verses": {
-      "1": "Sempre fiéis, sim, a ti nós seremos, <br> Por tua graça, bendito Senhor! <br> Sempre fiéis, nós por ti lutaremos <br> Com teu poder, ó Jesus, Salvador! <br> Sempre fiéis, irmãos, aqui sejamos; <br> Sempre fiéis a Cristo Jesus <br> Que, até à morte por nós prosseguindo, <br> Vida nos deu, salvação pela cruz!",
+      "1": "Sempre fiéis, sim, a ti nós seremos, <br> Por tua graça, bendito Senhor! <br> Sempre fiéis, nós por ti lutaremos <br> Com teu poder, ó Jesus, Salvador!",
       "2": "Por ti viver, ó bendito Cordeiro, <br> Quem não deseja se te conhecer? <br> Quem, se de fato é cristão verdadeiro, <br> Não estará, por ti, pronto a sofrer?",
       "3": "Ó Salvador, pecadores nós somos, <br> Como podemos deixar de cair? <br> Mas, se por ti amparados nós formos, <br> Sempre fiéis poderemos seguir.",
       "4": "Nós te louvamos pois tu, que venceste, <br> Sempre em triunfo nos podes levar. <br> A teus fiéis, ó Jesus, prometeste <br> Todos os dias com eles estar. <br> Amém."
@@ -1663,9 +1677,9 @@
   },
   "177": {
     "hino": "177 - Firme nas Promessas",
-    "coro": "",
+    "coro": "Firme, firme, <br> Firme nas promessas <br> De Jesus, meu Mestre! <br> Firme, firme, <br> Sim, firme nas promessas de Jesus!",
     "verses": {
-      "1": "Firme nas promessas do meu Salvador, <br> Cantarei louvores ao meu Criador! <br> Fico, pelos séculos do seu amor, <br> Firme nas promessas de Jesus! <br> Firme, firme, <br> Firme nas promessas <br> De Jesus, meu Mestre! <br> Firme, firme, <br> Sim, firme nas promessas de Jesus!",
+      "1": "Firme nas promessas do meu Salvador, <br> Cantarei louvores ao meu Criador! <br> Fico, pelos séculos do seu amor, <br> Firme nas promessas de Jesus!",
       "2": "Firme nas promessas, hei de trabalhar <br> Tendo o Verbo eterno sempre a me amparar! <br> Mesmo em tempestade vou sem vacilar, <br> Firme nas promessas de Jesus!",
       "3": "Firme nas promessas, sempre vejo, assim, <br> Purificação no sangue para mim! <br> Plena liberdade já desfruto, enfim; <br> Firme nas promessas de Jesus!",
       "4": "Firme nas promessas do Senhor Jesus, <br> Em amor ligado sempre à sua cruz, <br> Cada dia mais me alegro em sua luz, <br> Firme nas promessas de Jesus!"
@@ -1683,9 +1697,9 @@
   },
   "179": {
     "hino": "179 - Louvor ao Deus Que Nos Guia",
-    "coro": "",
+    "coro": "Bem alto agora vamos nós cantar, <br> Que a terra e os céus virão nos ajudar. <br> Até aqui Deus mesmo nos guiou <br> E com a sua mão nos ajudou.",
     "verses": {
-      "1": "Saudamo-vos, irmãos em Cristo, <br> Lembrando o que temos visto: <br> Nesses anos, pelas lutas, tentações, <br> Atendidas foram nossas petições. <br> Toda a glória seja ao nome do Senhor! <br> Vinde todos entoar o seu louvor! <br> Bem alto agora vamos nós cantar, <br> Que a terra e os céus virão nos ajudar. <br> Até aqui Deus mesmo nos guiou <br> E com a sua mão nos ajudou.",
+      "1": "Saudamo-vos, irmãos em Cristo, <br> Lembrando o que temos visto: <br> Nesses anos, pelas lutas, tentações, <br> Atendidas foram nossas petições. <br> Toda a glória seja ao nome do Senhor! <br> Vinde todos entoar o seu louvor!",
       "2": "Um dia tão glorioso temos <br> E ao nosso Pai agradecemos <br> Pois é ele quem nos dá real prazer <br> E é fiel em nos guardar e proteger! <br> Vinde vós, irmãos, conosco a Deus cantar, <br> Desta bênção vinde, pois, participar!",
       "3": "Alegres todos jubilemos, <br> Ao grande Salvador cantemos! <br> Ele como filhos seus nos escolheu, <br> Ricas bênçãos ele já nos concedeu. <br> Seja “avante!” o nosso lema triunfal <br> Pois seguimos para o lar celestial."
     }
@@ -1732,9 +1746,9 @@
   },
   "184": {
     "hino": "184 - Face a Face",
-    "coro": "",
+    "coro": "E face a face vê-lo-ei, liberto e salvo cantarei! (bis)",
     "verses": {
-      "1": "Em breve a vida vou findar, não mais aqui eu cantarei! <br> Nos céus, então, irei morar lá na presença do meu Rei. <br> E face a face vê-lo-ei, liberto e salvo cantarei! (bis)",
+      "1": "Em breve a vida vou findar, não mais aqui eu cantarei! <br> Nos céus, então, irei morar lá na presença do meu Rei.",
       "2": "E seja o dia quando for que Deus me chame para lá, <br> Bem certo estou que o Salvador contente me receberá.",
       "3": "A doce voz me soará de Cristo, amável Redentor! <br> “Fiel, bom servo, bem está, entra no gozo do Senhor”.",
       "4": "Por meu Jesus eu vou viver e minha luz farei brilhar. <br> De dia em dia hei de fazer o que ao meu Salvador honrar."
@@ -1742,18 +1756,18 @@
   },
   "185": {
     "hino": "185 - Glória Vindoura",
-    "coro": "",
+    "coro": "Sim, haverá glória sem-par, <br> Junto a Jesus, glória sem-fim! <br> Oh! Quando a Cristo eu puder contemplar, <br> Glória, sim, glória haverá com Jesus!",
     "verses": {
-      "1": "No tempo em que meu trabalho acabar <br> E enfim de Deus a presença gozar, <br> E quando a Cristo eu puder contemplar, <br> Oh! Quanta glória haverá com Jesus! <br> Sim, haverá glória sem-par, <br> Junto a Jesus, glória sem-fim! <br> Oh! Quando a Cristo eu puder contemplar, <br> Glória, sim, glória haverá com Jesus!",
+      "1": "No tempo em que meu trabalho acabar <br> E enfim de Deus a presença gozar, <br> E quando a Cristo eu puder contemplar, <br> Oh! Quanta glória haverá com Jesus!",
       "2": "No tempo em que Cristo, o meu Redentor, <br> Tiver de dar-me o seu “vinde!” de amor, <br> Transposto, enfim, o meu vale de dor, <br> Oh! Quanta glória haverá com Jesus!",
       "3": "No tempo em que meus irmãos for rever <br> Lá nos fulgores do céu — que prazer! <br> Sim, quando junto a Jesus for viver, <br> Oh! Quanta glória haverá com Jesus!"
     }
   },
   "186": {
     "hino": "186 - O Lar do Céu",
-    "coro": "",
+    "coro": "Oh! Pensai! Oh! Pensai! <br> Oh! Pensai nesse lar lá do céu, <br> Lá do céu, lá do céu, lá do céu! <br> Oh! Pensai nesse lar lá do céu!",
     "verses": {
-      "1": "Oh! Pensai nesse lar lá do céu, <br> Nas gloriosas moradas de luz, <br> Onde os crentes, felizes, <br> Desfrutam da presença de Cristo Jesus. <br> Oh! Pensai! Oh! Pensai! <br> Oh! Pensai nesse lar lá do céu, <br> Lá do céu, lá do céu, lá do céu! <br> Oh! Pensai nesse lar lá do céu!",
+      "1": "Oh! Pensai nesse lar lá do céu, <br> Nas gloriosas moradas de luz, <br> Onde os crentes, felizes, <br> Desfrutam da presença de Cristo Jesus.",
       "2": "Oh! Pensai nos amigos no céu, <br> Que venceram a luta afinal, <br> E nos cantos que sempre ressoam <br> Na harmonia do lar eternal.",
       "3": "Hei de ver, lá no céu, meu Jesus, <br> Face a face seu rosto mirar! <br> E bem longe cuidados, tristezas, <br> Para sempre com ele habitar.",
       "4": "Sem demora no céu estarei; <br> Vejo o fim da jornada chegar. <br> Meu bondoso Jesus lá me espera <br> Para as bênçãos eternas me dar."
@@ -1761,9 +1775,9 @@
   },
   "187": {
     "hino": "187 - Cidade Celestial",
-    "coro": "",
+    "coro": "Jamais se contou ao mortal! (bis) <br> Metade da glória celeste <br> Jamais se contou ao mortal!",
     "verses": {
-      "1": "Tenho lido da bela cidade, <br> Situada no reino de Deus, <br> Com seus muros de jaspe luzente, <br> Juncada com áureos troféus! <br> Lá no meio da praça está o rio <br> Da vida e vigor eternal, <br> Mas metade da glória celeste <br> Jamais se contou ao mortal! <br> Jamais se contou ao mortal! (bis) <br> Metade da glória celeste <br> Jamais se contou ao mortal!",
+      "1": "Tenho lido da bela cidade, <br> Situada no reino de Deus, <br> Com seus muros de jaspe luzente, <br> Juncada com áureos troféus! <br> Lá no meio da praça está o rio <br> Da vida e vigor eternal, <br> Mas metade da glória celeste <br> Jamais se contou ao mortal!",
       "2": "Tenho lido dos belos palácios <br> Que Jesus foi no céu preparar, <br> Onde os crentes, fiéis, mui felizes, <br> Irão para sempre habitar; <br> Nem tristeza, nem dor, nem velhice <br> Atingem a mansão eternal; <br> Mas metade da glória celeste <br> Jamais se contou ao mortal!",
       "3": "Tenho lido das vestes brilhantes, <br> Das coroas que os salvos terão, <br> Quando o Pai os chamar, proclamando: <br> “Tereis eternal galardão”. <br> Tenho lido que os santos na glória <br> Pisam ruas de ouro e cristal; <br> Mas metade da glória celeste <br> Jamais se contou ao mortal!",
       "4": "Tenho lido da história bendita <br> De Jesus, o fiel Redentor, <br> Que por nós padeceu no Calvário <br> E aceita o mais vil pecador. <br> Tenho lido do sangue vertido <br> Que a todos redime do mal; <br> Mas metade da glória celeste <br> Jamais se contou ao mortal!"
@@ -1817,9 +1831,9 @@
   },
   "193": {
     "hino": "193 - Aspiração do Céu",
-    "coro": "",
+    "coro": "Vou à pátria — eu, peregrino —, <br> A viver eternamente com Jesus! <br> Vou à pátria — eu, peregrino —, <br> A viver eternamente com Jesus!",
     "verses": {
-      "1": "Vou à pátria — eu, peregrino —, <br> A viver eternamente com Jesus, <br> Que concedeu-me feliz destino <br> Quando, ferido, por mim morreu na cruz. <br> Vou à pátria — eu, peregrino —, <br> A viver eternamente com Jesus! <br> Vou à pátria — eu, peregrino —, <br> A viver eternamente com Jesus!",
+      "1": "Vou à pátria — eu, peregrino —, <br> A viver eternamente com Jesus, <br> Que concedeu-me feliz destino <br> Quando, ferido, por mim morreu na cruz.",
       "2": "Dor e pena, tristeza e morte <br> Lá no céu jamais o salvo encontrará <br> E, desfrutando de Cristo a sorte, <br> Eternamente a Deus exaltará.",
       "3": "Terra santa, formosa e pura, <br> Salvo por Jesus eu entrarei em ti; <br> Felicidade, paz e ventura, <br> Perfeitamente desfrutarei ali."
     }
@@ -1828,9 +1842,11 @@
     "hino": "194 - Morada Feliz",
     "coro": "",
     "verses": {
-      "1": "Com Jesus há morada feliz, <br> Prometida e segura nos céus. <br> Avistamos o lindo país, <br> Pela fé na Palavra de Deus. <br> Com Jesus, no porvir, <br> Viveremos no lindo país. (bis)",
-      "2": "Pacientes podemos penar, <br> Se sofrermos por Cristo Jesus <br> Pois, sem culpa, sem falta ou pesar, <br> Viveremos no Reino de luz!",
-      "3": "No descanso perfeito, eternal, <br> Desfrutando o labor que passou, <br> Cantaremos, em tom triunfal, <br> Os louvores de quem nos amou."
+      "1": "Com Jesus há morada feliz, <br> Prometida e segura nos céus. <br> Avistamos o lindo país, <br> Pela fé na Palavra de Deus.",
+      "2": "[Coro] Com Jesus, no porvir, <br> Viveremos no lindo país. (bis)",
+      "3": "Pacientes podemos penar, <br> Se sofrermos por Cristo Jesus <br> Pois, sem culpa, sem falta ou pesar,",
+      "4": "Viveremos no Reino de luz!",
+      "5": "No descanso perfeito, eternal, <br> Desfrutando o labor que passou, <br> Cantaremos, em tom triunfal, <br> Os louvores de quem nos amou."
     }
   },
   "195": {
@@ -1857,17 +1873,17 @@
   },
   "197": {
     "hino": "197 - O Salvador Espera",
-    "coro": "",
+    "coro": "Oh! Quantas vezes Jesus te chamou <br> E agora ele volta a chamar. <br> Real salvação com seu sangue comprou, <br> Para, de graça, te dar.",
     "verses": {
-      "1": "Jesus quer entrar hoje em teu coração <br> E para sempre ficar; <br> E há de outorgar-te seu pleno perdão, <br> Quando, afinal, ele entrar. <br> Oh! Quantas vezes Jesus te chamou <br> E agora ele volta a chamar. <br> Real salvação com seu sangue comprou, <br> Para, de graça, te dar.",
+      "1": "Jesus quer entrar hoje em teu coração <br> E para sempre ficar; <br> E há de outorgar-te seu pleno perdão, <br> Quando, afinal, ele entrar.",
       "2": "Se Cristo adentrar esse teu coração <br> E em tua vida reinar, <br> Que paz infinita, que satisfação <br> Sua presença há de dar."
     }
   },
   "198": {
     "hino": "198 - Salvação Graciosa",
-    "coro": "",
+    "coro": "Oh! Olhai, com fé, olhai! <br> Sim, olhai só a Jesus! <br> Ele salva o pecador, aleluia! <br> Sim, salva a quem confiante olhar!",
     "verses": {
-      "1": "Eis mensagem do Senhor, aleluia! <br> Palavras do bom Deus de amor! <br> Cristo salva o pecador, aleluia! <br> Salva até por meio de um olhar! <br> Oh! Olhai, com fé, olhai! <br> Sim, olhai só a Jesus! <br> Ele salva o pecador, aleluia! <br> Sim, salva a quem confiante olhar!",
+      "1": "Eis mensagem do Senhor, aleluia! <br> Palavras do bom Deus de amor! <br> Cristo salva o pecador, aleluia! <br> Salva até por meio de um olhar!",
       "2": "Vossa dívida pagou, aleluia! <br> Jesus a satisfez na cruz. <br> Sua vida ele entregou, aleluia! <br> Para vos apresentar a Deus.",
       "3": "Esta oferta Cristo faz, aleluia! <br> Eterna vida lá nos céus. <br> Redenção aqui vos traz, aleluia! <br> Convertei-vos já ao Salvador!",
       "4": "Aceitai a salvação, aleluia! <br> Segui os passos do Senhor! <br> Anunciai o seu perdão, aleluia! <br> Proclamai a grande Redenção!"
@@ -1875,27 +1891,27 @@
   },
   "199": {
     "hino": "199 - Cristo Salva",
-    "coro": "",
+    "coro": "Confiai em seu poder, confiai em seu amor! <br> Crede já que Cristo quer libertar o pecador.",
     "verses": {
-      "1": "Cristo salva o pecador, dá-lhe um novo coração; <br> Ao contrito, com amor, oferece salvação. <br> Confiai em seu poder, confiai em seu amor! <br> Crede já que Cristo quer libertar o pecador.",
+      "1": "Cristo salva o pecador, dá-lhe um novo coração; <br> Ao contrito, com amor, oferece salvação.",
       "2": "Cristo salva o pecador e concede-lhe perdão; <br> Aceitai o bom Senhor, aceitai de coração.",
       "3": "Vinde todos e achareis plena paz no Redentor; <br> Vinde e então recebereis vida eterna no Senhor."
     }
   },
   "200": {
     "hino": "200 - Palavra Abençoada",
-    "coro": "",
+    "coro": "Vinde, oh! Vinde a mim! (bis) <br> Tristes alquebrados, vinde, oh! Vinde a mim! <br> Vinde, oh! Vinde a mim! (bis) <br> Fracos e cansados, vinde, oh! Vinde a mim!",
     "verses": {
-      "1": "Palavra abençoada, convite que contém <br> Promessa e cumprimento com infinito bem. <br> “Oh! Vinde a mim!” — conclama o Cristo Salvador, <br> Seus braços estendendo ao pobre pecador. <br> Vinde, oh! Vinde a mim! (bis) <br> Tristes alquebrados, vinde, oh! Vinde a mim! <br> Vinde, oh! Vinde a mim! (bis) <br> Fracos e cansados, vinde, oh! Vinde a mim!",
+      "1": "Palavra abençoada, convite que contém <br> Promessa e cumprimento com infinito bem. <br> “Oh! Vinde a mim!” — conclama o Cristo Salvador, <br> Seus braços estendendo ao pobre pecador.",
       "2": "Por que viver tão longe da graça de Jesus? <br> Por que vagar nas trevas, podendo andar na luz? <br> Da vida sem proveito, da culpa e perdição, <br> Corramos para a senda da eterna salvação.",
       "3": "Em tudo, agora e sempre, ouçamos ao Senhor; <br> Pois há descanso e alívio no seu profundo amor. <br> Assim conheceremos a paz que só produz <br> No coração submisso o “vinde” de Jesus."
     }
   },
   "201": {
     "hino": "201 - Manso e Suave",
-    "coro": "",
+    "coro": "Vem já! Vem já! Alma cansada, vem já! <br> Manso e suave, Jesus convidando, <br> Chama: “Ó pecador, vem!”",
     "verses": {
-      "1": "Manso e suave! Eis Jesus nos chamando: <br> Chama por ti e por mim. <br> Eis que ele às portas espera velando: <br> Vela por ti e por mim! <br> Vem já! Vem já! Alma cansada, vem já! <br> Manso e suave, Jesus convidando, <br> Chama: “Ó pecador, vem!”",
+      "1": "Manso e suave! Eis Jesus nos chamando: <br> Chama por ti e por mim. <br> Eis que ele às portas espera velando: <br> Vela por ti e por mim!",
       "2": "Com paciência, ele está esperando <br> Hoje por ti e por mim. <br> Oh! Não desprezes a quem, convidando, <br> Convida a ti e a mim!",
       "3": "O tempo corre! As horas, passando, <br> Passam por ti e por mim! <br> Transes de morte, por fim, vão chegando, <br> Chegam a ti e a mim!",
       "4": "Oh! Quanto amor que Jesus nos tem dado: <br> Dado a ti e a mim! <br> Eis que foi morto, foi crucificado: <br> Morto por ti e por mim!"
@@ -1921,18 +1937,18 @@
   },
   "204": {
     "hino": "204 - Cristo à Porta",
-    "coro": "",
+    "coro": "À porta, por amor levado, <br> Procuro já teu mal sanar; <br> Ó pecador desalentado, <br> Eu vou entrar, eu vou entrar!",
     "verses": {
-      "1": "À porta estou, ó alma triste, <br> Ansioso por te consolar; <br> A minha voz, enfim, ouviste, <br> Eu vou entrar, eu vou entrar! <br> À porta, por amor levado, <br> Procuro já teu mal sanar; <br> Ó pecador desalentado, <br> Eu vou entrar, eu vou entrar!",
+      "1": "À porta estou, ó alma triste, <br> Ansioso por te consolar; <br> A minha voz, enfim, ouviste, <br> Eu vou entrar, eu vou entrar!",
       "2": "Por ti foi grande o meu castigo, <br> Sofri na cruz sem murmurar! <br> Só para teres paz comigo, <br> Eu vou entrar, eu vou entrar!",
       "3": "A minha graça poderosa <br> O teu pecado vem lavar! <br> Ó alma impura, pesarosa, <br> Eu vou entrar, eu vou entrar!"
     }
   },
   "205": {
     "hino": "205 - O Amor que Chama",
-    "coro": "",
+    "coro": "Não vos demoreis! <br> Não vos demoreis! <br> Vinde sem temor! <br> Quem vos chama é Jesus, <br> Que morreu por nós na cruz.",
     "verses": {
-      "1": "Não vos demoreis, Jesus vos chama, <br> Ele chama com amor. <br> Não vos demoreis, Jesus vos ama, <br> Ele acalma a vossa dor. <br> Não vos demoreis! <br> Não vos demoreis! <br> Vinde sem temor! <br> Quem vos chama é Jesus, <br> Que morreu por nós na cruz.",
+      "1": "Não vos demoreis, Jesus vos chama, <br> Ele chama com amor. <br> Não vos demoreis, Jesus vos ama, <br> Ele acalma a vossa dor.",
       "2": "Não vos demoreis, perdão alcança <br> Quem confia no Senhor. <br> Não vos demoreis e, sem tardança, <br> Recebei o Redentor.",
       "3": "Não vos demoreis, Jesus foi morto <br> Em lugar do pecador. <br> Não vos demoreis, real conforto <br> Quer vos dar o Salvador."
     }
@@ -1969,18 +1985,18 @@
   },
   "209": {
     "hino": "209 - Encorajamento",
-    "coro": "",
+    "coro": "Deixa a luz do céu entrar, <br> Deixa o sol em ti nascer; <br> Abre o coração, que Cristo vai entrar, <br> E o sol em ti nascer.",
     "verses": {
-      "1": "Medo tens que o adversário vá vencer? <br> Luz te falta e onde estás não podes ver? <br> Abre o coração, que Cristo vai entrar, <br> E o sol em ti raiar. <br> Deixa a luz do céu entrar, <br> Deixa o sol em ti nascer; <br> Abre o coração, que Cristo vai entrar, <br> E o sol em ti nascer.",
+      "1": "Medo tens que o adversário vá vencer? <br> Luz te falta e onde estás não podes ver? <br> Abre o coração, que Cristo vai entrar, <br> E o sol em ti raiar.",
       "2": "Tu não tens ainda fé no Salvador? <br> Deus não ouve as tuas preces com favor? <br> Abre o coração, que Cristo vai entrar, <br> E o sol em ti raiar.",
       "3": "Queres ir andando alegre para o céu, <br> Ignorando todo o negro e denso véu? <br> Abre o coração, que Cristo vai entrar, <br> E o sol em ti raiar."
     }
   },
   "210": {
     "hino": "210 - O Filho Perdido",
-    "coro": "",
+    "coro": "Vem, vem! Ó pródigo, vem!",
     "verses": {
-      "1": "Vem, filho perdido, ó pródigo, vem! <br> Ruína te espera nas trevas além. <br> Tu de medo, tremendo, e faminto, gemendo, <br> Ó filho perdido, vem, pródigo, vem! <br> Vem, vem! Ó pródigo, vem!",
+      "1": "Vem, filho perdido, ó pródigo, vem! <br> Ruína te espera nas trevas além. <br> Tu de medo, tremendo, e faminto, gemendo, <br> Ó filho perdido, vem, pródigo, vem!",
       "2": "Vem, filho perdido! Ó pródigo, vem! <br> Teu pai te convida, querendo-te bem! <br> Vestes há para ornar-te, ricos dons: vem fartar-te! <br> Ó filho perdido, vem, pródigo, vem!",
       "3": "Vem, filho perdido! Oh! Volta a Jesus! <br> Bondade infinita se avista na cruz. <br> Em miséria vagando, tuas culpas chorando, <br> Ó filho perdido, vem, pródigo, vem!",
       "4": "Ó pródigo, escuta a voz do Senhor! <br> Oh! Rompe as ciladas do vil tentador! <br> Em teu lar há bastante, e tu vagas errante! <br> Ó filho perdido, vem, pródigo, vem!"
@@ -2005,9 +2021,9 @@
   },
   "213": {
     "hino": "213 - A Última Hora",
-    "coro": "",
+    "coro": "Meu amigo, hoje tens a escolha: <br> Vida ou morte, qual vais aceitar? <br> Amanhã pode ser muito tarde, <br> Hoje Cristo te quer libertar.",
     "verses": {
-      "1": "Ao findar o labor desta vida, <br> Quando a morte ao teu lado chegar, <br> Que destino há de ter a tua alma? <br> Qual será, no futuro, teu lar? <br> Meu amigo, hoje tens a escolha: <br> Vida ou morte, qual vais aceitar? <br> Amanhã pode ser muito tarde, <br> Hoje Cristo te quer libertar.",
+      "1": "Ao findar o labor desta vida, <br> Quando a morte ao teu lado chegar, <br> Que destino há de ter a tua alma? <br> Qual será, no futuro, teu lar?",
       "2": "Tu procuras a paz neste mundo <br> Em prazeres que passam em vão, <br> Mas na última hora da vida, <br> Tais prazeres valor não terão.",
       "3": "Muitas vezes tu riste, ó amigo, <br> Ao ouvires falar de Jesus. <br> Mas somente o Senhor pode dar-te <br> Salvação, pela morte na cruz.",
       "4": "Com tua alma em pecado não podes <br> Adentrar as moradas de Deus. <br> Mas aquele a quem Deus tornou limpo, <br> Fruirá das venturas dos céus!",
@@ -2018,12 +2034,14 @@
     "hino": "214 - Convite e Aceitação",
     "coro": "",
     "verses": {
-      "1": "Ouço meu Senhor dizer: “Tuas forças débeis são, <br> Nada podes merecer; eu te dou a salvação”. <br> A ti, Senhor Jesus, venho como estou; <br> Pois, sem nada merecer, teu sangue me salvou.",
-      "2": "Sim, eu venho a ti, Senhor, tua graça receber; <br> Infinito é teu amor, sem limite o teu poder.",
-      "3": "Pela fé em ti, Jesus, recebi perdão e paz; <br> Tua graça lá na cruz a minha alma satisfaz.",
-      "4": "Quando estou em aflições, tu és meu Consolador; <br> Quando exposto às tentações, meu auxílio e protetor.",
-      "5": "Lá na glória cantarei tua eterna salvação; <br> Junto ao trono renderei meu louvor e gratidão. <br> A ti, Senhor Jesus, venho como estou; <br> Pois, sem nada merecer, teu sangue me salvou.",
-      "6": "Amém."
+      "1": "Ouço meu Senhor dizer: “Tuas forças débeis são, <br> Nada podes merecer; eu te dou a salvação”.",
+      "2:": "[Coro] A ti, Senhor Jesus, venho como estou; <br> Pois, sem nada merecer, teu sangue me salvou.",
+      "3": "Sim, eu venho a ti, Senhor, tua graça receber; <br> Infinito é teu amor, sem limite o teu poder.",
+      "4": "Pela fé em ti, Jesus, recebi perdão e paz; <br> Tua graça lá na cruz a minha alma satisfaz.",
+      "5": "Quando estou em aflições, tu és meu Consolador; <br> Quando exposto às tentações, meu auxílio e protetor.",
+      "6": "Lá na glória cantarei tua eterna salvação; <br> Junto ao trono renderei meu louvor e gratidão.",
+      "7": "[Coro]  A ti, Senhor Jesus, venho como estou; <br> Pois, sem nada merecer, teu sangue me salvou.",
+      "8": "Amém."
     }
   },
   "215": {
@@ -2079,9 +2097,9 @@
   },
   "220": {
     "hino": "220 - Plena Dedicação",
-    "coro": "",
+    "coro": "Meu Senhor! Meu Senhor! Sempre a ti pertencerei.Meu Senhor! Meu Senhor! Sempre a ti pertencerei.",
     "verses": {
-      "1": "Sobre a cruz Jesus comprou-me, corpo e alma, todo o ser. <br> Hoje e sempre, inteiramente, quero a ele pertencer. <br> Meu Senhor! Meu Senhor! Sempre a ti pertencerei.",
+      "1": "Sobre a cruz Jesus comprou-me, corpo e alma, todo o ser. <br> Hoje e sempre, inteiramente, quero a ele pertencer.",
       "2": "Os meus olhos guia sempre, consagrando-os a Jesus! <br> Da vaidade bem distantes, faze-os ver celeste luz.",
       "3": "Oh! Dispõe o meu ouvido a fechar-se a todo mal, <br> Atendendo ao teu ensino com respeito filial.",
       "4": "Torna, ó Deus, a língua serva de Jesus, meu grande Rei! <br> Põe palavras nos meus lábios, e teu Nome exaltarei.",
@@ -2092,9 +2110,9 @@
   },
   "221": {
     "hino": "221 - Um Vaso de Benção",
-    "coro": "",
+    "coro": "Faze-me vaso de bênção, Senhor, <br> Vaso que leve a mensagem de amor! <br> Eis-me submisso, e ao teu serviço <br> Eu me consagro, bendito Senhor!",
     "verses": {
-      "1": "Quero ser um vaso de bênção, <br> Sim, um vaso escolhido de Deus, <br> Para as novas levar aos perdidos, <br> Boas-novas que vêm lá dos céus. <br> Faze-me vaso de bênção, Senhor, <br> Vaso que leve a mensagem de amor! <br> Eis-me submisso, e ao teu serviço <br> Eu me consagro, bendito Senhor!",
+      "1": "Quero ser um vaso de bênção, <br> Sim, um vaso escolhido de Deus, <br> Para as novas levar aos perdidos, <br> Boas-novas que vêm lá dos céus.",
       "2": "Quero ser um vaso de bênção, <br> Para todos os dias fazer <br> Os culpados, que vivem nas trevas, <br> O perdão de Jesus conhecer.",
       "3": "Quero ser um vaso de bênção, <br> Sim, um vaso de bênção sem-par, <br> Anunciando que os crentes em Cristo <br> Jubilosos nos céus hão de entrar.",
       "4": "Para ser um vaso de bênção <br> É mister uma vida real, <br> Uma vida de fé e pureza, <br> Revestida de amor divinal. <br> Amém."
@@ -2102,18 +2120,18 @@
   },
   "222": {
     "hino": "222 - Mais Perto da Cruz",
-    "coro": "",
+    "coro": "Mais perto da tua cruz <br> Quero estar, ó Salvador! <br> Mais perto da tua cruz <br> Eu desejo estar, Senhor.",
     "verses": {
-      "1": "Meu Senhor, sou teu, tua voz ouvi <br> A chamar-me com amor <br> E contigo sempre desejo estar, <br> Ó bendito Salvador! <br> Mais perto da tua cruz <br> Quero estar, ó Salvador! <br> Mais perto da tua cruz <br> Eu desejo estar, Senhor.",
+      "1": "Meu Senhor, sou teu, tua voz ouvi <br> A chamar-me com amor <br> E contigo sempre desejo estar, <br> Ó bendito Salvador!",
       "2": "A seguir-te sempre, eu me decidi <br> Constrangido pelo amor! <br> Jubiloso, pois, me declaro teu, <br> Sem reservas, meu Senhor.",
       "3": "Que prazer sem-par, que delícia é <br> Aos teus santos pés me achar <br> E com viva fé e profundo amor, <br> Com meu Salvador falar. <br> Amém."
     }
   },
   "223": {
     "hino": "223 - Oração do Arrependido",
-    "coro": "",
+    "coro": "Toma, ó Salvador, minha débil mão! <br> Pois viver contigo eu quero sempre em comunhão!",
     "verses": {
-      "1": "Convencido estou, ó Cristo <br> de que o mundo é semprevão. <br> Quero, pois, viver contigo, <br> sempre em doce comunhão. <br> Toma, ó Salvador, minha débil mão! <br> Pois viver contigo eu quero sempre em comunhão!",
+      "1": "Convencido estou, ó Cristo <br> de que o mundo é semprevão. <br> Quero, pois, viver contigo, <br> sempre em doce comunhão.",
       "2": "Quanta dor, tristeza imensa, <br> sinto, ó Deus, ao me lembrar <br> Que vivi, por tanto tempo, <br> tua causa a desprezar!",
       "3": "Não mais quero a vida inglória, <br> onde, incauto, me abismei. <br> Na doutrina do evangelho, <br> de hoje em diante eu viverei!",
       "4": "Quero os dons, que me outorgaste, <br> empregar no teu labor, <br> Trabalhando em tua Igreja, <br> Bem firmado em teu amor. <br> Amém."
@@ -2153,9 +2171,9 @@
   },
   "227": {
     "hino": "227 - A Velha História",
-    "coro": "",
+    "coro": "Conta-me a velha história, que fala ao coração, <br> De Cristo e sua glória, de Cristo e seu perdão!",
     "verses": {
-      "1": "Conta-me a velha história do grande Salvador, <br> De Cristo e sua vida, de Cristo e seu amor; <br> Com pausa e paciência, pois quero penetrar <br> A altura do mistério, que Deus me pode amar. <br> Conta-me a velha história, que fala ao coração, <br> De Cristo e sua glória, de Cristo e seu perdão!",
+      "1": "Conta-me a velha história do grande Salvador, <br> De Cristo e sua vida, de Cristo e seu amor; <br> Com pausa e paciência, pois quero penetrar <br> A altura do mistério, que Deus me pode amar.",
       "2": "Fala-me com ternura do amado Redentor, <br> A mim que tanto sofro por ser um pecador. <br> Oh! Que consolo traz-me em tempos de aflição, <br> Ouvir a velha história que alegra o coração!",
       "3": "Se o brilho deste mundo toldar dos céus a luz, <br> Oh! Narra com ternura a história de Jesus! <br> E quando, enfim, a aurora do mundo além raiar, <br> Recorda a velha história, que Deus me quis salvar!"
     }
@@ -2181,9 +2199,9 @@
   },
   "230": {
     "hino": "230 - Adoração ao Nosso Senhor",
-    "coro": "",
+    "coro": "Oh! Vinde, adoremos! Oh! Vinde, adoremos! <br> Oh! Vinde, adoremos ao nosso Senhor!",
     "verses": {
-      "1": "Oh! Vinde fiéis, triunfantes e alegres, <br> Sim, vinde a Belém, já movidos de amor! <br> Nasceu vosso Rei, o Messias prometido, <br> Oh! Vinde, adoremos! Oh! Vinde, adoremos! <br> Oh! Vinde, adoremos ao nosso Senhor!",
+      "1": "Oh! Vinde fiéis, triunfantes e alegres, <br> Sim, vinde a Belém, já movidos de amor! <br> Nasceu vosso Rei, o Messias prometido,",
       "2": "Olhai, admirados, a sua humildade; <br> Os anjos o louvam com grande fervor! <br> Pois veio conosco habitar, encarnado,",
       "3": "Por nós, das alturas celestes baixando, <br> Em forma de servo se fez, por amor! <br> E em glórias a vida nos dá, sempiterna,",
       "4": "Nos céus adorai-o, vós anjos, em coro, <br> E todos na terra lhe rendam louvor! <br> A Deus honra e glória contentes rendamos,"
@@ -2191,9 +2209,9 @@
   },
   "231": {
     "hino": "231 - O Primeiro Natal",
-    "coro": "",
+    "coro": "Natal! Natal! Natal! Natal! <br> É vindo ao mundo o Rei divinal!",
     "verses": {
-      "1": "Eis que um anjo proclamou o primeiro Natal <br> A uns pobres pastores ao pé de Belém <br> Que, nos campos, a guardar seu rebanho, afinal, <br> Suportavam, da noite, o frio também. <br> Natal! Natal! Natal! Natal! <br> É vindo ao mundo o Rei divinal!",
+      "1": "Eis que um anjo proclamou o primeiro Natal <br> A uns pobres pastores ao pé de Belém <br> Que, nos campos, a guardar seu rebanho, afinal, <br> Suportavam, da noite, o frio também.",
       "2": "De repente, lá no céu, linda estrela surgiu <br> E no Oriente brilhou com estranho fulgor. <br> Veio à terra forte luz que do céu lhe caiu <br> Muitas noites, ainda, em fulgente esplendor.",
       "3": "Tal estrela apareceu e aos magos guiou <br> Pela estrada a Belém, rumo certo os conduz. <br> E chegando ali, por fim, a estrela parou <br> Mesmo acima da casa em que estava Jesus.",
       "4": "E os magos, com afã e sublime temor, <br> Os joelhos dobraram naquele lugar <br> Para ofertas liberais e de raro valor <br> Qual incenso, ouro e mirra, ao menino entregar.",
@@ -2212,18 +2230,18 @@
   },
   "233": {
     "hino": "233 - Os Pastores no Campo",
-    "coro": "",
+    "coro": "“Glória a Deus nas alturas, <br> Na terra acordo e paz!”",
     "verses": {
-      "1": "No campo o rebanho guardando, <br> Os pastores deitados no chão, <br> Mal se vê, pela luz das estrelas, <br> Que ao redor as ovelhas estão. <br> De repente, um clarão tudo envolve <br> Quando, lá das alturas dos céus, <br> Desce um anjo fulgente de glória <br> Cantando em louvor de Deus! <br> No primeiro Natal, eis que um anjo <br> Gloriosa mensagem nos traz: <br> “Glória a Deus nas alturas, <br> Na terra acordo e paz!”",
+      "1": "No campo o rebanho guardando, <br> Os pastores deitados no chão, <br> Mal se vê, pela luz das estrelas, <br> Que ao redor as ovelhas estão. <br> De repente, um clarão tudo envolve <br> Quando, lá das alturas dos céus, <br> Desce um anjo fulgente de glória <br> Cantando em louvor de Deus! <br> No primeiro Natal, eis que um anjo <br> Gloriosa mensagem nos traz:",
       "2": "“Boas-novas alegres vos trago; <br> Em Belém Jesus Cristo nasceu!” <br> Logo após, lindo coro de anjos <br> Aparece cantando no céu. <br> Oh! Jamais tão bendita mensagem <br> Aos ouvidos de todos soou, <br> Nem tão doce e divina harmonia <br> O próprio céu enlevou. <br> Oh! Bem-vindo o evangelho a este mundo <br> Que em pecado e miséria ainda jaz.",
       "3": "À cidade vão logo os pastores <br> Para verem de perto Jesus! <br> No presépio, o menino contemplam <br> Que, do mundo, é a lídima Luz. <br> As estrelas parecem unir-se <br> Ao celeste conjunto a cantar: <br> “Em Belém, de Davi a cidade, <br> Nasceu quem vos vem salvar!” <br> Como cantam! E cremos que nunca <br> Desse canto ouviremos assaz!"
     }
   },
   "234": {
     "hino": "234 - Um Pequeno a Repousar",
-    "coro": "",
+    "coro": "É este Jesus o Rei que anuncia a paz, <br> A quem Deus quer bem. <br> Da virgem eleita é filho, Jesus, <br> Que nasceu em Belém!",
     "verses": {
-      "1": "Quem é o pequeno a repousar <br> Nos braços de Maria, <br> A quem os anjos vêm cantar <br> Os hinos de alegria? <br> É este Jesus o Rei que anuncia a paz, <br> A quem Deus quer bem. <br> Da virgem eleita é filho, Jesus, <br> Que nasceu em Belém!",
+      "1": "Quem é o pequeno a repousar <br> Nos braços de Maria, <br> A quem os anjos vêm cantar <br> Os hinos de alegria?",
       "2": "Por que tão pobre fora, então, <br> A sua estrebaria? <br> É que ao pobre pecador <br> O Verbo a paz traria!",
       "3": "Trazei a ele o coração, <br> Prostrai-vos reverentes, <br> Aos pés do Rei, que a salvação <br> Nos trouxe eternamente!"
     }
@@ -2267,26 +2285,26 @@
   },
   "239": {
     "hino": "239 - Nasce Jesus",
-    "coro": "",
+    "coro": "Nasce Jesus! Nasce Jesus! <br> Glória a Deus nas alturas! <br> Paz na terra, graça e amor <br> A quantos Deus quer bem!",
     "verses": {
-      "1": "Nasce Jesus! Fonte de luz! <br> Descem os anjos cantando. <br> Nasce Jesus! É nossa luz <br> Que as trevas vem dissipando! <br> Nasce Jesus! Nasce Jesus! <br> Eis a mensagem celeste! <br> Raia a luz da Salvação, triunfante vem! <br> Salve, ó Cristo! Firma teu justo império! <br> Gratos louvores homens e anjos dêem! <br> Nasce Jesus! Nasce Jesus! <br> Glória a Deus nas alturas! <br> Paz na terra, graça e amor <br> A quantos Deus quer bem!",
+      "1": "Nasce Jesus! Fonte de luz! <br> Descem os anjos cantando. <br> Nasce Jesus! É nossa luz <br> Que as trevas vem dissipando! <br> Nasce Jesus! Nasce Jesus! <br> Eis a mensagem celeste! <br> Raia a luz da Salvação, triunfante vem! <br> Salve, ó Cristo! Firma teu justo império! <br> Gratos louvores homens e anjos dêem!",
       "2": "Deus nos amou! Deus nos mandou <br> Cristo, seu Filho amado! <br> Deus nos amou! Deus se encarnou, <br> Vede o Menino deitado! <br> Deus nos amou! Deus nos amou! <br> Digam-no todos os povos! <br> Gozam paz e salvação todos os que crêem. <br> Reino bendito! Reino de amor divino! <br> Gratos louvores homens e anjos dêem!"
     }
   },
   "240": {
     "hino": "240 - Louvor Angelical",
-    "coro": "",
+    "coro": "Exultai, ó terra e céus, <br> Dando glória ao Homem-Deus!",
     "verses": {
-      "1": "Eis dos anjos a harmonia! <br> Cantam glória ao Rei Jesus. <br> Paz aos homens! Que alegria! <br> Paz com Deus em plena luz. <br> Ouçam povos, exultantes, <br> Ergam salmos triunfantes <br> Aclamando seu Senhor: <br> Nasce Cristo, o Redentor! <br> Exultai, ó terra e céus, <br> Dando glória ao Homem-Deus!",
+      "1": "Eis dos anjos a harmonia! <br> Cantam glória ao Rei Jesus. <br> Paz aos homens! Que alegria! <br> Paz com Deus em plena luz. <br> Ouçam povos, exultantes, <br> Ergam salmos triunfantes <br> Aclamando seu Senhor: <br> Nasce Cristo, o Redentor!",
       "2": "Cristo, eternamente honrado, <br> Do seu trono se ausentou <br> E, entre os homens, encarnado, <br> Deus conosco se mostrou. <br> Quão bondosa Divindade! <br> Quão gloriosa Humanidade! <br> Salve Cristo, Emanuel, <br> Luz do mundo, Deus fiel!",
       "3": "Cante o povo resgatado: <br> Glória ao Príncipe da Paz! <br> Deus em Cristo revelado <br> Vida e luz ao mundo traz! <br> Nasce a fim de renascermos! <br> Vive para revivermos! <br> Rei, Profeta, Intercessor, <br> Louvem todos ao Senhor!"
     }
   },
   "241": {
     "hino": "241 - O Nascimento de Jesus",
-    "coro": "",
+    "coro": "Vinde ouvir a doce história que dos altos céus nos vem! <br> O Messias, Rei da glória, nasce em Belém.",
     "verses": {
-      "1": "Mal supõe aquela gente que em Belém quer ir parar, <br> Que uma luz tão refulgente vai ali brilhar. <br> É por anjos anunciado e os pastores logo vêem <br> Que o Senhor, por Deus mandado, nasce em Belém. <br> Vinde ouvir a doce história que dos altos céus nos vem! <br> O Messias, Rei da glória, nasce em Belém.",
+      "1": "Mal supõe aquela gente que em Belém quer ir parar, <br> Que uma luz tão refulgente vai ali brilhar. <br> É por anjos anunciado e os pastores logo vêem <br> Que o Senhor, por Deus mandado, nasce em Belém.",
       "2": "Mundo triste, vem! Desperta! Teus grilhões desfeitos são! <br> Tens a porta franca aberta; sai da vil prisão! <br> Não hesites, duvidoso, esse dom do céu provém; <br> Cristo, o Todo-poderoso, nasce em Belém.",
       "3": "Proclamai a todo o mundo, toda raça, toda cor: <br> Cristo, em seu amor profundo, salva o pecador! <br> Confiança nele tende, não desprezará ninguém! <br> Vinde, os braços vos estende! Nasce em Belém."
     }
@@ -2312,17 +2330,17 @@
   },
   "244": {
     "hino": "244 - Mensagem aos Pastores",
-    "coro": "",
+    "coro": "Que canto angélico é este? <br> Que mensagem de ti vem? <br> Ó Pai, que nova nos deste <br> Para teu povo em Belém?",
     "verses": {
-      "1": "Em noite linda e silente, <br> Nos verdes prados do Oriente, <br> Nos verdes prados do Oriente, <br> Rebanhos a descansar! <br> Eis que ouviram pastores <br> Um canto de mil louvores, (bis) <br> A Deus os anjos entoar. <br> Que canto angélico é este? <br> Que mensagem de ti vem? <br> Ó Pai, que nova nos deste <br> Para teu povo em Belém?",
+      "1": "Em noite linda e silente, <br> Nos verdes prados do Oriente, <br> Nos verdes prados do Oriente, <br> Rebanhos a descansar! <br> Eis que ouviram pastores <br> Um canto de mil louvores, (bis) <br> A Deus os anjos entoar.",
       "2": "Então àqueles pastores, <br> Da grande estrela aos fulgores, <br> Da grande estrela aos fulgores <br> Ressoa a nova do céu! <br> Jesus, de celeste origem, <br> Da mais crente e humilde virgem, (bis) <br> A vos salvar, já nasceu."
     }
   },
   "245": {
     "hino": "245 - Homens Sábios e de Bem",
-    "coro": "",
+    "coro": "Oh! Louvai o bom Deus com fervor; <br> Com fervor! <br> Oh! Louvai o bom Deus com fervor!",
     "verses": {
-      "1": "Vós, homens sábios e de bem <br> E vós que estais em dor, <br> Lembrai-vos todos, afinal: <br> Nasceu o Salvador, <br> Trazendo a todos salvação, a todos paz e amor! <br> Oh! Louvai o bom Deus com fervor; <br> Com fervor! <br> Oh! Louvai o bom Deus com fervor!",
+      "1": "Vós, homens sábios e de bem <br> E vós que estais em dor, <br> Lembrai-vos todos, afinal: <br> Nasceu o Salvador, <br> Trazendo a todos salvação, a todos paz e amor!",
       "2": "De Deus o nosso Pai, <br> Do céu um anjo apareceu <br> E boas-novas de louvor <br> Aos bons pastores deu: <br> Que lá na vila de Belém o Cristo lhes nasceu.",
       "3": "Oh! Não temais, <br> Pois vim trazer mensagem singular: <br> Nasceu o vosso Redentor, <br> Que aos homens quer salvar! <br> Libertará de todo mal a quem não duvidar.",
       "4": "Ao nosso Deus e Salvador <br> Louvores entoai, <br> Com verdadeira gratidão <br> As novas proclamai, <br> E neste dia de Natal ao Salvador louvai!"
@@ -2402,9 +2420,9 @@
   },
   "254": {
     "hino": "254 - Sossegai",
-    "coro": "",
+    "coro": "“As ondas atendem ao meu mandar: sossegai! <br> Seja o encapelado mar, <br> A ira dos homens, o gênio do mal, <br> Tais águas não podem a nau tragar, <br> Que leva o Senhor, Rei do céu e mar! <br> Pois todos ouvem o meu mandar: <br> Sossegai! Sossegai! <br> Convosco estou para vos salvar; sossegai!”",
     "verses": {
-      "1": "Mestre, o mar se revolta <br> E as ondas nos dão pavor! <br> O céu se reveste de trevas, <br> Não temos um Salvador! <br> Não se te dá que morramos? <br> Podes assim dormir? <br> Se a cada momento nos vemos <br> Já prestes a submergir? <br> “As ondas atendem ao meu mandar: sossegai! <br> Seja o encapelado134 mar, <br> A ira dos homens, o gênio do mal, <br> Tais águas não podem a nau tragar, <br> Que leva o Senhor, Rei do céu e mar! <br> Pois todos ouvem o meu mandar: <br> Sossegai! Sossegai! <br> Convosco estou para vos salvar; sossegai!”",
+      "1": "Mestre, o mar se revolta <br> E as ondas nos dão pavor! <br> O céu se reveste de trevas, <br> Não temos um Salvador! <br> Não se te dá que morramos? <br> Podes assim dormir? <br> Se a cada momento nos vemos <br> Já prestes a submergir?",
       "2": "Mestre, tão grande tristeza <br> Me quer hoje consumir! <br> Na dor que perturba minha alma <br> Te imploro: “Vem me acudir!” <br> De ondas do mal que me encobrem, <br> Quem me virá valer? <br> Não tardes, não tardes, bom Mestre, <br> Estou quase a perecer!",
       "3": "Mestre, chegou a bonança; <br> Em paz vejo o céu e o mar! <br> O meu coração goza calma <br> Que não poderá findar. <br> Firme, ao teu lado, ó Mestre, <br> Dono da terra e céu, <br> Eu hei de chegar, bem seguro, <br> Ao porto, destino meu."
     }
@@ -2469,9 +2487,9 @@
   },
   "261": {
     "hino": "261 - O Gólgota",
-    "coro": "",
+    "coro": "Oh! Quanto, quanto nos amou! Amemo-lo também! <br> E confiando em seu amor, façamos todo bem.",
     "verses": {
-      "1": "Mui longe o monte verde está, ao norte de Sião. <br> Ali na cruz, o bom Jesus nos deu a salvação. <br> Oh! Quanto, quanto nos amou! Amemo-lo também! <br> E confiando em seu amor, façamos todo bem.",
+      "1": "Mui longe o monte verde está, ao norte de Sião. <br> Ali na cruz, o bom Jesus nos deu a salvação.",
       "2": "Quem neste mundo sondará a dor que padeceu? <br> Mas crer podemos: “Foi por nós que ali na cruz sofreu”.",
       "3": "Morreu por nós na infame cruz, perdão nos concedeu. <br> Lavou os nossos corações no sangue que verteu.",
       "4": "Ninguém podia nos livrar da pena eternal. <br> Só Cristo pôde nos remir a preço divinal."
@@ -2519,9 +2537,9 @@
   },
   "266": {
     "hino": "266 - Rude Cruz",
-    "coro": "",
+    "coro": "Sim, eu amo a mensagem da cruz; <br> Seu triunfo alegria será! <br> Pois um dia, em lugar de uma cruz, <br> A coroa Jesus me dará!",
     "verses": {
-      "1": "Rude cruz se erigiu, dela o dia fugiu <br> Como emblema de vergonha e dor. <br> Mas eu sei que na cruz, nesse dia Jesus <br> Deu a vida por mim, pecador. <br> Sim, eu amo a mensagem da cruz; <br> Seu triunfo alegria será! <br> Pois um dia, em lugar de uma cruz, <br> A coroa Jesus me dará!",
+      "1": "Rude cruz se erigiu, dela o dia fugiu <br> Como emblema de vergonha e dor. <br> Mas eu sei que na cruz, nesse dia Jesus <br> Deu a vida por mim, pecador.",
       "2": "Desde a glória dos céus, o Cordeiro de Deus <br> Ao Calvário humilhante baixou. <br> Nessa cruz, para mim, há mistério sem-fim, <br> Porque nela Jesus me salvou.",
       "3": "Nessa cruz padeceu, desprezado morreu <br> Meu Jesus, para dar-me perdão. <br> Eu me alegro na cruz, dela vêm graça e luz <br> Para minha santificação."
     }
@@ -2538,27 +2556,27 @@
   },
   "268": {
     "hino": "268 - Redenção",
-    "coro": "",
+    "coro": "O teu sangue foi vertido, expiraste, ó meu Jesus! <br> E ficou por ti cumprido meu resgate sobre a cruz.",
     "verses": {
-      "1": "Pendurado no madeiro, Ó Jesus, pudeste, assim, <br> Destruir meu cativeiro e provar-me amor sem-fim. <br> O teu sangue foi vertido, expiraste, ó meu Jesus! <br> E ficou por ti cumprido meu resgate sobre a cruz.",
+      "1": "Pendurado no madeiro, Ó Jesus, pudeste, assim, <br> Destruir meu cativeiro e provar-me amor sem-fim.",
       "2": "Neste sangue que verteste, purifica-me, Senhor! <br> Foi por mim que tu morreste: sê propício ao pecador!",
       "3": "Sê propício aos condenados a lutar na escuridão <br> Deste abismo de pecados, sob a dor da maldição! <br> Amém."
     }
   },
   "269": {
     "hino": "269 - Pureza no Sangue de Cristo",
-    "coro": "",
+    "coro": "Alvo mais que a neve! (bis) <br> Sim, nesse sangue lavado, <br> Mais alvo que a neve eu estou.",
     "verses": {
-      "1": "Seja bendito o Cordeiro <br> Que na cruz por nós padeceu; <br> Seja bendito o seu sangue <br> Que por nós, pecadores, verteu. <br> Eis que no sangue lavados <br> E tendo puro o coração, <br> Os pecadores remidos <br> Por Jesus têm com Deus comunhão. <br> Alvo mais que a neve! (bis) <br> Sim, nesse sangue lavado, <br> Mais alvo que a neve eu estou.",
+      "1": "Seja bendito o Cordeiro <br> Que na cruz por nós padeceu; <br> Seja bendito o seu sangue <br> Que por nós, pecadores, verteu. <br> Eis que no sangue lavados <br> E tendo puro o coração, <br> Os pecadores remidos <br> Por Jesus têm com Deus comunhão.",
       "2": "Quão espinhosa a coroa <br> Que Jesus por nós suportou! <br> Oh! Quão profundas as chagas <br> Que nos provam o quanto ele amou! <br> Eis nessas chagas pureza <br> Para o maior pecador, <br> A quem mais alvo que a neve <br> O teu sangue transforma, Senhor.",
       "3": "Se as faltas nós confessarmos <br> E seguirmos na tua luz, <br> Tu não somente perdoas; <br> Purificas também, ó Jesus! <br> Lavas de todo pecado, <br> Que maravilha de amor! <br> Pois que mais alvo que a neve <br> O teu sangue nos torna, Senhor."
     }
   },
   "270": {
     "hino": "270 - Desafio",
-    "coro": "",
+    "coro": "Morri, morri na cruz por ti, que fazes tu por mim?",
     "verses": {
-      "1": "Morri na cruz por ti, foi para te livrar. <br> Meu sangue ali verti e posso te salvar. <br> Morri, morri na cruz por ti, que fazes tu por mim?",
+      "1": "Morri na cruz por ti, foi para te livrar. <br> Meu sangue ali verti e posso te salvar.",
       "2": "Vivi assim por ti, sofrendo intensa dor <br> E tudo fiz aqui por ser teu Salvador.",
       "3": "Sofri na cruz por ti, a fim de te salvar. <br> A vida consegui e agora ta vou dar.",
       "4": "Eu trouxe a salvação, dos altos céus favor. <br> É livre o meu perdão é grande o meu amor."
@@ -2568,12 +2586,13 @@
     "hino": "271 - Ressurreição",
     "coro": "",
     "verses": {
-      "1": "Aleluia! Aleluia! Aleluia! Aleluia!",
+      "1": "[Coro] Aleluia! Aleluia! Aleluia! Aleluia!",
       "2": "Ó filhos, vinde aqui cantar <br> Ao Rei do céu, da terra e mar <br> Que, ressurreto, vem reinar. <br> Aleluia! Aleluia!",
       "3": "À tumba foram de manhã <br>  <br> Mas Cristo vive — a busca é vã! <br> Aleluia! Aleluia!",
       "4": "Um anjo, então, lhes proclamou <br> Que Cristo já ressuscitou! <br> As suas mágoas confortou. <br> Aleluia! Aleluia!",
-      "5": "Aceita agora, ó Salvador, <br> O nosso canto de louvor, <br> Que a ti erguemos com amor! <br> Aleluia! Aleluia! <br> Aleluia! Aleluia! Aleluia! Aleluia!",
-      "6": "Amém."
+      "5": "Aceita agora, ó Salvador, <br> O nosso canto de louvor, <br> Que a ti erguemos com amor! <br> Aleluia! Aleluia!",
+      "6": "[Coro] Aleluia! Aleluia! Aleluia! Aleluia!",
+      "7": "Amém."
     }
   },
   "272": {
@@ -2597,9 +2616,9 @@
   },
   "274": {
     "hino": "274 - Morto e Ressurreto",
-    "coro": "",
+    "coro": "Da sepultura saiu, <br> Com triunfo e glória ressurgiu! <br> Ressurgiu, vencendo a morte <br> E seu poder, <br> Pode agora a todos vida conceder! <br> Ressurgiu, ressurgiu! <br> Aleluia! Ressurgiu!",
     "verses": {
-      "1": "Eis morto o Salvador na sepultura, <br> Mas com poder real ressuscitou. <br> Da sepultura saiu, <br> Com triunfo e glória ressurgiu! <br> Ressurgiu, vencendo a morte <br> E seu poder, <br> Pode agora a todos vida conceder! <br> Ressurgiu, ressurgiu! <br> Aleluia! Ressurgiu!",
+      "1": "Eis morto o Salvador na sepultura, <br> Mas com poder real ressuscitou.",
       "2": "Tomaram precaução com seu sepulcro. <br> Foi tudo em vão, porém, para o reter.",
       "3": "No grande Vencedor eis as primícias <br> Dos santos que também ressurgirão."
     }
@@ -2634,7 +2653,7 @@
     "hino": "278 - A Vitória de Jesus",
     "coro": "",
     "verses": {
-      "1": "Aleluia! Aleluia! Aleluia!",
+      "1": "[Coro] Aleluia! Aleluia! Aleluia!",
       "2": "Findou-se a luta de Jesus! <br> O Salvador venceu na cruz! <br> Já neste mundo raia a luz! <br> Aleluia!",
       "3": "Das mãos do grande usurpador <br> Livrou-nos com profundo amor. <br> Cantai ao forte Salvador: <br> Aleluia!",
       "4": "Vencida a morte e seu horror, <br> Subiu à glória o Redentor! <br> Rompei em cantos de louvor! <br> Aleluia!",
@@ -2670,9 +2689,9 @@
   },
   "282": {
     "hino": "282 - A Grande Comissão",
-    "coro": "",
+    "coro": "Vamos, irmãos, levar essa luz ao mundo inteiro! <br> Vamos, irmãos, contar que esse dom é verdadeiro! <br> Vamos, irmãos, pregar mui confiados no Cordeiro <br> Que, na cruz, já fez a nossa Redenção!",
     "verses": {
-      "1": "Disse Jesus: “Ide por todo o mundo <br> E pregai o eterno dom <br> Da salvação que, com amor profundo, <br> Dá o Deus gracioso e bom!” <br> Tendo na cruz a afirmação do amor, <br> Proclamai o dom do Redentor! <br> Oh! Conquistai <br> Almas perdidas, buscai <br> O pecador enfermo, quase moribundo! <br> Vamos, irmãos, levar essa luz ao mundo inteiro! <br> Vamos, irmãos, contar que esse dom é verdadeiro! <br> Vamos, irmãos, pregar mui confiados no Cordeiro <br> Que, na cruz, já fez a nossa Redenção!",
+      "1": "Disse Jesus: “Ide por todo o mundo <br> E pregai o eterno dom <br> Da salvação que, com amor profundo, <br> Dá o Deus gracioso e bom!” <br> Tendo na cruz a afirmação do amor, <br> Proclamai o dom do Redentor! <br> Oh! Conquistai <br> Almas perdidas, buscai <br> O pecador enfermo, quase moribundo!",
       "2": "Todos marchemos neste grande intento <br> De pregar a salvação, <br> Sem recuar, sempre mostrando alento. <br> Sim, cumpramos a missão <br> Que o Salvador, Cristo Jesus, nos deu; <br> Ele está também no posto seu. <br> Diz-nos o Rei: <br> “Sempre convosco estarei!” <br> Vamos, irmãos, bem firmes neste pensamento!",
       "3": "Firmes, levemos a mensagem santa <br> Do evangelho de Jesus! <br> Essa mensagem divinal que encanta <br> Espalhando graça e luz! <br> Cheia de bênçãos do glorioso Deus <br> Que conhece os escolhidos seus, <br> Cheia de amor, <br> Vem revelar o favor <br> Da compaixão de Deus e dá-nos graça tanta."
     }
@@ -2688,9 +2707,9 @@
   },
   "284": {
     "hino": "284 - Obediência",
-    "coro": "",
+    "coro": "Estou pronto ao teu mando seguir. <br> Estou pronto a fazer o que queres, Senhor, <br> Confiado no teu poder! <br> Estou pronto a dizer o que queres, Senhor, <br> Sempre a ti pronto a obedecer!",
     "verses": {
-      "1": "Nem sempre será para onde eu quiser <br> Que o Mestre me quer enviar! <br> É grande a Seara a embranquecer, <br> Em que eu deverei trabalhar. <br> Se, pois, a caminhos que nunca segui, <br> Uma voz a chamar-me eu ouvir, <br> Direi: Meu Senhor, confiado em ti, <br> Estou pronto ao teu mando seguir. <br> Estou pronto a fazer o que queres, Senhor, <br> Confiado no teu poder! <br> Estou pronto a dizer o que queres, Senhor, <br> Sempre a ti pronto a obedecer!",
+      "1": "Nem sempre será para onde eu quiser <br> Que o Mestre me quer enviar! <br> É grande a Seara a embranquecer, <br> Em que eu deverei trabalhar. <br> Se, pois, a caminhos que nunca segui, <br> Uma voz a chamar-me eu ouvir, <br> Direi: Meu Senhor, confiado em ti,",
       "2": "Palavras terás de amor e perdão <br> Que aos outros eu deva levar. <br> No triste caminho do vício estão <br> Perdidos que eu deva ir buscar. <br> Senhor, se a tua presença real <br> Meu trabalho há de fortalecer, <br> Darei a mensagem, bem firme e leal! <br> Estou pronto a cumprir teu querer.",
       "3": "Um canto modesto eu quero encontrar <br> Na seara do meu bom Senhor. <br> Enquanto for vivo eu vou trabalhar <br> Em prova do meu grande amor. <br> De ti meu sustento só dependerá <br> E de tudo me hás de prover! <br> A tua vontade a minha será, <br> Estou pronto a votar-te meu ser. Amém."
     }
@@ -2706,18 +2725,18 @@
   },
   "286": {
     "hino": "286 - Colheita Bendita",
-    "coro": "",
+    "coro": "Vamos nós obedecer! Vamos à colheita <br> Para quando anoitecer ver a obra feita. <br> Pouco tempo restará, <br> Breve o prazo acabará; <br> Breve, breve, breve acabará!",
     "verses": {
-      "1": "Ceifeiros somos nós, fiéis, <br> Ceifando para o Rei dos reis <br> Os frutos prontos a colher <br> Que em derredor se estão a ver. <br> Assim, a Cristo, o Salvador, <br> Rendemos preito de louvor, <br> Ao nosso Mestre, lá no Céu, <br> Que sobre a cruz por nós morreu. <br> Vamos nós obedecer! Vamos à colheita <br> Para quando anoitecer ver a obra feita. <br> Pouco tempo restará, <br> Breve o prazo acabará; <br> Breve, breve, breve acabará!",
+      "1": "Ceifeiros somos nós, fiéis, <br> Ceifando para o Rei dos reis <br> Os frutos prontos a colher <br> Que em derredor se estão a ver. <br> Assim, a Cristo, o Salvador, <br> Rendemos preito de louvor, <br> Ao nosso Mestre, lá no Céu, <br> Que sobre a cruz por nós morreu.",
       "2": "Nós trabalhamos por Jesus <br> Que para os campos nos conduz <br> E na seara imensa quer <br> Obreiros novos receber. <br> Ainda há muito o que fazer <br> E tanto fruto que colher! <br> Não ouves Cristo perguntar: <br> “Quem quer por mim ir trabalhar?”",
       "3": "Estão as horas a fugir, <br> O teu Senhor não tarda em vir; <br> Tu queres fruto ao céu levar <br> Ou folhas só apresentar? <br> Oh! Não demores a atender, <br> A noite em breve vai descer; <br> Conosco toma o teu lugar <br> E por Jesus vem trabalhar!"
     }
   },
   "287": {
     "hino": "287 - Igreja, Alerta!",
-    "coro": "",
+    "coro": "Marchar, sim, avante! <br> Marchar, sim, erguendo o seu pendão real, avante! <br> Sim, avante! Unidos sempre, firmes avançai! <br> “Glória! Glória!” Eis que canta a multidão! <br> Consagrando todo o vosso coração, <br> A Jesus obedecei, seu querer executai, <br> Entoai louvores altos! Avançai!",
     "verses": {
-      "1": "É tempo! É tempo, o Mestre está chamando já! <br> Marchar, marchar, confiando em seu amor! <br> Partir, partir, a salvação a proclamar, <br> Cumprindo ordem santa do bom Salvador! <br> Marchar, sim, avante! <br> Marchar, sim, erguendo o seu pendão real, avante! <br> Sim, avante! Unidos sempre, firmes avançai! <br> “Glória! Glória!” Eis que canta a multidão! <br> Consagrando todo o vosso coração, <br> A Jesus obedecei, seu querer executai, <br> Entoai louvores altos! Avançai!",
+      "1": "É tempo! É tempo, o Mestre está chamando já! <br> Marchar, marchar, confiando em seu amor! <br> Partir, partir, a salvação a proclamar, <br> Cumprindo ordem santa do bom Salvador!",
       "2": "Levemos luz, aos povos e nações pagãs <br> Que vivem longe, além do imenso mar. <br> Oh! Vamos lá levar-lhes novas de amor, <br> Sem esquecer também aqui de semear.",
       "3": "Desperta, Igreja, e vem o teu dever cumprir; <br> A todos faze a Cristo conhecer! <br> A tua mão estende, com paciente amor, <br> Ajuda-os, em Jesus, a vida receber.",
       "4": "Igreja, alerta! O dia prometido vem, <br> No qual Jesus, o Salvador, virá! <br> Por toda parte, o vitorioso Redentor <br> Eterna glória e honra e louvor terá."
@@ -2725,18 +2744,18 @@
   },
   "288": {
     "hino": "288 - A Mensagem Real",
-    "coro": "",
+    "coro": "É a mensagem que me deu, <br> Provinda lá dos altos céus: <br> Que vos reconcilieis <br> Com o Senhor, Rei meu! <br> Reconciliai-vos já com Deus!",
     "verses": {
-      "1": "Sou forasteiro aqui, em terra estranha estou, <br> Celeste Pátria, sim, é para onde vou. <br> Embaixador por Deus, do Reino lá dos céus, <br> Venho em serviço do meu Rei! <br> É a mensagem que me deu, <br> Provinda lá dos altos céus: <br> Que vos reconcilieis <br> Com o Senhor, Rei meu! <br> Reconciliai-vos já com Deus!",
+      "1": "Sou forasteiro aqui, em terra estranha estou, <br> Celeste Pátria, sim, é para onde vou. <br> Embaixador por Deus, do Reino lá dos céus, <br> Venho em serviço do meu Rei!",
       "2": "Por Deus mandado está que o homem pecador, <br> Arrependido já, se chegue ao Salvador <br> Pois, quem o receber, no Reino vai viver. <br> Venho em serviço do meu Rei!",
       "3": "Mais belo que um rosal, o lar celeste tem <br> A bênção imortal, a paz eterna, além. <br> No céu tem galardão quem frui a redenção. <br> Venho em serviço do meu Rei!"
     }
   },
   "289": {
     "hino": "289 - Quem Irá?",
-    "coro": "",
+    "coro": "“Todo o poder o Pai me deu, <br> Na terra como lá no céu! <br> Ide ao mundo anunciar o Evangelho, <br> E eis-me convosco sempre!”",
     "verses": {
-      "1": "Eis os milhões que, em trevas tão medonhas, <br> Jazem perdidos, sem o Salvador! <br> Oh! Quem irá as novas proclamando <br> Que Deus, em Cristo, salva o pecador? <br> “Todo o poder o Pai me deu, <br> Na terra como lá no céu! <br> Ide ao mundo anunciar o Evangelho, <br> E eis-me convosco sempre!”",
+      "1": "Eis os milhões que, em trevas tão medonhas, <br> Jazem perdidos, sem o Salvador! <br> Oh! Quem irá as novas proclamando <br> Que Deus, em Cristo, salva o pecador?",
       "2": "Portas abertas eis por todo o mundo, <br> Servos de Deus, avante sempre andai! <br> Crentes em Cristo, uni as vossas forças: <br> Da escravidão os povos libertai.",
       "3": "Ó Deus! Apressa o glorioso dia <br> Em que os remidos todos se unirão <br> E em coro santo, excelso, jubiloso, <br> Eternamente glória a ti darão!"
     }
@@ -2764,9 +2783,9 @@
   },
   "292": {
     "hino": "292 - A Vinda do Senhor",
-    "coro": "",
+    "coro": "Oh! Que dia glorioso esse dia há de ser, <br> Quando o som da trombeta ecoar! <br> Quando Cristo nas nuvens tiver de descer <br> E, então, triunfante reinar!",
     "verses": {
-      "1": "Como foi para o céu, Jesus Cristo há de vir <br> Quando o som da trombeta ecoar! <br> Quando a voz do arcanjo celeste se ouvir, <br> Eu irei com Jesus me encontrar. <br> Oh! Que dia glorioso esse dia há de ser, <br> Quando o som da trombeta ecoar! <br> Quando Cristo nas nuvens tiver de descer <br> E, então, triunfante reinar!",
+      "1": "Como foi para o céu, Jesus Cristo há de vir <br> Quando o som da trombeta ecoar! <br> Quando a voz do arcanjo celeste se ouvir, <br> Eu irei com Jesus me encontrar.",
       "2": "Nesse dia de glória, o meu corpo mortal <br> Semelhante ao de Cristo há de ser! <br> E já livre da morte, e já livre do mal, <br> A vitória de Cristo hei de ver.",
       "3": "Eu aqui, pela cruz, para o mundo morri, <br> Muita dor ‘inda aqui sofrerei; <br> Minha vida com Cristo em meu Deus escondi <br> E com Cristo eu, enfim, reinarei.",
       "4": "Vem Jesus, ó Senhor, vem depressa reinar! <br> Vem a paz e a justiça trazer! <br> Criação, povo teu, tudo almeja o raiar <br> Desse dia de glória e poder.",
@@ -2775,9 +2794,9 @@
   },
   "293": {
     "hino": "293 - O Dia Glorioso",
-    "coro": "",
+    "coro": "Oh! Dia triunfal de Cristo quando lá do céu descer! <br> Todos juntos, jubilosos, vamos o Senhor a receber! <br> Vinde, ó cristãos, regozijai-vos! O Senhor não tardará! <br> Já vem o glorioso dia em que Cristo voltará!",
     "verses": {
-      "1": "Vinde, ó cristãos, regozijai-vos, o Senhor não tardará! <br> Já vem o glorioso dia em que Cristo voltará! <br> Oh! Dia triunfal de Cristo quando lá do céu descer! <br> Todos juntos, jubilosos, vamos o Senhor a receber! <br> Vinde, ó cristãos, regozijai-vos! O Senhor não tardará! <br> Já vem o glorioso dia em que Cristo voltará!",
+      "1": "Vinde, ó cristãos, regozijai-vos, o Senhor não tardará! <br> Já vem o glorioso dia em que Cristo voltará!",
       "2": "Com multidão inumerável sobre as nuvens ele vem <br> E todos juntos entraremos com Jesus na glória além!",
       "3": "Então será glorificado nos remidos, o Senhor; <br> E o mundo inteiro admirará seu poder e seu amor."
     }
@@ -2803,9 +2822,9 @@
   },
   "296": {
     "hino": "296 - Cristo Não Tarda",
-    "coro": "",
+    "coro": "Cristo não tarda, não tarda em vir, <br> Cristo não tarda em vir. <br> Oh! Que alegria e glória será, <br> Quando Jesus regressar!",
     "verses": {
-      "1": "Cristo em breve do céu virá, <br> Pois prometeu e não tardará. <br> Oh! Que alegria, que glória será, <br> Quando Jesus regressar! <br> Cristo não tarda, não tarda em vir, <br> Cristo não tarda em vir. <br> Oh! Que alegria e glória será, <br> Quando Jesus regressar!",
+      "1": "Cristo em breve do céu virá, <br> Pois prometeu e não tardará. <br> Oh! Que alegria, que glória será, <br> Quando Jesus regressar!",
       "2": "Em breve os mortos ressurgirão, <br> Todos os crentes se encontrarão. <br> Juntos, alegres, ao céu subirão, <br> Quando Jesus regressar!",
       "3": "Na terra, em breve teremos paz, <br> Cristo prendeu o maligno mordaz! <br> Toda aflição ficará para trás, <br> Quando Jesus regressar!",
       "4": "Cristo não tarda, não tarda em vir. <br> Quem pronto está para aquele porvir? <br> Oh! Que alegria teremos em ir <br> Quando Jesus regressar."
@@ -2813,9 +2832,9 @@
   },
   "297": {
     "hino": "297 - A Chamada Final",
-    "coro": "",
+    "coro": "Quando enfim chegar o dia <br> Da vitória do meu Rei, <br> Quando enfim chegar o dia, <br> Pela graça de Jesus eu lá estarei!",
     "verses": {
-      "1": "Quando lá do céu descendo para os seus Jesus voltar, <br> E o clarim de Deus a todos proclamar <br> Que chegou o grande dia da vitória do meu Rei, <br> Eu, por sua imensa graça, lá estarei! <br> Quando enfim chegar o dia <br> Da vitória do meu Rei, <br> Quando enfim chegar o dia, <br> Pela graça de Jesus eu lá estarei!",
+      "1": "Quando lá do céu descendo para os seus Jesus voltar, <br> E o clarim de Deus a todos proclamar <br> Que chegou o grande dia da vitória do meu Rei, <br> Eu, por sua imensa graça, lá estarei!",
       "2": "Nesse dia, quando os mortos hão de a voz de Cristo ouvir <br> E dos seus sepulcros hão de ressurgir, <br> Os remidos, transformados, logo aclamarão seu Rei, <br> E por sua imensa graça lá estarei!",
       "3": "Pelo mundo rejeitado foi Jesus, meu Salvador! <br> Desprezaram, insultaram meu Senhor! <br> Mas glorioso vem o dia da vitória do meu Rei <br> E por sua imensa graça lá estarei!"
     }
@@ -2838,9 +2857,9 @@
   },
   "300": {
     "hino": "300 - Igreja Militante",
-    "coro": "",
+    "coro": "Grande foi o teu amor que na cruz assim mostraste! <br> Para meus grilhões168 partires, tua vida não poupaste!",
     "verses": {
-      "1": "Para resgatar a Igreja, grande preço Cristo deu. <br> Não foi ouro, nem foi prata: foi seu sangue que verteu. <br> Grande foi o teu amor que na cruz assim mostraste! <br> Para meus grilhões168 partires, tua vida não poupaste!",
+      "1": "Para resgatar a Igreja, grande preço Cristo deu. <br> Não foi ouro, nem foi prata: foi seu sangue que verteu.",
       "2": "Pois agora que sou tua, não te quero mais perder <br> E, com gratidão servindo, quero só por ti viver.",
       "3": "Quero receber teu jugo e em teus passos caminhar! <br> Se por ti eu sofro tudo, vou contigo em paz reinar.",
       "4": "Eis que estou aqui na terra esperando o teu voltar. <br> Vem buscar a tua Igreja, vem, Senhor, e sem tardar! <br> Amém."
@@ -2868,9 +2887,9 @@
   },
   "303": {
     "hino": "303 - Pendão Real",
-    "coro": "",
+    "coro": "Com valor! Sem temor! <br> Por Cristo prontos a sofrer, <br> Bem alto erguei o seu pendão <br> Firmes, sempre, até morrer!",
     "verses": {
-      "1": "Um pendão real vos entregou o Rei <br> A vós, soldados seus! <br> Corajosos, pois, em tudo o defendei, <br> Marchando para os céus. <br> Com valor! Sem temor! <br> Por Cristo prontos a sofrer, <br> Bem alto erguei o seu pendão <br> Firmes, sempre, até morrer!",
+      "1": "Um pendão real vos entregou o Rei <br> A vós, soldados seus! <br> Corajosos, pois, em tudo o defendei, <br> Marchando para os céus.",
       "2": "Eis formados já terríveis batalhões <br> Do grande usurpador! <br> Revelai-vos hoje bravos campeões! <br> Avante, sem temor!",
       "3": "Quem receio sente no seu coração <br> E fraco se mostrar, <br> Não receberá o eterno galardão <br> Que Cristo tem pra dar!",
       "4": "Pois sejamos todos a Jesus fiéis <br> E a seu real pendão! <br> Os que da vitória colhem os lauréis <br> Com ele reinarão."
@@ -2878,36 +2897,36 @@
   },
   "304": {
     "hino": "304 - A Voz do Evangelho",
-    "coro": "",
+    "coro": "Santa paz e perdão é a nova lá dos céus! <br> Santa paz e perdão, bendito o nosso Deus!",
     "verses": {
-      "1": "A voz do evangelho já se fez ouvir aqui, <br> Publicando, em som alegre, o que Deus já fez por ti. <br> Pois tanto ao mundo amou e ao perdido pecador, <br> Que do céu lhe deu seu Filho para ser seu Redentor. <br> Santa paz e perdão é a nova lá dos céus! <br> Santa paz e perdão, bendito o nosso Deus!",
+      "1": "A voz do evangelho já se fez ouvir aqui, <br> Publicando, em som alegre, o que Deus já fez por ti. <br> Pois tanto ao mundo amou e ao perdido pecador, <br> Que do céu lhe deu seu Filho para ser seu Redentor.",
       "2": "A voz do evangelho segurança, vida e paz, <br> É o amor de Jesus Cristo que o perdão de Deus nos traz. <br> As novas se nos dão de haver um Salvador, <br> Poderoso e mui bondoso que perdoa o pecador.",
       "3": "A voz do evangelho vem a todos avisar <br> Do perigo, grande e grave, para quem se descuidar. <br> Salvai-vos desde já, não vos detenhais no mal, <br> Cobiçando os seus prazeres, pois vos pode ser fatal."
     }
   },
   "305": {
     "hino": "305 - Quem Quiser",
-    "coro": "",
+    "coro": "Todo o que quiser, todo o que quiser <br> Pode a boa-nova hoje receber! <br> Que o Senhor da Glória a todos quer remir! <br> Todo o que quiser é vir!",
     "verses": {
-      "1": "Quem ouvir as novas deve proclamar: <br> Salvação de graça, vinde desfrutar! <br> Oh! Que o mundo inteiro ouça anunciar: <br> Todo o que quiser é vir! <br> Todo o que quiser, todo o que quiser <br> Pode a boa-nova hoje receber! <br> Que o Senhor da Glória a todos quer remir! <br> Todo o que quiser é vir!",
+      "1": "Quem ouvir as novas deve proclamar: <br> Salvação de graça, vinde desfrutar! <br> Oh! Que o mundo inteiro ouça anunciar: <br> Todo o que quiser é vir!",
       "2": "Quem quiser, agora, venha aceitar; <br> Eis a porta aberta, entre sem tardar! <br> É Jesus caminho para ao céu chegar; <br> Todo o que quiser é vir!",
       "3": "Que fiel promessa tens, ó pecador, <br> De uma vida eterna! Vem ao Salvador! <br> Ele a todos fala com mui terno amor: <br> Todo o que quiser é vir!"
     }
   },
   "306": {
     "hino": "306 - Fidelidade na Luta",
-    "coro": "",
+    "coro": "Sede fiéis, sede fiéis, <br> Sede fiéis e por Cristo lutai!",
     "verses": {
-      "1": "Erguei-vos, cristãos! Cristo quer-vos de pé! <br> Na luta do bem, revelai vossa fé! <br> Cingindo a armadura, hoje a Cristo exaltai, <br> À sombra da cruz, corajosos lutai! <br> Sede fiéis, sede fiéis, <br> Sede fiéis e por Cristo lutai!",
+      "1": "Erguei-vos, cristãos! Cristo quer-vos de pé! <br> Na luta do bem, revelai vossa fé! <br> Cingindo a armadura, hoje a Cristo exaltai, <br> À sombra da cruz, corajosos lutai!",
       "2": "Jesus vos remiu, afastai o temor. <br> Confiantes, segui vosso bom Salvador! <br> Na causa de Cristo fervor demonstrai! <br> À sombra da cruz, corajosos lutai!",
       "3": "As hostes do mal deveis hoje enfrentar, <br> Das suas prisões pecadores livrar. <br> De Cristo bem alto o pendão levantai! <br> À sombra da cruz, corajosos lutai!"
     }
   },
   "307": {
     "hino": "307 - A Santa Igreja",
-    "coro": "",
+    "coro": "Erga-se o estandarte, tremulando à luz! <br> Seu brasão: coroa circundando a cruz.",
     "verses": {
-      "1": "Erga-se o estandarte tremulando à luz! <br> Seu brasão: coroa circundando a cruz! <br> Na cruzada invicta quem quer hoje entrar <br> E o evangelho santo ir anunciar? <br> Erga-se o estandarte, tremulando à luz! <br> Seu brasão: coroa circundando a cruz.",
+      "1": "Erga-se o estandarte tremulando à luz! <br> Seu brasão: coroa circundando a cruz! <br> Na cruzada invicta quem quer hoje entrar <br> E o evangelho santo ir anunciar?",
       "2": "Luta contra as trevas, luta contra o mal! <br> Eis-nos à peleja santa, divinal! <br> Dar combate ao erro, à superstição, <br> E salvar os homens da degradação.",
       "3": "Vinde ao bom combate sem esmorecer! <br> De valor eterno glória haveis de ter. <br> A quem quer segui-lo, eis que diz Jesus: <br> “Negue-se a si mesmo, tome a sua cruz”.",
       "4": "Salvador, confio em teu grande amor! <br> Entro na batalha com vibrante ardor. <br> Dá que em teu serviço saiba a cruz tomar <br> E teu santo nome hoje e sempre honrar."
@@ -2915,9 +2934,9 @@
   },
   "308": {
     "hino": "308 - Escuridão e Luz",
-    "coro": "",
+    "coro": "Resplandeçam nossas luzes Através do escuro mar, <br> Pois nas trevas do pecado Almas podem naufragar!",
     "verses": {
-      "1": "Nas tormentas desta vida, perto está a perdição. <br> Aos incautos navegantes quem trará a salvação? <br> Resplandeçam nossas luzes Através do escuro mar, <br> Pois nas trevas do pecado Almas podem naufragar!",
+      "1": "Nas tormentas desta vida, perto está a perdição. <br> Aos incautos navegantes quem trará a salvação?",
       "2": "Brilha sempre, em graça imensa, rico amor do eterno Deus. <br> Cumpre a nós mostrar o rumo do caminho para os céus.",
       "3": "Nuvens de paixão mundana não os deixam ver o sol. <br> Oh! Mostremos o perigo com as luzes do farol.",
       "4": "Aos errantes, insensatos, guia ao porto divinal! <br> Em Jesus há vero abrigo do furor do temporal!",
@@ -2926,9 +2945,9 @@
   },
   "309": {
     "hino": "309 - Proclamação",
-    "coro": "",
+    "coro": "Proclamai que Jesus Cristo é Senhor e Rei, <br> Proclamai! Proclamai! <br> Que nos livra da cruel condenação da lei, <br> Proclamai! Proclamai!",
     "verses": {
-      "1": "Proclamai que Jesus Cristo é Senhor e Rei, <br> Proclamai! Proclamai! <br> Que nos livra da cruel condenação da lei, <br> Proclamai! Proclamai! <br> Contai que lá dos altos céus desceu Jesus, <br> Por nós sofrendo a morte da nefanda cruz! <br> Agora, ressurreto, sobre o trono está <br> E é Deus de toda a graça, que de graça tudo dá! <br> Proclamai que Jesus Cristo é Senhor e Rei, <br> Proclamai! Proclamai! <br> Que nos livra da cruel condenação da lei, <br> Proclamai! Proclamai!",
+      "1": "Proclamai que Jesus Cristo é Senhor e Rei, <br> Proclamai! Proclamai! <br> Que nos livra da cruel condenação da lei, <br> Proclamai! Proclamai! <br> Contai que lá dos altos céus desceu Jesus, <br> Por nós sofrendo a morte da nefanda cruz! <br> Agora, ressurreto, sobre o trono está <br> E é Deus de toda a graça, que de graça tudo dá!",
       "2": "Proclamai que reina em graça Cristo Salvador, <br> Proclamai! Proclamai! <br> Que por cetro de seu reino ele tem o amor, <br> Proclamai! Proclamai! <br> Contai aos tristes que a alegria ele tem <br> E é dele que aos cansados o descanso vem! <br> Dizei aos pecadores que ele os quer salvar <br> E a todos os cativos que ele os pode libertar!",
       "3": "Proclamai que em grande glória Cristo voltará, <br> Proclamai! Proclamai! <br> E com todos os remidos ele reinará, <br> Proclamai! Proclamai! <br> Dizei que, sem demora, todos devem crer <br> E a Cristo agora mesmo o coração render! <br> Que estejam preparados quando aqui voltar <br> A fim de, redimidos, com louvores o aclamar."
     }
@@ -2944,18 +2963,18 @@
   },
   "311": {
     "hino": "311 - Avante, ó Crentes",
-    "coro": "",
+    "coro": "Coro da 2ª música: <br> Avante, ó crentes, soldados de Jesus! <br> Erguei seu estandarte, lutai, lutai por sua cruz.",
     "verses": {
       "1": "Avante, avante, ó crentes, soldados de Jesus! <br> Erguei seu estandarte, lutai por sua cruz! <br> E contra os inimigos em grandes multidões, <br> O Excelso Comandante dirige os batalhões.",
       "2": "Avante, avante, ó crentes! Por Cristo pelejai! <br> Vesti sua armadura, em seu poder marchai! <br> No posto sempre achados, velando em oração, <br> Em meio dos perigos seguindo o Capitão!",
-      "3": "Avante, avante, ó crentes, a passo triunfal! <br> Após combate horrendo, virá a paz final! <br> Então, eternamente, será o vencedor <br> No céu glorificado com Cristo, o Salvador! <br> Coro da 2ª música: <br> Avante, ó crentes, soldados de Jesus! <br> Erguei seu estandarte, lutai, lutai por sua cruz."
+      "3": "Avante, avante, ó crentes, a passo triunfal! <br> Após combate horrendo, virá a paz final! <br> Então, eternamente, será o vencedor <br> No céu glorificado com Cristo, o Salvador!"
     }
   },
   "312": {
     "hino": "312 - Há Trabalho Certo",
-    "coro": "",
+    "coro": "Por Jesus é trabalhar! <br> Prontamente, fielmente, trabalhar! <br> Em servi-lo, que prazer! <br> E só tu, ó crente, o poderás fazer!",
     "verses": {
-      "1": "Há trabalho certo para ti, cristão, <br> Que demanda toda a tua devoção. <br> Vem, alegremente, a Cristo obedecer, <br> Pois só tu, ó crente, o poderás fazer. <br> Por Jesus é trabalhar! <br> Prontamente, fielmente, trabalhar! <br> Em servi-lo, que prazer! <br> E só tu, ó crente, o poderás fazer!",
+      "1": "Há trabalho certo para ti, cristão, <br> Que demanda toda a tua devoção. <br> Vem, alegremente, a Cristo obedecer, <br> Pois só tu, ó crente, o poderás fazer.",
       "2": "Para cada crente o Mestre preparou <br> Um trabalho certo, quando o resgatou. <br> O trabalho a que Jesus te chama aqui, <br> Como será feito, se o não for por ti?",
       "3": "Mesmo que humilde, sendo para Deus, <br> Ele é contemplado lá dos altos céus! <br> E o esforço feito não será em vão, <br> Se tiver, de Cristo, plena aprovação!",
       "4": "Quantos há perdidos, sem a salvação, <br> Quantos que precisam de consolação! <br> Como Cristo os ama, faze-os entender, <br> Pois só tu, ó crente, o poderás fazer."
@@ -2963,9 +2982,9 @@
   },
   "313": {
     "hino": "313 - Prontidão",
-    "coro": "",
+    "coro": "Quem de Cristo ao lado sempre quer andar? <br> Quem quer ajudá-lo outros a chamar? <br> Pela tua graça, pelo teu amor, <br> Eis-nos ao teu lado, somos teus, Senhor!",
     "verses": {
-      "1": "Quem de Cristo ao lado agora quer andar? <br> Quem a sua vida quer lhe dedicar? <br> Tudo abandonando, a Jesus seguir, <br> Encarando as lutas que lhe possam vir? <br> Quem de Cristo ao lado sempre quer andar? <br> Quem quer ajudá-lo outros a chamar? <br> Pela tua graça, pelo teu amor, <br> Eis-nos ao teu lado, somos teus, Senhor!",
+      "1": "Quem de Cristo ao lado agora quer andar? <br> Quem a sua vida quer lhe dedicar? <br> Tudo abandonando, a Jesus seguir, <br> Encarando as lutas que lhe possam vir?",
       "2": "Não ambicionando honras ou poder, <br> Eis-nos todos firmes para combater. <br> Quem o amor de Cristo vem a contemplar, <br> Há de, resoluto, ao seu lado estar.",
       "3": "Não com ouro ou prata foi, Senhor Jesus, <br> Que nos redimiste, mas por tua cruz. <br> Sim, com o teu sangue, sangue remidor, <br> Tu nos resgataste de uma vez, Senhor!",
       "4": "A peleja sempre dura nos será; <br> Inimigo forte nos combaterá; <br> Mas onipotente é o Rei dos reis! <br> A vitória é certa para os seus fiéis!"
@@ -2982,9 +3001,9 @@
   },
   "315": {
     "hino": "315 - Serviço do Crente",
-    "coro": "",
+    "coro": "No labor, sem cessar, <br> A servir a Jesus. <br> Com amor e fé e com oração, <br> Até que volte o bom Senhor!",
     "verses": {
-      "1": "Vamos nós trabalhar, somos servos de Deus, <br> E o Mestre seguir no caminho dos céus! <br> Com o seu bom conselho o vigor renovar, <br> Diligentes fazendo o que ele ordenar. <br> No labor, sem cessar, <br> A servir a Jesus. <br> Com amor e fé e com oração, <br> Até que volte o bom Senhor!",
+      "1": "Vamos nós trabalhar, somos servos de Deus, <br> E o Mestre seguir no caminho dos céus! <br> Com o seu bom conselho o vigor renovar, <br> Diligentes fazendo o que ele ordenar.",
       "2": "Vamos nós trabalhar e os famintos fartar <br> Para à fonte os sedentos depressa levar! <br> Só na cruz do Senhor nossa glória será, <br> Pois Jesus salvação por seu sangue nos dá!",
       "3": "Vamos nós trabalhar, ajudados por Deus <br> Que a coroa de glória nos dá lá nos céus. <br> A mansão dos fiéis sempiterna será, <br> Pois Jesus salvação inefável nos dá!"
     }
@@ -3009,27 +3028,27 @@
   },
   "318": {
     "hino": "318 - Ceifeiros do Senhor",
-    "coro": "",
+    "coro": "Os que esperam no Senhor renovar-se-ão! <br> Crescerão em vigor; subirão até às alturas! <br> Correrão e sem fadiga andarão, sem se cansar! <br> Correrão e sem fadiga andarão, sem se cansar! <br> Voarão e, nas alturas, como águias serão!",
     "verses": {
-      "1": "Ceifeiros da seara santa, quão poucos, fracos sois! <br> Mas forte é Cristo, vosso Mestre, avante, avante, pois! <br> Os que esperam no Senhor renovar-se-ão! <br> Crescerão em vigor; subirão até às alturas! <br> Correrão e sem fadiga andarão, sem se cansar! <br> Correrão e sem fadiga andarão, sem se cansar! <br> Voarão e, nas alturas, como águias serão!",
+      "1": "Ceifeiros da seara santa, quão poucos, fracos sois! <br> Mas forte é Cristo, vosso Mestre, avante, avante, pois!",
       "2": "Cansados, tristes, sem alento, deixai-vos de chorar! <br> Se Onipotente é vosso Mestre, por que desanimar?",
       "3": "Jesus está conosco sempre, assim nos prometeu. <br> Coragem, pois, irmãos, avante, eis que ele já venceu!"
     }
   },
   "319": {
     "hino": "319 - Obreiros em Marcha",
-    "coro": "",
+    "coro": "Acordai! Acordai! Despertai! Despertai <br> E cantai! Sim, cantai: O Senhor não tardará! <br> Eis marchamos para aquele bom país, <br> Onde o crente, sim, é Cristo quem o diz, <br> Com o Salvador, vivendo ali feliz, <br> Vai com ele descansar.",
     "verses": {
-      "1": "Eis marchamos para aquele bom país, <br> Onde o crente, sim, é Cristo quem o diz, <br> Com o Salvador, vivendo ali feliz, <br> Vai com ele descansar. <br> Trabalhemos, pois, com zelo e com vigor, <br> Constrangidos pelo seu imenso amor; <br> Bem servindo em tudo ao grande Salvador, <br> Eis que a vida vai findar! <br> Acordai! Acordai! Despertai! Despertai <br> E cantai! Sim, cantai: O Senhor não tardará! <br> Eis marchamos para aquele bom país, <br> Onde o crente, sim, é Cristo quem o diz, <br> Com o Salvador, vivendo ali feliz, <br> Vai com ele descansar.",
+      "1": "Eis marchamos para aquele bom país, <br> Onde o crente, sim, é Cristo quem o diz, <br> Com o Salvador, vivendo ali feliz, <br> Vai com ele descansar. <br> Trabalhemos, pois, com zelo e com vigor, <br> Constrangidos pelo seu imenso amor; <br> Bem servindo em tudo ao grande Salvador, <br> Eis que a vida vai findar!",
       "2": "Eis conosco está o insigne Capitão <br> Que nos assegura eterna salvação! <br> Eis da santa fé o invicto pavilhão! <br> Vamos, vamos trabalhar! <br> Eis, avante! Nada temos que temer! <br> Por Jesus havemos sempre de vencer. <br> Trabalhemos, pois, até ao anoitecer <br> E o trabalho aqui findar.",
       "3": "Revestidos da paciência de Jesus, <br> Redimidos para andar aqui na luz, <br> Exaltemos juntos hoje à sua cruz, <br> Vamos, vamos trabalhar. <br> Os perdidos vamos com amor buscar! <br> Aos descrentes vamos logo declarar <br> Que Jesus quer, hoje, a todos resgatar! <br> Oh! Sim, vamos trabalhar!"
     }
   },
   "320": {
     "hino": "320 - Brilha no Viver",
-    "coro": "",
+    "coro": "Brilha no meio do teu viver, <br> Brilha no meio do teu viver! <br> Pois talvez algum aflito possas socorrer; <br> Brilha no meio do teu viver.",
     "verses": {
-      "1": "Não somente ao se fazer trabalho singular <br> É mister agir com muito ardor; <br> Mas as coisas mais humildes a executar, <br> Deves fazê-las com fervor. <br> Brilha no meio do teu viver, <br> Brilha no meio do teu viver! <br> Pois talvez algum aflito possas socorrer; <br> Brilha no meio do teu viver.",
+      "1": "Não somente ao se fazer trabalho singular <br> É mister agir com muito ardor; <br> Mas as coisas mais humildes a executar, <br> Deves fazê-las com fervor.",
       "2": "Oh! Talvez alguma vida possas confortar <br> Com palavras brandas, de amor <br> Ou, talvez, algumas almas tristes alcançar <br> Com a mensagem do Senhor.",
       "3": "Por maior que venha a ser o teu esforço aqui, <br> Por mais firme a tua devoção, <br> Quantas almas ‘inda jazem ao redor de ti, <br> Na mais total escuridão."
     }
@@ -3056,39 +3075,50 @@
   },
   "323": {
     "hino": "323 - Santa Peleja",
-    "coro": "",
+    "coro": "Vamos, vamos, leais companheiras, <br> Caminhando na luz do Senhor! <br> A divisa do nosso estandarte <br> Seja “fé, esperança e amor”! (bis)",
     "verses": {
-      "1": "Nesta arena da santa peleja, <br> No combate devemos entrar, <br> Batalhando com fé e coragem, <br> Pois a noite não tarda a chegar. <br> Vamos, vamos, leais companheiras, <br> Caminhando na luz do Senhor! <br> A divisa193 do nosso estandarte194 <br> Seja “fé, esperança e amor”! (bis)",
+      "1": "Nesta arena da santa peleja, <br> No combate devemos entrar, <br> Batalhando com fé e coragem, <br> Pois a noite não tarda a chegar.",
       "2": "Mas se o mundo coberto de trevas <br> Nos olhar com rigor ou desdém, <br> Prossigamos, ousadas, avante, <br> Espalhando as ideias do bem.",
       "3": "Pelejemos! A causa é sagrada! <br> Vamos todas com fé e oração <br> E, guiadas por Deus, Pai celeste, <br> Cumpriremos a nossa missão!"
     }
   },
   "324": {
     "hino": "324 - Unidas e Firmes",
-    "coro": "",
+    "coro": "Vamos todas, vamos todas, <br> Sempre unidas no Senhor! <br> Como esposas, mães ou filhas, <br> Trabalhemos com fervor!",
     "verses": {
-      "1": "Sempre unidas, companheiras, <br> Declaremos, por Jesus, <br> Guerra santa contra as trevas, <br> Pelejando junto à cruz! <br> Vamos todas, vamos todas, <br> Sempre unidas no Senhor! <br> Como esposas, mães ou filhas, <br> Trabalhemos com fervor!",
+      "1": "Sempre unidas, companheiras, <br> Declaremos, por Jesus, <br> Guerra santa contra as trevas, <br> Pelejando junto à cruz!",
       "2": "Somos fracas, bem sabemos, <br> Mas havemos de vencer <br> Se tivermos confiança, <br> Se cumprirmos o dever.",
       "3": "Sempre firmes na esperança, <br> Confiando no Senhor, <br> Imploremos sua graça <br> E busquemos seu amor!"
     }
   },
   "325": {
     "hino": "325 - Aspiração Feminina",
-    "coro": "",
+    "coro": "Nós, crentes redimidas, depomos nosso lar <br> E as nossas próprias vidas perante o teu altar.",
     "verses": {
-      "1": "A nós aqui reunidas, Senhor, envia luz. <br> São tuas nossas vidas, ganhaste-as sobre a cruz. <br> É vão qualquer trabalho sem tua aprovação! <br> O nosso esforço é falho se não nos dás a mão. <br> Nós, crentes redimidas, depomos nosso lar <br> E as nossas próprias vidas perante o teu altar.",
+      "1": "A nós aqui reunidas, Senhor, envia luz. <br> São tuas nossas vidas, ganhaste-as sobre a cruz. <br> É vão qualquer trabalho sem tua aprovação! <br> O nosso esforço é falho se não nos dás a mão.",
       "2": "Se a nossa fé se abala em face às tentações, <br> Levanta a voz e fala aos nossos corações. <br> A experiência viva do teu fiel amor <br> O nosso ardor ativa e inspira em nós fervor.",
       "3": "Esposas, mães piedosas, queremos ser, Senhor, <br> Fiéis e carinhosas, enchendo o lar de amor. <br> Que paz e harmonia dominem nosso lar <br> E em tua companhia possamos sempre andar.",
       "4": "Escola de piedade que eleva a Igreja a ti, <br> Seja esta sociedade ao teu serviço aqui. <br> E o mundo, despertado, contemplará em nós <br> Rebanho santo e amado, atento à tua voz. <br> Amém."
+    }
+  },
+  "325-A ": {
+    "hino": "325 - Jesus Cristo é o Senhor",
+    "coro": "Sim, Jesus Cristo é o Senhor! <br> Das nossas vidas ele é o Senhor! <br> Dos nossos lares ele é o Senhor! <br> E o nosso tempo é do Senhor!",
+    "verses": {
+      "1": "Todas unidas com santo ardor, <br> Almas remidas cheias de amor. <br> Nossa mensagem é de valor, <br> Pois Jesus Cristo é o Senhor!",
+      "2": "Vamos bem alto o seu nome erguer, <br> Nossos recursos oferecer, <br> Para que o mundo venha a saber <br> Que ele é o Senhor de todo ser!",
+      "3": "Nosso trabalho é para o Senhor, <br> Nossos talentos são do Senhor. <br> Vamos, unidas, pois, proclamar <br> Que ele é o Senhor do céu e mar!"
     }
   },
   "326": {
     "hino": "326 - Homens Presbiterianos",
     "coro": "",
     "verses": {
-      "1": "Fé <br> 1 Homens presbiterianos do Brasil, <br> Testemunhas de Jesus, o Salvador! <br> Levantemo-nos, com fé e mui vigor, <br> Com mensagem varonil! <br> O Senhor nos manda a todos proclamar <br> O valor do sangue que por nós verteu <br> Lá na cruz onde, bondoso, padeceu <br> Para a glória nos legar! <br> Sim, lutemos por Cristo Jesus, <br> Apontando aos descrentes ateus <br> O caminho repleto de luz, <br> Ó varões santos, filhos de Deus.",
-      "2": "Oração <br> 2 Homens presbiterianos do Brasil, <br> Na oração teremos perenal poder! <br> E faremos sempre a Bíblia resplender <br> Nesta Pátria senhoril! <br> Com Jesus, o nosso grande e bom país <br> Viverá em paz e, olhando o seu porvir, <br> Terá bênção copiosa a espargir,1 <br> E o Brasil será feliz! <br> Sim, lutemos por Cristo Jesus, <br> Apontando aos descrentes ateus <br> O caminho repleto de luz, <br> Ó varões santos, filhos de Deus.",
-      "3": "Trabalho <br> 3 Homens presbiterianos do Brasil <br> Que integramos vasta confederação, <br> Com valor e piedosa vocação <br> Trabalhemos, um por mil, <br> Na grandiosa obra de Jesus, Senhor, <br> Poderosa, forte, bela e triunfal, <br> Arvorando, com amor, pendão real, <br> Exaltando seu labor!"
+      "1": "Fé <br> Homens presbiterianos do Brasil, <br> Testemunhas de Jesus, o Salvador! <br> Levantemo-nos, com fé e mui vigor, <br> Com mensagem varonil! <br> O Senhor nos manda a todos proclamar <br> O valor do sangue que por nós verteu <br> Lá na cruz onde, bondoso, padeceu <br> Para a glória nos legar!",
+      "2": "[Coro] Sim, lutemos por Cristo Jesus, <br> Apontando aos descrentes ateus <br> O caminho repleto de luz, <br> Ó varões santos, filhos de Deus.",
+      "3": "Oração <br> Homens presbiterianos do Brasil, <br> Na oração teremos perenal poder! <br> E faremos sempre a Bíblia resplender <br> Nesta Pátria senhoril! <br> Com Jesus, o nosso grande e bom país <br> Viverá em paz e, olhando o seu porvir, <br> Terá bênção copiosa a espargir,1 <br> E o Brasil será feliz!",
+      "4": "[Coro] Sim, lutemos por Cristo Jesus, <br> Apontando aos descrentes ateus <br> O caminho repleto de luz, <br> Ó varões santos, filhos de Deus.",
+      "5": "Trabalho <br> Homens presbiterianos do Brasil <br> Que integramos vasta confederação, <br> Com valor e piedosa vocação <br> Trabalhemos, um por mil, <br> Na grandiosa obra de Jesus, Senhor, <br> Poderosa, forte, bela e triunfal, <br> Arvorando, com amor, pendão real, <br> Exaltando seu labor!"
     }
   },
   "327": {
@@ -3163,9 +3193,9 @@
   },
   "334": {
     "hino": "334 - A Conversão",
-    "coro": "",
+    "coro": "Foi na cruz, foi na cruz que um dia eu vi <br> Meu pecado castigado em Jesus! <br> Foi ali, pela fé, que meus olhos abri <br> E agora me alegro em sua luz!",
     "verses": {
-      "1": "Em cegueira eu andei e perdido vaguei <br> Longe, longe do meu Salvador! <br> Mas da glória desceu, o seu sangue verteu <br> E salvou este pobre pecador. <br> Foi na cruz, foi na cruz que um dia eu vi <br> Meu pecado castigado em Jesus! <br> Foi ali, pela fé, que meus olhos abri <br> E agora me alegro em sua luz!",
+      "1": "Em cegueira eu andei e perdido vaguei <br> Longe, longe do meu Salvador! <br> Mas da glória desceu, o seu sangue verteu <br> E salvou este pobre pecador.",
       "2": "Já ouvia falar dessa graça sem-par, <br> Que do céu trouxe Cristo Jesus! <br> Mas eu surdo me fiz, converter-me não quis <br> Ao Senhor que por mim morreu na cruz.",
       "3": "Mas um dia senti meu pecado e vi <br> Sobre mim o castigo da lei! <br> Apressado fugi, em Jesus me escondi <br> E abrigo seguro nele achei.",
       "4": "Que ditoso, então, foi ao meu coração, <br> Conhecer o excelso amor <br> Que levou meu Jesus a sofrer lá na cruz <br> E salvar este pobre pecador."
@@ -3173,18 +3203,18 @@
   },
   "335": {
     "hino": "335 - Júbilo no Céu",
-    "coro": "",
+    "coro": "Glória! Glória! Os anjos cantam lá! <br> Glória! Glória! As harpas tocam já! <br> É o santo coro dando glória a Deus <br> Por mais um remido entrar nos céus!",
     "verses": {
-      "1": "Oh! Que belos hinos cantam lá no céu, <br> Pois do mundo o filho mau voltou! <br> Vede o Pai celeste prestes a abraçar <br> Esse filho que ele tanto amou! <br> Glória! Glória! Os anjos cantam lá! <br> Glória! Glória! As harpas tocam já! <br> É o santo coro dando glória a Deus <br> Por mais um remido entrar nos céus!",
+      "1": "Oh! Que belos hinos cantam lá no céu, <br> Pois do mundo o filho mau voltou! <br> Vede o Pai celeste prestes a abraçar <br> Esse filho que ele tanto amou!",
       "2": "Oh! Que belos hinos cantam lá no céu! <br> É que já se reconciliou <br> A rebelde alma que, rendida a Deus, <br> Renascida, para lá voltou!",
       "3": "Este arrependido vamos festejar, <br> Como os anjos fazem com fervor. <br> E anunciemos, com real prazer, <br> Que se resgatou um pecador."
     }
   },
   "336": {
     "hino": "336 - Transformação",
-    "coro": "",
+    "coro": "Cristo me amou e me livrou! <br> O seu imenso amor me transformou! <br> Foi seu poder, o seu querer! <br> Sim, Cristo, o Salvador, me transformou!",
     "verses": {
-      "1": "Eu, perdido pecador, longe do meu Jesus <br> Me encontrava, sem vigor, a perecer sem luz. <br> Meu estado Cristo viu, dando-me sua mão, <br> E salvar-me conseguiu da perdição. <br> Cristo me amou e me livrou! <br> O seu imenso amor me transformou! <br> Foi seu poder, o seu querer! <br> Sim, Cristo, o Salvador, me transformou!",
+      "1": "Eu, perdido pecador, longe do meu Jesus <br> Me encontrava, sem vigor, a perecer sem luz. <br> Meu estado Cristo viu, dando-me sua mão, <br> E salvar-me conseguiu da perdição.",
       "2": "Minha vida, todo o ser, quero lhe consagrar! <br> Ao seu lado vou viver, o seu amor cantar. <br> A mensagem transmitir aos que perdidos são! <br> Venham todos já fruir a salvação!"
     }
   },
@@ -3209,9 +3239,9 @@
   },
   "339": {
     "hino": "339 - Dia Feliz",
-    "coro": "",
+    "coro": "Oh! Feliz, bem feliz o dia em que me converti! <br> Jesus me ensina a vigiar e, confiado nele, a orar! <br> Oh! Feliz, bem feliz o dia em que me converti!",
     "verses": {
-      "1": "Oh! Dia alegre em que aceitei <br> Jesus e nele a salvação! <br> O amor de Cristo e seu perdão <br> eu mais e mais publicarei. <br> Oh! Feliz, bem feliz o dia em que me converti!201 <br> Jesus me ensina a vigiar e, confiado nele, a orar! <br> Oh! Feliz, bem feliz o dia em que me converti!",
+      "1": "Oh! Dia alegre em que aceitei <br> Jesus e nele a salvação! <br> O amor de Cristo e seu perdão <br> eu mais e mais publicarei.",
       "2": "Completa a grande expiação, <br> pertenço agora ao meu Senhor! <br> Chamou-me a voz do seu amor <br> e nele achei real perdão!",
       "3": "Meu sacro voto, ó Salvador, <br> de dia em dia afirmarei! <br> E além da morte exultarei <br> louvando sempre a ti, Senhor."
     }
@@ -3326,9 +3356,9 @@
   },
   "351": {
     "hino": "351 - Belas Palavras de Vida",
-    "coro": "",
+    "coro": "Que alegres são! Que alegres são! <br> Essas palavras de vida! <br> Que alegres são! Que alegres são! <br> Essas palavras de vida!",
     "verses": {
-      "1": "Quero ouvi-las mais outra vez, belas palavras de vida! <br> Narram tudo o que Cristo fez, belas palavras de vida! <br> Elas vêm de cima, seu poder anima. <br> Que alegres são! Que alegres são! <br> Essas palavras de vida! <br> Que alegres são! Que alegres são! <br> Essas palavras de vida!",
+      "1": "Quero ouvi-las mais outra vez, belas palavras de vida! <br> Narram tudo o que Cristo fez, belas palavras de vida! <br> Elas vêm de cima, seu poder anima.",
       "2": "Só Jesus Cristo a todos dá belas palavras de vida! <br> Sem Jesus salvação não há; belas palavras de vida! <br> Com amor conclama, para o céu te chama.",
       "3": "Só Jesus Cristo é Salvador! Belas palavras de vida! <br> Quer salvar todo pecador! Belas palavras de vida! <br> Ele vivifica e nos purifica."
     }
@@ -3352,12 +3382,21 @@
   },
   "354": {
     "hino": "354 - A Escola Dominical",
-    "coro": "",
+    "coro": "À Escola, pois, Dominical, irmãos, <br> Receber celeste luz! <br> O santo Livro, aberto em nossas mãos, <br> Aprendamos de Jesus.",
     "verses": {
-      "1": "Dominical é a grande e antiga escola <br> Em que se estuda o Livro do Senhor; <br> A vida aqui se exalta, se acrisola <br> E alcança em Cristo seu real valor. (bis) <br> À Escola, pois, Dominical, irmãos, <br> Receber celeste luz! <br> O santo Livro, aberto em nossas mãos, <br> Aprendamos de Jesus.",
+      "1": "Dominical é a grande e antiga escola <br> Em que se estuda o Livro do Senhor; <br> A vida aqui se exalta, se acrisola <br> E alcança em Cristo seu real valor. (bis)",
       "2": "De grandes vultos e eras memoráveis <br> Lições sublimes vimos aprender! <br> Lições inscritas n’alma, inapagáveis, <br> Que moldam nossas vidas com poder. (bis)",
       "3": "O Mestre insigne está presente — Cristo —, <br> Que luz e vida à vida plena traz. <br> O seu ensino igual jamais foi visto! <br> Tesouros mostra, de alegria e paz. (bis)",
       "4": "Universal, bendita escola é esta, <br> Que os seus alunos conta por milhões; <br> Na qual o estudo é verdadeira festa, <br> Que empolga crianças, jovens e anciões! (bis)"
+    }
+  },
+  "354-A": {
+    "hino": "354 - A Escola Dominical",
+    "coro": "Trabalhemos pela escola, <br> Estudando com amor <br> E pregando Jesus Cristo, <br> Nosso Mestre e Salvador.",
+    "verses": {
+      "1": "Vamos todos à Escola Sagrada <br> A Palavra de Deus aprender. <br> A verdade dos céus revelada <br> Dá-nos luz, dá-nos vida e poder!",
+      "2": "Vamos todos, crianças e adultos, <br> Palmilhando o caminho da cruz. <br> Estudar a grandeza dos vultos, <br> Entre os quais predomina Jesus.",
+      "3": "Propaguemos com fé, corajosos, <br> Desta escola o sublime ideal. <br> E veremos um dia, ditosos, <br> A vitória do bem sobre o mal."
     }
   },
   "355": {
@@ -3379,9 +3418,9 @@
   },
   "357": {
     "hino": "357 - Louvor Infantil",
-    "coro": "",
+    "coro": "Ouve! Ouve! Ouve! Os meninos dão louvor! <br> Ouve! Ouve! Ouve! Os meninos dão louvor! <br> Aleluia! Aleluia! Aleluia ao Salvador!",
     "verses": {
-      "1": "Filhos de Jerusalém davam a Jesus louvor! <br> Cantaremos nós, também, seu excelso e doce amor! <br> Ouve! Ouve! Ouve! Os meninos dão louvor! <br> Ouve! Ouve! Ouve! Os meninos dão louvor! <br> Aleluia! Aleluia! Aleluia ao Salvador!",
+      "1": "Filhos de Jerusalém davam a Jesus louvor! <br> Cantaremos nós, também, seu excelso e doce amor!",
       "2": "Graças ao divino Rei que no mundo quis viver! <br> Graças pela santa lei que declara o seu querer!",
       "3": "Grande é o nosso Salvador, toda a dívida pagou! <br> Pela morte, o Bom Pastor seu rebanho resgatou."
     }
@@ -3390,17 +3429,17 @@
     "hino": "358 - Jesus e as Crianças",
     "coro": "",
     "verses": {
-      "1": "Congregação: <br> 1 A Jesus crianças vinham <br> Sua bênção suplicar. <br> Vós, que agora sois crianças, <br> Vinde a ele, pois, louvar.",
+      "1": "Congregação: <br> A Jesus crianças vinham <br> Sua bênção suplicar. <br> Vós, que agora sois crianças, <br> Vinde a ele, pois, louvar.",
       "2": "Se crianças de outro tempo <br> Aceitou com terno amor, <br> Hoje a todas as crianças <br> Salva, ainda, com favor.",
-      "3": "Crianças: <br> 3 Meus pecados, no calvário, <br> Sobre a cruz Jesus pagou! <br> A maior das maravilhas <br> É que Cristo me amou.",
+      "3": "Crianças: <br> Meus pecados, no calvário, <br> Sobre a cruz Jesus pagou! <br> A maior das maravilhas <br> É que Cristo me amou.",
       "4": "Minhas mãos, tão pequeninas, <br> Se ergam sempre em teu louvor, <br> Ó Jesus, Senhor bendito, <br> Por salvar-nos com amor! <br> Amém."
     }
   },
   "359": {
     "hino": "359 - Jesus Me Quer Bem",
-    "coro": "",
+    "coro": "Sei que me quer bem, quer ver-me feliz. <br> Sei que me quer bem, a Bíblia assim o diz.",
     "verses": {
-      "1": "Sei que Cristo me quer bem, pois a Bíblia assim o diz. <br> Frágil sou, mas força tem; quer levar-me ao bom país. <br> Sei que me quer bem, quer ver-me feliz. <br> Sei que me quer bem, a Bíblia assim o diz.",
+      "1": "Sei que Cristo me quer bem, pois a Bíblia assim o diz. <br> Frágil sou, mas força tem; quer levar-me ao bom país.",
       "2": "Tudo fez Jesus por mim, só por ele vou viver. <br> E porque me quer assim, hei de amá-lo até morrer!"
     }
   },
@@ -3425,9 +3464,9 @@
   },
   "362": {
     "hino": "362 - Brilhando por Jesus",
-    "coro": "",
+    "coro": "Brilhando, brilhando, <br> Brilhando qual doce luz! <br> Brilhando, brilhando, <br> Brilhando por meu Jesus!",
     "verses": {
-      "1": "Vejo no céu, esplendente, do sol a clara luz! <br> Quero viver tão-somente brilhando por Jesus. <br> Brilhando, brilhando, <br> Brilhando qual doce luz! <br> Brilhando, brilhando, <br> Brilhando por meu Jesus!",
+      "1": "Vejo no céu, esplendente, do sol a clara luz! <br> Quero viver tão-somente brilhando por Jesus.",
       "2": "Quero na vida exaltá-lo na escola e no estudar. <br> Quero também imitá-lo em casa e no brincar.",
       "3": "Amável com toda gente, assim me quer Jesus! <br> De rosto alegre e contente brilhando como a luz.",
       "4": "O feio e triste pecado ajuda-me a vencer! <br> Tendo Jesus ao meu lado, eu quero aqui viver."
@@ -3462,18 +3501,18 @@
   },
   "366": {
     "hino": "366 - Joias Preciosas",
-    "coro": "",
+    "coro": "Como a bela estrela da alva desejo brilhar! <br> Com Jesus, na sua glória, também quero estar!",
     "verses": {
-      "1": "Quando, ó Cristo, aqui vieres as jóias buscar, <br> Entre as jóias, ricas jóias, também quero estar. <br> Como a bela estrela da alva desejo brilhar! <br> Com Jesus, na sua glória, também quero estar!",
+      "1": "Quando, ó Cristo, aqui vieres as jóias buscar, <br> Entre as jóias, ricas jóias, também quero estar.",
       "2": "Vem olhá-las, vem guardá-las com amor, ó Senhor! <br> Todas ricas, todas lindas e em pleno fulgor!",
       "3": "Criancinhas, criancinhas que amais a Jesus, <br> Sois as jóias, ricas jóias compradas na cruz."
     }
   },
   "367": {
     "hino": "367 - Convite aos Meninos",
-    "coro": "",
+    "coro": "Que alegria, sem pecado ou mal, <br> Reunir-nos todos, afinal, <br> Na santa pátria celestial, <br> Com Cristo, o Salvador!",
     "verses": {
-      "1": "Vinde meninos! Vinde a Jesus! <br> Ele ganhou-vos bênçãos na cruz! <br> Os pequeninos ele conduz, <br> Oh! Vinde ao Salvador! <br> Que alegria, sem pecado ou mal, <br> Reunir-nos todos, afinal, <br> Na santa pátria celestial, <br> Com Cristo, o Salvador!",
+      "1": "Vinde meninos! Vinde a Jesus! <br> Ele ganhou-vos bênçãos na cruz! <br> Os pequeninos ele conduz, <br> Oh! Vinde ao Salvador!",
       "2": "Já, sem demora, a todos convém <br> Ir caminhando à glória do além! <br> Cristo vos chama, quer vosso bem, <br> Oh! Vinde ao Salvador!",
       "3": "“Vinde meninos!” — ele vos diz; <br> Quer receber-vos no bom país; <br> Quer conceder-vos vida feliz. <br> Oh! Vinde ao Salvador!",
       "4": "Eis a chamada: “Vinde hoje a mim!” <br> Não há no mundo quem ame assim! <br> Seu grande amor por vós não tem fim. <br> Oh! Vinde ao Salvador!"
@@ -3481,18 +3520,18 @@
   },
   "368": {
     "hino": "368 - Despedida",
-    "coro": "",
+    "coro": "Pelo seu poder e no seu amor, <br> Estaremos todos com Jesus! <br> Pelo seu poder e no seu amor, <br> Oh! Que Deus vos guarde em sua luz!",
     "verses": {
-      "1": "Deus vos guarde pelo seu poder, <br> Permaneça ao vosso lado, <br> Vos dispense o seu cuidado, <br> Deus vos guarde pelo seu poder! <br> Pelo seu poder e no seu amor, <br> Estaremos todos com Jesus! <br> Pelo seu poder e no seu amor, <br> Oh! Que Deus vos guarde em sua luz!",
+      "1": "Deus vos guarde pelo seu poder, <br> Permaneça ao vosso lado, <br> Vos dispense o seu cuidado, <br> Deus vos guarde pelo seu poder!",
       "2": "Deus vos guarde para o seu louvor, <br> Consolados e contentes, <br> Achegados sempre aos crentes, <br> Deus vos guarde para o seu louvor!",
       "3": "Deus vos guarde bem no seu amor. <br> No trabalho glorioso, <br> Para o dia venturoso, <br> Deus vos guarde bem no seu amor!"
     }
   },
   "369": {
     "hino": "369 - A Bíblia para Todos",
-    "coro": "",
+    "coro": "Anunciai a Bíblia aos povos, <br> Ela é vida e luz! <br> Seus ensinos, sempre novos, <br> Falam de Jesus!",
     "verses": {
-      "1": "Eis a Bíblia, a Palavra que de Deus provém! <br> Quem com ela vive e lavra, vive para o bem! <br> Anunciai a Bíblia aos povos, <br> Ela é vida e luz! <br> Seus ensinos, sempre novos, <br> Falam de Jesus!",
+      "1": "Eis a Bíblia, a Palavra que de Deus provém! <br> Quem com ela vive e lavra, vive para o bem!",
       "2": "Dessa Bíblia, a semente ide semear <br> Anunciando a toda gente que Deus quer salvar!",
       "3": "Mocidade, homens, velhos, ponde-vos de pé <br> E as lições dos evangelhos propagai com fé!"
     }
@@ -3518,18 +3557,18 @@
   },
   "372": {
     "hino": "372 - O Crente e a Bíblia",
-    "coro": "",
+    "coro": "Não abandono a Bíblia, <br> Pois é a voz de Deus! <br> Dos crentes o tesouro, <br> Seu guia para os Céus.",
     "verses": {
-      "1": "Não abandono a Bíblia, pois é a voz de Deus; <br> Dos crentes o tesouro, seu guia para os céus. <br> É luz divina, intensa, nas trevas a brilhar! <br> É a voz do Pai celeste que a todos vem chamar. <br> Não abandono a Bíblia, <br> Pois é a voz de Deus! <br> Dos crentes o tesouro, <br> Seu guia para os Céus.",
+      "1": "Não abandono a Bíblia, pois é a voz de Deus; <br> Dos crentes o tesouro, seu guia para os céus. <br> É luz divina, intensa, nas trevas a brilhar! <br> É a voz do Pai celeste que a todos vem chamar.",
       "2": "Não abandono a Bíblia, o Livro que me diz <br> Que salvo estou em Cristo, o que me faz feliz! <br> E tenho, pois, certeza de lá no céu entrar, <br> Pois ele, com seu sangue, me quis purificar.",
       "3": "“Não abandono a Bíblia”, — eu sempre afirmarei. <br> Quem dera ser ouvido por toda a ímpia grei! <br> Que saiba todo o mundo, que a cristandade tem <br> A fé robusta e pura que pela Bíblia vem."
     }
   },
   "373": {
     "hino": "373 - Ano Novo",
-    "coro": "",
+    "coro": "Ano findo nunca mais veremos! <br> Ano Novo hoje recebemos! <br> Vê, vê o belo dom que Deus nos dá!",
     "verses": {
-      "1": "Rompe a aurora! Vai-se embora mais um ano e outro vem! <br> Não temamos: Prossigamos, caminhando em todo o bem. <br> Ano findo nunca mais veremos! <br> Ano Novo hoje recebemos! <br> Vê, vê o belo dom que Deus nos dá!",
+      "1": "Rompe a aurora! Vai-se embora mais um ano e outro vem! <br> Não temamos: Prossigamos, caminhando em todo o bem.",
       "2": "Raia o dia! Que alegria! Novo ano eis a surgir! <br> Bem guiados e amparados, Cristo vai nos conduzir.",
       "3": "Os talentos, nos momentos deste ano a começar, <br> Consagremos e usemos para a Deus glorificar."
     }
@@ -3568,9 +3607,9 @@
   },
   "377": {
     "hino": "377 - A Nação para Cristo",
-    "coro": "",
+    "coro": "Eia, crentes, com santa ousadia, <br> Com nobreza e real vocação, <br> Vamos todos cantar a harmonia <br> Do evangelho de amor e perdão, <br> Exaltando esse amor tão profundo <br> Que dá vida imortal e feliz. <br> Para Cristo, a esperança do mundo, <br> Conquistemos o nosso país.",
     "verses": {
-      "1": "Uma voz, nos primórdios da História, <br> Fez-se ouvir com solene vigor, <br> Proclamando a estupenda vitória <br> Sobre a morte, o pecado e a dor! <br> Foi Jesus, com palavras candentes <br> Do seu verbo divino e veraz, <br> Ordenando que a todas as gentes <br> Se pregasse o evangelho da paz. <br> Eia, crentes, com santa ousadia, <br> Com nobreza e real vocação, <br> Vamos todos cantar a harmonia <br> Do evangelho de amor e perdão, <br> Exaltando esse amor tão profundo <br> Que dá vida imortal e feliz. <br> Para Cristo, a esperança do mundo, <br> Conquistemos o nosso país.",
+      "1": "Uma voz, nos primórdios da História, <br> Fez-se ouvir com solene vigor, <br> Proclamando a estupenda vitória <br> Sobre a morte, o pecado e a dor! <br> Foi Jesus, com palavras candentes <br> Do seu verbo divino e veraz, <br> Ordenando que a todas as gentes <br> Se pregasse o evangelho da paz.",
       "2": "Gloriosa missão nos foi dada <br> De ganhar para Cristo os incréus! <br> Como é nobre esta grande cruzada <br> De elevar a nação para os céus! <br> Há, no entanto, uma força incontida <br> Que preside este afã singular: <br> É o amor que votamos à vida <br> Dos perdidos que Deus quer salvar.",
       "3": "“A Nação para Cristo” — eis o lema, <br> O anelo sublime e imortal, <br> A divisa bendita e suprema, <br> Expressão do mais alto ideal! <br> Vamos, pois, incessantes na lida, <br> Em socorro dos nossos irmãos, <br> Transformar nossa pátria querida <br> Num reinado feliz de cristãos!"
     }
@@ -3587,9 +3626,9 @@
   },
   "379": {
     "hino": "379 - Petição pela Pátria",
-    "coro": "",
+    "coro": "Salve Deus a minha pátria, minha pátria varonil! <br> Salve Deus a minha terra, esta terra do Brasil.",
     "verses": {
-      "1": "Minha pátria para Cristo; eis a minha petição. <br> Minha pátria tão querida, eu te dei meu coração. <br> Lar prezado, lar formoso, é por ti o meu amor; <br> Que meu Deus de excelsa graça te conceda seu favor. <br> Salve Deus a minha pátria, minha pátria varonil! <br> Salve Deus a minha terra, esta terra do Brasil.",
+      "1": "Minha pátria para Cristo; eis a minha petição. <br> Minha pátria tão querida, eu te dei meu coração. <br> Lar prezado, lar formoso, é por ti o meu amor; <br> Que meu Deus de excelsa graça te conceda seu favor.",
       "2": "Quero, pois, com alegria, ver feliz a mãe gentil, <br> Por vencer o evangelho nesta terra do Brasil. <br> Brava gente brasileira, longe vá temor servil: <br> Ou ficar a pátria salva, ou morrer pelo Brasil."
     }
   },
@@ -3618,25 +3657,25 @@
     "coro": "",
     "verses": {
       "1": "Somos jovens num mundo velho <br> A pregar novos ideais <br> Do mesmo evangelho <br> Que pregaram nossos pais. <br> O mundo muda, mas Cristo não! <br> Importa que preguemos a salvação!",
-      "2": "Rapazes: <br> Mocidade presbiteriana, <br> Somos testemunhas de Jesus! <br> Temos que dizer ao nosso mundo <br> Que a solução está na cruz!",
-      "3": "Moças: <br> Mocidade, testemunhas de Jesus. <br> Sim, a solução de tudo está na cruz!",
+      "2": "{Mocidade presbiteriana, <br> Somos testemunhas de Jesus! <br> Temos que dizer ao nosso mundo <br> Que a solução está na cruz!}",
+      "3": "[Mocidade, testemunhas de Jesus. <br> Sim, a solução de tudo está na cruz!]",
       "4": "Nossas mãos estarão unidas, <br> Combatendo a escravidão <br> De preciosas vidas <br> Sem Jesus, sem direção. <br> Não temeremos o tentador! <br> Clamemos pelo sangue libertador!",
       "5": "Juventude cristã, avante! <br> Empunhando o pendão real, <br> Com fé no comandante, <br> Venceremos todo o mal! <br> “Sê testemunha” — disse o Senhor. <br> Falemos sempre de Jesus, sem temor!"
     }
   },
   "383": {
     "hino": "383 - Um Novo Mundo",
-    "coro": "",
+    "coro": "Levantemos sobre a terra nossos braços libertados, <br> Ao serviço convocados por Jesus; <br> Pelos que são oprimidos, pelos que são perseguidos! <br> Eia! Que nós venceremos no poder da cruz!",
     "verses": {
-      "1": "Jovens fortes, chama-nos Jesus, <br> Para um mundo novo construir. <br> Trevas, que hoje tentam destruir, <br> Hão de ser clara luz, alvo resplendor! <br> Levantemos sobre a terra nossos braços libertados, <br> Ao serviço convocados por Jesus; <br> Pelos que são oprimidos, pelos que são perseguidos! <br> Eia! Que nós venceremos no poder da cruz!",
+      "1": "Jovens fortes, chama-nos Jesus, <br> Para um mundo novo construir. <br> Trevas, que hoje tentam destruir, <br> Hão de ser clara luz, alvo resplendor!",
       "2": "Ao combate, enquanto não soou <br> O momento em que há de raiar <br> Novo mundo, com Jesus, Senhor, <br> Onde a paz e o amor sempre irão reinar."
     }
   },
   "384": {
     "hino": "384 - Vamos com Jesus",
-    "coro": "",
+    "coro": "Vamos com Jesus e marchemos sem temor; <br> Vamos ao combate inflamados de valor! <br> Ânimo, lutemos todos contra o mal: <br> É Jesus o nosso grande general!",
     "verses": {
-      "1": "Ó jovens, atendei! Oh! Que lindo pavilhão <br> Cristo há desfraldado já sobre a nação. <br> E quer-vos nas fileiras a todos receber <br> E levar-vos, sem demora, para combater. <br> Vamos com Jesus e marchemos sem temor; <br> Vamos ao combate inflamados de valor! <br> Ânimo, lutemos todos contra o mal: <br> É Jesus o nosso grande general!",
+      "1": "Ó jovens, atendei! Oh! Que lindo pavilhão <br> Cristo há desfraldado já sobre a nação. <br> E quer-vos nas fileiras a todos receber <br> E levar-vos, sem demora, para combater.",
       "2": "Ó jovens, avançai! O divino vencedor <br> Quer juntar-vos todos hoje ao seu redor. <br> Dispostos à batalha, saí sem vacilar! <br> Vamos todos, companheiros, vamos a lutar!",
       "3": "As armas invencíveis do chefe guiador <br> São seu evangelho e seu grande amor. <br> Com elas revestidos e cheios de poder, <br> Companheiros, com coragem, vamos a vencer!",
       "4": "Quem entra nessa guerra, com Deus sempre andará <br> E o Senhor vitória lhe concederá! <br> Sim, vamos, companheiros, pois, sendo aqui fiéis, <br> Com Jesus conquistaremos imortais lauréis!"
@@ -3663,36 +3702,36 @@
   },
   "387": {
     "hino": "387 - Combate",
-    "coro": "",
+    "coro": "Todos juntos ao redor da cruz, <br> Prontos, firmes estejamos nós! <br> Sim, avante, alegres, corajosos, <br> Sempre ouvindo de Jesus a voz.",
     "verses": {
-      "1": "Moços, declarai guerra contra o mal, <br> Exaltai a cruz do Salvador! <br> Firmes empunhai armas não carnais, <br> Sempre confiai em seu amor! <br> Todos juntos ao redor da cruz, <br> Prontos, firmes estejamos nós! <br> Sim, avante, alegres, corajosos, <br> Sempre ouvindo de Jesus a voz.",
+      "1": "Moços, declarai guerra contra o mal, <br> Exaltai a cruz do Salvador! <br> Firmes empunhai armas não carnais, <br> Sempre confiai em seu amor!",
       "2": "Moços, avançai! Fortes vos tornais, <br> Se o valor da causa conheceis. <br> Tremulante em luz, erguei o pendão, <br> Garantia de que vencereis!",
       "3": "Nosso Deus e Pai, ouve com favor! <br> Vem nos ajudar a combater! <br> E vencida, enfim, a luta final, <br> A coroa vem nos conceder."
     }
   },
   "388": {
     "hino": "388 - Mocidade, Avante!",
-    "coro": "",
+    "coro": "Mocidade cristã, eia, avante! <br> Contra o mal, contra o erro lutai! <br> Tendo o santo evangelho por arma, <br> A verdade da cruz proclamai!",
     "verses": {
-      "1": "Mocidade cristã, eia, avante! <br> Reuni vossas forças: lutai! <br> O inimigo potente se mostra, <br> Mas com Cristo sois fortes: marchai! <br> Mocidade cristã, eia, avante! <br> Contra o mal, contra o erro lutai! <br> Tendo o santo evangelho por arma, <br> A verdade da cruz proclamai!",
+      "1": "Mocidade cristã, eia, avante! <br> Reuni vossas forças: lutai! <br> O inimigo potente se mostra, <br> Mas com Cristo sois fortes: marchai!",
       "2": "Mocidade cristã, vede o abismo <br> Onde muitos estão a cair <br> Por faltar-lhes a luz do evangelho <br> E não virem a Cristo seguir.",
       "3": "Eia, pois, mocidade pujante, <br> Por Jesus, pela fé, avançai! <br> Ide aos povos levar o evangelho! <br> Para a glória de Deus trabalhai!"
     }
   },
   "389": {
     "hino": "389 - Avante, Mocidade!",
-    "coro": "",
+    "coro": "Por Jesus, com zelo santo, <br> Vinde, ó jovens, combater! <br> A mensagem do evangelho <br> Proclamai até morrer!",
     "verses": {
-      "1": "Eia, avante, mocidade, vamos por Jesus lutar! <br> A peleja é gloriosa, Deus nos há de auxiliar. <br> Eia, avante, companheiros, de olhos postos em Jesus! <br> Caminhemos destemidos, espalhando sempre a luz. <br> Por Jesus, com zelo santo, <br> Vinde, ó jovens, combater! <br> A mensagem do evangelho <br> Proclamai até morrer!",
+      "1": "Eia, avante, mocidade, vamos por Jesus lutar! <br> A peleja é gloriosa, Deus nos há de auxiliar. <br> Eia, avante, companheiros, de olhos postos em Jesus! <br> Caminhemos destemidos, espalhando sempre a luz.",
       "2": "Eia, avante, mocidade! Nunca, nunca recuar! <br> No caminho reto e santo, eia, jovens, avançar! <br> Eia, avante, companheiros! Soem tais como um clarim <br> As palavras do convite: “Vinde todos, vinde a mim!”",
       "3": "Eia, avante, mocidade, confiando no Senhor! <br> Onde há fé ninguém vacila, pois há vida, luz, vigor! <br> Eia, avante, companheiros, vamos firmes batalhar. <br> Sempre alegres na esperança, sempre unidos trabalhar."
     }
   },
   "390": {
     "hino": "390 - Fiéis Soldados",
-    "coro": "",
+    "coro": "Às armas, pois, e com valor, <br> Fiéis soldados do Senhor, <br> Fiéis soldados do Senhor! <br> Às armas, pois, e com valor!",
     "verses": {
-      "1": "De novo a combater por ti, Jesus, chamados <br> Fiéis e bons soldados, agora eis-nos aqui, <br> Unidos no dever de pelejar por ti. <br> Às armas, pois, e com valor, <br> Fiéis soldados do Senhor, <br> Fiéis soldados do Senhor! <br> Às armas, pois, e com valor!",
+      "1": "De novo a combater por ti, Jesus, chamados <br> Fiéis e bons soldados, agora eis-nos aqui, <br> Unidos no dever de pelejar por ti.",
       "2": "Encher-nos vem de amor, de fé e de ousadia, <br> Poder, sabedoria, valor, resolução! <br> Que andemos, ó Senhor, em fraternal união.",
       "3": "Da cruz do Salvador ergamos o estandarte! <br> Aqui, em toda parte, lutemos pela cruz! <br> Oremos com fervor! Sirvamos a Jesus!",
       "4": "Lutar, orar, servir, que certa é a vitória <br> E após a luta, a glória de lá nos céus estar! <br> Lutar, orar, servir, e com Jesus reinar!"
@@ -3700,18 +3739,18 @@
   },
   "391": {
     "hino": "391 - Mocidade Fiel",
-    "coro": "",
+    "coro": "Mocidade! Mocidade! Escutai o convite do Rei! <br> Ele é a Vida, o Caminho, a Verdade! Mocidade! <br> Mocidade valente, atendei!",
     "verses": {
-      "1": "Mocidade fiel, redimida, <br> Mocidade que Cristo salvou, <br> Inflamada de amor, vossa vida <br> Consagrai a quem vos libertou! (bis) <br> Mocidade! Mocidade! Escutai o convite do Rei! <br> Ele é a Vida, o Caminho, a Verdade! Mocidade! <br> Mocidade valente, atendei!",
+      "1": "Mocidade fiel, redimida, <br> Mocidade que Cristo salvou, <br> Inflamada de amor, vossa vida <br> Consagrai a quem vos libertou! (bis)",
       "2": "Aos que vivem na sombra da morte, <br> Na miséria, doença e aflição, <br> Proclamai bem vibrante, bem forte, <br> Proclamai em Jesus salvação! (bis)",
       "3": "Eis a luta! Marchando altaneira, <br> Tendo o peito escudado na fé, <br> Por Jesus, pela sua bandeira, <br> Mocidade valente, de pé! (bis)"
     }
   },
   "392": {
     "hino": "392 - Vida Vitoriosa",
-    "coro": "",
+    "coro": "Cristo, Mestre, sei que contigo sou vencedor! <br> Dá-me graça, dá-me do teu poder, Redentor!",
     "verses": {
-      "1": "Cristo amado, sei que na força do mal, <br> Tu, meu Mestre, sempre serás protetor. <br> Tu me guardas, dando-me paz divinal! <br> Eu contigo sempre serei vencedor! <br> Cristo, Mestre, sei que contigo sou vencedor! <br> Dá-me graça, dá-me do teu poder, Redentor!",
+      "1": "Cristo amado, sei que na força do mal, <br> Tu, meu Mestre, sempre serás protetor. <br> Tu me guardas, dando-me paz divinal! <br> Eu contigo sempre serei vencedor!",
       "2": "Que alegria tenho no meu Salvador; <br> Tenho graça, vida de amor paternal! <br> Tudo posso, tudo por ti, meu Senhor; <br> Deste mundo sou vencedor, afinal!",
       "3": "Não duvido, Cristo, meu Mestre, de ti; <br> Creio em tua rica promessa, Jesus! <br> Tu não deixas, nem abandonas aqui <br> Os que buscam ver tua face de luz.",
       "4": "Oh! Que bênção ter a certeza do bem, <br> Ter na vida paz e perdão do Senhor! <br> Mui alegre vou para a pátria de além, <br> Onde reina Cristo Jesus, Rei de amor!"
@@ -3719,9 +3758,9 @@
   },
   "393": {
     "hino": "393 - União Vital",
-    "coro": "",
+    "coro": "Abençoa, Senhor, esta santa união! <br> Dando graça e favor, faze-a prosperar <br> Na alegria, na fé, na consagração; <br> E este amor verdadeiro vem confirmar.",
     "verses": {
-      "1": "Duas vidas, Senhor, se unem num só ser; <br> Duas almas e dois nobres corações. <br> Pelo amor e afeição querem já viver <br> Sempre juntos na paz ou nas aflições. <br> Abençoa, Senhor, esta santa união! <br> Dando graça e favor, faze-a prosperar <br> Na alegria, na fé, na consagração; <br> E este amor verdadeiro vem confirmar.",
+      "1": "Duas vidas, Senhor, se unem num só ser; <br> Duas almas e dois nobres corações. <br> Pelo amor e afeição querem já viver <br> Sempre juntos na paz ou nas aflições.",
       "2": "Mais um lar que se faz cheio de vigor <br> Do caráter cristão, base principal. <br> Dá-lhe vida feliz numa união de amor, <br> O mais forte, o maior laço conjugal.",
       "3": "Tu criaste, Senhor, para o nosso bem, <br> A união que adorna esta vida aqui. <br> De uma união mui feliz quantas bênçãos vêm <br> À família dos teus filhos, glória a ti! <br> Abençoa, Senhor, esta santa união! <br> Dando graça e favor, faze-a prosperar <br> Na alegria, na fé, na consagração; <br> E este amor verdadeiro vem confirmar.",
       "4": "Amém."
@@ -3749,9 +3788,9 @@
   },
   "396": {
     "hino": "396 - Graças pelo Aniversário",
-    "coro": "",
+    "coro": "De coração, dai graças ao vosso eterno Pai, <br> Pois mais um ano passa, a Deus mil graças dai!",
     "verses": {
-      "1": "Um ano mais de vida guardou-vos o Senhor <br> E deu-vos fiel guarida no seu divino amor. <br> De coração, dai graças ao vosso eterno Pai, <br> Pois mais um ano passa, a Deus mil graças dai!",
+      "1": "Um ano mais de vida guardou-vos o Senhor <br> E deu-vos fiel guarida no seu divino amor.",
       "2": "De noite, em claro dia, no inverno e no verão, <br> Na dor e na alegria gozaste proteção.",
       "3": "No coração que ama o terno Salvador <br> Existe um canto alegre que espalha o seu louvor.",
       "4": "Ensina-nos, ó Cristo, o que convém lembrar <br> E todo o nosso tempo no bem aproveitar. <br> Amém."
@@ -3759,9 +3798,9 @@
   },
   "397": {
     "hino": "397 - Por minha Boa Mãe",
-    "coro": "",
+    "coro": "É grande o bem que na alma tem <br> Quem pode alguém chamar de mãe!",
     "verses": {
-      "1": "Por minha boa mãe e pelo seu amor, <br> Na terra, sem igual, eu louvo-te, ó Senhor. <br> É grande o bem que na alma tem <br> Quem pode alguém chamar de mãe!",
+      "1": "Por minha boa mãe e pelo seu amor, <br> Na terra, sem igual, eu louvo-te, ó Senhor.",
       "2": "Pois ela me cuidou da vida ao despontar <br> E aos pés do bom Jesus feliz me fez andar.",
       "3": "Se pobre ou rico eu for, jamais hei de esquecer <br> A minha boa mãe enquanto aqui viver.",
       "4": "É grato aqui sentir de mãe o puro amor; <br> Por ela o coração bendiz ao Criador."
@@ -3801,24 +3840,24 @@
     }
   },
   "B": {
-    "hino": "B - Amém tríplice",
+    "hino": "Amém tríplice",
     "coro": "",
     "verses": {
       "1": "Amém, amém, amém."
     }
   },
   "C": {
-    "hino": "C - Amém quádruplo",
+    "hino": "Amém quádruplo",
     "coro": "",
     "verses": {
       "1": "Amém, amém, amém, amém."
     }
   },
   "D": {
-    "hino": "D - Amém sétuplo",
+    "hino": "Amém sétuplo",
     "coro": "",
     "verses": {
-      "1": "Amém, amém, amém, amém, amém, amém, amém. <br> Amém, amém, amém, amém, amém, amém."
+      "1": "Soprano <br> Amém, amém, amém, amém, amém, amém, amém. <br><br> Outros: <br> Amém, amém, amém, amém, amém, amém."
     }
   }
 }
