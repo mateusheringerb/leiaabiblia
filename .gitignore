@@ -65,3 +65,7 @@ crawler_novocantico.py
 ._.vscode
 .vscode/._settings.json
 .vscode/settings.json
+docs/._ARCHITECTURE.md
+._docs
+docs/._DATA_ENGINEERING.md
+docs/._GETTING_STARTED.md
