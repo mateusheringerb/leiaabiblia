@@ -1,109 +1,92 @@
-# 📖 Bíblia Ágape (Leia a Bíblia)
+<div align="center">
+  <a href="https://leiaabiblia.vercel.app/">
+    <img src="assets/logo-2.png" alt="Logo Bíblia Ágape" width="120" height="120">
+  </a>
 
-![Version](https://img.shields.io/badge/version-2.1.6-blue.svg)
-![Status](https://img.shields.io/badge/status-active-success.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
+  <h1 align="center">Bíblia Ágape Core</h1>
 
-> Uma Aplicação Web Progressiva (PWA) completa para leitura bíblica, hinários, planos de estudo e gamificação.
+  <p align="center">
+    <strong>Plataforma PWA Offline-First para Estudo Teológico de Alta Performance.</strong>
+  </p>
 
----
+  <p align="center">
+    <a href="https://leiaabiblia.vercel.app/"><strong>Acessar Aplicação (Live) »</strong></a>
+    <br />
+    <br />
+    <a href="docs/ARCHITECTURE.md">Architecture</a> •
+    <a href="docs/DATA_ENGINEERING.md">Data Engineering</a> •
+    <a href="docs/GETTING_STARTED.md">Getting Started</a>
+  </p>
 
-## 💻 Sobre o Projeto
+  <br>
 
-O **Bíblia Ágape** (ou *Leia a Bíblia*) é uma aplicação web desenvolvida com foco em **Mobile First** e performance. O objetivo foi criar uma ferramenta robusta de leitura cristã que funcionasse 100% offline, utilizando tecnologias web modernas sem a dependência de frameworks pesados.
+  <img src="https://img.shields.io/badge/version-4.0.0-blue?style=for-the-badge&color=0ea5e9" alt="Version">
+  <img src="https://img.shields.io/badge/status-production-success?style=for-the-badge&color=22c55e" alt="Status">
+  <img src="https://img.shields.io/badge/license-MIT-grey?style=for-the-badge" alt="License">
+</div>
 
-O projeto implementa uma arquitetura **SPA (Single Page Application)** "vanilla", onde o roteamento e a renderização de componentes são gerenciados via JavaScript puro, garantindo leveza e controle total sobre o ciclo de vida da aplicação.
+<br>
 
-### ✨ Funcionalidades Principais
+### 💻 Tecnologias
 
-* **📖 Leitura Multiversão:** Suporte a 13 traduções (NVI, ACF, ARA, KJA, etc.) com troca instantânea.
-* **📱 PWA (Progressive Web App):** Instalável no celular, funciona offline e gerencia cache via Service Worker.
-* **📅 Planos de Leitura:** Gestão completa de planos (Bíblico ou Cronológico) com duração de 3 a 12 meses e barra de progresso.
-* **🎶 Hinários Completos:** Harpa Cristã, Cantor Cristão e Novo Cântico (com destaque inteligente para Coros).
-* **🎨 Editor de Stories (Canvas):** Ferramenta nativa para criar imagens com versículos, permitindo personalização de fundos e compartilhamento direto.
-* **🎮 Gamificação:** Sistema de "Streak" (dias consecutivos), Quiz Bíblico com dificuldade progressiva e pontuação persistente.
-* **🔍 Busca Profunda:** Algoritmo de pesquisa otimizado para encontrar versículos em toda a Bíblia.
-* **⚙️ Personalização:** Tema Escuro/Claro (Dark Mode), ajuste de tamanho de fonte e sistema de destaques (marca-texto).
+<div style="display: flex; gap: 10px;">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/PWA-5A0FC8?style=for-the-badge&logo=pwa&logoColor=white" />
+</div>
 
----
+<br>
 
-## 🛠 Tecnologias Utilizadas
+## ⚡ Visão Geral
 
-O projeto foi construído utilizando a "tríade fundamental" da web, focando em otimização e manipulação direta do DOM.
+**Bíblia Ágape** é uma solução de software projetada para eliminar a latência e a dependência de rede em aplicações de leitura intensiva. Construída sobre uma arquitetura **SPA (Single Page Application)** com **Vanilla JS**, ela remove o *overhead* de frameworks modernos para entregar uma experiência nativa via navegador.
 
-* **Frontend:**
-    * **HTML5** (Semântico e acessível).
-    * **CSS3** + **Tailwind CSS** (Via CDN para estilização utilitária rápida).
-    * **JavaScript (ES6+)** (Lógica de SPA, State Management local e manipulação de Canvas).
-* **Assets & UI:**
-    * **Phosphor Icons** (Ícones vetoriais).
-    * **Google Fonts** (Inter e Merriweather).
-* **Dados & Armazenamento:**
-    * **JSON:** Estrutura de dados para livros, versões bíblicas e hinários.
-    * **LocalStorage:** Persistência de configurações, progresso de leitura e marcações.
-    * **Service Workers:** Cacheamento de assets para funcionamento offline.
+O projeto implementa um motor de renderização de texto customizado capaz de processar e estilizar semanticamente arquivos JSON estáticos em tempo real, garantindo transições de tela instantâneas.
 
----
-
-## 🚀 Como Executar o Projeto
-
-Como o projeto é estático (não depende de um backend Node.js ou PHP), você pode rodá-lo facilmente em qualquer servidor web local.
-
-### Pré-requisitos
-* Um editor de código (recomendado: VS Code).
-* Extensão **Live Server** (VS Code) ou Python instalado.
-
-### Passo a Passo
-
-1.  **Clone o repositório:**
-    ```bash
-    git clone [https://github.com/mateusheringerb/leiaabiblia.git](https://github.com/mateusheringerb/leiaabiblia.git)
-    cd leiaabiblia
-    ```
-
-2.  **Execute a aplicação:**
-
-    * **Opção A (VS Code):** Abra o arquivo `index.html`, clique com o botão direito e selecione "Open with Live Server".
-    * **Opção B (Python):**
-        ```bash
-        python -m http.server 8000
-        ```
-        Acesse `http://localhost:8000` no navegador.
+### Destaques
+- **Performance Extrema:** Carregamento instantâneo via cacheamento agressivo em memória.
+- **Renderização Semântica:** Algoritmo proprietário para detecção e estilização de estruturas poéticas (Coros, Vozes) em hinários.
+- **Ecossistema Offline:** Service Workers configurados para estratégia *Cache-First*.
+- **Tools:** Editor de imagem (Canvas API) e Bússola Emocional integrados.
 
 ---
 
-## 📂 Estrutura de Arquivos
+## 📚 Documentação
 
-```text
-leiaabiblia/
-├── app.js               # Lógica principal (Router, State, Events)
-├── index.html           # Estrutura base da SPA
-├── styles.css           # Estilos globais e animações
-├── sw.js                # Service Worker (Cache & Offline)
-├── bible-data.js        # Metadados dos livros bíblicos
-├── [VERSOES].json       # Arquivos JSON das traduções (NVI, ARA, etc.)
-├── harpa.json           # Dados dos hinários
-├── quiz.json            # Banco de perguntas do Quiz
-└── assets/              # Imagens, ícones e favicon
-```
+Para manter a organização e facilitar a contribuição, a documentação foi dividida em módulos:
 
-### 📸 Screenshots
-Aqui está uma visão geral das principais funcionalidades do aplicativo:
-
-| **Home / Leitura** | **Modo Noturno (Dark)** | **Quiz Bíblico** |
-|:---:|:---:|:---:|
-| <img src="https://i.ibb.co/TQQ3VXp/IMG-6286.png" alt="Home Screen" width="250"/> | <img src="https://i.ibb.co/vCztN4Ks/IMG-6291.png" alt="Dark Mode" width="250"/> | <img src="https://i.ibb.co/vxVHzrw9/IMG-6289.png" alt="Quiz" width="250"/> |
-
-| **Plano de Leitura** | **Backup & Restauração** |
-|:---:|:---:|
-| <img src="https://i.ibb.co/TxXcdr4c/IMG-6288.png" alt="Plano de Leitura" width="250"/> | <img src="https://i.ibb.co/TQQ3VXp/IMG-6286.png" alt="Backup" width="250"/> |
+* **[🏗 Architecture](docs/ARCHITECTURE.md):** Detalhes sobre a arquitetura SPA, renderização Client-Side e diagrama de fluxo de dados.
+* **[🧬 Data Engineering](docs/DATA_ENGINEERING.md):** Explicação do pipeline ETL (Python Crawler) utilizado para normalizar a base de dados do *Novo Cântico*.
+* **[🚀 Getting Started](docs/GETTING_STARTED.md):** Guia passo-a-passo para rodar o projeto localmente.
 
 ---
 
+## 🤝 Autor
 
-### 👨‍💻 Autor
-**Mateus Vitor Heringer Barcellos**
-<div>Estudante de Análise e Desenvolvimento de Sistemas focado em criar soluções eficientes.</div>
+<table border="0">
+  <tr>
+    <td align="center" style="border: none;">
+      <a href="https://github.com/mateusheringerb">
+        <img src="https://i.ibb.co/5htZ8G7D/IMG-3351.jpg" width="100px;" style="border-radius: 50%;" alt="Mateus Heringer"/>
+        <br />
+        <sub><b>Mateus Heringer</b></sub>
+      </a>
+      <br />
+      <span title="Engineering">Estudante de Análise e <br> Desenvolvivento de Sistemas</span>
+    </td>
+  </tr>
+</table>
 
-### 📄 Licença
-Este projeto está sob a licença MIT - veja o arquivo [LICENSE](./LICENSE) detalhes.
+### Connect
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mateusheringerb)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mateusheringerb)
+[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/mateusheringerb)
+
+---
+
+<div align="center">
+  <br>
+  <sub><i>"Sola Scriptura, Sola Fide, Solus Christus, Sola Gratia, Soli Deo Gloria"</i></sub>
+</div>
