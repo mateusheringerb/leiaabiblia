@@ -60,18 +60,16 @@ Para manter a organização e facilitar a contribuição, a documentação foi d
 * **[🏗 Architecture](docs/ARCHITECTURE.md):** Detalhes sobre a arquitetura SPA, renderização Client-Side e diagrama de fluxo de dados.
 * **[🧬 Data Engineering](docs/DATA_ENGINEERING.md):** Explicação do pipeline ETL (Python Crawler) utilizado para normalizar a base de dados do *Novo Cântico*.
 * **[🚀 Getting Started](docs/GETTING_STARTED.md):** Guia passo-a-passo para rodar o projeto localmente.
+* **[⚖️ Licença](/LICENSE):** Este projeto está em licença MIT
 
 ---
-
-## 🤝 Autor
 
 ## 👨‍💻 Autor
 
 <div align="center">
-    <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; margin: 0 auto; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-        <img src="https://i.ibb.co/5htZ8G7D/IMG-3351.jpg" width="100%" height="100%" style="object-fit: cover;" alt="Mateus Heringer">
+    <div style="width: 32px; height: 62px; border-radius: 50%; overflow: hidden; margin: 0 auto; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        <img src="https://i.ibb.co/5htZ8G7D/IMG-3351.jpg" width="10%" height="10%" style="object-fit: cover;" alt="Mateus Heringer">
     </div>
-    <br>
     <h3>Mateus Heringer</h3>
     <p><strong>Desenvolvedor Full Stack & Estudante de ADS</strong></p>
     <p>Apaixonado por resolver problemas reais através de código. Focado em criar soluções que unem propósito, performance e excelente experiência do usuário.</p>
