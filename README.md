@@ -65,19 +65,25 @@ Para manter a organização e facilitar a contribuição, a documentação foi d
 
 ## 🤝 Autor
 
-<table border="0">
-  <tr>
-    <td align="center" style="border: none;">
-      <a href="https://github.com/mateusheringerb">
-        <img src="https://i.ibb.co/5htZ8G7D/IMG-3351.jpg" width="100px;" style="border-radius: 50%;" alt="Mateus Heringer"/>
-        <br />
-        <sub><b>Mateus Heringer</b></sub>
-      </a>
-      <br />
-      <span title="Engineering">Estudante de Análise e <br> Desenvolvivento de Sistemas</span>
-    </td>
-  </tr>
-</table>
+## 👨‍💻 Autor
+
+<div align="center">
+    <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; margin: 0 auto; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        <img src="https://i.ibb.co/5htZ8G7D/IMG-3351.jpg" width="100%" height="100%" style="object-fit: cover;" alt="Mateus Heringer">
+    </div>
+    <br>
+    <h3>Mateus Heringer</h3>
+    <p><strong>Desenvolvedor Full Stack & Estudante de ADS</strong></p>
+    <p>Apaixonado por resolver problemas reais através de código. Focado em criar soluções que unem propósito, performance e excelente experiência do usuário.</p>
+</div>
+
+<div align="center">
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mateusheringerb)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mateusheringerb)
+[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/mateusheringerb)
+
+</div>
 
 ### Connect
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mateusheringerb)
