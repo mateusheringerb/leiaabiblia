@@ -3,7 +3,7 @@
  * NOME DO PROJETO: BÍBLIA ÁGAPE
  * ARQUIVO: styles.css
  * DESCRIÇÃO: Folha de estilos globais, animações e utilitários visuais.
- * VERSÃO: 4.1.0 (Atualizado com Safe Area Support)
+ * VERSÃO: 4.0.0
  * DESENVOLVIDO POR: Mateus Heringer
  * ======================================================================================
  */
@@ -335,4 +335,19 @@ body:not(.user-is-tabbing) textarea:focus {
 .toast.error {
     background-color: #ef4444;
     /* red-500 */
+}
+
+/* * --------------------------------------------------------------------------------------
+ * AJUSTE DE BOTÕES FLUTUANTES
+ * Posiciona os botões de avançar/voltar 10px acima da área de gestos/borda
+ * -------------------------------------------------------------------------------------- 
+ */
+.botoes-navegacao,
+.fixed.bottom-4,
+#reading-nav-bar {
+    /* 10px de margem + Área Segura (para não colar na barra do iPhone/Android) */
+    bottom: calc(env(safe-area-inset-bottom) + 40px) !important;
+
+    /* Garante que fiquem acima do texto */
+    z-index: 40;
 }
