@@ -508,3 +508,46 @@ window.togglePulpitMode = function () {
 window.openNoteEditor = function () { closeModal('modal-verse'); var m = document.getElementById('modal-note'); m.classList.remove('hidden'); m.classList.add('flex'); document.getElementById('note-input').value = savedNotes[selectedVerse.id] || ""; document.getElementById('note-input').focus(); };
 window.saveNote = function () { var t = document.getElementById('note-input').value.trim(); if (t) savedNotes[selectedVerse.id] = t; else delete savedNotes[selectedVerse.id]; localStorage.setItem('agape_notes', JSON.stringify(savedNotes)); loadChapter(); closeModal('modal-note'); alert("Nota salva!"); };
 window.deleteNote = function () { if (confirm("Apagar?")) { delete savedNotes[selectedVerse.id]; localStorage.setItem('agape_notes', JSON.stringify(savedNotes)); loadChapter(); closeModal('modal-note'); } };
+
+/* ==========================================================================
+   CONTROLE DO BOTÃO VOLTAR (ANDROID/IOS)
+   ========================================================================== 
+*/
+document.addEventListener('DOMContentLoaded', () => {
+    // Verifica se o Capacitor está carregado
+    if (window.Capacitor) {
+        const { App } = Capacitor.Plugins;
+
+        App.addListener('backButton', ({ canGoBack }) => {
+            // 1. Verificar se existe algum Modal ou Menu Lateral aberto
+            // Ajuste os seletores (.modal.show, aside.open) conforme as classes que você usa
+            const modalAberto = document.querySelector('.modal.show') ||
+                document.querySelector('.fixed.inset-0.z-50:not(.hidden)');
+
+            if (modalAberto) {
+                // Se tiver modal, fecha ele (simula o clique no botão de fechar ou remove classe)
+                // Tenta encontrar um botão de fechar dentro do modal
+                const btnFechar = modalAberto.querySelector('button[onclick*="close"], button.close');
+                if (btnFechar) {
+                    btnFechar.click();
+                } else {
+                    // Fallback: Apenas esconde
+                    modalAberto.classList.add('hidden');
+                    modalAberto.classList.remove('flex'); // Se usar flex para mostrar
+                }
+                return; // Para a execução aqui
+            }
+
+            // 2. Se não tiver modal, tenta voltar no histórico do navegador (navegação entre telas)
+            if (canGoBack) {
+                window.history.back();
+            } else {
+                // 3. Se não tiver mais histórico (está na Home), pergunta ou sai
+                // No Android moderno, geralmente apenas sai ou minimiza
+                App.exitApp();
+            }
+        });
+
+        console.log('Controle do botão voltar nativo ativado.');
+    }
+});

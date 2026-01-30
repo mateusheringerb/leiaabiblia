@@ -2,163 +2,156 @@
  * ======================================================================================
  * NOME DO PROJETO: BÍBLIA ÁGAPE
  * ARQUIVO: styles.css
- * DESCRIÇÃO: Folha de estilos globais, animações e utilitários visuais.
- * VERSÃO: 4.1.0 (Atualizado com Safe Area Support)
- * DESENVOLVIDO POR: Mateus Heringer
  * ======================================================================================
  */
 
-/* * --------------------------------------------------------------------------------------
- * AJUSTES SAFE AREA (CAPACITOR/MOBILE)
- * Essencial para App Store e Android modernos com Notch/Gestos
- * -------------------------------------------------------------------------------------- 
- */
+/* 1. VARIÁVEIS BASE */
 :root {
-    /* Captura as margens seguras do dispositivo */
     --sat: env(safe-area-inset-top);
     --sab: env(safe-area-inset-bottom);
-    --sal: env(safe-area-inset-left);
-    --sar: env(safe-area-inset-right);
+    /* Altura da barra inferior (Navbar) */
+    --navbar-height: 4rem;
+    /* Altura visual do Cabeçalho (Header) - Reduzi um pouco para ficar mais compacto */
+    --header-visual-height: 3.5rem;
 }
 
-/* Garante que o app não tenha scroll elástico indesejado no body */
+/* 2. CONFIGURAÇÕES GERAIS */
 body {
-    overscroll-behavior-y: none;
     background-color: #ffffff;
-    /* Previne fundo branco piscando */
+    overscroll-behavior-y: none;
+    -webkit-tap-highlight-color: transparent;
+    /* Laterais seguras para telas curvas ou paisagem */
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
 }
 
-/* Modo escuro no body */
 .dark body {
     background-color: #111827;
-    /* gray-900 */
 }
 
-/* Ajuste Específico para o HEADER (Fixo no topo)
-   Adiciona padding no topo igual ao tamanho da barra de status (Notch)
-*/
-header.fixed {
-    padding-top: var(--sat);
-    padding-left: var(--sal);
-    padding-right: var(--sar);
-    /* Remove altura fixa se houver (ex: h-16) para acomodar o padding extra */
+/* 3. CABEÇALHO (HEADER) */
+header,
+.fixed.top-0,
+nav.fixed.top-0 {
+    /* Adiciona a área segura no topo */
+    padding-top: var(--sat) !important;
+
+    /* Altura total = Área segura + Altura visual do conteúdo */
     height: auto !important;
-    min-height: 4rem;
-    /* Mantém o tamanho mínimo original (h-16 = 4rem) */
+    min-height: calc(var(--header-visual-height) + var(--sat));
+
+    /* Layout */
+    display: flex !important;
+    align-items: center !important;
+    z-index: 50;
+
+    /* Garante que o conteúdo não quebre linha */
+    white-space: nowrap !important;
+    flex-wrap: nowrap !important;
 }
 
-/* Ajuste Específico para o MENU INFERIOR (Fixo no fundo)
-   Adiciona padding no fundo igual à barra de gestos (Home Indicator)
-*/
+/* Garante alinhamento interno do header */
+header>div,
+nav.fixed.top-0>div {
+    display: flex;
+    align-items: center;
+    height: var(--header-visual-height);
+    /* Força a altura do conteúdo */
+}
+
+/* 4. ÁREA DE CONTEÚDO (MAIN) - AJUSTE DO TOPO E FUNDO */
+main,
+#conteudo-biblia,
+.pt-16,
+section {
+    /* AJUSTE DO TOPO:
+       Removemos folgas extras. O conteúdo começa logo após o header.
+       Se ainda achar muito longe, troque '0px' por valores negativos ex: '-5px'
+    */
+    padding-top: calc(var(--header-visual-height) + var(--sat)) !important;
+
+    /* AJUSTE DO FUNDO (CRÍTICO PARA NÃO SOBREPOR BOTÕES):
+       Dá espaço suficiente para rolar o conteúdo até o final sem ficar atrás do menu.
+       Valor alto (120px) garante que os botões de "Suporte" subam.
+    */
+    padding-bottom: calc(var(--navbar-height) + var(--sab) + 40px) !important;
+}
+
+/* Regra específica para containers de Grid (como o menu de Configurações) */
+.grid,
+.space-y-4 {
+    padding-bottom: 20px;
+    /* Um respiro extra interno */
+}
+
+/* 5. BOTÕES DE NAVEGAÇÃO DE CAPÍTULO (Flutuantes) */
+.fixed.bottom-4,
+.fixed.bottom-0:not(nav),
+/* Aplica a botões fixos que NÃO sejam a navbar */
+.botoes-navegacao {
+    /* AJUSTE DE ALTURA:
+       Coloca os botões logo acima da Navbar + Área segura + 4px de respiro.
+       Isso deve baixá-los consideravelmente comparado à versão anterior.
+    */
+    bottom: calc(var(--navbar-height) + var(--sab) + 4px) !important;
+    z-index: 40;
+}
+
+/* 6. BARRA DE NAVEGAÇÃO INFERIOR (TAB BAR) */
+footer,
 nav.fixed.bottom-0 {
-    padding-bottom: var(--sab);
-    padding-left: var(--sal);
-    padding-right: var(--sar);
-    height: auto !important;
+    /* Garante que fique colada no fundo */
+    bottom: 0 !important;
+    /* Altura interna para acomodar a barra de gestos do iPhone */
+    padding-bottom: var(--sab) !important;
+    /* Altura total calculada */
+    height: calc(var(--navbar-height) + var(--sab)) !important;
+    z-index: 50;
+    background-color: inherit;
 }
 
-/* Ajuste para a Área de Conteúdo (MAIN)
-   Compensa o espaço extra que o Header e o Footer ganharam
-*/
-main {
-    /* Soma o padding original do Tailwind (pt-16 e pb-20) com a Safe Area */
-    padding-top: calc(4rem + var(--sat)) !important;
-    padding-bottom: calc(5rem + var(--sab)) !important;
-    padding-left: var(--sal);
-    padding-right: var(--sar);
-}
+/* --- ESTILOS VISUAIS E UTILITÁRIOS (MANTIDOS) --- */
 
-/* * --------------------------------------------------------------------------------------
- * UTILITÁRIOS DE INTERFACE
- * Pequenos ajustes para melhorar a experiência visual do usuário (UX/UI).
- * -------------------------------------------------------------------------------------- 
- */
-
-/* * Oculta a barra de rolagem (scrollbar) mantendo a funcionalidade de scroll.
- * Essencial para carrosséis ou listas horizontais onde a barra polui o visual.
- */
 .hide-scrollbar::-webkit-scrollbar {
     display: none;
-    /* Para Chrome, Safari e Opera */
 }
 
 .hide-scrollbar {
     -ms-overflow-style: none;
-    /* Para Internet Explorer e Edge */
     scrollbar-width: none;
-    /* Para Firefox */
 }
 
-/* * Remove a aparência nativa e inconsistente dos navegadores para elementos <select>.
- * Isso permite aplicarmos nossos próprios estilos personalizados via CSS/Tailwind.
- */
 select {
     -webkit-appearance: none;
     appearance: none;
 }
 
-
-/* * --------------------------------------------------------------------------------------
- * CLASSES ESPECÍFICAS DO PROJETO
- * Estilização de componentes únicos como "Letras Vermelhas" e "Refrões".
- * -------------------------------------------------------------------------------------- 
- */
-
-/* * Estilo "Red Letter" (Palavras de Jesus)
- * Usado para destacar falas diretas de Jesus nos textos bíblicos.
- * Adapta-se automaticamente ao modo claro e escuro.
- */
 .red-letter {
     color: #b91c1c;
-    /* Red-700: Um vermelho forte e legível no claro */
     font-weight: 500;
-    /* Levemente mais grosso para destaque */
 }
 
-/* Red Letter no Modo Escuro (precisa ser mais claro para contraste) */
 .dark .red-letter {
     color: #fb7185;
-    /* Rose-400: Um vermelho rosado luminoso */
 }
 
-
-/* * Estilo para Refrão de Hinos
- * Cria um bloco visualmente distinto para separar estrofes de refrões.
- */
 .hymn-chorus {
     background-color: rgba(180, 83, 9, 0.05);
-    /* Fundo laranja/âmbar muito sutil */
     color: inherit;
     padding: 1.5rem;
-    /* Espaço interno confortável */
     border-left: 3px solid #b45309;
-    /* Barra lateral laranja para indicar citação/destaque */
     font-style: italic;
-    /* Itálico para diferenciar da estrofe */
     font-weight: 500;
-    /* Levemente mais grosso */
     margin-bottom: 2rem;
     border-radius: 0 0.5rem 0.5rem 0;
-    /* Arredonda apenas o lado direito */
 }
 
-/* Refrão no Modo Escuro */
 .dark .hymn-chorus {
     background-color: rgba(255, 255, 255, 0.05);
-    /* Fundo branco translúcido */
     border-left: 3px solid #d6d3d1;
-    /* Barra lateral cinza claro */
 }
 
-/* * --------------------------------------------------------------------------------------
- * ANIMAÇÕES PERSONALIZADAS
- * Keyframes para feedbacks visuais (sucesso, erro, carregamento).
- * -------------------------------------------------------------------------------------- 
- */
-
-/* * Animação de Entrada (Fade In + Slide Up)
- * Usada em modais, toasts e menus que aparecem na tela.
- */
+/* Animações */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -175,9 +168,6 @@ select {
     animation: fadeInUp 0.3s ease-out;
 }
 
-/* * Animação de Pulso (Feedback de Clique)
- * Efeito sutil ao clicar em botões de ação importante.
- */
 @keyframes pulse-soft {
     0% {
         transform: scale(1);
@@ -196,46 +186,19 @@ select {
     animation: pulse-soft 0.2s ease-in-out;
 }
 
-/* * --------------------------------------------------------------------------------------
- * CONFIGURAÇÕES DE SELEÇÃO E TOQUE
- * Melhorias de usabilidade para dispositivos móveis (Toque).
- * -------------------------------------------------------------------------------------- 
- */
-
-/* * Previne o "Flash" cinza ao clicar em elementos no iOS/Android.
- * Torna a interação mais parecida com app nativo.
- */
-* {
-    -webkit-tap-highlight-color: transparent;
-}
-
-/* * Impede a seleção de texto em elementos de interface (botões, menus).
- * Mantém a seleção de texto permitida apenas no conteúdo principal (versículos).
- */
+/* Inputs e Seleção */
 .no-select {
     -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
 }
 
-/* * Garante que o texto bíblico seja selecionável para copiar/compartilhar. */
 .selectable-text {
     -webkit-user-select: text;
-    -moz-user-select: text;
-    -ms-user-select: text;
     user-select: text;
 }
 
-/* * --------------------------------------------------------------------------------------
- * ESTILOS DE FORMULÁRIO E INPUTS
- * -------------------------------------------------------------------------------------- 
- */
-
-/* Estilo do Input Range (Slider) - Customização Cross-Browser */
 input[type=range] {
     -webkit-appearance: none;
-    /* Remove estilo padrão */
     width: 100%;
     background: transparent;
 }
@@ -246,74 +209,46 @@ input[type=range]::-webkit-slider-thumb {
 
 input[type=range]:focus {
     outline: none;
-    /* Remove borda azul padrão de foco */
 }
 
-/* Ajuste de foco para acessibilidade (apenas teclado) */
-body:not(.user-is-tabbing) button:focus,
-body:not(.user-is-tabbing) input:focus,
-body:not(.user-is-tabbing) select:focus,
-body:not(.user-is-tabbing) textarea:focus {
-    outline: none;
-}
-
-/* * --------------------------------------------------------------------------------------
- * CORES DE DESTAQUE (HIGHLIGHTS)
- * Cores usadas para marcar versículos.
- * -------------------------------------------------------------------------------------- 
- */
-
-/* Amarelo (Padrão) */
+/* Cores de Destaque */
 .highlight-yellow {
     background-color: rgba(253, 224, 71, 0.4);
-    /* yellow-300 com transparência */
 }
 
 .dark .highlight-yellow {
     background-color: rgba(253, 224, 71, 0.25);
-    /* Mais sutil no escuro */
 }
 
-/* Verde */
 .highlight-green {
     background-color: rgba(134, 239, 172, 0.4);
-    /* green-300 */
 }
 
 .dark .highlight-green {
     background-color: rgba(134, 239, 172, 0.25);
 }
 
-/* Azul */
 .highlight-blue {
     background-color: rgba(147, 197, 253, 0.4);
-    /* blue-300 */
 }
 
 .dark .highlight-blue {
     background-color: rgba(147, 197, 253, 0.25);
 }
 
-/* Rosa */
 .highlight-pink {
     background-color: rgba(249, 168, 212, 0.4);
-    /* pink-300 */
 }
 
 .dark .highlight-pink {
     background-color: rgba(249, 168, 212, 0.25);
 }
 
-/* * --------------------------------------------------------------------------------------
- * TOASTS (NOTIFICAÇÕES FLUTUANTES)
- * Estilização dos alertas que aparecem no topo/fundo da tela.
- * -------------------------------------------------------------------------------------- 
- */
+/* Toasts */
 .toast {
     visibility: hidden;
     min-width: 250px;
     margin-left: -125px;
-    /* Centraliza horizontalmente (metade do width) */
     background-color: #333;
     color: #fff;
     text-align: center;
@@ -321,31 +256,25 @@ body:not(.user-is-tabbing) textarea:focus {
     padding: 16px;
     position: fixed;
     z-index: 100;
-    /* Garante que fique sobre tudo */
     left: 50%;
-    bottom: 30px;
+    /* Garante que o toast apareça acima da navbar e botões */
+    bottom: calc(var(--navbar-height) + var(--sab) + 60px);
     font-size: 15px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     opacity: 0;
     transition: opacity 0.3s, bottom 0.3s, visibility 0.3s;
 }
 
-/* Toast Visível (Ativado via JS) */
 .toast.show {
     visibility: visible;
     opacity: 1;
-    bottom: 50px;
-    /* Efeito de subida suave */
+    bottom: calc(var(--navbar-height) + var(--sab) + 80px);
 }
 
-/* Variação: Toast de Sucesso */
 .toast.success {
     background-color: #10b981;
-    /* emerald-500 */
 }
 
-/* Variação: Toast de Erro */
 .toast.error {
     background-color: #ef4444;
-    /* red-500 */
 }
