@@ -1,105 +1,110 @@
 /*
  * ======================================================================================
  * NOME DO PROJETO: BÍBLIA ÁGAPE
- * ARQUIVO: styles.css (Versão 5.0 - Ajuste Fino Final)
+ * ARQUIVO: styles.css (Versão FINAL - RESET GEOMÉTRICO)
+ * OBJETIVO: Ignorar espaçamentos do Tailwind e forçar alinhamento nativo perfeito.
  * ======================================================================================
  */
 
-/* 1. VARIÁVEIS BASE */
+/* 1. DEFINIÇÃO DAS "RÉGUAS" (A Verdade Única) */
 :root {
     --sat: env(safe-area-inset-top);
     --sab: env(safe-area-inset-bottom);
-    --navbar-height: 4rem;
-    /* Altura da barra inferior (64px) */
+    --header-h: 4rem;
+    /* 64px (igual ao h-16 do Tailwind) */
+    --nav-h: 4rem;
+    /* 64px (igual ao h-16 do Tailwind) */
 }
 
-/* 2. CONFIGURAÇÕES GERAIS */
+/* 2. RESET DO BODY */
 body {
     background-color: #ffffff;
     overscroll-behavior-y: none;
     -webkit-tap-highlight-color: transparent;
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
+    /* Removemos qualquer padding do body para controlar no main */
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 .dark body {
     background-color: #111827;
 }
 
-/* 3. CABEÇALHO (HEADER) */
+/* 3. CABEÇALHO (HEADER) 
+   Forçamos o preenchimento do Notch e a altura correta.
+*/
 header,
 .fixed.top-0,
 nav.fixed.top-0 {
-    /* Adiciona apenas a área segura no topo */
+    /* Adiciona o espaço do Notch */
     padding-top: var(--sat) !important;
-    height: auto !important;
-    min-height: calc(4rem + var(--sat));
-    /* 4rem = h-16 */
 
-    /* Layout */
+    /* A altura total visual será Header + Notch */
+    height: auto !important;
+    min-height: calc(var(--header-h) + var(--sat)) !important;
+
+    /* Garante alinhamento */
     display: flex !important;
     align-items: center !important;
     z-index: 50;
-    white-space: nowrap !important;
-    flex-wrap: nowrap !important;
 }
 
-/* 4. CONTEÚDO PRINCIPAL (MAIN) - CORREÇÃO DE ESPAÇAMENTO */
+/* 4. CONTEÚDO PRINCIPAL (MAIN) - AQUI ESTAVA O ERRO 
+   Usamos !important para IGNORAR o 'pt-20' e 'pb-20' do HTML.
+*/
 main,
 #conteudo-biblia,
 .pt-16,
+.pt-20,
+/* Sobrescreve a classe do seu HTML */
 section {
-    /* AJUSTE CRÍTICO DO TOPO (Resolução do "Espaçou demais"):
-       Estou usando 3.5rem (56px) em vez de 4rem (64px).
-       Isso "puxa" o conteúdo 8px para cima, escondendo o buraco branco.
+    /* TOPO: Começa EXATAMENTE onde o header termina.
+       Se quiser dar um respiro, mude o '0px' para '10px'.
     */
-    padding-top: calc(var(--sat) + 3.5rem) !important;
+    padding-top: calc(var(--header-h) + var(--sat) + 10px) !important;
+    margin-top: 0 !important;
 
-    /* AJUSTE DO FUNDO (Botões de Suporte):
-       10rem (160px) de espaço extra no fundo. 
-       Isso cria uma "almofada" invisível no final da página para que
-       os botões de suporte nunca fiquem escondidos atrás do menu.
+    /* FUNDO: Espaço gigante para permitir rolar até o último botão (Suporte)
+       sem que ele fique escondido atrás do menu.
     */
-    padding-bottom: calc(var(--navbar-height) + var(--sab) + 10rem) !important;
+    padding-bottom: calc(var(--nav-h) + var(--sab) + 80px) !important;
+    margin-bottom: 0 !important;
 }
 
-/* Garante que o último elemento de qualquer lista tenha espaço para respirar */
-ul:last-child,
-div.grid:last-child,
-.space-y-4:last-child {
-    padding-bottom: 2rem;
-}
-
-/* 5. BOTÕES FLUTUANTES (Avançar/Voltar) - AJUSTE 8PX */
+/* 5. BOTÕES FLUTUANTES (Avançar/Voltar) 
+   Posicionados acima da barra de menu com precisão cirúrgica.
+*/
 .fixed.bottom-4,
 .fixed.bottom-0:not(nav),
-.botoes-navegacao {
-    /* Cálculo: Altura do Menu (4rem) + Safe Area + 8px (Seu pedido).
-       Isso cola eles logo acima da barra de menu.
-    */
-    bottom: calc(var(--navbar-height) + var(--sab) + 8px) !important;
+.botoes-navegacao,
+#fab-container {
+    /* Altura do Menu + Área Segura + 8px de respiro */
+    bottom: calc(var(--nav-h) + var(--sab) + 8px) !important;
     z-index: 40;
+    margin-bottom: 0 !important;
 }
 
-/* 6. BARRA DE NAVEGAÇÃO INFERIOR (MENU) */
+/* 6. BARRA DE MENU INFERIOR 
+   Cola no fundo e cresce para proteger a barra de gestos (Home Indicator).
+*/
 footer,
 nav.fixed.bottom-0 {
     bottom: 0 !important;
     padding-bottom: var(--sab) !important;
-    height: calc(var(--navbar-height) + var(--sab)) !important;
+    height: calc(var(--nav-h) + var(--sab)) !important;
     z-index: 50;
-    /* Máximo z-index */
-    background-color: inherit;
-    /* Mantém a cor original */
+
+    /* Garante fundo sólido para não ver texto passando por trás */
     background-color: #ffffff;
-    /* Fallback branco para evitar transparência */
 }
 
 .dark nav.fixed.bottom-0 {
     background-color: #111827;
 }
 
-/* --- ESTILOS VISUAIS E UTILITÁRIOS (MANTIDOS) --- */
+/* --- ESTILOS VISUAIS EXTRAS (MANTIDOS) --- */
 
 .hide-scrollbar::-webkit-scrollbar {
     display: none;
@@ -140,6 +145,7 @@ select {
     border-left: 3px solid #d6d3d1;
 }
 
+/* Animações e Utilitários */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -198,6 +204,7 @@ input[type=range]:focus {
     outline: none;
 }
 
+/* Highlight Colors */
 .highlight-yellow {
     background-color: rgba(253, 224, 71, 0.4);
 }
@@ -230,6 +237,7 @@ input[type=range]:focus {
     background-color: rgba(249, 168, 212, 0.25);
 }
 
+/* Toasts acima do menu */
 .toast {
     visibility: hidden;
     min-width: 250px;
@@ -242,7 +250,7 @@ input[type=range]:focus {
     position: fixed;
     z-index: 100;
     left: 50%;
-    bottom: calc(var(--navbar-height) + var(--sab) + 50px);
+    bottom: calc(var(--nav-h) + var(--sab) + 50px);
     font-size: 15px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     opacity: 0;
@@ -252,7 +260,7 @@ input[type=range]:focus {
 .toast.show {
     visibility: visible;
     opacity: 1;
-    bottom: calc(var(--navbar-height) + var(--sab) + 70px);
+    bottom: calc(var(--nav-h) + var(--sab) + 70px);
 }
 
 .toast.success {
