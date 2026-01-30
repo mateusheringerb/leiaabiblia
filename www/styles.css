@@ -3,13 +3,70 @@
  * NOME DO PROJETO: BÍBLIA ÁGAPE
  * ARQUIVO: styles.css
  * DESCRIÇÃO: Folha de estilos globais, animações e utilitários visuais.
- * VERSÃO: 4.0.0
+ * VERSÃO: 4.1.0 (Atualizado com Safe Area Support)
  * DESENVOLVIDO POR: Mateus Heringer
- * REPOSITÓRIO: https://github.com/mateusheringerb
- * LINKEDIN: https://www.linkedin.com/in/mateusheringerb
- * DATA DE ATUALIZAÇÃO: 26 de Janeiro de 2026
  * ======================================================================================
  */
+
+/* * --------------------------------------------------------------------------------------
+ * AJUSTES SAFE AREA (CAPACITOR/MOBILE)
+ * Essencial para App Store e Android modernos com Notch/Gestos
+ * -------------------------------------------------------------------------------------- 
+ */
+:root {
+    /* Captura as margens seguras do dispositivo */
+    --sat: env(safe-area-inset-top);
+    --sab: env(safe-area-inset-bottom);
+    --sal: env(safe-area-inset-left);
+    --sar: env(safe-area-inset-right);
+}
+
+/* Garante que o app não tenha scroll elástico indesejado no body */
+body {
+    overscroll-behavior-y: none;
+    background-color: #ffffff;
+    /* Previne fundo branco piscando */
+}
+
+/* Modo escuro no body */
+.dark body {
+    background-color: #111827;
+    /* gray-900 */
+}
+
+/* Ajuste Específico para o HEADER (Fixo no topo)
+   Adiciona padding no topo igual ao tamanho da barra de status (Notch)
+*/
+header.fixed {
+    padding-top: var(--sat);
+    padding-left: var(--sal);
+    padding-right: var(--sar);
+    /* Remove altura fixa se houver (ex: h-16) para acomodar o padding extra */
+    height: auto !important;
+    min-height: 4rem;
+    /* Mantém o tamanho mínimo original (h-16 = 4rem) */
+}
+
+/* Ajuste Específico para o MENU INFERIOR (Fixo no fundo)
+   Adiciona padding no fundo igual à barra de gestos (Home Indicator)
+*/
+nav.fixed.bottom-0 {
+    padding-bottom: var(--sab);
+    padding-left: var(--sal);
+    padding-right: var(--sar);
+    height: auto !important;
+}
+
+/* Ajuste para a Área de Conteúdo (MAIN)
+   Compensa o espaço extra que o Header e o Footer ganharam
+*/
+main {
+    /* Soma o padding original do Tailwind (pt-16 e pb-20) com a Safe Area */
+    padding-top: calc(4rem + var(--sat)) !important;
+    padding-bottom: calc(5rem + var(--sab)) !important;
+    padding-left: var(--sal);
+    padding-right: var(--sar);
+}
 
 /* * --------------------------------------------------------------------------------------
  * UTILITÁRIOS DE INTERFACE
@@ -42,229 +99,20 @@ select {
 
 
 /* * --------------------------------------------------------------------------------------
- * SISTEMA DE ANIMAÇÕES (KEYFRAMES)
- * Definições dos movimentos para feedback visual e transições de entrada.
+ * CLASSES ESPECÍFICAS DO PROJETO
+ * Estilização de componentes únicos como "Letras Vermelhas" e "Refrões".
  * -------------------------------------------------------------------------------------- 
  */
 
-/* * ANIMAÇÃO: SPIN (Girar)
- * Utilizada para ícones de carregamento (loading) ou processamento.
- */
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* Aplicação lenta e infinita do giro (ex: loading de fundo ou sincornização) */
-.animate-spin-slow {
-    animation: spin 3s linear infinite;
-}
-
-
-/* * ANIMAÇÃO: FADE IN (Aparecer suavemente)
- * Evita que o conteúdo "pisque" na tela, criando uma entrada elegante.
- */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-/* Duração curta (0.4s) para uma sensação de agilidade na interface */
-.animate-fade-in {
-    animation: fadeIn 0.4s ease-out forwards;
-}
-
-
-/* * ANIMAÇÃO: SHAKE (Tremer - Feedback de Erro)
- * O elemento balança para os lados e fica vermelho.
- * Ótimo para senhas incorretas ou formulários inválidos.
- */
-@keyframes shake {
-
-    0%,
-    100% {
-        transform: translateX(0);
-        /* Posição inicial e final */
-    }
-
-    25% {
-        transform: translateX(-8px);
-        /* Move para a esquerda */
-    }
-
-    75% {
-        transform: translateX(8px);
-        /* Move para a direita */
-    }
-}
-
-/* * Nota: O uso de !important aqui garante que a cor de erro sobreponha 
- * qualquer outra cor de utilitário (como Tailwind) durante o erro.
- */
-.animate-shake {
-    animation: shake 0.4s cubic-bezier(.36, .07, .19, .97) both;
-    border-color: #ef4444 !important;
-    /* Vermelho Red-500 */
-    background-color: #fef2f2 !important;
-    /* Fundo Vermelho muito claro */
-}
-
-
-/* * ANIMAÇÃO: POP (Pular - Feedback de Sucesso)
- * O elemento aumenta levemente e volta ao normal, ficando verde.
- * Ideal para ações concluídas, como "Copiado para a área de transferência".
- */
-@keyframes pop {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.05);
-        /* Leve aumento de 5% */
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-.animate-pop {
-    animation: pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border-color: #22c55e !important;
-    /* Verde Green-500 */
-    background-color: #f0fdf4 !important;
-    /* Fundo Verde muito claro */
-}
-
-
-/* * ANIMAÇÃO: SLIDE UP (Deslizar para cima)
- * O conteúdo surge de baixo para cima ganhando opacidade.
- * Traz uma sensação de "elevação" e modernidade ao abrir modais ou menus.
- */
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-        /* Começa 20px abaixo */
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-        /* Termina na posição original */
-    }
-}
-
-.animate-slide-up {
-    animation: slideUp 0.5s ease-out forwards;
-}
-
-
-/* * ANIMAÇÃO: CONFETTI (Chuva de papel picado)
- * Efeito festivo para momentos de celebração no app.
- */
-@keyframes fall {
-    to {
-        transform: translateY(100vh) rotate(720deg);
-        /* Cai até o fim da tela girando */
-        opacity: 0;
-        /* Desaparece ao chegar no fim */
-    }
-}
-
-.confetti {
-    position: fixed;
-    width: 10px;
-    height: 10px;
-    background-color: #f59e0b;
-    /* Amarelo Amber padrão */
-    animation: fall linear forwards;
-    z-index: 100;
-    /* Garante que fique acima de tudo */
-    pointer-events: none;
-    /* Permite clicar através do confete (não bloqueia a UI) */
-}
-
-
-/* * --------------------------------------------------------------------------------------
- * DESTAQUES DE TEXTO (HIGHLIGHTS)
- * Cores utilizadas para marcação de versículos ou anotações do usuário.
- * Simula o efeito de uma caneta marca-texto com opacidade reduzida.
- * -------------------------------------------------------------------------------------- 
- */
-
-/* Destaque Amarelo (Atenção / Ouro) */
-.highlight-yellow {
-    background-color: rgba(253, 224, 71, 0.25) !important;
-    /* Fundo translúcido */
-    border-bottom: 2px solid #eab308;
-    /* Linha sólida na base para contraste */
-}
-
-/* Destaque Verde (Esperança / Natureza) */
-.highlight-green {
-    background-color: rgba(134, 239, 172, 0.25) !important;
-    border-bottom: 2px solid #22c55e;
-}
-
-/* Destaque Azul (Divindade / Céu) */
-.highlight-blue {
-    background-color: rgba(147, 197, 253, 0.25) !important;
-    border-bottom: 2px solid #3b82f6;
-}
-
-/* Destaque Vermelho (Alerta / Sangue / Amor) */
-.highlight-red {
-    background-color: rgba(252, 165, 165, 0.25) !important;
-    border-bottom: 2px solid #ef4444;
-}
-
-
-/* * --------------------------------------------------------------------------------------
- * TIPOGRAFIA E LEITURA (VERSÍCULOS E HINOS)
- * Configurações focadas na experiência de leitura prolongada (Long-form reading).
- * Inclui suporte nativo para MODO ESCURO (.dark).
- * -------------------------------------------------------------------------------------- 
- */
-
-/* * Estilo Base do Conteúdo do Versículo
- * Ajustado para máxima legibilidade em telas móveis e desktop.
- */
-.verse-content {
-    line-height: 2.1;
-    /* Espaçamento generoso entre linhas para não cansar a vista */
-    font-feature-settings: "kern", "liga";
-    /* Melhora o kerning e ligaduras da fonte */
-    letter-spacing: -0.015em;
-    /* Leve aperto nas letras para visual moderno */
-    color: #292524;
-    /* Stone-800: Um cinza escuro suave, menos agressivo que preto puro */
-}
-
-/* Adaptação para Modo Escuro */
-.dark .verse-content {
-    color: #e7e5e4;
-    /* Stone-200: Um cinza claro suave */
-}
-
-
-/* * Estilo "Red Letter" (Letras Vermelhas)
- * Tradicionalmente usado em Bíblias para destacar as palavras de Jesus.
+/* * Estilo "Red Letter" (Palavras de Jesus)
+ * Usado para destacar falas diretas de Jesus nos textos bíblicos.
+ * Adapta-se automaticamente ao modo claro e escuro.
  */
 .red-letter {
-    color: #9f1239;
-    /* Rose-800: Um vermelho sóbrio e elegante */
+    color: #b91c1c;
+    /* Red-700: Um vermelho forte e legível no claro */
+    font-weight: 500;
+    /* Levemente mais grosso para destaque */
 }
 
 /* Red Letter no Modo Escuro (precisa ser mais claro para contraste) */
@@ -300,4 +148,204 @@ select {
     /* Fundo branco translúcido */
     border-left: 3px solid #d6d3d1;
     /* Barra lateral cinza claro */
+}
+
+/* * --------------------------------------------------------------------------------------
+ * ANIMAÇÕES PERSONALIZADAS
+ * Keyframes para feedbacks visuais (sucesso, erro, carregamento).
+ * -------------------------------------------------------------------------------------- 
+ */
+
+/* * Animação de Entrada (Fade In + Slide Up)
+ * Usada em modais, toasts e menus que aparecem na tela.
+ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 20px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 0.3s ease-out;
+}
+
+/* * Animação de Pulso (Feedback de Clique)
+ * Efeito sutil ao clicar em botões de ação importante.
+ */
+@keyframes pulse-soft {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.btn-pulse:active {
+    animation: pulse-soft 0.2s ease-in-out;
+}
+
+/* * --------------------------------------------------------------------------------------
+ * CONFIGURAÇÕES DE SELEÇÃO E TOQUE
+ * Melhorias de usabilidade para dispositivos móveis (Toque).
+ * -------------------------------------------------------------------------------------- 
+ */
+
+/* * Previne o "Flash" cinza ao clicar em elementos no iOS/Android.
+ * Torna a interação mais parecida com app nativo.
+ */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* * Impede a seleção de texto em elementos de interface (botões, menus).
+ * Mantém a seleção de texto permitida apenas no conteúdo principal (versículos).
+ */
+.no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* * Garante que o texto bíblico seja selecionável para copiar/compartilhar. */
+.selectable-text {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+/* * --------------------------------------------------------------------------------------
+ * ESTILOS DE FORMULÁRIO E INPUTS
+ * -------------------------------------------------------------------------------------- 
+ */
+
+/* Estilo do Input Range (Slider) - Customização Cross-Browser */
+input[type=range] {
+    -webkit-appearance: none;
+    /* Remove estilo padrão */
+    width: 100%;
+    background: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+    outline: none;
+    /* Remove borda azul padrão de foco */
+}
+
+/* Ajuste de foco para acessibilidade (apenas teclado) */
+body:not(.user-is-tabbing) button:focus,
+body:not(.user-is-tabbing) input:focus,
+body:not(.user-is-tabbing) select:focus,
+body:not(.user-is-tabbing) textarea:focus {
+    outline: none;
+}
+
+/* * --------------------------------------------------------------------------------------
+ * CORES DE DESTAQUE (HIGHLIGHTS)
+ * Cores usadas para marcar versículos.
+ * -------------------------------------------------------------------------------------- 
+ */
+
+/* Amarelo (Padrão) */
+.highlight-yellow {
+    background-color: rgba(253, 224, 71, 0.4);
+    /* yellow-300 com transparência */
+}
+
+.dark .highlight-yellow {
+    background-color: rgba(253, 224, 71, 0.25);
+    /* Mais sutil no escuro */
+}
+
+/* Verde */
+.highlight-green {
+    background-color: rgba(134, 239, 172, 0.4);
+    /* green-300 */
+}
+
+.dark .highlight-green {
+    background-color: rgba(134, 239, 172, 0.25);
+}
+
+/* Azul */
+.highlight-blue {
+    background-color: rgba(147, 197, 253, 0.4);
+    /* blue-300 */
+}
+
+.dark .highlight-blue {
+    background-color: rgba(147, 197, 253, 0.25);
+}
+
+/* Rosa */
+.highlight-pink {
+    background-color: rgba(249, 168, 212, 0.4);
+    /* pink-300 */
+}
+
+.dark .highlight-pink {
+    background-color: rgba(249, 168, 212, 0.25);
+}
+
+/* * --------------------------------------------------------------------------------------
+ * TOASTS (NOTIFICAÇÕES FLUTUANTES)
+ * Estilização dos alertas que aparecem no topo/fundo da tela.
+ * -------------------------------------------------------------------------------------- 
+ */
+.toast {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    /* Centraliza horizontalmente (metade do width) */
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 16px;
+    position: fixed;
+    z-index: 100;
+    /* Garante que fique sobre tudo */
+    left: 50%;
+    bottom: 30px;
+    font-size: 15px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    opacity: 0;
+    transition: opacity 0.3s, bottom 0.3s, visibility 0.3s;
+}
+
+/* Toast Visível (Ativado via JS) */
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+    bottom: 50px;
+    /* Efeito de subida suave */
+}
+
+/* Variação: Toast de Sucesso */
+.toast.success {
+    background-color: #10b981;
+    /* emerald-500 */
+}
+
+/* Variação: Toast de Erro */
+.toast.error {
+    background-color: #ef4444;
+    /* red-500 */
 }
