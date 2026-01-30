@@ -1,7 +1,0 @@
-{
-	"appId": "com.agape.biblia",
-	"appName": "Bíblia Ágape",
-	"webDir": "www",
-	"bundledWebRuntime": false,
-	"packageClassList": []
-}
