@@ -21,17 +21,66 @@ body {
     /* gray-900 */
 }
 
-/* Ajuste Específico para o HEADER (Fixo no topo)
-   Adiciona padding no topo igual ao tamanho da barra de status (Notch)
+/* ==========================================================================
+   CORREÇÃO DE LAYOUT: HEADER E BOTÕES (Use este código)
+   ========================================================================== */
+
+:root {
+    --sat: env(safe-area-inset-top);
+    --sab: env(safe-area-inset-bottom);
+}
+
+/* 1. CORREÇÃO DA BARRA DE TÍTULOS (HEADER) 
+   Alvo: #main-header (presente no seu HTML)
 */
-header.fixed {
-    padding-top: var(--sat);
-    padding-left: var(--sal);
-    padding-right: var(--sar);
-    /* Remove altura fixa se houver (ex: h-16) para acomodar o padding extra */
+#main-header,
+header {
+    /* Adiciona espaço para o Notch (Entalhe) */
+    padding-top: var(--sat) !important;
+
+    /* Altura automática para acomodar o notch */
     height: auto !important;
-    min-height: 4rem;
-    /* Mantém o tamanho mínimo original (h-16 = 4rem) */
+    min-height: calc(4rem + var(--sat)) !important;
+
+    /* IMPORTANTE: Impede quebra de linha entre Logo e Título */
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    /* Força linha única */
+    white-space: nowrap !important;
+    /* Texto não desce */
+
+    /* Fixa no topo (caso não esteja no HTML) */
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+}
+
+/* Garante que os containers dentro do header também não quebrem */
+#main-header>div,
+#main-header .flex {
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+}
+
+/* 2. CORREÇÃO DOS BOTÕES FLUTUANTES (Avançar/Voltar)
+   Posiciona 10px acima da área de gestos.
+*/
+#reading-nav-bar,
+.botoes-navegacao,
+.fixed.bottom-8 {
+    /* Ignora o 'bottom-8' do Tailwind e usa a Safe Area + 10px */
+    bottom: calc(var(--sab) + 10px) !important;
+    z-index: 40;
+}
+
+/* 3. COMPENSAÇÃO DO CONTEÚDO (Para não ficar atrás do Header) */
+main,
+#main-content {
+    /* Empurra o texto para baixo para não ser comido pelo header fixo */
+    padding-top: calc(4rem + var(--sat) + 10px) !important;
 }
 
 /* Ajuste Específico para o MENU INFERIOR (Fixo no fundo)
@@ -346,7 +395,7 @@ body:not(.user-is-tabbing) textarea:focus {
 .fixed.bottom-4,
 #reading-nav-bar {
     /* 10px de margem + Área Segura (para não colar na barra do iPhone/Android) */
-    bottom: calc(env(safe-area-inset-bottom) + 40px) !important;
+    bottom: calc(env(safe-area-inset-bottom) + 15px) !important;
 
     /* Garante que fiquem acima do texto */
     z-index: 40;
