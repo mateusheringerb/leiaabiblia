@@ -1,7 +1,7 @@
 /*
  * ======================================================================================
  * NOME DO PROJETO: BÍBLIA ÁGAPE
- * ARQUIVO: styles.css
+ * ARQUIVO: styles.css (Versão 5.0 - Ajuste Fino Final)
  * ======================================================================================
  */
 
@@ -10,7 +10,7 @@
     --sat: env(safe-area-inset-top);
     --sab: env(safe-area-inset-bottom);
     --navbar-height: 4rem;
-    /* 64px padrão */
+    /* Altura da barra inferior (64px) */
 }
 
 /* 2. CONFIGURAÇÕES GERAIS */
@@ -26,77 +26,80 @@ body {
     background-color: #111827;
 }
 
-/* 3. CABEÇALHO (HEADER) - FIXO */
+/* 3. CABEÇALHO (HEADER) */
 header,
 .fixed.top-0,
 nav.fixed.top-0 {
+    /* Adiciona apenas a área segura no topo */
     padding-top: var(--sat) !important;
     height: auto !important;
-    /* Altura mínima visual para garantir clique nos botões */
-    min-height: calc(3.5rem + var(--sat));
+    min-height: calc(4rem + var(--sat));
+    /* 4rem = h-16 */
+
+    /* Layout */
     display: flex !important;
     align-items: center !important;
     z-index: 50;
-    /* Garante que fique acima do texto */
     white-space: nowrap !important;
     flex-wrap: nowrap !important;
 }
 
-/* 4. CONTEÚDO PRINCIPAL (MAIN) - CALIBRAGEM DO TOPO */
+/* 4. CONTEÚDO PRINCIPAL (MAIN) - CORREÇÃO DE ESPAÇAMENTO */
 main,
 #conteudo-biblia,
 .pt-16,
 section {
-    /* AJUSTE DO TOPO: Reduzido drasticamente.
-       Usa apenas a área segura + 3.5rem (altura do header).
-       Sem pixels extras. Isso deve trazer o card "Versículo" para perto.
+    /* AJUSTE CRÍTICO DO TOPO (Resolução do "Espaçou demais"):
+       Estou usando 3.5rem (56px) em vez de 4rem (64px).
+       Isso "puxa" o conteúdo 8px para cima, escondendo o buraco branco.
     */
     padding-top: calc(var(--sat) + 3.5rem) !important;
 
-    /* AJUSTE DO FUNDO (Suporte vs Menu):
-       Adiciona padding suficiente para que o ÚLTIMO botão da lista (Suporte)
-       possa ser rolado para CIMA da barra de menu, ficando visível.
+    /* AJUSTE DO FUNDO (Botões de Suporte):
+       10rem (160px) de espaço extra no fundo. 
+       Isso cria uma "almofada" invisível no final da página para que
+       os botões de suporte nunca fiquem escondidos atrás do menu.
     */
-    padding-bottom: calc(var(--navbar-height) + var(--sab) + 20px) !important;
+    padding-bottom: calc(var(--navbar-height) + var(--sab) + 10rem) !important;
 }
 
-/* Garante que listas dentro do main também tenham respiro no final */
+/* Garante que o último elemento de qualquer lista tenha espaço para respirar */
 ul:last-child,
-div.grid:last-child {
-    padding-bottom: 20px;
+div.grid:last-child,
+.space-y-4:last-child {
+    padding-bottom: 2rem;
 }
 
-/* 5. BOTÕES FLUTUANTES (Avançar/Voltar) - CALIBRAGEM 8PX */
+/* 5. BOTÕES FLUTUANTES (Avançar/Voltar) - AJUSTE 8PX */
 .fixed.bottom-4,
 .fixed.bottom-0:not(nav),
-.botoes-navegacao,
-button.fixed {
-    /* Soma: Altura do Menu (4rem) + Safe Area + 8px (Seu pedido).
-       Isso coloca os botões logo acima da barra de navegação.
+.botoes-navegacao {
+    /* Cálculo: Altura do Menu (4rem) + Safe Area + 8px (Seu pedido).
+       Isso cola eles logo acima da barra de menu.
     */
     bottom: calc(var(--navbar-height) + var(--sab) + 8px) !important;
     z-index: 40;
-    /* Fica acima do conteúdo, mas abaixo de modais */
 }
 
-/* 6. BARRA DE NAVEGAÇÃO INFERIOR (MENU: Destaques/Planos) */
+/* 6. BARRA DE NAVEGAÇÃO INFERIOR (MENU) */
 footer,
 nav.fixed.bottom-0 {
     bottom: 0 !important;
     padding-bottom: var(--sab) !important;
     height: calc(var(--navbar-height) + var(--sab)) !important;
     z-index: 50;
-    /* Máximo z-index para ficar sempre sobre tudo */
+    /* Máximo z-index */
     background-color: inherit;
-    /* Adiciona uma cor de fundo sólida para o conteúdo não vazar transparente */
+    /* Mantém a cor original */
     background-color: #ffffff;
+    /* Fallback branco para evitar transparência */
 }
 
 .dark nav.fixed.bottom-0 {
     background-color: #111827;
 }
 
-/* --- ESTILOS VISUAIS (MANTIDOS) --- */
+/* --- ESTILOS VISUAIS E UTILITÁRIOS (MANTIDOS) --- */
 
 .hide-scrollbar::-webkit-scrollbar {
     display: none;
