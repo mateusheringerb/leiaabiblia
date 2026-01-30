@@ -1,151 +1,151 @@
 /*
  * ======================================================================================
  * NOME DO PROJETO: BÍBLIA ÁGAPE
- * ARQUIVO: styles.css (Versão FINAL - RESET GEOMÉTRICO)
- * OBJETIVO: Ignorar espaçamentos do Tailwind e forçar alinhamento nativo perfeito.
+ * ARQUIVO: styles.css
+ * DESCRIÇÃO: Folha de estilos globais, animações e utilitários visuais.
+ * VERSÃO: 4.1.0 (Atualizado com Safe Area Support)
+ * DESENVOLVIDO POR: Mateus Heringer
  * ======================================================================================
  */
 
-/* 1. DEFINIÇÃO DAS "RÉGUAS" (A Verdade Única) */
-:root {
-    --sat: env(safe-area-inset-top);
-    --sab: env(safe-area-inset-bottom);
-    --header-h: 4rem;
-    /* 64px (igual ao h-16 do Tailwind) */
-    --nav-h: 4rem;
-    /* 64px (igual ao h-16 do Tailwind) */
-}
-
-/* 2. RESET DO BODY */
+/* Garante que o app não tenha scroll elástico indesejado no body */
 body {
-    background-color: #ffffff;
     overscroll-behavior-y: none;
-    -webkit-tap-highlight-color: transparent;
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
-    /* Removemos qualquer padding do body para controlar no main */
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+    background-color: #ffffff;
+    /* Previne fundo branco piscando */
 }
 
+/* Modo escuro no body */
 .dark body {
     background-color: #111827;
+    /* gray-900 */
 }
 
-/* 3. CABEÇALHO (HEADER) 
-   Forçamos o preenchimento do Notch e a altura correta.
+/* Ajuste Específico para o HEADER (Fixo no topo)
+   Adiciona padding no topo igual ao tamanho da barra de status (Notch)
 */
-header,
-.fixed.top-0,
-nav.fixed.top-0 {
-    /* Adiciona o espaço do Notch */
-    padding-top: var(--sat) !important;
-
-    /* A altura total visual será Header + Notch */
+header.fixed {
+    padding-top: var(--sat);
+    padding-left: var(--sal);
+    padding-right: var(--sar);
+    /* Remove altura fixa se houver (ex: h-16) para acomodar o padding extra */
     height: auto !important;
-    min-height: calc(var(--header-h) + var(--sat)) !important;
-
-    /* Garante alinhamento */
-    display: flex !important;
-    align-items: center !important;
-    z-index: 50;
+    min-height: 4rem;
+    /* Mantém o tamanho mínimo original (h-16 = 4rem) */
 }
 
-/* 4. CONTEÚDO PRINCIPAL (MAIN) - AQUI ESTAVA O ERRO 
-   Usamos !important para IGNORAR o 'pt-20' e 'pb-20' do HTML.
+/* Ajuste Específico para o MENU INFERIOR (Fixo no fundo)
+   Adiciona padding no fundo igual à barra de gestos (Home Indicator)
 */
-main,
-#conteudo-biblia,
-.pt-16,
-.pt-20,
-/* Sobrescreve a classe do seu HTML */
-section {
-    /* TOPO: Começa EXATAMENTE onde o header termina.
-       Se quiser dar um respiro, mude o '0px' para '10px'.
-    */
-    padding-top: calc(var(--header-h) + var(--sat) + 10px) !important;
-    margin-top: 0 !important;
-
-    /* FUNDO: Espaço gigante para permitir rolar até o último botão (Suporte)
-       sem que ele fique escondido atrás do menu.
-    */
-    padding-bottom: calc(var(--nav-h) + var(--sab) + 80px) !important;
-    margin-bottom: 0 !important;
-}
-
-/* 5. BOTÕES FLUTUANTES (Avançar/Voltar) 
-   Posicionados acima da barra de menu com precisão cirúrgica.
-*/
-.fixed.bottom-4,
-.fixed.bottom-0:not(nav),
-.botoes-navegacao,
-#fab-container {
-    /* Altura do Menu + Área Segura + 8px de respiro */
-    bottom: calc(var(--nav-h) + var(--sab) + 8px) !important;
-    z-index: 40;
-    margin-bottom: 0 !important;
-}
-
-/* 6. BARRA DE MENU INFERIOR 
-   Cola no fundo e cresce para proteger a barra de gestos (Home Indicator).
-*/
-footer,
 nav.fixed.bottom-0 {
-    bottom: 0 !important;
-    padding-bottom: var(--sab) !important;
-    height: calc(var(--nav-h) + var(--sab)) !important;
-    z-index: 50;
-
-    /* Garante fundo sólido para não ver texto passando por trás */
-    background-color: #ffffff;
+    padding-bottom: var(--sab);
+    padding-left: var(--sal);
+    padding-right: var(--sar);
+    height: auto !important;
 }
 
-.dark nav.fixed.bottom-0 {
-    background-color: #111827;
+/* Ajuste para a Área de Conteúdo (MAIN)
+   Compensa o espaço extra que o Header e o Footer ganharam
+*/
+main {
+    /* Soma o padding original do Tailwind (pt-16 e pb-20) com a Safe Area */
+    padding-top: calc(4rem + var(--sat)) !important;
+    padding-bottom: calc(5rem + var(--sab)) !important;
+    padding-left: var(--sal);
+    padding-right: var(--sar);
 }
 
-/* --- ESTILOS VISUAIS EXTRAS (MANTIDOS) --- */
+/* * --------------------------------------------------------------------------------------
+ * UTILITÁRIOS DE INTERFACE
+ * Pequenos ajustes para melhorar a experiência visual do usuário (UX/UI).
+ * -------------------------------------------------------------------------------------- 
+ */
 
+/* * Oculta a barra de rolagem (scrollbar) mantendo a funcionalidade de scroll.
+ * Essencial para carrosséis ou listas horizontais onde a barra polui o visual.
+ */
 .hide-scrollbar::-webkit-scrollbar {
     display: none;
+    /* Para Chrome, Safari e Opera */
 }
 
 .hide-scrollbar {
     -ms-overflow-style: none;
+    /* Para Internet Explorer e Edge */
     scrollbar-width: none;
+    /* Para Firefox */
 }
 
+/* * Remove a aparência nativa e inconsistente dos navegadores para elementos <select>.
+ * Isso permite aplicarmos nossos próprios estilos personalizados via CSS/Tailwind.
+ */
 select {
     -webkit-appearance: none;
     appearance: none;
 }
 
+
+/* * --------------------------------------------------------------------------------------
+ * CLASSES ESPECÍFICAS DO PROJETO
+ * Estilização de componentes únicos como "Letras Vermelhas" e "Refrões".
+ * -------------------------------------------------------------------------------------- 
+ */
+
+/* * Estilo "Red Letter" (Palavras de Jesus)
+ * Usado para destacar falas diretas de Jesus nos textos bíblicos.
+ * Adapta-se automaticamente ao modo claro e escuro.
+ */
 .red-letter {
     color: #b91c1c;
+    /* Red-700: Um vermelho forte e legível no claro */
     font-weight: 500;
+    /* Levemente mais grosso para destaque */
 }
 
+/* Red Letter no Modo Escuro (precisa ser mais claro para contraste) */
 .dark .red-letter {
     color: #fb7185;
+    /* Rose-400: Um vermelho rosado luminoso */
 }
 
+
+/* * Estilo para Refrão de Hinos
+ * Cria um bloco visualmente distinto para separar estrofes de refrões.
+ */
 .hymn-chorus {
     background-color: rgba(180, 83, 9, 0.05);
+    /* Fundo laranja/âmbar muito sutil */
     color: inherit;
     padding: 1.5rem;
+    /* Espaço interno confortável */
     border-left: 3px solid #b45309;
+    /* Barra lateral laranja para indicar citação/destaque */
     font-style: italic;
+    /* Itálico para diferenciar da estrofe */
     font-weight: 500;
+    /* Levemente mais grosso */
     margin-bottom: 2rem;
     border-radius: 0 0.5rem 0.5rem 0;
+    /* Arredonda apenas o lado direito */
 }
 
+/* Refrão no Modo Escuro */
 .dark .hymn-chorus {
     background-color: rgba(255, 255, 255, 0.05);
+    /* Fundo branco translúcido */
     border-left: 3px solid #d6d3d1;
+    /* Barra lateral cinza claro */
 }
 
-/* Animações e Utilitários */
+/* * --------------------------------------------------------------------------------------
+ * ANIMAÇÕES PERSONALIZADAS
+ * Keyframes para feedbacks visuais (sucesso, erro, carregamento).
+ * -------------------------------------------------------------------------------------- 
+ */
+
+/* * Animação de Entrada (Fade In + Slide Up)
+ * Usada em modais, toasts e menus que aparecem na tela.
+ */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -162,6 +162,9 @@ select {
     animation: fadeInUp 0.3s ease-out;
 }
 
+/* * Animação de Pulso (Feedback de Clique)
+ * Efeito sutil ao clicar em botões de ação importante.
+ */
 @keyframes pulse-soft {
     0% {
         transform: scale(1);
@@ -180,18 +183,46 @@ select {
     animation: pulse-soft 0.2s ease-in-out;
 }
 
+/* * --------------------------------------------------------------------------------------
+ * CONFIGURAÇÕES DE SELEÇÃO E TOQUE
+ * Melhorias de usabilidade para dispositivos móveis (Toque).
+ * -------------------------------------------------------------------------------------- 
+ */
+
+/* * Previne o "Flash" cinza ao clicar em elementos no iOS/Android.
+ * Torna a interação mais parecida com app nativo.
+ */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* * Impede a seleção de texto em elementos de interface (botões, menus).
+ * Mantém a seleção de texto permitida apenas no conteúdo principal (versículos).
+ */
 .no-select {
     -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
 }
 
+/* * Garante que o texto bíblico seja selecionável para copiar/compartilhar. */
 .selectable-text {
     -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
     user-select: text;
 }
 
+/* * --------------------------------------------------------------------------------------
+ * ESTILOS DE FORMULÁRIO E INPUTS
+ * -------------------------------------------------------------------------------------- 
+ */
+
+/* Estilo do Input Range (Slider) - Customização Cross-Browser */
 input[type=range] {
     -webkit-appearance: none;
+    /* Remove estilo padrão */
     width: 100%;
     background: transparent;
 }
@@ -202,46 +233,74 @@ input[type=range]::-webkit-slider-thumb {
 
 input[type=range]:focus {
     outline: none;
+    /* Remove borda azul padrão de foco */
 }
 
-/* Highlight Colors */
+/* Ajuste de foco para acessibilidade (apenas teclado) */
+body:not(.user-is-tabbing) button:focus,
+body:not(.user-is-tabbing) input:focus,
+body:not(.user-is-tabbing) select:focus,
+body:not(.user-is-tabbing) textarea:focus {
+    outline: none;
+}
+
+/* * --------------------------------------------------------------------------------------
+ * CORES DE DESTAQUE (HIGHLIGHTS)
+ * Cores usadas para marcar versículos.
+ * -------------------------------------------------------------------------------------- 
+ */
+
+/* Amarelo (Padrão) */
 .highlight-yellow {
     background-color: rgba(253, 224, 71, 0.4);
+    /* yellow-300 com transparência */
 }
 
 .dark .highlight-yellow {
     background-color: rgba(253, 224, 71, 0.25);
+    /* Mais sutil no escuro */
 }
 
+/* Verde */
 .highlight-green {
     background-color: rgba(134, 239, 172, 0.4);
+    /* green-300 */
 }
 
 .dark .highlight-green {
     background-color: rgba(134, 239, 172, 0.25);
 }
 
+/* Azul */
 .highlight-blue {
     background-color: rgba(147, 197, 253, 0.4);
+    /* blue-300 */
 }
 
 .dark .highlight-blue {
     background-color: rgba(147, 197, 253, 0.25);
 }
 
+/* Rosa */
 .highlight-pink {
     background-color: rgba(249, 168, 212, 0.4);
+    /* pink-300 */
 }
 
 .dark .highlight-pink {
     background-color: rgba(249, 168, 212, 0.25);
 }
 
-/* Toasts acima do menu */
+/* * --------------------------------------------------------------------------------------
+ * TOASTS (NOTIFICAÇÕES FLUTUANTES)
+ * Estilização dos alertas que aparecem no topo/fundo da tela.
+ * -------------------------------------------------------------------------------------- 
+ */
 .toast {
     visibility: hidden;
     min-width: 250px;
     margin-left: -125px;
+    /* Centraliza horizontalmente (metade do width) */
     background-color: #333;
     color: #fff;
     text-align: center;
@@ -249,24 +308,31 @@ input[type=range]:focus {
     padding: 16px;
     position: fixed;
     z-index: 100;
+    /* Garante que fique sobre tudo */
     left: 50%;
-    bottom: calc(var(--nav-h) + var(--sab) + 50px);
+    bottom: 30px;
     font-size: 15px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     opacity: 0;
     transition: opacity 0.3s, bottom 0.3s, visibility 0.3s;
 }
 
+/* Toast Visível (Ativado via JS) */
 .toast.show {
     visibility: visible;
     opacity: 1;
-    bottom: calc(var(--nav-h) + var(--sab) + 70px);
+    bottom: 50px;
+    /* Efeito de subida suave */
 }
 
+/* Variação: Toast de Sucesso */
 .toast.success {
     background-color: #10b981;
+    /* emerald-500 */
 }
 
+/* Variação: Toast de Erro */
 .toast.error {
     background-color: #ef4444;
+    /* red-500 */
 }
