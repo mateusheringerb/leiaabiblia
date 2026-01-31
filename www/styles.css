@@ -1,402 +1,313 @@
-/*
- * ======================================================================================
- * NOME DO PROJETO: BÍBLIA ÁGAPE
- * ARQUIVO: styles.css
- * DESCRIÇÃO: Folha de estilos globais, animações e utilitários visuais.
- * VERSÃO: 4.0.0
- * DESENVOLVIDO POR: Mateus Heringer
- * ======================================================================================
- */
-
-/* Garante que o app não tenha scroll elástico indesejado no body */
-body {
-    overscroll-behavior-y: none;
-    background-color: #ffffff;
-    /* Previne fundo branco piscando */
-}
-
-/* Modo escuro no body */
-.dark body {
-    background-color: #111827;
-    /* gray-900 */
-}
-
 /* ==========================================================================
-   CORREÇÃO DE LAYOUT: HEADER E BOTÕES (Use este código)
+   STYLES.CSS - VERSÃO FINAL CORRIGIDA
    ========================================================================== */
 
 :root {
+    --c-bible-50: #fafaf9;
+    --c-bible-100: #f5f5f4;
+    --c-bible-200: #e7e5e4;
+    --c-bible-500: #78716c;
+    --c-bible-800: #292524;
+    --c-bible-900: #1c1917;
+    --c-accent-600: #b45309;
+    --c-white: #ffffff;
+
     --sat: env(safe-area-inset-top);
     --sab: env(safe-area-inset-bottom);
 }
 
-/* 1. CORREÇÃO DA BARRA DE TÍTULOS (HEADER) 
-   Alvo: #main-header (presente no seu HTML)
-*/
-#main-header,
-header {
-    /* Adiciona espaço para o Notch (Entalhe) */
-    padding-top: var(--sat) !important;
+body {
+    background-color: var(--c-bible-50);
+    color: var(--c-bible-900);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overscroll-behavior: none;
+    -webkit-tap-highlight-color: transparent;
+}
 
-    /* Altura automática para acomodar o notch */
-    height: auto !important;
-    min-height: calc(4rem + var(--sat)) !important;
+.dark body {
+    background-color: var(--c-bible-900);
+    color: var(--c-white);
+}
 
-    /* IMPORTANTE: Impede quebra de linha entre Logo e Título */
-    display: flex !important;
-    align-items: center !important;
-    flex-wrap: nowrap !important;
-    /* Força linha única */
-    white-space: nowrap !important;
-    /* Texto não desce */
-
-    /* Fixa no topo (caso não esteja no HTML) */
-    position: fixed !important;
+/* HEADER FIXO */
+.app-header {
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 50;
+    padding-top: var(--sat);
+    height: auto;
+    min-height: calc(4rem + var(--sat));
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--c-bible-200);
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
-/* Garante que os containers dentro do header também não quebrem */
-#main-header>div,
-#main-header .flex {
-    flex-wrap: nowrap !important;
-    align-items: center !important;
+.dark .app-header {
+    background-color: rgba(28, 25, 23, 0.95);
+    border-color: var(--c-bible-800);
 }
 
-/* 2. CORREÇÃO DOS BOTÕES FLUTUANTES (Avançar/Voltar)
-   Posiciona 10px acima da área de gestos.
-*/
-#reading-nav-bar,
-.botoes-navegacao,
-.fixed.bottom-8 {
-    /* Ignora o 'bottom-8' do Tailwind e usa a Safe Area + 10px */
-    bottom: calc(var(--sab) + 10px) !important;
-    z-index: 40;
+/* CONTROLE DE LOGO (NÃO QUEBRA LINHA) */
+.brand-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 0;
+    overflow: hidden;
 }
 
-/* 3. COMPENSAÇÃO DO CONTEÚDO (Para não ficar atrás do Header) */
-main,
-#main-content {
-    /* Empurra o texto para baixo para não ser comido pelo header fixo */
-    padding-top: calc(4rem + var(--sat) + 10px) !important;
+.brand-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
 }
 
-/* Ajuste Específico para o MENU INFERIOR (Fixo no fundo)
-   Adiciona padding no fundo igual à barra de gestos (Home Indicator)
-*/
-nav.fixed.bottom-0 {
-    padding-bottom: var(--sab);
-    padding-left: var(--sal);
-    padding-right: var(--sar);
-    height: auto !important;
+/* BOTÕES E SELECTS */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-shrink: 0;
+    margin-left: auto;
 }
 
-/* Ajuste para a Área de Conteúdo (MAIN)
-   Compensa o espaço extra que o Header e o Footer ganharam
-*/
-main {
-    /* Soma o padding original do Tailwind (pt-16 e pb-20) com a Safe Area */
-    padding-top: calc(4rem + var(--sat)) !important;
-    padding-bottom: calc(5rem + var(--sab)) !important;
-    padding-left: var(--sal);
-    padding-right: var(--sar);
-}
-
-/* * --------------------------------------------------------------------------------------
- * UTILITÁRIOS DE INTERFACE
- * Pequenos ajustes para melhorar a experiência visual do usuário (UX/UI).
- * -------------------------------------------------------------------------------------- 
- */
-
-/* * Oculta a barra de rolagem (scrollbar) mantendo a funcionalidade de scroll.
- * Essencial para carrosséis ou listas horizontais onde a barra polui o visual.
- */
-.hide-scrollbar::-webkit-scrollbar {
-    display: none;
-    /* Para Chrome, Safari e Opera */
-}
-
-.hide-scrollbar {
-    -ms-overflow-style: none;
-    /* Para Internet Explorer e Edge */
-    scrollbar-width: none;
-    /* Para Firefox */
-}
-
-/* * Remove a aparência nativa e inconsistente dos navegadores para elementos <select>.
- * Isso permite aplicarmos nossos próprios estilos personalizados via CSS/Tailwind.
- */
-select {
-    -webkit-appearance: none;
-    appearance: none;
-}
-
-
-/* * --------------------------------------------------------------------------------------
- * CLASSES ESPECÍFICAS DO PROJETO
- * Estilização de componentes únicos como "Letras Vermelhas" e "Refrões".
- * -------------------------------------------------------------------------------------- 
- */
-
-/* * Estilo "Red Letter" (Palavras de Jesus)
- * Usado para destacar falas diretas de Jesus nos textos bíblicos.
- * Adapta-se automaticamente ao modo claro e escuro.
- */
-.red-letter {
-    color: #b91c1c;
-    /* Red-700: Um vermelho forte e legível no claro */
-    font-weight: 500;
-    /* Levemente mais grosso para destaque */
-}
-
-/* Red Letter no Modo Escuro (precisa ser mais claro para contraste) */
-.dark .red-letter {
-    color: #fb7185;
-    /* Rose-400: Um vermelho rosado luminoso */
-}
-
-
-/* * Estilo para Refrão de Hinos
- * Cria um bloco visualmente distinto para separar estrofes de refrões.
- */
-.hymn-chorus {
-    background-color: rgba(180, 83, 9, 0.05);
-    /* Fundo laranja/âmbar muito sutil */
-    color: inherit;
-    padding: 1.5rem;
-    /* Espaço interno confortável */
-    border-left: 3px solid #b45309;
-    /* Barra lateral laranja para indicar citação/destaque */
-    font-style: italic;
-    /* Itálico para diferenciar da estrofe */
-    font-weight: 500;
-    /* Levemente mais grosso */
-    margin-bottom: 2rem;
-    border-radius: 0 0.5rem 0.5rem 0;
-    /* Arredonda apenas o lado direito */
-}
-
-/* Refrão no Modo Escuro */
-.dark .hymn-chorus {
-    background-color: rgba(255, 255, 255, 0.05);
-    /* Fundo branco translúcido */
-    border-left: 3px solid #d6d3d1;
-    /* Barra lateral cinza claro */
-}
-
-/* * --------------------------------------------------------------------------------------
- * ANIMAÇÕES PERSONALIZADAS
- * Keyframes para feedbacks visuais (sucesso, erro, carregamento).
- * -------------------------------------------------------------------------------------- 
- */
-
-/* * Animação de Entrada (Fade In + Slide Up)
- * Usada em modais, toasts e menus que aparecem na tela.
- */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translate3d(0, 20px, 0);
-    }
-
-    to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-.animate-fadeInUp {
-    animation: fadeInUp 0.3s ease-out;
-}
-
-/* * Animação de Pulso (Feedback de Clique)
- * Efeito sutil ao clicar em botões de ação importante.
- */
-@keyframes pulse-soft {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-.btn-pulse:active {
-    animation: pulse-soft 0.2s ease-in-out;
-}
-
-/* * --------------------------------------------------------------------------------------
- * CONFIGURAÇÕES DE SELEÇÃO E TOQUE
- * Melhorias de usabilidade para dispositivos móveis (Toque).
- * -------------------------------------------------------------------------------------- 
- */
-
-/* * Previne o "Flash" cinza ao clicar em elementos no iOS/Android.
- * Torna a interação mais parecida com app nativo.
- */
-* {
-    -webkit-tap-highlight-color: transparent;
-}
-
-/* * Impede a seleção de texto em elementos de interface (botões, menus).
- * Mantém a seleção de texto permitida apenas no conteúdo principal (versículos).
- */
-.no-select {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-/* * Garante que o texto bíblico seja selecionável para copiar/compartilhar. */
-.selectable-text {
-    -webkit-user-select: text;
-    -moz-user-select: text;
-    -ms-user-select: text;
-    user-select: text;
-}
-
-/* * --------------------------------------------------------------------------------------
- * ESTILOS DE FORMULÁRIO E INPUTS
- * -------------------------------------------------------------------------------------- 
- */
-
-/* Estilo do Input Range (Slider) - Customização Cross-Browser */
-input[type=range] {
-    -webkit-appearance: none;
-    /* Remove estilo padrão */
-    width: 100%;
+.btn-icon {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
     background: transparent;
+    border: none;
+    color: var(--c-bible-500);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
+.btn-icon:hover {
+    background-color: var(--c-bible-100);
 }
 
-input[type=range]:focus {
+.dark .btn-icon:hover {
+    background-color: var(--c-bible-800);
+}
+
+.input-nav-select {
+    background: var(--c-bible-100);
+    color: var(--c-bible-900);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
     outline: none;
-    /* Remove borda azul padrão de foco */
-}
-
-/* Ajuste de foco para acessibilidade (apenas teclado) */
-body:not(.user-is-tabbing) button:focus,
-body:not(.user-is-tabbing) input:focus,
-body:not(.user-is-tabbing) select:focus,
-body:not(.user-is-tabbing) textarea:focus {
-    outline: none;
-}
-
-/* * --------------------------------------------------------------------------------------
- * CORES DE DESTAQUE (HIGHLIGHTS)
- * Cores usadas para marcar versículos.
- * -------------------------------------------------------------------------------------- 
- */
-
-/* Amarelo (Padrão) */
-.highlight-yellow {
-    background-color: rgba(253, 224, 71, 0.4);
-    /* yellow-300 com transparência */
-}
-
-.dark .highlight-yellow {
-    background-color: rgba(253, 224, 71, 0.25);
-    /* Mais sutil no escuro */
-}
-
-/* Verde */
-.highlight-green {
-    background-color: rgba(134, 239, 172, 0.4);
-    /* green-300 */
-}
-
-.dark .highlight-green {
-    background-color: rgba(134, 239, 172, 0.25);
-}
-
-/* Azul */
-.highlight-blue {
-    background-color: rgba(147, 197, 253, 0.4);
-    /* blue-300 */
-}
-
-.dark .highlight-blue {
-    background-color: rgba(147, 197, 253, 0.25);
-}
-
-/* Rosa */
-.highlight-pink {
-    background-color: rgba(249, 168, 212, 0.4);
-    /* pink-300 */
-}
-
-.dark .highlight-pink {
-    background-color: rgba(249, 168, 212, 0.25);
-}
-
-/* * --------------------------------------------------------------------------------------
- * TOASTS (NOTIFICAÇÕES FLUTUANTES)
- * Estilização dos alertas que aparecem no topo/fundo da tela.
- * -------------------------------------------------------------------------------------- 
- */
-.toast {
-    visibility: hidden;
-    min-width: 250px;
-    margin-left: -125px;
-    /* Centraliza horizontalmente (metade do width) */
-    background-color: #333;
-    color: #fff;
+    appearance: none;
     text-align: center;
-    border-radius: 8px;
-    padding: 16px;
+}
+
+.dark .input-nav-select {
+    background: var(--c-bible-800);
+    color: var(--c-white);
+}
+
+/* ÁREA DE CONTEÚDO */
+.app-content {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: calc(4rem + var(--sat) + 1rem);
+    padding-bottom: calc(var(--sab) + 2rem);
+    width: 100%;
+}
+
+/* UTILITÁRIOS */
+.hidden {
+    display: none !important;
+}
+
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.shrink-0 {
+    flex-shrink: 0;
+}
+
+.card-daily {
+    background: var(--c-bible-100);
+    border: 2px solid var(--c-bible-200);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.dark .card-daily {
+    background: var(--c-bible-800);
+    border-color: var(--c-bible-700);
+}
+
+.card-daily:active {
+    transform: scale(0.98);
+}
+
+.daily-text {
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+.daily-tag {
+    background: var(--c-white);
+    color: var(--c-accent-600);
+    font-size: 0.65rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.dark .daily-tag {
+    background: var(--c-bible-900);
+}
+
+.btn-menu {
+    background: var(--c-white);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid transparent;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.dark .btn-menu {
+    background: var(--c-bible-800);
+}
+
+.btn-menu span {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--c-bible-500);
+}
+
+.btn-menu.accent {
+    border-color: var(--c-accent-600);
+}
+
+.btn-menu.accent span {
+    color: var(--c-accent-600);
+}
+
+.btn-footer {
+    background: var(--c-bible-100);
+    color: var(--c-bible-500);
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    border: none;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.dark .btn-footer {
+    background: var(--c-bible-800);
+}
+
+/* BOTÕES FLUTUANTES */
+.fab-container,
+.botoes-navegacao {
     position: fixed;
-    z-index: 100;
-    /* Garante que fique sobre tudo */
-    left: 50%;
-    bottom: 30px;
-    font-size: 15px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    opacity: 0;
-    transition: opacity 0.3s, bottom 0.3s, visibility 0.3s;
-}
-
-/* Toast Visível (Ativado via JS) */
-.toast.show {
-    visibility: visible;
-    opacity: 1;
-    bottom: 50px;
-    /* Efeito de subida suave */
-}
-
-/* Variação: Toast de Sucesso */
-.toast.success {
-    background-color: #10b981;
-    /* emerald-500 */
-}
-
-/* Variação: Toast de Erro */
-.toast.error {
-    background-color: #ef4444;
-    /* red-500 */
-}
-
-/* * --------------------------------------------------------------------------------------
- * AJUSTE DE BOTÕES FLUTUANTES
- * Posiciona os botões de avançar/voltar 10px acima da área de gestos/borda
- * -------------------------------------------------------------------------------------- 
- */
-.botoes-navegacao,
-.fixed.bottom-4,
-#reading-nav-bar {
-    /* 10px de margem + Área Segura (para não colar na barra do iPhone/Android) */
-    bottom: calc(env(safe-area-inset-bottom) + 15px) !important;
-
-    /* Garante que fiquem acima do texto */
+    bottom: calc(var(--sab) + 15px);
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    pointer-events: none;
     z-index: 40;
+}
+
+.btn-fab {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: var(--c-bible-900);
+    color: var(--c-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dark .btn-fab {
+    background: var(--c-white);
+    color: var(--c-bible-900);
+}
+
+/* MODAIS */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    backdrop-filter: blur(4px);
+}
+
+.modal-box {
+    background: var(--c-white);
+    width: 100%;
+    max-width: 24rem;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.dark .modal-box {
+    background: var(--c-bible-900);
+    border: 1px solid var(--c-bible-800);
+}
+
+.hymn-chorus {
+    background: rgba(180, 83, 9, 0.1);
+    padding: 1rem;
+    border-left: 3px solid #b45309;
+    margin: 1rem 0;
+    font-style: italic;
 }
