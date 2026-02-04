@@ -150,6 +150,17 @@
             <button onclick="togglePulpitMode()"
                 class="p-2 hover:bg-bible-100 dark:hover:bg-bible-800 rounded-full text-bible-500 transition"
                 title="Modo Púlpito"><i class="ph-fill ph-presentation text-lg"></i></button>
+
+            <button onclick="changeFontSize(-1)"
+                class="p-2 hover:bg-bible-100 dark:hover:bg-bible-800 rounded-lg transition text-bible-500"
+                title="Diminuir Fonte">
+                <i class="ph-bold ph-minus text-lg"></i>
+            </button>
+            <button onclick="changeFontSize(1)"
+                class="p-2 hover:bg-bible-100 dark:hover:bg-bible-800 rounded-lg transition text-bible-500"
+                title="Aumentar Fonte">
+                <i class="ph-bold ph ph-plus text-lg"></i>
+            </button>
         </div>
 
         <div id="header-hymn" class="hidden flex-1 items-center gap-2 w-full animate-fade-in">
@@ -189,16 +200,6 @@
                 class="hidden md:flex items-center gap-1 bg-white dark:bg-bible-800 text-accent-600 dark:text-accent-500 px-2 py-1 rounded-full text-[10px] font-bold border border-bible-200 dark:border-bible-700 mr-1 shadow-sm">
                 <i class="ph-fill ph-fire"></i> <span id="streak-count-header">0</span>
             </div>
-            <button onclick="changeFontSize(-1)"
-                class="p-2 hover:bg-bible-100 dark:hover:bg-bible-800 rounded-lg transition text-bible-500"
-                title="Diminuir Fonte">
-                <i class="ph-bold ph-minus text-lg"></i>
-            </button>
-            <button onclick="changeFontSize(1)"
-                class="p-2 hover:bg-bible-100 dark:hover:bg-bible-800 rounded-lg transition text-bible-500"
-                title="Aumentar Fonte">
-                <i class="ph-bold ph ph-plus text-lg"></i>
-            </button>
             <button onclick="toggleTheme()"
                 class="p-2 rounded-lg hover:bg-bible-100 dark:hover:bg-bible-800 transition text-bible-900 dark:text-bible-100"
                 title="Alternar Tema">
