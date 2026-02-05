@@ -199,7 +199,7 @@ async function loadChapter() {
 
     localStorage.setItem('agape_version', state.translation);
     localStorage.setItem('agape_book', state.book);
-    localStorage.setItem('agape_chapter', state.chapter);
+    localStorage.setItem('agape_chapter', state.chapter); triggerAutoBackup();
 
     container.innerHTML = '<div class="text-center p-10 text-gray-500 animate-pulse flex flex-col items-center justify-center h-64">Carregando Escrituras...</div>';
 
@@ -470,7 +470,7 @@ async function performSearch() {
 window.loadQuizData = async function () { try { var r = await fetch('./quiz.json'); if (r.ok) quizData = await r.json(); } catch (e) { } document.getElementById('quiz-points').innerText = quizTotalPoints; };
 window.startQuizSession = function () { quizSession = { active: true, currentLevel: 'facil', streak: 0, score: 0, history: [] }; renderQuizQuestion(); };
 window.renderQuizQuestion = function () { var c = document.getElementById('quiz-container'); var p = quizData.filter(function (q) { return q.nivel === quizSession.currentLevel && !quizSession.history.includes(q.id); }); if (p.length === 0) p = quizData.filter(function (q) { return !quizSession.history.includes(q.id); }); if (p.length === 0) { c.innerHTML = '<div class="text-center p-8 animate-pop"><h3 class="font-bold text-2xl mb-2">Quiz Concluído!</h3><p class="mb-4">Você é um mestre da Bíblia!</p><button onclick="startQuizSession()" class="bg-accent-600 text-white px-6 py-3 rounded-xl font-bold mt-4 shadow-lg hover:scale-105 transition">Jogar Novamente</button></div>'; return; } var q = p[Math.floor(Math.random() * p.length)]; var options = q.opcoes.map(function (o, i) { var letter = ['A', 'B', 'C', 'D'][i]; return '<button onclick="handleQuizAnswer(' + q.id + ', ' + i + ', this)" class="w-full text-left p-4 rounded-xl bg-bible-50 dark:bg-bible-700 hover:bg-bible-100 dark:hover:bg-bible-600 transition font-medium flex gap-3 group items-center relative overflow-hidden"><div class="w-8 h-8 rounded-full bg-white dark:bg-bible-600 flex items-center justify-center font-bold text-sm text-bible-500 group-hover:text-accent-600 shadow-sm z-10">' + letter + '</div><span class="flex-1 z-10">' + o + '</span></button>'; }).join(''); c.innerHTML = '<div class="bg-white dark:bg-bible-800 p-6 rounded-3xl shadow-lg border border-bible-200 dark:border-bible-700 animate-slide-up"><div class="flex justify-between items-center mb-4"><span class="bg-bible-100 dark:bg-bible-900/30 text-bible-700 dark:text-bible-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">' + quizSession.currentLevel + '</span>' + (quizSession.streak > 1 ? '<span class="text-xs font-bold text-orange-500 animate-pulse">🔥 Combo x' + quizSession.streak + '</span>' : '') + '</div><h3 class="text-xl font-bold my-6 leading-relaxed">' + q.pergunta + '</h3><div class="space-y-3">' + options + '</div></div>'; };
-window.handleQuizAnswer = function (qid, opt, btn) { document.querySelectorAll('#quiz-container button').forEach(function (b) { b.disabled = true; b.style.opacity = '0.7'; }); var q = quizData.find(function (x) { return x.id === qid; }); btn.style.opacity = '1'; btn.classList.remove('bg-bible-50', 'dark:bg-bible-700'); if (opt === q.correta) { btn.classList.add('animate-pop', 'bg-green-100', 'border-green-500', 'text-green-800'); triggerConfetti(); quizTotalPoints += 10 + (quizSession.streak * 2); quizSession.streak++; var s = document.getElementById('quiz-points'); s.innerText = quizTotalPoints; s.parentElement.classList.add('animate-pop'); setTimeout(function () { s.parentElement.classList.remove('animate-pop'); }, 300); quizSession.history.push(qid); localStorage.setItem('agape_quiz_points', quizTotalPoints); if (quizSession.streak >= 3 && quizSession.currentLevel === 'facil') quizSession.currentLevel = 'medio'; else if (quizSession.streak >= 5 && quizSession.currentLevel === 'medio') quizSession.currentLevel = 'dificil'; setTimeout(renderQuizQuestion, 1500); } else { btn.classList.add('animate-shake', 'bg-red-100', 'border-red-500', 'text-red-800'); if (navigator.vibrate) navigator.vibrate(300); quizSession.streak = 0; setTimeout(function () { alert('Ah não! A resposta correta era: ' + q.opcoes[q.correta]); quizSession.history.push(qid); renderQuizQuestion(); }, 1000); } };
+window.handleQuizAnswer = function (qid, opt, btn) { document.querySelectorAll('#quiz-container button').forEach(function (b) { b.disabled = true; b.style.opacity = '0.7'; }); var q = quizData.find(function (x) { return x.id === qid; }); btn.style.opacity = '1'; btn.classList.remove('bg-bible-50', 'dark:bg-bible-700'); if (opt === q.correta) { btn.classList.add('animate-pop', 'bg-green-100', 'border-green-500', 'text-green-800'); triggerConfetti(); quizTotalPoints += 10 + (quizSession.streak * 2); quizSession.streak++; var s = document.getElementById('quiz-points'); s.innerText = quizTotalPoints; s.parentElement.classList.add('animate-pop'); setTimeout(function () { s.parentElement.classList.remove('animate-pop'); }, 300); quizSession.history.push(qid); localStorage.setItem('agape_quiz_points', quizTotalPoints); triggerAutoBackup(); if (quizSession.streak >= 3 && quizSession.currentLevel === 'facil') quizSession.currentLevel = 'medio'; else if (quizSession.streak >= 5 && quizSession.currentLevel === 'medio') quizSession.currentLevel = 'dificil'; setTimeout(renderQuizQuestion, 1500); } else { btn.classList.add('animate-shake', 'bg-red-100', 'border-red-500', 'text-red-800'); if (navigator.vibrate) navigator.vibrate(300); quizSession.streak = 0; setTimeout(function () { alert('Ah não! A resposta correta era: ' + q.opcoes[q.correta]); quizSession.history.push(qid); renderQuizQuestion(); }, 1000); } };
 function triggerConfetti() { for (let i = 0; i < 30; i++) { const c = document.createElement('div'); c.classList.add('confetti'); c.style.left = Math.random() * 100 + 'vw'; c.style.top = '-10px'; c.style.backgroundColor = ['#f59e0b', '#ffffff', '#22c55e', '#fcd34d'][Math.floor(Math.random() * 4)]; c.style.animationDuration = (Math.random() * 2 + 1) + 's'; document.body.appendChild(c); setTimeout(function () { c.remove(); }, 3000); } }
 window.openImageCreator = function () { openImageCreatorWithText(document.getElementById('daily-text').innerText, document.getElementById('daily-reference').innerText); };
 window.openImageCreatorFromVerse = function () { closeModal('modal-verse'); openImageCreatorWithText(selectedVerse.text, selectedVerse.ref); };
@@ -493,7 +493,7 @@ window.shareApp = function () { navigator.share ? navigator.share({ title: "Bíb
 window.actionVerse = function (act) { if (act === 'copy') { navigator.clipboard.writeText('"' + selectedVerse.text + '" - ' + selectedVerse.ref); closeModal('modal-verse'); alert("Copiado!"); } };
 window.loadDailyVerse = function () { if (typeof DAILY_VERSES_POOL !== 'undefined') { var v = DAILY_VERSES_POOL[new Date().getDate() % DAILY_VERSES_POOL.length]; document.getElementById('daily-text').innerText = '"' + v.text + '"'; document.getElementById('daily-reference').innerText = v.ref; } };
 window.handleVerseClick = function (id, text, ref) { selectedVerse = { id, text, ref }; var m = document.getElementById('modal-verse'); m.classList.remove('hidden'); m.classList.add('flex'); };
-window.markVerse = function (cls) { if (cls === 'remove') delete savedMarks[selectedVerse.id]; else savedMarks[selectedVerse.id] = cls; localStorage.setItem('agape_marks_v2', JSON.stringify(savedMarks)); loadChapter(); closeModal('modal-verse'); };
+window.markVerse = function (cls) { if (cls === 'remove') delete savedMarks[selectedVerse.id]; else savedMarks[selectedVerse.id] = cls; localStorage.setItem('agape_marks_v2', JSON.stringify(savedMarks)); loadChapter(); closeModal('modal-verse'); triggerAutoBackup(); };
 window.closeModal = function (id) { var el = document.getElementById(id); el.classList.add('hidden'); el.classList.remove('flex'); };
 window.openPlanSetup = function () { var m = document.getElementById('modal-plan'); m.classList.remove('hidden'); m.classList.add('flex'); };
 window.openFeedbackModal = function () { var m = document.getElementById('modal-feedback'); m.classList.remove('hidden'); m.classList.add('flex'); };
@@ -526,7 +526,7 @@ window.togglePulpitMode = function () {
     }
 };
 window.openNoteEditor = function () { closeModal('modal-verse'); var m = document.getElementById('modal-note'); m.classList.remove('hidden'); m.classList.add('flex'); document.getElementById('note-input').value = savedNotes[selectedVerse.id] || ""; document.getElementById('note-input').focus(); };
-window.saveNote = function () { var t = document.getElementById('note-input').value.trim(); if (t) savedNotes[selectedVerse.id] = t; else delete savedNotes[selectedVerse.id]; localStorage.setItem('agape_notes', JSON.stringify(savedNotes)); loadChapter(); closeModal('modal-note'); alert("Nota salva!"); };
+window.saveNote = function () { var t = document.getElementById('note-input').value.trim(); if (t) savedNotes[selectedVerse.id] = t; else delete savedNotes[selectedVerse.id]; localStorage.setItem('agape_notes', JSON.stringify(savedNotes)); loadChapter(); closeModal('modal-note'); alert("Nota salva!"); triggerAutoBackup(); };
 window.deleteNote = function () { if (confirm("Apagar?")) { delete savedNotes[selectedVerse.id]; localStorage.setItem('agape_notes', JSON.stringify(savedNotes)); loadChapter(); closeModal('modal-note'); } };
 
 /* ==========================================================================
@@ -802,14 +802,34 @@ function logout() {
 }
 
 
-// --- B. SISTEMA DE BACKUP NA NUVEM ---
+// --- B. SISTEMA DE BACKUP NA NUVEM (AUTOMÁTICO & SILENCIOSO) ---
 
-async function backupToCloud() {
-    if (!currentUser) return showToast("Faça login primeiro.", 'error');
+let autoBackupTimeout;
 
-    showToast("Salvando backup...", 'success');
+// Chama isso sempre que o usuário alterar algo importante
+function triggerAutoBackup() {
+    if (!currentUser) return; // Só faz se tiver logado
 
-    // Coleta dados do LocalStorage
+    // Cancela o timer anterior se o usuário ainda estiver mexendo (Debounce)
+    if (autoBackupTimeout) clearTimeout(autoBackupTimeout);
+
+    // Espera 5 segundos após a última ação para salvar
+    autoBackupTimeout = setTimeout(() => {
+        console.log("Iniciando backup automático...");
+        backupToCloud(true); // true = modo silencioso (sem notificação na tela)
+    }, 5000);
+}
+
+// Função Principal de Backup (Agora aceita modo silencioso)
+async function backupToCloud(isSilent = false) {
+    if (!currentUser) {
+        if (!isSilent) showToast("Faça login para salvar.", 'error');
+        return;
+    }
+
+    if (!isSilent) showToast("Salvando backup...", 'success');
+
+    // Coleta dados
     const dataToSave = {
         bookmarks: JSON.parse(localStorage.getItem('bookmarks') || '[]'),
         notes: JSON.parse(localStorage.getItem('notes') || '[]'),
@@ -827,13 +847,74 @@ async function backupToCloud() {
     };
 
     try {
-        await db.collection('users').doc(currentUser.uid).set(dataToSave);
-        showToast("Backup salvo na nuvem!", 'success');
+        await db.collection('users').doc(currentUser.uid).set(dataToSave, { merge: true });
+
+        if (!isSilent) {
+            showToast("Backup salvo na nuvem!", 'success');
+        } else {
+            // Apenas atualiza a data no card de backup se estivermos nele
+            console.log("Backup automático concluído.");
+        }
         checkLastBackup();
     } catch (error) {
         console.error("Erro Backup:", error);
-        showToast("Erro ao salvar. Verifique conexão.", 'error');
+        if (!isSilent) showToast("Erro ao salvar.", 'error');
     }
+}
+
+async function restoreFromCloud() {
+    if (!currentUser) return showToast("Faça login primeiro.", 'error');
+
+    if (!confirm("Isso substituirá os dados atuais pelos da nuvem. Continuar?")) return;
+
+    showToast("Baixando dados...", 'success');
+
+    try {
+        const doc = await db.collection('users').doc(currentUser.uid).get();
+        if (doc.exists) {
+            const data = doc.data();
+
+            if (data.bookmarks) localStorage.setItem('bookmarks', JSON.stringify(data.bookmarks));
+            if (data.notes) localStorage.setItem('notes', JSON.stringify(data.notes));
+            if (data.history) localStorage.setItem('history', JSON.stringify(data.history));
+            if (data.quizScore) {
+                localStorage.setItem('quizPoints', data.quizScore);
+                // Atualiza variável global se existir
+                if (typeof quizTotalPoints !== 'undefined') quizTotalPoints = data.quizScore;
+            }
+
+            if (data.settings) {
+                if (data.settings.theme) localStorage.setItem('theme', data.settings.theme);
+                if (data.settings.fontSize) localStorage.setItem('fontSize', data.settings.fontSize);
+                if (data.settings.lastBook) localStorage.setItem('lastBook', data.settings.lastBook);
+                if (data.settings.lastChapter) localStorage.setItem('lastChapter', data.settings.lastChapter);
+            }
+
+            showToast("Restaurado! Reiniciando...", 'success');
+            setTimeout(() => window.location.reload(), 1500);
+        } else {
+            showToast("Nenhum backup encontrado.", 'error');
+        }
+    } catch (error) {
+        console.error("Erro Restore:", error);
+        showToast("Erro ao restaurar.", 'error');
+    }
+}
+
+async function checkLastBackup() {
+    if (!currentUser || !db) return;
+    try {
+        const doc = await db.collection('users').doc(currentUser.uid).get();
+        const label = document.getElementById('last-backup-date');
+
+        if (doc.exists && doc.data().lastUpdated) {
+            const date = doc.data().lastUpdated.toDate();
+            const dataF = date.toLocaleDateString('pt-BR') + " às " + date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+            if (label) label.innerText = "Salvo na nuvem: " + dataF;
+        } else {
+            if (label) label.innerText = "Nenhum backup encontrado";
+        }
+    } catch (e) { console.log(e); }
 }
 
 async function restoreFromCloud() {
