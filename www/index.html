@@ -15,6 +15,10 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon-new.ico">
     <link rel="apple-touch-icon" href="assets/logo-2.png">
 
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
@@ -355,7 +359,7 @@
                     </button>
                     <button onclick="showScreen('screen-backup')"
                         class="col-span-2 flex items-center justify-center gap-1.5 px-3 py-3 bg-bible-100 hover:bg-bible-200 text-bible-600 border border-bible-200/50 dark:bg-bible-800 dark:hover:bg-bible-700 dark:text-bible-200 dark:border-bible-700 text-[10px] font-bold uppercase tracking-wide rounded-xl active:scale-95 transition-all whitespace-nowrap">
-                        <i class="ph-bold ph-cloud-arrow-up text-base"></i><span>Backup & Dados</span>
+                        <i class="ph-bold ph-cloud-arrow-up text-base"></i><span>Backup & Restauração</span>
                     </button>
                     <button onclick="showScreen('screen-about')"
                         class="col-span-2 flex items-center justify-center gap-1.5 px-3 py-3 bg-bible-100 hover:bg-bible-200 text-bible-600 border border-bible-200/50 dark:bg-bible-800 dark:hover:bg-bible-700 dark:text-bible-200 dark:border-bible-700 text-[10px] font-bold uppercase tracking-wide rounded-xl active:scale-95 transition-all whitespace-nowrap">
@@ -517,29 +521,96 @@
             <div id="highlights-container" class="space-y-3 pb-20 px-4"></div>
         </div>
 
-        <div id="screen-backup" class="hidden animate-fade-in max-w-md mx-auto pt-4">
-            <div class="space-y-4 px-4">
-                <div
-                    class="bg-white dark:bg-bible-800 p-6 rounded-2xl border border-bible-200 dark:border-bible-700 shadow-card">
-                    <h3 class="font-bold text-bible-800 dark:text-bible-200 mb-3 flex items-center gap-2"><i
-                            class="ph-bold ph-arrows-left-right"></i> Transferir Dados</h3>
-                    <p class="text-sm text-bible-500 mb-4">Exporte seus dados para não perder seu progresso.</p>
-                    <div class="grid grid-cols-2 gap-3">
-                        <button onclick="exportData()"
-                            class="bg-bible-900 text-white py-3 rounded-xl font-bold hover:opacity-90 text-sm flex items-center justify-center gap-2 shadow-md"><i
-                                class="ph-bold ph-download-simple"></i> Exportar</button>
-                        <button onclick="triggerImport()"
-                            class="bg-white border border-bible-200 text-bible-900 py-3 rounded-xl font-bold hover:bg-bible-50 text-sm flex items-center justify-center gap-2 shadow-sm"><i
-                                class="ph-bold ph-upload-simple"></i> Importar</button>
-                        <input type="file" id="import-file" class="hidden" accept=".json"
-                            onchange="handleImportFile(event)">
+        <div id="screen-backup"
+            class="hidden flex flex-col items-center justify-center min-h-[80vh] px-4 pb-20 w-full animate-fade-in">
+
+            <div
+                class="w-full max-w-md bg-white dark:bg-bible-800 p-6 rounded-3xl border border-bible-200 dark:border-bible-700 shadow-xl relative">
+
+                <div class="mb-6 text-center">
+                    <div
+                        class="w-16 h-16 bg-bible-50 dark:bg-bible-900 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="ph-duotone ph-cloud-arrow-up text-3xl text-bible-900 dark:text-bible-100"></i>
+                    </div>
+                    <h3 class="font-bold text-xl text-bible-900 dark:text-white">Sincronização</h3>
+                </div>
+
+                <div id="auth-container" class="space-y-4">
+                    <p class="text-sm text-center text-bible-500 mb-4">
+                        Salve seu progresso na nuvem para não perder nada.
+                    </p>
+
+                    <div class="space-y-3">
+                        <input type="email" id="login-email" placeholder="Seu E-mail"
+                            class="w-full p-3.5 bg-gray-50 dark:bg-bible-900 rounded-xl border border-gray-200 dark:border-bible-600 outline-none focus:ring-2 focus:ring-bible-900 transition-all text-sm font-medium">
+
+                        <input type="password" id="login-password" placeholder="Sua Senha"
+                            class="w-full p-3.5 bg-gray-50 dark:bg-bible-900 rounded-xl border border-gray-200 dark:border-bible-600 outline-none focus:ring-2 focus:ring-bible-900 transition-all text-sm font-medium">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 pt-1">
+                        <button onclick="loginWithEmail()"
+                            class="bg-bible-900 text-white py-3 rounded-xl font-bold hover:bg-black transition text-sm">
+                            Entrar
+                        </button>
+                        <button onclick="registerWithEmail()"
+                            class="border border-bible-900 text-bible-900 dark:text-white dark:border-gray-500 py-3 rounded-xl font-bold hover:bg-bible-50 dark:hover:bg-white/5 transition text-sm">
+                            Criar Conta
+                        </button>
+                    </div>
+
+                    <div class="relative py-3">
+                        <div class="absolute inset-0 flex items-center"><span
+                                class="w-full border-t border-gray-200 dark:border-gray-700"></span></div>
+                        <div class="relative flex justify-center text-xs uppercase"><span
+                                class="bg-white dark:bg-bible-800 px-2 text-gray-400 font-bold tracking-wider">Ou</span>
+                        </div>
+                    </div>
+
+                    <button onclick="loginWithGoogle()"
+                        class="w-full bg-white dark:bg-bible-700 hover:bg-gray-50 border border-gray-200 dark:border-gray-600 text-gray-700 dark:text-white py-3 rounded-xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 shadow-sm text-sm">
+                        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" class="w-5 h-5">
+                        Continuar com Google
+                    </button>
+                </div>
+
+                <div id="user-container" class="hidden animate-fade-in">
+                    <div
+                        class="flex items-center gap-4 mb-6 p-4 bg-gray-50 dark:bg-bible-900/50 rounded-2xl border border-gray-100 dark:border-bible-700/50">
+                        <img id="user-photo" src="" class="w-12 h-12 rounded-full border-2 border-white shadow-sm">
+                        <div class="text-left overflow-hidden">
+                            <p id="user-name" class="font-bold text-base truncate text-bible-900 dark:text-white">
+                                Usuário</p>
+                            <p id="user-email" class="text-xs text-bible-500 truncate">email@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <button onclick="backupToCloud()"
+                            class="w-full bg-bible-900 text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-black transition shadow-lg shadow-bible-900/20">
+                            <i class="ph-bold ph-cloud-arrow-up text-lg"></i> Fazer Backup Agora
+                        </button>
+
+                        <button onclick="restoreFromCloud()"
+                            class="w-full bg-white dark:bg-transparent border-2 border-gray-100 dark:border-bible-600 text-gray-600 dark:text-bible-300 py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-gray-50 transition">
+                            <i class="ph-bold ph-cloud-arrow-down text-lg"></i> Restaurar Dados
+                        </button>
+                    </div>
+
+                    <div class="mt-8 pt-4 border-t border-gray-100 dark:border-gray-700 text-center">
+                        <p id="last-backup-date"
+                            class="text-[10px] text-bible-400 uppercase font-bold tracking-widest mb-4">
+                            Verificando backups...
+                        </p>
+                        <button onclick="logout()"
+                            class="text-red-500 text-xs font-bold hover:text-red-600 transition border border-red-100 px-4 py-2 rounded-full hover:bg-red-50">
+                            SAIR DA CONTA
+                        </button>
                     </div>
                 </div>
-                <div class="p-4 text-center"><button onclick="hardReset()"
-                        class="text-red-500 text-xs font-bold hover:underline">Resetar App (Perigo)</button></div>
+
             </div>
         </div>
-
     </main>
 
     <div id="modal-plan"
