@@ -13,6 +13,27 @@
 // 1. CONSTANTES E CONFIGURAÇÕES
 // ============================================================================
 
+// --- 1. CONFIGURAÇÃO DO FIREBASE ---
+const firebaseConfig = {
+    apiKey: "AIzaSyCMp6oSmI2bmhMNd3UGWbNtNKuMxWvJJN8",
+    authDomain: "biblia-agape-6f09e.firebaseapp.com",
+    projectId: "biblia-agape-6f09e",
+    storageBucket: "biblia-agape-6f09e.firebasestorage.app",
+    messagingSenderId: "478516550595",
+    appId: "1:478516550595:web:283abc37d8d5094e2b7b76",
+    measurementId: "G-WCWVYHZ3MW"
+};
+
+// Inicializa Firebase com segurança (evita erro se já estiver carregado)
+if (typeof firebase !== 'undefined' && !firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+}
+
+// Referências globais
+const auth = (typeof firebase !== 'undefined') ? firebase.auth() : null;
+const db = (typeof firebase !== 'undefined') ? firebase.firestore() : null;
+let currentUser = null; // Variável para controlar o usuário logado
+
 var TRANSLATIONS = [
     "ACF",      // Almeida Corrigida Fiel
     "ARA",      // Almeida Revista e Atualizada
@@ -68,6 +89,7 @@ var quizSession = { active: false, currentLevel: 'facil', streak: 0, score: 0, h
 // 3. INICIALIZAÇÃO
 window.onload = async function () {
     try {
+        if (typeof setupAuthListener === 'function') setupAuthListener();
         applyTheme(state.theme);
         updateStreakDisplay();
         populateSelectElements();
@@ -667,3 +689,260 @@ window.sendFeedbackToEmail = async function () {
         btn.style.cursor = 'pointer';
     }
 };
+
+/* ==========================================================================
+   FIREBASE (AUTH & BACKUP) + SUPORTE
+   ========================================================================== */
+
+// --- A. SISTEMA DE LOGIN (GOOGLE + E-MAIL) ---
+
+function setupAuthListener() {
+    if (!auth) return;
+    auth.onAuthStateChanged((user) => {
+        currentUser = user;
+        updateBackupUI(user); // Atualiza a tela de backup
+    });
+}
+
+function updateBackupUI(user) {
+    const authContainer = document.getElementById('auth-container');
+    const userContainer = document.getElementById('user-container');
+
+    if (!authContainer || !userContainer) return; // Proteção caso o HTML não exista
+
+    if (user) {
+        // Usuário Logado
+        authContainer.classList.add('hidden');
+        userContainer.classList.remove('hidden');
+
+        // Preenche dados
+        const nameEl = document.getElementById('user-name');
+        const emailEl = document.getElementById('user-email');
+        const photoEl = document.getElementById('user-photo');
+
+        if (nameEl) nameEl.innerText = user.displayName || 'Usuário';
+        if (emailEl) emailEl.innerText = user.email;
+        if (photoEl) photoEl.src = user.photoURL || 'assets/icon.png';
+
+        checkLastBackup(); // Verifica se tem backup na nuvem
+    } else {
+        // Usuário Deslogado
+        authContainer.classList.remove('hidden');
+        userContainer.classList.add('hidden');
+    }
+}
+
+// 1. Login com Google
+function loginWithGoogle() {
+    if (!auth) return showToast("Firebase não carregado.", 'error');
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider)
+        .then(() => showToast("Login realizado!", 'success'))
+        .catch((error) => showToast("Erro: " + error.message, 'error'));
+}
+
+// 2. Auxiliar para pegar E-mail/Senha
+function getEmailPassword() {
+    const emailEl = document.getElementById('login-email');
+    const passEl = document.getElementById('login-password');
+    if (!emailEl || !passEl) return null;
+
+    const email = emailEl.value.trim();
+    const password = passEl.value.trim();
+
+    if (!email || !password) {
+        showToast("Digite e-mail e senha.", 'error');
+        return null;
+    }
+    return { email, password };
+}
+
+// 3. Login com E-mail
+function loginWithEmail() {
+    const creds = getEmailPassword();
+    if (!creds) return;
+
+    auth.signInWithEmailAndPassword(creds.email, creds.password)
+        .then(() => showToast("Bem-vindo de volta!", 'success'))
+        .catch((error) => {
+            let msg = "Erro ao entrar.";
+            if (error.code === 'auth/wrong-password') msg = "Senha incorreta.";
+            else if (error.code === 'auth/user-not-found') msg = "Usuário não encontrado.";
+            else if (error.code === 'auth/invalid-email') msg = "E-mail inválido.";
+            showToast(msg, 'error');
+        });
+}
+
+// 4. Cadastro com E-mail
+function registerWithEmail() {
+    const creds = getEmailPassword();
+    if (!creds) return;
+
+    if (creds.password.length < 6) {
+        showToast("A senha deve ter no mínimo 6 caracteres.", 'error');
+        return;
+    }
+
+    auth.createUserWithEmailAndPassword(creds.email, creds.password)
+        .then((userCredential) => {
+            showToast("Conta criada! Você já está logado.", 'success');
+            // Opcional: Atualizar nome do usuário se quiser depois
+        })
+        .catch((error) => {
+            let msg = "Erro ao cadastrar.";
+            if (error.code === 'auth/email-already-in-use') msg = "E-mail já cadastrado.";
+            else if (error.code === 'auth/invalid-email') msg = "E-mail inválido.";
+            showToast(msg, 'error');
+        });
+}
+
+// 5. Logout
+function logout() {
+    if (auth) auth.signOut().then(() => showToast("Você saiu da conta.", 'success'));
+}
+
+
+// --- B. SISTEMA DE BACKUP NA NUVEM ---
+
+async function backupToCloud() {
+    if (!currentUser) return showToast("Faça login primeiro.", 'error');
+
+    showToast("Salvando backup...", 'success');
+
+    // Coleta dados do LocalStorage
+    const dataToSave = {
+        bookmarks: JSON.parse(localStorage.getItem('bookmarks') || '[]'),
+        notes: JSON.parse(localStorage.getItem('notes') || '[]'),
+        history: JSON.parse(localStorage.getItem('history') || '[]'),
+        quizScore: parseInt(localStorage.getItem('quizPoints') || '0'),
+        settings: {
+            theme: localStorage.getItem('theme') || 'light',
+            fontSize: localStorage.getItem('fontSize'),
+            lastBook: (typeof currentBook !== 'undefined') ? currentBook : 'GEN',
+            lastChapter: (typeof currentChapter !== 'undefined') ? currentChapter : 1
+        },
+        lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
+        appVersion: "4.5.0",
+        platform: navigator.userAgent
+    };
+
+    try {
+        await db.collection('users').doc(currentUser.uid).set(dataToSave);
+        showToast("Backup salvo na nuvem!", 'success');
+        checkLastBackup();
+    } catch (error) {
+        console.error("Erro Backup:", error);
+        showToast("Erro ao salvar. Verifique conexão.", 'error');
+    }
+}
+
+async function restoreFromCloud() {
+    if (!currentUser) return showToast("Faça login primeiro.", 'error');
+
+    if (!confirm("ATENÇÃO: Isso substituirá os dados do celular pelos da nuvem. Continuar?")) return;
+
+    showToast("Baixando dados...", 'success');
+
+    try {
+        const doc = await db.collection('users').doc(currentUser.uid).get();
+        if (doc.exists) {
+            const data = doc.data();
+
+            // Restaura LocalStorage
+            if (data.bookmarks) localStorage.setItem('bookmarks', JSON.stringify(data.bookmarks));
+            if (data.notes) localStorage.setItem('notes', JSON.stringify(data.notes));
+            if (data.history) localStorage.setItem('history', JSON.stringify(data.history));
+            if (data.quizScore) localStorage.setItem('quizPoints', data.quizScore);
+
+            // Restaura Configs
+            if (data.settings) {
+                if (data.settings.theme) localStorage.setItem('theme', data.settings.theme);
+                if (data.settings.fontSize) localStorage.setItem('fontSize', data.settings.fontSize);
+                if (data.settings.lastBook) localStorage.setItem('lastBook', data.settings.lastBook);
+                if (data.settings.lastChapter) localStorage.setItem('lastChapter', data.settings.lastChapter);
+            }
+
+            showToast("Restaurado! Reiniciando...", 'success');
+            setTimeout(() => window.location.reload(), 1500);
+        } else {
+            showToast("Nenhum backup encontrado.", 'error');
+        }
+    } catch (error) {
+        console.error("Erro Restore:", error);
+        showToast("Erro ao restaurar.", 'error');
+    }
+}
+
+async function checkLastBackup() {
+    if (!currentUser || !db) return;
+    try {
+        const doc = await db.collection('users').doc(currentUser.uid).get();
+        const label = document.getElementById('last-backup-date');
+
+        if (doc.exists && doc.data().lastUpdated) {
+            const date = doc.data().lastUpdated.toDate();
+            const dataF = date.toLocaleDateString('pt-BR') + " às " + date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+            if (label) label.innerText = "Último backup: " + dataF;
+        } else {
+            if (label) label.innerText = "Nenhum backup encontrado";
+        }
+    } catch (e) { console.log(e); }
+}
+
+
+// --- C. NOVO SUPORTE VIA AJAX (Substitui o antigo) ---
+
+window.sendFeedbackToEmail = async function () {
+    const DESTINO_EMAIL = "agapeconnect75@gmail.com";
+    const emailInput = document.getElementById('feedback-email');
+    const msgInput = document.getElementById('feedback-text');
+    const btn = document.querySelector('#modal-feedback button') || document.activeElement;
+
+    const email = emailInput ? emailInput.value.trim() : '';
+    const message = msgInput ? msgInput.value.trim() : '';
+
+    if (!email || !message) { showToast('Preencha todos os campos.', 'error'); return; }
+
+    const originalText = btn.innerText;
+    btn.innerText = 'Enviando...';
+    btn.disabled = true;
+
+    try {
+        const response = await fetch(`https://formsubmit.co/ajax/${DESTINO_EMAIL}`, {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+                _subject: `App Bíblia - Feedback de ${email}`,
+                email: email,
+                message: message,
+                _template: "table",
+                _captcha: "false"
+            })
+        });
+
+        if (response.ok) {
+            showToast('Enviado com sucesso!', 'success');
+            emailInput.value = '';
+            msgInput.value = '';
+            setTimeout(() => { if (typeof closeModal === 'function') closeModal('modal-feedback'); }, 1500);
+        } else { throw new Error('Erro servidor'); }
+    } catch (error) {
+        showToast('Erro ao enviar. Verifique conexão.', 'error');
+    } finally {
+        btn.innerText = originalText; btn.disabled = false;
+    }
+};
+
+// --- D. UTILITÁRIO DE NOTIFICAÇÃO (TOAST) ---
+function showToast(message, type = 'success') {
+    let toast = document.getElementById('app-toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'app-toast';
+        toast.className = 'toast';
+        document.body.appendChild(toast);
+    }
+    toast.innerText = message;
+    toast.className = `toast show ${type}`;
+    setTimeout(() => { toast.className = toast.className.replace('show', ''); }, 3000);
+}
