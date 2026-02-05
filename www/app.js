@@ -115,7 +115,6 @@ function _showScreenInternal(screenId) {
     // Lógica de Ativação do Header
     if (screenId === 'screen-home') {
         if (hHome) hHome.classList.remove('hidden');
-
     }
     else if (screenId === 'screen-read') {
         if (hRead) { hRead.classList.remove('hidden'); hRead.classList.add('flex'); }
