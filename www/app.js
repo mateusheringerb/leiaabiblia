@@ -132,7 +132,7 @@ function _showScreenInternal(screenId) {
 
     // Reset: Esconde todos
     [hHome, hRead, hHymn, hGen].forEach(el => { if (el) { el.classList.add('hidden'); el.classList.remove('flex'); } });
-    if (rightControls) rightControls.classList.remove('hidden'); // Padrão visível
+    if (rightControls) rightControls.classList.remove('hidden');
 
     // Lógica de Ativação do Header
     if (screenId === 'screen-home') {
@@ -145,7 +145,7 @@ function _showScreenInternal(screenId) {
         if (hHymn) { hHymn.classList.remove('hidden'); hHymn.classList.add('flex'); }
     }
     else {
-        // Telas Genéricas (Quiz, Planos, Destaques, Sobre, Backup)
+        // Telas Genéricas
         if (hGen) { hGen.classList.remove('hidden'); hGen.classList.add('flex'); }
         if (hTitle) {
             if (screenId === 'screen-quiz') hTitle.innerText = 'Quiz Bíblico';
@@ -161,8 +161,13 @@ function _showScreenInternal(screenId) {
 
     // Troca o conteúdo principal
     document.querySelectorAll('#main-content > div').forEach(s => s.id.startsWith('screen-') && s.classList.add('hidden'));
+
     var target = document.getElementById(screenId);
-    if (target) { target.classList.remove('hidden'); window.scrollTo(0, 0); }
+    if (target) {
+        target.classList.remove('hidden');
+        // CORREÇÃO: Força o scroll para o topo IMEDIATAMENTE ao entrar na tela
+        window.scrollTo(0, 0);
+    }
 }
 
 window.showScreen = function (screenId) {
@@ -489,7 +494,7 @@ window.goToVerse = function (b, c, v) { state.book = b; state.chapter = c; showS
 window.setupInstallPrompt = function () { window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); deferredPrompt = e; document.getElementById('install-container').classList.remove('hidden'); document.getElementById('btn-install').onclick = function () { deferredPrompt.prompt(); }; }); };
 window.hardReset = function () { if (confirm("Apagar tudo?")) { localStorage.clear(); location.reload(); } };
 window.loadHighlightsList = function () { var k = Object.keys(savedMarks), c = document.getElementById('highlights-container'); c.innerHTML = k.length ? k.map(function (ky) { var p = ky.split('-'); return '<div onclick="goToVerse(' + p[0] + ',' + p[1] + ',' + p[2] + ')" class="bg-white dark:bg-bible-800 p-4 rounded-xl border-l-4 border-accent-500 cursor-pointer shadow-sm"><p class="font-bold text-bible-800 dark:text-bible-200">' + BIBLE_BOOKS[p[0]].name + ' ' + p[1] + ':' + p[2] + '</p></div>'; }).join('') : '<div class="p-10 text-center">Sem destaques.</div>'; };
-window.shareApp = function () { navigator.share ? navigator.share({ title: "Bíblia Ágape", url: window.location.href }) : alert("Use o menu do navegador."); };
+window.shareApp = function () { const urlFixa = "https://leiaabiblia.vercel.app/"; const shareData = { title: "Bíblia Ágape", text: "Leia a Bíblia de forma simples, offline e gratuita.", url: urlFixa }; if (navigator.share) { navigator.share(shareData).catch((err) => console.log("Compartilhamento cancelado", err)); } else { navigator.clipboard.writeText(urlFixa).then(() => { if (typeof showToast === 'function') { showToast("Link copiado para a área de transferência!", "success"); } else { alert("Link copiado: " + urlFixa); } }); } };
 window.actionVerse = function (act) { if (act === 'copy') { navigator.clipboard.writeText('"' + selectedVerse.text + '" - ' + selectedVerse.ref); closeModal('modal-verse'); alert("Copiado!"); } };
 window.loadDailyVerse = function () { if (typeof DAILY_VERSES_POOL !== 'undefined') { var v = DAILY_VERSES_POOL[new Date().getDate() % DAILY_VERSES_POOL.length]; document.getElementById('daily-text').innerText = '"' + v.text + '"'; document.getElementById('daily-reference').innerText = v.ref; } };
 window.handleVerseClick = function (id, text, ref) { selectedVerse = { id, text, ref }; var m = document.getElementById('modal-verse'); m.classList.remove('hidden'); m.classList.add('flex'); };
