@@ -475,7 +475,6 @@ window.markVerse = function (cls) { if (cls === 'remove') delete savedMarks[sele
 window.closeModal = function (id) { var el = document.getElementById(id); el.classList.add('hidden'); el.classList.remove('flex'); };
 window.openPlanSetup = function () { var m = document.getElementById('modal-plan'); m.classList.remove('hidden'); m.classList.add('flex'); };
 window.openFeedbackModal = function () { var m = document.getElementById('modal-feedback'); m.classList.remove('hidden'); m.classList.add('flex'); };
-window.sendFeedbackToEmail = function () { alert("Enviado com sucesso!"); closeModal('modal-feedback'); };
 window.exportData = function () { var a = document.createElement('a'); a.href = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify({ meta: { app: "Ágape" }, data: { ...localStorage } })); a.download = "backup.json"; a.click(); };
 window.triggerImport = function () { document.getElementById('import-file').click(); };
 window.handleImportFile = function (e) { var r = new FileReader(); r.onload = function (ev) { try { var d = JSON.parse(ev.target.result).data; Object.keys(d).forEach(function (k) { localStorage.setItem(k, d[k]); }); location.reload(); } catch (err) { alert("Erro"); } }; r.readAsText(e.target.files[0]); };
@@ -550,3 +549,121 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Controle do botão voltar nativo ativado.');
     }
 });
+
+/**
+ * ============================================================================
+ * SISTEMA DE NOTIFICAÇÕES E SUPORTE (AJAX)
+ * ============================================================================
+ */
+
+// 1. Função auxiliar para mostrar notificações (Toast) no topo ou fundo da tela
+// Substitui o alert() feio por algo profissional
+function showToast(message, type = 'success') {
+    // Verifica se já existe o elemento toast, se não, cria
+    let toast = document.getElementById('app-toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'app-toast';
+        toast.className = 'toast';
+        document.body.appendChild(toast);
+    }
+
+    // Define o texto e as classes de cor
+    toast.innerText = message;
+    // Remove classes antigas e adiciona as novas
+    toast.className = 'toast show';
+
+    if (type === 'error') {
+        toast.classList.add('error');
+    } else {
+        toast.classList.add('success');
+    }
+
+    // Remove a notificação após 3.5 segundos
+    setTimeout(() => {
+        toast.className = toast.className.replace('show', '');
+    }, 3500);
+}
+
+// 2. Função de Envio de Feedback (Sem sair do App)
+window.sendFeedbackToEmail = async function () {
+    // CONFIGURAÇÃO
+    const DESTINO_EMAIL = "agapeconnect75@gmail.com"; // Seu e-mail configurado
+
+    // Captura dos campos
+    const emailInput = document.getElementById('feedback-email');
+    const msgInput = document.getElementById('feedback-text');
+
+    // Tenta achar o botão de enviar dentro do modal para dar feedback visual
+    // Se não achar pelo seletor específico, tenta pegar o botão ativo ou genérico
+    const btn = document.querySelector('#modal-feedback button.bg-bible-900') || document.activeElement;
+
+    const email = emailInput ? emailInput.value.trim() : '';
+    const message = msgInput ? msgInput.value.trim() : '';
+
+    // Validação
+    if (!email || !message) {
+        showToast('Por favor, preencha seu e-mail e a mensagem.', 'error');
+        return;
+    }
+
+    if (!email.includes('@') || !email.includes('.')) {
+        showToast('Por favor, insira um e-mail válido.', 'error');
+        return;
+    }
+
+    // Feedback Visual: Bloqueia botão e muda texto
+    const originalText = btn.innerText;
+    btn.innerText = 'Enviando...';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+    btn.style.cursor = 'not-allowed';
+
+    try {
+        // Envio via AJAX para a API do FormSubmit
+        const response = await fetch(`https://formsubmit.co/ajax/${DESTINO_EMAIL}`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                _subject: `Feedback App Bíblia Ágape - De: ${email}`,
+                email: email,       // E-mail do usuário (para você poder responder)
+                message: message,   // O texto do feedback
+                _template: "table", // Formata o e-mail bonitinho pra você
+                _captcha: "false"   // Desativa captcha para ser direto
+            })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            // Sucesso!
+            showToast('Mensagem enviada! Obrigado pelo contato.', 'success');
+
+            // Limpa o formulário
+            if (emailInput) emailInput.value = '';
+            if (msgInput) msgInput.value = '';
+
+            // Fecha o modal após 1.5s para o usuário ler a mensagem
+            setTimeout(() => {
+                if (typeof closeModal === 'function') closeModal('modal-feedback');
+            }, 1500);
+
+        } else {
+            console.error('Erro FormSubmit:', data);
+            throw new Error('O servidor recusou o envio.');
+        }
+
+    } catch (error) {
+        console.error('Erro no envio:', error);
+        showToast('Erro de conexão. Verifique sua internet.', 'error');
+    } finally {
+        // Restaura o botão ao estado original
+        btn.innerText = originalText;
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        btn.style.cursor = 'pointer';
+    }
+};
