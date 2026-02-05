@@ -374,79 +374,86 @@
             </footer>
         </div>
 
-        <div id="screen-about" class="hidden animate-fade-in max-w-2xl mx-auto pb-10">
-            <div class="px-6 space-y-8 text-center pt-8">
-
-                <div class="flex flex-col items-center space-y-5">
-                    <div
-                        class="w-28 h-28 bg-white dark:bg-bible-800 rounded-3xl shadow-card flex items-center justify-center p-5 transform transition hover:scale-105 duration-500">
-                        <img src="assets/logo-2.png" alt="Logo Ágape"
-                            class="w-full h-full object-contain filter sepia-[0.2]" oncontextmenu="return false;"
-                            draggable="false">
-                    </div>
-                    <div>
-                        <h1 class="font-display font-bold text-3xl text-bible-900 dark:text-white tracking-tight">Bíblia
-                            Ágape</h1>
-                        <p class="text-xs font-bold uppercase tracking-widest text-accent-600 mt-1">Versão 4.0.0</p>
-                    </div>
-                    <p class="text-sm text-bible-600 dark:text-bible-300 leading-relaxed max-w-md mx-auto">
-                        Uma plataforma digital completa para leitura e estudo das Sagradas Escrituras.
-                        Projetada com foco em <strong>performance</strong>, <strong>design minimalista</strong> e
-                        <strong>usabilidade offline</strong>,
-                        unindo tecnologia moderna e profundidade teológica.
-                    </p>
+        <div id="screen-about"
+            class="hidden w-full h-[calc(100vh-6rem)] flex flex-col items-center justify-center overflow-hidden animate-fade-in px-6 text-center">
+            <div class="space-y-8 transform -translate-y-4">
+                <div class="relative inline-block">
+                    <div class="absolute inset-0 bg-accent-500 blur-2xl opacity-20 rounded-full"></div>
+                    <img src="assets/logo-2.png"
+                        class="w-28 h-28 mx-auto filter sepia-[0.2] relative z-10 drop-shadow-xl">
                 </div>
-
-                <div
-                    class="bg-white dark:bg-bible-800 p-6 rounded-2xl border border-bible-200 dark:border-bible-700 shadow-card text-left relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <i class="ph-duotone ph-code text-6xl text-accent-500"></i>
-                    </div>
-
-                    <p class="text-[10px] font-bold uppercase tracking-widest text-bible-400 mb-4">Engenharia &
-                        Desenvolvimento</p>
-
-                    <div class="flex items-center gap-4 mb-6">
-                        <div
-                            class="w-16 h-16 shrink-0 rounded-full bg-bible-100 dark:bg-bible-700 p-0.5 shadow-inner overflow-hidden">
-                            <img src="https://i.ibb.co/5htZ8G7D/IMG-3351.jpg" alt="Mateus Heringer"
-                                class="w-full h-full object-cover rounded-full filter hover:sepia-[0.1] transition"
-                                oncontextmenu="return false;" draggable="false">
-                        </div>
-                        <div>
-                            <h3 class="font-display font-bold text-lg text-bible-900 dark:text-white">Mateus Heringer
-                            </h3>
-                            <p class="text-xs text-accent-600 dark:text-accent-400 font-medium">Estudante de Análise e
-                                Desenvolvimento de Sistemas</p>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-3 gap-3">
-                        <a href="https://github.com/mateusheringerb" target="_blank"
-                            class="flex flex-col items-center justify-center p-3 rounded-xl bg-bible-50 dark:bg-bible-900/50 hover:bg-bible-100 dark:hover:bg-bible-700 transition border border-bible-100 dark:border-bible-700 group/link">
-                            <i
-                                class="ph-fill ph-github-logo text-xl text-bible-700 dark:text-bible-300 group-hover/link:text-black dark:group-hover/link:text-white transition-colors"></i>
-                            <span class="text-[10px] font-bold mt-1 text-bible-500">GitHub</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/mateusheringerb" target="_blank"
-                            class="flex flex-col items-center justify-center p-3 rounded-xl bg-bible-50 dark:bg-bible-900/50 hover:bg-bible-100 dark:hover:bg-bible-700 transition border border-bible-100 dark:border-bible-700 group/link">
-                            <i
-                                class="ph-fill ph-linkedin-logo text-xl text-bible-700 dark:text-bible-300 group-hover/link:text-blue-600 transition-colors"></i>
-                            <span class="text-[10px] font-bold mt-1 text-bible-500">LinkedIn</span>
-                        </a>
-                        <a href="https://instagram.com/mateusheringerb" target="_blank"
-                            class="flex flex-col items-center justify-center p-3 rounded-xl bg-bible-50 dark:bg-bible-900/50 hover:bg-bible-100 dark:hover:bg-bible-700 transition border border-bible-100 dark:border-bible-700 group/link">
-                            <i
-                                class="ph-fill ph-instagram-logo text-xl text-bible-700 dark:text-bible-300 group-hover/link:text-pink-600 transition-colors"></i>
-                            <span class="text-[10px] font-bold mt-1 text-bible-500">Instagram</span>
-                        </a>
-                    </div>
+                <div>
+                    <h2 class="font-display font-bold text-3xl text-bible-900 dark:text-white mb-1">Bíblia Ágape</h2>
+                    <p class="text-xs font-bold uppercase tracking-widest text-accent-600 mt-1">Versão 4.0.0</p>
                 </div>
-
-                <p class="text-[10px] font-serif italic text-bible-400 dark:text-bible-600">
-                    "Sola Scriptura, Sola Fide, Solus Christus, Sola Gratia, Soli Deo Gloria"
+                <p class="text-sm text-bible-600 dark:text-bible-300 leading-relaxed max-w-md mx-auto">
+                    Uma plataforma digital completa para leitura e estudo das Sagradas Escrituras.
+                    Projetada com foco em <strong>performance</strong>, <strong>design minimalista</strong> e
+                    <strong>usabilidade offline</strong>,
+                    unindo tecnologia moderna e profundidade teológica.
                 </p>
             </div>
+
+            <div
+                class="bg-white dark:bg-bible-800 p-6 rounded-2xl border border-bible-200 dark:border-bible-700 shadow-card text-left relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <i class="ph-duotone ph-code text-6xl text-accent-500"></i>
+                </div>
+
+                <p class="text-[10px] font-bold uppercase tracking-widest text-bible-400 mb-4">Engenharia &
+                    Desenvolvimento</p>
+
+                <div class="flex items-center gap-4 mb-6">
+                    <div
+                        class="w-16 h-16 shrink-0 rounded-full bg-bible-100 dark:bg-bible-700 p-0.5 shadow-inner overflow-hidden">
+                        <img src="https://i.ibb.co/5htZ8G7D/IMG-3351.jpg" alt="Mateus Heringer"
+                            class="w-full h-full object-cover rounded-full filter hover:sepia-[0.1] transition"
+                            oncontextmenu="return false;" draggable="false">
+                    </div>
+                    <div>
+                        <h3 class="font-display font-bold text-lg text-bible-900 dark:text-white">Mateus Heringer
+                        </h3>
+                        <p class="text-xs text-accent-600 dark:text-accent-400 font-medium">Estudante de Análise e
+                            Desenvolvimento de Sistemas</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-3">
+                    <a href="https://github.com/mateusheringerb" target="_blank"
+                        class="flex flex-col items-center justify-center p-3 rounded-xl bg-bible-50 dark:bg-bible-900/50 hover:bg-bible-100 dark:hover:bg-bible-700 transition border border-bible-100 dark:border-bible-700 group/link">
+                        <i
+                            class="ph-fill ph-github-logo text-xl text-bible-700 dark:text-bible-300 group-hover/link:text-black dark:group-hover/link:text-white transition-colors"></i>
+                        <span class="text-[10px] font-bold mt-1 text-bible-500">GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/mateusheringerb" target="_blank"
+                        class="flex flex-col items-center justify-center p-3 rounded-xl bg-bible-50 dark:bg-bible-900/50 hover:bg-bible-100 dark:hover:bg-bible-700 transition border border-bible-100 dark:border-bible-700 group/link">
+                        <i
+                            class="ph-fill ph-linkedin-logo text-xl text-bible-700 dark:text-bible-300 group-hover/link:text-blue-600 transition-colors"></i>
+                        <span class="text-[10px] font-bold mt-1 text-bible-500">LinkedIn</span>
+                    </a>
+                    <a href="https://instagram.com/mateusheringerb" target="_blank"
+                        class="flex flex-col items-center justify-center p-3 rounded-xl bg-bible-50 dark:bg-bible-900/50 hover:bg-bible-100 dark:hover:bg-bible-700 transition border border-bible-100 dark:border-bible-700 group/link">
+                        <i
+                            class="ph-fill ph-instagram-logo text-xl text-bible-700 dark:text-bible-300 group-hover/link:text-pink-600 transition-colors"></i>
+                        <span class="text-[10px] font-bold mt-1 text-bible-500">Instagram</span>
+                    </a>
+                </div>
+            </div>
+            <br>
+
+            <div class="pt-6 border-t border-gray-100 dark:border-bible-800 w-48 mx-auto">
+                <button onclick="openFeedbackModal()"
+                    class="text-xs font-bold text-bible-400 hover:text-bible-900 dark:hover:text-white transition flex items-center justify-center gap-2 mx-auto">
+                    <i class="ph-bold ph-bug"></i> Relatar problema
+                </button>
+            </div>
+
+            <br>
+
+            <p class="text-[10px] font-serif italic text-bible-400 dark:text-bible-600">
+                "Sola Scriptura, Sola Fide, Solus Christus, Sola Gratia, Soli Deo Gloria"
+            </p>
+        </div>
         </div>
 
         <div id="screen-read" class="hidden h-full relative">
@@ -495,14 +502,16 @@
             <div id="plan-overview-list" class="space-y-4"></div>
         </div>
 
-        <div id="screen-quiz" class="hidden animate-fade-in max-w-2xl mx-auto h-full flex flex-col pt-4">
-            <div class="flex items-center justify-between mb-6 px-4">
-                <h2 class="font-display font-bold text-xl">Quiz Bíblico</h2>
-                <div class="ml-auto bg-bible-900 text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">Total:
-                    <span id="quiz-points">0</span>
+        <div id="screen-quiz"
+            class="hidden w-full h-[calc(100vh-6rem)] flex flex-col items-center justify-center overflow-hidden animate-fade-in px-4">
+            <div class="w-full max-w-lg flex flex-col h-full justify-center">
+                <div class="flex justify-between items-center mb-6 px-2 w-full">
+                    <h2 class="font-bold text-xl text-bible-900 dark:text-white">Quiz Bíblico</h2>
+                    <span class="bg-bible-900 text-white px-3 py-1 rounded-full text-xs font-bold shadow-sm">Total:
+                        <span id="quiz-points">0</span>
                 </div>
+                <div id="quiz-container" class="w-full flex flex-col items-center justify-center text-center"></div>
             </div>
-            <div id="quiz-container" class="flex-1 flex items-center justify-center pb-20"></div>
         </div>
 
         <div id="screen-search" class="hidden animate-fade-in max-w-4xl mx-auto pt-4">
@@ -521,109 +530,78 @@
             <div id="highlights-container" class="space-y-3 pb-20 px-4"></div>
         </div>
 
-        <div id="screen-backup" class="hidden w-full animate-fade-in">
-            <div class="flex flex-col items-center justify-center min-h-[calc(100vh-6rem)] px-6 pb-20">
+        <div id="screen-backup"
+            class="hidden w-full h-[calc(100vh-6rem)] flex flex-col items-center justify-center overflow-hidden animate-fade-in px-4">
+            <div
+                class="w-full max-w-sm bg-white dark:bg-bible-800 p-8 rounded-[2rem] border border-bible-200 dark:border-bible-700 shadow-2xl relative">
 
-                <div
-                    class="w-full max-w-sm bg-white dark:bg-bible-800 p-8 rounded-[2rem] border border-bible-200 dark:border-bible-700 shadow-2xl relative">
-
-                    <div class="mb-6 text-center">
-                        <div
-                            class="w-20 h-20 bg-bible-50 dark:bg-bible-900/50 rounded-full flex items-center justify-center mx-auto mb-4 border border-bible-100 dark:border-bible-700">
-                            <i class="ph-duotone ph-cloud-check text-4xl text-bible-900 dark:text-bible-100"></i>
-                        </div>
-                        <h3 class="font-display font-bold text-2xl text-bible-900 dark:text-white mb-1">Backup na Nuvem
-                        </h3>
+                <div class="mb-5 text-center">
+                    <div
+                        class="w-16 h-16 bg-bible-50 dark:bg-bible-900/50 rounded-full flex items-center justify-center mx-auto mb-3 border border-bible-100 dark:border-bible-700">
+                        <i class="ph-duotone ph-cloud-check text-3xl text-bible-900 dark:text-bible-100"></i>
                     </div>
+                    <h3 class="font-display font-bold text-2xl text-bible-900 dark:text-white">Nuvem Ágape</h3>
+                </div>
 
-                    <div id="auth-container" class="space-y-5">
-                        <div
-                            class="bg-orange-50 dark:bg-orange-900/10 p-4 rounded-xl border border-orange-100 dark:border-orange-800/30 text-center">
-                            <p
-                                class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wide mb-1">
-                                Backup Inativo
+                <div id="auth-container" class="space-y-4">
+                    <div
+                        class="bg-orange-50 dark:bg-orange-900/10 p-3 rounded-xl border border-orange-100 dark:border-orange-800/30 text-center">
+                        <p
+                            class="text-[10px] font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wide mb-1">
+                            Backup Inativo</p>
+                        <p class="text-xs text-bible-600 dark:text-bible-300">Entre para ativar o salvamento automático.
+                        </p>
+                    </div>
+                    <div class="space-y-2">
+                        <input type="email" id="login-email" placeholder="E-mail"
+                            class="w-full p-3 bg-gray-50 dark:bg-black/20 rounded-xl border border-gray-200 dark:border-bible-700 outline-none focus:border-bible-900 transition-colors text-sm">
+                        <input type="password" id="login-password" placeholder="Senha"
+                            class="w-full p-3 bg-gray-50 dark:bg-black/20 rounded-xl border border-gray-200 dark:border-bible-700 outline-none focus:border-bible-900 transition-colors text-sm">
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="loginWithEmail()"
+                            class="bg-bible-900 text-white py-3 rounded-xl font-bold hover:opacity-90 transition text-xs uppercase">Entrar</button>
+                        <button onclick="registerWithEmail()"
+                            class="border border-bible-200 dark:border-bible-600 text-bible-900 dark:text-white py-3 rounded-xl font-bold hover:bg-bible-50 dark:hover:bg-white/5 transition text-xs uppercase">Cadastrar</button>
+                    </div>
+                    <button onclick="loginWithGoogle()"
+                        class="w-full bg-white dark:bg-bible-700 border border-gray-200 dark:border-gray-600 text-gray-700 dark:text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 shadow-sm text-sm">
+                        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" class="w-4 h-4">
+                        Entrar com Google
+                    </button>
+                </div>
+
+                <div id="user-container" class="hidden animate-fade-in">
+                    <div
+                        class="bg-green-50 dark:bg-green-900/10 p-3 rounded-xl border border-green-100 dark:border-green-800/30 flex items-center gap-3 mb-4">
+                        <div class="relative flex h-2.5 w-2.5">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                        </div>
+                        <div class="text-left">
+                            <p class="text-[10px] font-bold text-green-700 dark:text-green-400 uppercase tracking-wide">
+                                Automático Ativo</p>
+                            <p class="text-[10px] text-green-600 dark:text-green-500/80">Sincronizando em tempo real.
                             </p>
-                            <p class="text-sm text-bible-600 dark:text-bible-300">
-                                Faça login para ativar o <b>backup automático</b> e proteger seus dados como no
-                                WhatsApp.
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 mb-4 p-2">
+                        <img id="user-photo" src=""
+                            class="w-10 h-10 rounded-full border-2 border-white dark:border-bible-600 shadow-sm">
+                        <div class="text-left overflow-hidden">
+                            <p id="user-name" class="font-bold text-sm text-bible-900 dark:text-white truncate">Usuário
                             </p>
-                        </div>
-
-                        <div class="space-y-3">
-                            <input type="email" id="login-email" placeholder="E-mail"
-                                class="w-full p-4 bg-gray-50 dark:bg-black/20 rounded-xl border border-gray-200 dark:border-bible-700 outline-none focus:border-bible-900 transition-colors text-sm">
-                            <input type="password" id="login-password" placeholder="Senha"
-                                class="w-full p-4 bg-gray-50 dark:bg-black/20 rounded-xl border border-gray-200 dark:border-bible-700 outline-none focus:border-bible-900 transition-colors text-sm">
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-3">
-                            <button onclick="loginWithEmail()"
-                                class="bg-bible-900 text-white py-3.5 rounded-xl font-bold hover:opacity-90 transition text-sm">Entrar</button>
-                            <button onclick="registerWithEmail()"
-                                class="border border-bible-200 dark:border-bible-600 text-bible-900 dark:text-white py-3.5 rounded-xl font-bold hover:bg-bible-50 dark:hover:bg-white/5 transition text-sm">Cadastrar</button>
-                        </div>
-
-                        <div class="relative py-2">
-                            <div class="absolute inset-0 flex items-center"><span
-                                    class="w-full border-t border-gray-200 dark:border-gray-700"></span></div>
-                            <div class="relative flex justify-center text-xs uppercase"><span
-                                    class="bg-white dark:bg-bible-800 px-2 text-gray-400 font-bold">Ou</span></div>
-                        </div>
-
-                        <button onclick="loginWithGoogle()"
-                            class="w-full bg-white dark:bg-bible-700 border border-gray-200 dark:border-gray-600 text-gray-700 dark:text-white py-3.5 rounded-xl font-bold flex items-center justify-center gap-3 shadow-sm hover:scale-[1.02] transition-transform">
-                            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
-                                class="w-5 h-5">
-                            Entrar com Google
-                        </button>
-                    </div>
-
-                    <div id="user-container" class="hidden animate-fade-in">
-                        <div
-                            class="bg-green-50 dark:bg-green-900/10 p-4 rounded-xl border border-green-100 dark:border-green-800/30 flex items-center gap-3 mb-6">
-                            <div class="relative">
-                                <div class="w-3 h-3 bg-green-500 rounded-full animate-ping absolute opacity-75"></div>
-                                <div class="w-3 h-3 bg-green-500 rounded-full relative"></div>
-                            </div>
-                            <div class="text-left">
-                                <p class="text-xs font-bold text-green-700 dark:text-green-400 uppercase tracking-wide">
-                                    Backup Automático Ativo</p>
-                                <p class="text-[11px] text-green-600 dark:text-green-500/80">Seus dados são salvos ao
-                                    fazer alterações.</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-4 mb-6 p-2">
-                            <img id="user-photo" src=""
-                                class="w-12 h-12 rounded-full border-2 border-white dark:border-bible-600 shadow-sm">
-                            <div class="text-left overflow-hidden">
-                                <p id="user-name" class="font-bold text-bible-900 dark:text-white truncate">Usuário</p>
-                                <p id="user-email" class="text-xs text-bible-500 truncate">email@gmail.com</p>
-                            </div>
-                        </div>
-
-                        <div class="space-y-3 opacity-80 hover:opacity-100 transition-opacity">
-                            <button onclick="backupToCloud(false)"
-                                class="w-full border border-bible-200 dark:border-bible-600 text-bible-600 dark:text-bible-300 py-3 rounded-xl font-bold flex items-center justify-center gap-2 text-sm hover:bg-bible-50 dark:hover:bg-white/5">
-                                <i class="ph-bold ph-cloud-arrow-up"></i> Forçar Backup Manual
-                            </button>
-
-                            <button onclick="restoreFromCloud()"
-                                class="w-full border border-bible-200 dark:border-bible-600 text-bible-600 dark:text-bible-300 py-3 rounded-xl font-bold flex items-center justify-center gap-2 text-sm hover:bg-bible-50 dark:hover:bg-white/5">
-                                <i class="ph-bold ph-cloud-arrow-down"></i> Restaurar Dados
-                            </button>
-                        </div>
-
-                        <div class="mt-8 pt-4 border-t border-gray-100 dark:border-gray-700 text-center">
-                            <p id="last-backup-date"
-                                class="text-[10px] text-bible-400 uppercase font-bold tracking-widest mb-4">...</p>
-                            <button onclick="logout()"
-                                class="text-red-500 text-xs font-bold hover:text-red-600 px-4 py-2 border border-red-100 rounded-full hover:bg-red-50 transition">
-                                Sair da Conta
-                            </button>
+                            <p id="user-email" class="text-[10px] text-bible-500 truncate">email@gmail.com</p>
                         </div>
                     </div>
-
+                    <div
+                        class="mt-6 pt-3 border-t border-gray-100 dark:border-gray-700 text-center flex justify-between items-center">
+                        <p id="last-backup-date" class="text-[9px] text-bible-400 uppercase font-bold tracking-widest">
+                            ...</p>
+                        <button onclick="logout()"
+                            class="text-red-500 text-[10px] font-bold hover:text-red-600 px-3 py-1 border border-red-100 dark:border-red-900/30 rounded-full hover:bg-red-50 dark:hover:bg-red-900/10 transition">SAIR</button>
+                    </div>
                 </div>
             </div>
         </div>
