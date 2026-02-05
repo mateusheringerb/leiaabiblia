@@ -340,51 +340,58 @@ body:not(.user-is-tabbing) textarea:focus {
     background-color: rgba(249, 168, 212, 0.25);
 }
 
-/* * --------------------------------------------------------------------------------------
- * TOASTS (NOTIFICAÇÕES FLUTUANTES)
- * Estilização dos alertas que aparecem no topo/fundo da tela.
- * -------------------------------------------------------------------------------------- 
- */
+/* Notificações (Toasts) - Centralização Corrigida */
 .toast {
     visibility: hidden;
     min-width: 250px;
-    margin-left: -125px;
-    /* Centraliza horizontalmente (metade do width) */
+    /* REMOVA o margin-left antigo */
+    /* margin-left: -125px; */
+
     background-color: #333;
     color: #fff;
     text-align: center;
-    border-radius: 8px;
-    padding: 16px;
+    border-radius: 50px;
+    /* Borda mais arredondada e moderna */
+    padding: 16px 24px;
+
     position: fixed;
-    z-index: 100;
+    z-index: 1000;
     /* Garante que fique sobre tudo */
+
+    /* Lógica de Centralização Perfeita */
     left: 50%;
+    transform: translateX(-50%);
+    /* O segredo: move 50% da própria largura para a esquerda */
+
     bottom: 30px;
-    font-size: 15px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    /* Sombra mais destacada */
+
     opacity: 0;
     transition: opacity 0.3s, bottom 0.3s, visibility 0.3s;
 }
 
-/* Toast Visível (Ativado via JS) */
+/* Toast Visível */
 .toast.show {
     visibility: visible;
     opacity: 1;
     bottom: 50px;
-    /* Efeito de subida suave */
+    /* Sobe um pouco ao aparecer */
 }
 
-/* Variação: Toast de Sucesso */
+/* Cores de Status */
 .toast.success {
     background-color: #10b981;
-    /* emerald-500 */
 }
 
-/* Variação: Toast de Erro */
+/* Verde */
 .toast.error {
     background-color: #ef4444;
-    /* red-500 */
 }
+
+/* Vermelho */
 
 /* * --------------------------------------------------------------------------------------
  * AJUSTE DE BOTÕES FLUTUANTES
