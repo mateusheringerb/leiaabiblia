@@ -825,7 +825,7 @@ function triggerAutoBackup() {
     }, 5000);
 }
 
-// Função Principal de Backup (Agora aceita modo silencioso)
+// Função Principal de Backup (Com Feedback Visual Instantâneo)
 async function backupToCloud(isSilent = false) {
     if (!currentUser) {
         if (!isSilent) showToast("Faça login para salvar.", 'error');
@@ -854,13 +854,31 @@ async function backupToCloud(isSilent = false) {
     try {
         await db.collection('users').doc(currentUser.uid).set(dataToSave, { merge: true });
 
+        // --- UX UPDATE: Atualiza a interface IMEDIATAMENTE ---
+        const now = new Date();
+        const dataF = now.toLocaleDateString('pt-BR') + " às " + now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+        const label = document.getElementById('last-backup-date');
+        if (label) {
+            // Adiciona um efeito de "piscar" verde para indicar sucesso visualmente
+            label.style.color = "#10b981"; // Verde
+            label.style.transition = "color 0.5s ease";
+            label.innerText = "Salvo na nuvem: " + dataF;
+
+            // Volta para a cor normal depois de 2 segundos
+            setTimeout(() => {
+                label.style.color = ""; // Remove o estilo inline (volta ao CSS)
+            }, 2000);
+        }
+
         if (!isSilent) {
             showToast("Backup salvo na nuvem!", 'success');
         } else {
-            // Apenas atualiza a data no card de backup se estivermos nele
-            console.log("Backup automático concluído.");
+            console.log("Backup automático concluído: " + dataF);
         }
-        checkLastBackup();
+
+        // Removemos a chamada checkLastBackup() daqui para economizar leituras
+
     } catch (error) {
         console.error("Erro Backup:", error);
         if (!isSilent) showToast("Erro ao salvar.", 'error');
