@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace = "com.mateusheringer.bibliaagape"
+    namespace = "com.agape.biblia"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.mateusheringer.bibliaagape"
+        applicationId "com.agape.biblia"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 5
@@ -18,16 +18,8 @@ android {
     }
     buildTypes {
         release {
-            // Habilita a minificação (ofuscação e redução de código) para reduzir o tamanho do APK
-            minifyEnabled true
-            shrinkResources true
-            // No android/app/build.gradle
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-
-        debug {
             minifyEnabled false
-            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 }
