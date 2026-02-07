@@ -1,4 +1,4 @@
-package com.agape.biblia;
+package com.mateusheringer.bibliaagape;
 
 import com.getcapacitor.BridgeActivity;
 
