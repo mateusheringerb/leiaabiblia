@@ -21,7 +21,8 @@ android {
             // Habilita a minificação (ofuscação e redução de código) para reduzir o tamanho do APK
             minifyEnabled true
             shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // No android/app/build.gradle
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
         debug {
