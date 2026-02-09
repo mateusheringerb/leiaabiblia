@@ -615,7 +615,7 @@ function showToast(message, type = 'success') {
 // 2. Função de Envio de Feedback (Sem sair do App)
 window.sendFeedbackToEmail = async function () {
     // CONFIGURAÇÃO
-    const DESTINO_EMAIL = "agapeconnect75@gmail.com"; // Seu e-mail configurado
+    const DESTINO_EMAIL = "contato@agapeconnect.com.br"; // Seu e-mail configurado
 
     // Captura dos campos
     const emailInput = document.getElementById('feedback-email');
