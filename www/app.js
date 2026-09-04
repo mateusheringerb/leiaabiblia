@@ -997,7 +997,7 @@ async function checkLastBackup() {
 // --- C. NOVO SUPORTE VIA AJAX (Substitui o antigo) ---
 
 window.sendFeedbackToEmail = async function () {
-    const DESTINO_EMAIL = "agapeconnect75@gmail.com";
+    const DESTINO_EMAIL = "contato@agapeconnect.com.br";
     const emailInput = document.getElementById('feedback-email');
     const msgInput = document.getElementById('feedback-text');
     const btn = document.querySelector('#modal-feedback button') || document.activeElement;
